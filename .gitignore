@@ -1,6 +1,0 @@
-.env
-__pycache__/
-*.pyc
-*.pyo
-.ipynb_checkpoints/
-*_competitor_report_*.md
