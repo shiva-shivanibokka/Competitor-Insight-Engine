@@ -1,0 +1,5 @@
+requests
+beautifulsoup4
+openai
+python-dotenv
+tavily-python
