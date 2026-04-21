@@ -70,7 +70,9 @@ Claude was chosen for this project because of its strong instruction-following (
 
 ## Use Any AI Model
 
-The project is built on a flexible API wrapper — you are not locked into Claude. To switch providers, change the model name in one of these two places:
+The project is built on a flexible API wrapper — you are not locked into Claude. All LLM calls are made using the **OpenAI Python SDK** as a universal client. Every supported provider exposes an OpenAI-compatible REST API, so the same `client.chat.completions.create()` call works across all six providers — only the `base_url` and `api_key` change. No provider-specific SDK is needed; switching models requires no code changes.
+
+To switch providers, change the model name in one of these two places:
 
 - **For a single run:** update `FAST_MODEL_OVERRIDE` and `SMART_MODEL_OVERRIDE` in `competitor_intel.ipynb` Cell 3
 - **To change the default permanently:** update `FAST_MODEL` (line 88) and `SMART_MODEL` (line 89) in `config.py`
