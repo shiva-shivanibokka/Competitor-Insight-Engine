@@ -4,3 +4,4 @@ __pycache__/
 *.pyo
 .ipynb_checkpoints/
 *_competitor_report_*.md
+nul
