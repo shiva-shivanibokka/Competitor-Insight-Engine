@@ -1,60 +1,26 @@
 import os
 import requests
 from tavily import TavilyClient
-from dotenv import load_dotenv
-
-load_dotenv(override=True)
-
-# Sites that should never show up as competitors no matter what.
-# Add more here if needed.
-BLACKLISTED_DOMAINS = {
-    "reddit.com",
-    "wikipedia.org",
-    "quora.com",
-    "linkedin.com",
-    "youtube.com",
-    "twitter.com",
-    "x.com",
-    "facebook.com",
-    "instagram.com",
-    "tiktok.com",
-    "medium.com",
-    "substack.com",
-    "forbes.com",
-    "techcrunch.com",
-    "businessinsider.com",
-    "g2.com",
-    "capterra.com",
-    "trustpilot.com",
-    "glassdoor.com",
-    "crunchbase.com",
-    "producthunt.com",
-    "ycombinator.com",
-    "investopedia.com",
-    "nerdwallet.com",
-    "bankrate.com",
-}
+from blocklist import is_blocked
+from security import is_public_url
 
 
-def get_tavily_client() -> TavilyClient:
-    api_key = os.getenv("TAVILY_API_KEY")
+def get_tavily_client(api_key: str | None = None) -> TavilyClient:
+    # BYOK: prefer the per-request key; fall back to env only for local/CLI use.
+    api_key = api_key or os.getenv("TAVILY_API_KEY")
     if not api_key:
-        raise ValueError("TAVILY_API_KEY not found in .env file.")
+        raise ValueError("No Tavily API key provided (BYOK) and TAVILY_API_KEY not in env.")
     return TavilyClient(api_key=api_key)
-
-
-def is_blacklisted(url: str) -> bool:
-    """Check if a URL belongs to a site we never want as a competitor."""
-    url_lower = url.lower()
-    return any(domain in url_lower for domain in BLACKLISTED_DOMAINS)
 
 
 def validate_url(url: str) -> bool:
     """
     Check that a URL is reachable before we try to scrape it.
-    Returns False if the site is down, blacklisted, or returns an error.
+    Returns False if the site is down, blocklisted, non-public (SSRF), or errors.
     """
-    if is_blacklisted(url):
+    if is_blocked(url):
+        return False
+    if not is_public_url(url):  # SSRF guard
         return False
     try:
         response = requests.head(
@@ -68,13 +34,15 @@ def validate_url(url: str) -> bool:
         return False
 
 
-def get_competitor_search_content(company_name: str, industry: str) -> str:
+def get_competitor_search_content(
+    company_name: str, industry: str, tavily_key: str | None = None
+) -> str:
     """
     Search for competitors using Tavily and return the raw text content.
     We pass the content (not the URLs) to the LLM — search result URLs
     point to articles about competitors, not the competitors themselves.
     """
-    client = get_tavily_client()
+    client = get_tavily_client(tavily_key)
 
     query = f"top direct competitors of {company_name} in {industry}"
     print(f"  [searcher] Searching: '{query}'")
@@ -109,8 +77,8 @@ def get_competitor_search_content(company_name: str, industry: str) -> str:
         title = result.get("title", "")
         url = result.get("url", "")
         content = result.get("content", "")
-        # Skip blacklisted sources before they even reach the LLM
-        if not is_blacklisted(url):
+        # Skip blocklisted sources before they even reach the LLM
+        if not is_blocked(url):
             parts.append(f"SOURCE: {title}\n{content}")
 
     combined = "\n\n---\n\n".join(parts)

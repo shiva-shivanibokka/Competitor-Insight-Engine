@@ -3,10 +3,19 @@ import json
 import re
 from openai import OpenAI
 from config import PROVIDERS, MODEL_TO_PROVIDER, FAST_MODEL, SMART_MODEL
+from blocklist import is_blocked
+
+# BYOK: keys arrive per-request as {provider_name: key} and are used in-memory only.
+# They are NEVER written to disk, logged, or echoed back. Do not print this dict.
+ApiKeys = dict[str, str]
 
 
-def get_client(model: str) -> OpenAI:
-    """Look up the provider for this model and return a configured client."""
+def get_client(model: str, api_keys: ApiKeys | None = None) -> OpenAI:
+    """Look up the provider for this model and return a configured client.
+
+    Key resolution order: per-request BYOK dict → environment variable (local/CLI).
+    """
+    api_keys = api_keys or {}
     provider_name = MODEL_TO_PROVIDER.get(model)
     if not provider_name:
         raise ValueError(
@@ -15,13 +24,14 @@ def get_client(model: str) -> OpenAI:
         )
     provider = PROVIDERS[provider_name]
     if provider["env_key"] is None:
-        api_key = "ollama"
+        api_key = "ollama"  # local, no key needed
     else:
-        api_key = os.getenv(provider["env_key"])
+        api_key = api_keys.get(provider_name) or os.getenv(provider["env_key"])
         if not api_key:
             raise ValueError(
-                f"API key for '{provider_name}' not found.\n"
-                f"Set {provider['env_key']} in your .env file before using this model."
+                f"No API key provided for '{provider_name}'. "
+                f"Enter your {provider_name} key in the app (BYOK), "
+                f"or set {provider['env_key']} in .env for local use."
             )
     # Some providers need extra headers (e.g. Anthropic needs anthropic-version)
     extra_headers = provider.get("extra_headers", {})
@@ -33,10 +43,14 @@ def get_client(model: str) -> OpenAI:
 
 
 def llm_call(
-    system_prompt: str, user_prompt: str, model: str, temperature: float = 0.2
+    system_prompt: str,
+    user_prompt: str,
+    model: str,
+    temperature: float = 0.2,
+    api_keys: ApiKeys | None = None,
 ) -> str:
     """Send a prompt to the model and return the response text."""
-    client = get_client(model)
+    client = get_client(model, api_keys)
     provider_name = MODEL_TO_PROVIDER[model]
     print(f"    [llm] {provider_name} | {model}")
 
@@ -90,54 +104,22 @@ Output format:
 ]
 """
 
-# Hard blacklist — these domains are rejected regardless of what the LLM returns
-INVALID_DOMAINS = {
-    "reddit.com",
-    "wikipedia.org",
-    "quora.com",
-    "linkedin.com",
-    "youtube.com",
-    "twitter.com",
-    "x.com",
-    "facebook.com",
-    "instagram.com",
-    "tiktok.com",
-    "medium.com",
-    "substack.com",
-    "forbes.com",
-    "techcrunch.com",
-    "businessinsider.com",
-    "wired.com",
-    "g2.com",
-    "capterra.com",
-    "trustpilot.com",
-    "glassdoor.com",
-    "crunchbase.com",
-    "producthunt.com",
-    "ycombinator.com",
-    "investopedia.com",
-    "nerdwallet.com",
-    "bankrate.com",
-    "stackshare.io",
-    "alternativeto.net",
-    "getapp.com",
-}
-
-
 def _is_valid_competitor_url(url: str, company_name: str) -> bool:
-    """Returns False if the URL is blacklisted or belongs to the main company."""
+    """Returns False if the URL is blocklisted or belongs to the main company."""
     if not url or not url.startswith("http"):
         return False
-    url_lower = url.lower()
-    if any(domain in url_lower for domain in INVALID_DOMAINS):
+    if is_blocked(url):  # shared blocklist — see blocklist.py
         return False
-    if company_name.lower().replace(" ", "") in url_lower.replace(" ", ""):
+    if company_name.lower().replace(" ", "") in url.lower().replace(" ", ""):
         return False
     return True
 
 
 def extract_competitors_from_search(
-    company_name: str, search_content: str, model: str = FAST_MODEL
+    company_name: str,
+    search_content: str,
+    model: str = FAST_MODEL,
+    api_keys: ApiKeys | None = None,
 ) -> list[dict]:
     """
     Feed raw Tavily search results to the LLM.
@@ -153,6 +135,7 @@ def extract_competitors_from_search(
         ),
         model=model,
         temperature=0.0,  # keep this at zero — we want consistent, factual output
+        api_keys=api_keys,
     )
 
     # Strip markdown fences if the model wrapped the JSON
@@ -222,13 +205,16 @@ def _warn_if_low_quality(profile: str, name: str) -> None:
         )
 
 
-def extract_company_profile(scraped_text: str, model: str = FAST_MODEL) -> str:
+def extract_company_profile(
+    scraped_text: str, model: str = FAST_MODEL, api_keys: ApiKeys | None = None
+) -> str:
     """Extract a structured profile from the main company's scraped content."""
     print("  [step] Extracting company profile...")
     profile = llm_call(
         system_prompt=EXTRACTION_SYSTEM_PROMPT,
         user_prompt=f"Extract the company profile from this website content:\n\n{scraped_text}",
         model=model,
+        api_keys=api_keys,
     )
     if not profile.strip():
         raise ValueError(
@@ -239,7 +225,10 @@ def extract_company_profile(scraped_text: str, model: str = FAST_MODEL) -> str:
 
 
 def extract_competitor_profile(
-    competitor_name: str, scraped_text: str, model: str = FAST_MODEL
+    competitor_name: str,
+    scraped_text: str,
+    model: str = FAST_MODEL,
+    api_keys: ApiKeys | None = None,
 ) -> str:
     """Extract a structured profile for a single competitor."""
     print(f"  [step] Extracting profile for: {competitor_name}")
@@ -247,6 +236,7 @@ def extract_competitor_profile(
         system_prompt=EXTRACTION_SYSTEM_PROMPT,
         user_prompt=f"Extract the company profile for {competitor_name} from this website content:\n\n{scraped_text}",
         model=model,
+        api_keys=api_keys,
     )
     _warn_if_low_quality(profile, competitor_name)
     return profile
@@ -301,6 +291,7 @@ def generate_intelligence_report(
     main_profile: str,
     competitor_profiles: list[dict],
     model: str = SMART_MODEL,
+    api_keys: ApiKeys | None = None,
 ) -> str:
     """Generate the full competitive intelligence report from all collected profiles."""
     print("  [step] Generating full intelligence report...")
@@ -331,6 +322,7 @@ def generate_intelligence_report(
         system_prompt=REPORT_SYSTEM_PROMPT,
         user_prompt=user_prompt,
         model=model,
+        api_keys=api_keys,
         temperature=0.3,
     )
     if not report.strip():

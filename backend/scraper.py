@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from security import assert_public_url, BlockedURLError
 
 # Pretend to be a browser so sites don't block the request
 HEADERS = {
@@ -22,6 +23,12 @@ def scrape_page(url: str) -> str:
     """
     if not url.startswith(("http://", "https://")):
         print(f"  [scraper] Skipped '{url}' — missing URL scheme (expected https://)")
+        return ""
+
+    try:
+        assert_public_url(url)  # SSRF guard — reject internal/loopback targets
+    except BlockedURLError as e:
+        print(f"  [scraper] Blocked '{url}': {e}")
         return ""
 
     try:

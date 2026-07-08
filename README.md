@@ -1,6 +1,35 @@
-# Competitor Intelligence Report Generator
+# Competitor Intelligence Engine
 
 Give this tool any company's website URL and it automatically produces a full competitive intelligence report — including a side-by-side comparison of competitors, market positioning analysis, and strategic recommendations.
+
+It ships as a deployed full-stack app: a **Next.js frontend on Vercel** and a **FastAPI backend on Hugging Face Spaces**, plus a Jupyter notebook for local runs. It's **BYOK** (Bring Your Own Key) — users enter their own API keys in the browser, and those keys never touch the server.
+
+---
+
+## Architecture
+
+```
+Browser ──HTTPS──▶  Next.js frontend  ──HTTPS──▶  FastAPI backend
+(BYOK keys held     (Vercel)                       (HF Spaces, Docker)
+ in sessionStorage) - form + dropdowns             - the 7-step pipeline
+                    - renders the Markdown report   - keys used in-memory only,
+                                                       never stored or logged
+```
+
+Why the split: the pipeline runs 30–90s (sequential scraping + 4 LLM calls), which exceeds Vercel's serverless function limits, and datacenter-IP scraping is fragile there. So the long-running Python runs on HF Spaces; Vercel serves a fast static frontend. Keys go **browser → backend directly** — Vercel never sees them.
+
+### BYOK — keys never leak
+
+- Entered in the frontend, stored only in the browser tab (`sessionStorage`).
+- Sent in each request body over HTTPS, straight to the backend.
+- Used **in-memory for that one request** — never written to disk, env, or logs.
+- Error messages name the provider, never the key. Request bodies aren't logged.
+
+This means the project costs its owner nothing to host publicly: every visitor brings their own key.
+
+### Security
+
+Because the backend fetches arbitrary user-supplied URLs, it includes an **SSRF guard** (`backend/security.py`): every outbound fetch resolves the target host and refuses private, loopback, link-local, and cloud-metadata addresses (e.g. `169.254.169.254`).
 
 ---
 
@@ -75,7 +104,7 @@ The project is built on a flexible API wrapper — you are not locked into Claud
 To switch providers, change the model name in one of these two places:
 
 - **For a single run:** update `FAST_MODEL_OVERRIDE` and `SMART_MODEL_OVERRIDE` in `competitor_intel.ipynb` Cell 3
-- **To change the default permanently:** update `FAST_MODEL` (line 88) and `SMART_MODEL` (line 89) in `config.py`
+- **To change the default permanently:** update `FAST_MODEL` and `SMART_MODEL` in `backend/config.py`
 
 Pick any model name from the table below — the wrapper automatically routes it to the right provider.
 
@@ -93,15 +122,27 @@ Pick any model name from the table below — the wrapper automatically routes it
 ## Project Structure
 
 ```
-competitor_intelligence/
-├── competitor_intel.ipynb  # Start here — configure and run the tool
-├── report.py               # Runs the full pipeline from start to finish
-├── analyzer.py             # All LLM calls — extraction and report generation
-├── searcher.py             # Tavily search — finds competitors in real time
-├── scraper.py              # Web scraper — fetches and cleans website content
-├── config.py               # All providers, models, and default settings
-├── requirements.txt        # Python dependencies
-├── .env                    # API keys (not committed to git)
+Competitor-Insight-Engine/
+├── backend/                    # FastAPI service → Hugging Face Spaces (Docker)
+│   ├── app.py                  # API: /health, /providers, /report
+│   ├── report.py               # Runs the full 7-step pipeline
+│   ├── analyzer.py             # All LLM calls — extraction and report generation
+│   ├── searcher.py             # Tavily search — finds competitors in real time
+│   ├── scraper.py              # Web scraper — fetches and cleans website content
+│   ├── security.py             # SSRF guard for outbound fetches
+│   ├── blocklist.py            # Single source of truth for non-competitor domains
+│   ├── config.py               # Providers, models, tiers, default settings
+│   ├── requirements.txt        # Pinned Python dependencies
+│   ├── Dockerfile              # HF Spaces container
+│   ├── README.md               # HF Space card + API docs
+│   └── tests/test_backend.py   # Offline unit tests (no keys / network needed)
+├── frontend/                   # Next.js BYOK UI → Vercel
+│   ├── app/page.tsx            # The whole app (form, dropdowns, report view)
+│   ├── app/globals.css
+│   └── package.json
+├── competitor_intel.ipynb      # Optional — run the pipeline locally
+├── .github/workflows/ci.yml    # CI: lint + test backend, build frontend
+├── .env.example                # API-key template for local use
 └── .gitignore
 ```
 
@@ -133,32 +174,47 @@ Lists the Python packages needed to run the project. Install them all at once wi
 
 ---
 
-## Setup
+## Run it locally
 
-**1. Install dependencies**
+**Backend (API):**
 ```bash
+cd backend
 pip install -r requirements.txt
+uvicorn app:app --reload --port 7860      # http://localhost:7860/docs
+python -m pytest tests/ -q                 # offline tests, no keys needed
 ```
 
-**2. Add your API keys to `.env`**
-```
-ANTHROPIC_API_KEY=your_key_here
-TAVILY_API_KEY=your_key_here
-```
-Get an Anthropic API key at [console.anthropic.com](https://console.anthropic.com)  
-Get a free Tavily key at [app.tavily.com](https://app.tavily.com)  
-Optional — get a free Groq key at [console.groq.com](https://console.groq.com) if you want a free alternative
-
-**3. Open the notebook**
+**Frontend (UI):**
 ```bash
+cd frontend
+npm install
+echo "NEXT_PUBLIC_BACKEND_URL=http://localhost:7860" > .env.local
+npm run dev                                # http://localhost:3000
+```
+
+Then open the UI, pick a provider + model, paste your keys, and generate a report. Keys stay in your browser.
+
+**Or run the pipeline in the notebook** (uses `.env` for keys instead of BYOK):
+```bash
+cp .env.example .env      # then fill in ANTHROPIC_API_KEY + TAVILY_API_KEY
 jupyter notebook competitor_intel.ipynb
 ```
+Get keys: [Tavily (free)](https://app.tavily.com) · [Groq (free)](https://console.groq.com) · [Gemini (free)](https://aistudio.google.com/apikey) · [Anthropic](https://console.anthropic.com) · [OpenAI](https://platform.openai.com/api-keys)
 
-**4. Set your target company and run**
-```python
-COMPANY_URL  = "https://www.stripe.com"
-COMPANY_NAME = "Stripe"
-```
+---
+
+## Deployment (free tier)
+
+**Backend → Hugging Face Spaces (Docker):**
+1. Create a new Space → SDK: **Docker**.
+2. Push the contents of `backend/` to the Space repo (`backend/README.md` has the Space card frontmatter and `app_port: 7860`).
+3. The Space builds the Dockerfile and serves the API. No secrets to set — it's BYOK.
+4. (Optional) set `ALLOWED_ORIGINS` to your Vercel URL to lock down CORS.
+
+**Frontend → Vercel:**
+1. Import the repo, set the **Root Directory** to `frontend`.
+2. Add env var `NEXT_PUBLIC_BACKEND_URL` = your Space URL (e.g. `https://you-cie.hf.space`).
+3. Deploy. Vercel auto-detects Next.js.
 
 ---
 

@@ -1,7 +1,9 @@
 import requests
 from scraper import scrape_key_pages
 from searcher import get_competitor_search_content, validate_url
+from security import is_public_url
 from analyzer import (
+    ApiKeys,
     extract_company_profile,
     extract_competitor_profile,
     extract_competitors_from_search,
@@ -14,6 +16,8 @@ MIN_CONTENT_LENGTH = 200  # minimum characters before we consider a scrape meani
 
 def _check_url_reachable(url: str) -> bool:
     """Quick check before we start — saves time if the URL is wrong."""
+    if not is_public_url(url):  # SSRF guard — reject internal/loopback targets
+        return False
     try:
         r = requests.head(
             url,
@@ -41,6 +45,8 @@ def run_competitor_intelligence(
     fast_model: str = FAST_MODEL,
     smart_model: str = SMART_MODEL,
     max_competitors: int = 4,
+    api_keys: ApiKeys | None = None,
+    tavily_key: str | None = None,
 ) -> str:
     """
     Main pipeline. Give it a company URL and name, get back a full
@@ -95,7 +101,7 @@ def run_competitor_intelligence(
 
     # Step 2 — extract what the company does (used to improve the search query)
     print("\n[Step 2] Extracting main company profile...")
-    main_profile = extract_company_profile(main_scraped, model=fast_model)
+    main_profile = extract_company_profile(main_scraped, model=fast_model, api_keys=api_keys)
 
     if not main_profile.strip():
         raise ValueError(
@@ -108,7 +114,7 @@ def run_competitor_intelligence(
 
     # Step 3 — search for competitors in real time
     print("[Step 3] Searching for competitors via Tavily...")
-    search_content = get_competitor_search_content(company_name, industry)
+    search_content = get_competitor_search_content(company_name, industry, tavily_key=tavily_key)
 
     if not search_content.strip():
         raise ValueError(
@@ -122,6 +128,7 @@ def run_competitor_intelligence(
         company_name=company_name,
         search_content=search_content,
         model=fast_model,
+        api_keys=api_keys,
     )
 
     if not all_competitors:
@@ -163,7 +170,7 @@ def run_competitor_intelligence(
                 f"Profile quality may be low."
             )
 
-        profile = extract_competitor_profile(name, scraped, model=fast_model)
+        profile = extract_competitor_profile(name, scraped, model=fast_model, api_keys=api_keys)
         competitor_profiles.append({"name": name, "url": url, "profile": profile})
 
     if skipped:
@@ -188,6 +195,7 @@ def run_competitor_intelligence(
         main_profile=main_profile,
         competitor_profiles=competitor_profiles,
         model=smart_model,
+        api_keys=api_keys,
     )
 
     print("\n[Done] Report generated successfully.\n")

@@ -1,0 +1,10 @@
+# Pinned to compatible-release ranges: get patch fixes, no surprise major bumps
+# (an openai 3.x could break the OpenAI-compatible wrapper).
+requests~=2.32
+beautifulsoup4~=4.13
+openai~=2.31
+python-dotenv~=1.2
+tavily-python~=0.7
+fastapi~=0.111
+uvicorn[standard]~=0.30
+pydantic~=2.7
