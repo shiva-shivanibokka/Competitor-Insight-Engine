@@ -20,9 +20,7 @@ type Provider = {
 // directly to the backend over HTTPS. They never touch the Vercel server.
 const KEYS_STORAGE = "cie_keys_v1";
 
-type StoredKeys = { llm: Record<string, string>; tavily: string };
-
-function loadKeys(): StoredKeys {
+function loadKeys(): { llm: Record<string, string>; tavily: string } {
   if (typeof window === "undefined") return { llm: {}, tavily: "" };
   try {
     return { llm: {}, tavily: "", ...JSON.parse(sessionStorage.getItem(KEYS_STORAGE) || "{}") };
@@ -33,6 +31,7 @@ function loadKeys(): StoredKeys {
 
 export default function Home() {
   const [providers, setProviders] = useState<Provider[]>([]);
+  const [online, setOnline] = useState<boolean | null>(null);
   const [providerId, setProviderId] = useState("");
   const [model, setModel] = useState("");
   const [llmKeys, setLlmKeys] = useState<Record<string, string>>({});
@@ -46,11 +45,14 @@ export default function Home() {
   const [error, setError] = useState("");
   const [report, setReport] = useState("");
 
-  // Load provider catalog + saved keys on mount.
   useEffect(() => {
     const saved = loadKeys();
     setLlmKeys(saved.llm);
     setTavilyKey(saved.tavily);
+
+    fetch(`${BACKEND_URL}/health`)
+      .then((r) => setOnline(r.ok))
+      .catch(() => setOnline(false));
 
     fetch(`${BACKEND_URL}/providers`)
       .then((r) => r.json())
@@ -63,11 +65,10 @@ export default function Home() {
         }
       })
       .catch(() =>
-        setError(`Could not reach the backend at ${BACKEND_URL}. Is NEXT_PUBLIC_BACKEND_URL set?`)
+        setError(`Can't reach the engine at ${BACKEND_URL}. Check NEXT_PUBLIC_BACKEND_URL.`)
       );
   }, []);
 
-  // Persist keys to sessionStorage whenever they change.
   useEffect(() => {
     if (typeof window === "undefined") return;
     sessionStorage.setItem(KEYS_STORAGE, JSON.stringify({ llm: llmKeys, tavily: tavilyKey }));
@@ -87,7 +88,7 @@ export default function Home() {
     setError("");
     setReport("");
     if (!llmKey || !tavilyKey) {
-      setError("Enter both your provider key and your Tavily key.");
+      setError("Enter both your provider key and your Tavily key to run the analysis.");
       return;
     }
     setLoading(true);
@@ -106,10 +107,10 @@ export default function Home() {
         }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.detail || "Request failed.");
+      if (!res.ok) throw new Error(data.detail || "The analysis failed. Try again.");
       setReport(data.report);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong.");
+      setError(err instanceof Error ? err.message : "Something went wrong. Try again.");
     } finally {
       setLoading(false);
     }
@@ -124,123 +125,192 @@ export default function Home() {
   }
 
   return (
-    <main className="wrap">
-      <header className="hero">
-        <h1>Competitor Intelligence Engine</h1>
-        <p>
-          One company URL → a full competitive-intelligence report in ~90 seconds. Live web search,
-          multi-step LLM pipeline, side-by-side matrix, strategic recommendations.
-        </p>
+    <div className="shell">
+      <header className="topbar">
+        <div className="wordmark">
+          <span className="mark" aria-hidden>
+            ◆
+          </span>
+          <span className="mark-name">Competitor Intelligence Engine</span>
+        </div>
+        <div className="status" data-state={online === null ? "wait" : online ? "up" : "down"}>
+          <span className="led" aria-hidden />
+          {online === null ? "Connecting" : online ? "Engine online" : "Engine offline"}
+        </div>
       </header>
 
-      <form className="card" onSubmit={onSubmit}>
-        <div className="row">
-          <label>
-            Company URL
-            <input value={companyUrl} onChange={(e) => setCompanyUrl(e.target.value)} required />
-          </label>
-          <label>
-            Company name
-            <input value={companyName} onChange={(e) => setCompanyName(e.target.value)} required />
-          </label>
+      <section className="hero">
+        <div className="hero-copy">
+          <p className="eyebrow">Competitive reconnaissance</p>
+          <h1>
+            Map the competitive terrain of any&nbsp;company.
+          </h1>
+          <p className="lede">
+            Enter one URL. The engine scrapes the market, finds real competitors in real time, and
+            returns a full intelligence report — profiles, a side-by-side matrix, and strategic
+            moves. Bring your own model key; it never leaves your browser.
+          </p>
         </div>
-
-        <div className="row">
-          <label>
-            Provider
-            <select value={providerId} onChange={(e) => onProviderChange(e.target.value)}>
-              {providers.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.label} ({p.tier})
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Model
-            <select value={model} onChange={(e) => setModel(e.target.value)}>
-              {provider?.models.map((m) => (
-                <option key={m.name} value={m.name}>
-                  {m.name} — {m.tier}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="narrow">
-            Competitors
-            <input
-              type="number"
-              min={1}
-              max={8}
-              value={maxCompetitors}
-              onChange={(e) => setMaxCompetitors(Number(e.target.value))}
-            />
-          </label>
+        <div className="radar" data-scanning={loading} aria-hidden>
+          <svg className="radar-grid" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="94" />
+            <circle cx="100" cy="100" r="64" />
+            <circle cx="100" cy="100" r="34" />
+            <line x1="100" y1="6" x2="100" y2="194" />
+            <line x1="6" y1="100" x2="194" y2="100" />
+            <circle className="blip b1" cx="140" cy="72" r="3.5" />
+            <circle className="blip b2" cx="70" cy="132" r="3.5" />
+            <circle className="blip b3" cx="120" cy="140" r="3.5" />
+          </svg>
+          <div className="radar-sweep" />
         </div>
+      </section>
 
-        <div className="row">
-          <label>
-            {provider?.label || "Provider"} API key
-            <input
-              type="password"
-              placeholder="Your key — stays in this browser tab"
-              value={llmKey}
-              onChange={(e) => setLlmKeys({ ...llmKeys, [providerId]: e.target.value })}
-              autoComplete="off"
-            />
-            {provider?.key_url && (
-              <a className="hint" href={provider.key_url} target="_blank" rel="noreferrer">
-                Get a {provider.label} key ↗
-              </a>
-            )}
-          </label>
-          <label>
-            Tavily API key
-            <input
-              type="password"
-              placeholder="For live competitor search"
-              value={tavilyKey}
-              onChange={(e) => setTavilyKey(e.target.value)}
-              autoComplete="off"
-            />
-            <a className="hint" href="https://app.tavily.com" target="_blank" rel="noreferrer">
-              Get a free Tavily key ↗
-            </a>
-          </label>
-        </div>
+      <main className="console">
+        <form className="inputs" onSubmit={onSubmit}>
+          <section className="panel target">
+            <span className="panel-tab">Target</span>
+            <label>
+              <span className="fl">Company URL</span>
+              <input value={companyUrl} onChange={(e) => setCompanyUrl(e.target.value)} required />
+            </label>
+            <label>
+              <span className="fl">Company name</span>
+              <input
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              <span className="fl">Competitors to analyze</span>
+              <input
+                type="number"
+                min={1}
+                max={8}
+                value={maxCompetitors}
+                onChange={(e) => setMaxCompetitors(Number(e.target.value))}
+              />
+            </label>
+          </section>
 
-        <p className="privacy">
-          🔒 Your keys are stored only in this browser tab (sessionStorage) and sent directly to the
-          analysis backend over HTTPS. They are never stored, logged, or sent to this website&apos;s
-          server.
-        </p>
+          <section className="panel source">
+            <span className="panel-tab">Model &amp; access</span>
+            <div className="field-row">
+              <label>
+                <span className="fl">Provider</span>
+                <select value={providerId} onChange={(e) => onProviderChange(e.target.value)}>
+                  {providers.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span className="fl">Model</span>
+                <select value={model} onChange={(e) => setModel(e.target.value)}>
+                  {provider?.models.map((m) => (
+                    <option key={m.name} value={m.name}>
+                      {m.name} · {m.tier}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Analyzing… (up to ~90s)" : "Generate report"}
-        </button>
-      </form>
+            <label>
+              <span className="fl">
+                {provider?.label || "Provider"} key
+                {provider?.key_url && (
+                  <a className="get" href={provider.key_url} target="_blank" rel="noreferrer">
+                    get key ↗
+                  </a>
+                )}
+              </span>
+              <input
+                type="password"
+                placeholder="Stays in this browser tab"
+                value={llmKey}
+                onChange={(e) => setLlmKeys({ ...llmKeys, [providerId]: e.target.value })}
+                autoComplete="off"
+              />
+            </label>
+            <label>
+              <span className="fl">
+                Tavily key
+                <a className="get" href="https://app.tavily.com" target="_blank" rel="noreferrer">
+                  get key ↗
+                </a>
+              </span>
+              <input
+                type="password"
+                placeholder="For live competitor search"
+                value={tavilyKey}
+                onChange={(e) => setTavilyKey(e.target.value)}
+                autoComplete="off"
+              />
+            </label>
 
-      {error && <div className="error">{error}</div>}
+            <p className="privacy">
+              <span className="lock" aria-hidden>
+                ▚
+              </span>
+              Keys stay in this browser tab and go straight to the engine over HTTPS. Never stored,
+              logged, or sent to this site&apos;s server.
+            </p>
+          </section>
 
-      {report && (
-        <section className="card report">
-          <div className="report-actions">
-            <button type="button" onClick={() => navigator.clipboard.writeText(report)}>
-              Copy
-            </button>
-            <button type="button" onClick={download}>
-              Download .md
-            </button>
-          </div>
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{report}</ReactMarkdown>
+          <button className="run" type="submit" disabled={loading}>
+            {loading ? "Scanning the market…" : "Generate report"}
+          </button>
+        </form>
+
+        <section className="panel output result">
+          {error ? (
+            <div className="alert">
+              <span className="panel-tab err">Signal lost</span>
+              <p>{error}</p>
+            </div>
+          ) : report ? (
+            <>
+              <span className="panel-tab">Field briefing</span>
+              <div className="out-actions">
+                <button type="button" onClick={() => navigator.clipboard.writeText(report)}>
+                  Copy
+                </button>
+                <button type="button" onClick={download}>
+                  Download .md
+                </button>
+              </div>
+              <div className="briefing">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{report}</ReactMarkdown>
+              </div>
+            </>
+          ) : loading ? (
+            <div className="await">
+              <span className="panel-tab">Analyzing</span>
+              <p className="await-line">Scraping target, searching the market, profiling rivals…</p>
+              <p className="await-sub">This takes up to ~90 seconds. Keep the tab open.</p>
+            </div>
+          ) : (
+            <div className="await">
+              <span className="panel-tab">Standing by</span>
+              <p className="await-line">Awaiting parameters.</p>
+              <p className="await-sub">
+                Set a target and your keys, then generate a report. The briefing lands here.
+              </p>
+            </div>
+          )}
         </section>
-      )}
+      </main>
 
-      <footer>
-        <a href="https://github.com/" target="_blank" rel="noreferrer">
-          Source on GitHub
+      <footer className="foot">
+        <span>Competitor Intelligence Engine</span>
+        <a href="https://github.com/shiva-shivanibokka/Competitor-Insight-Engine" target="_blank" rel="noreferrer">
+          Source ↗
         </a>
       </footer>
-    </main>
+    </div>
   );
 }
