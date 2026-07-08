@@ -154,6 +154,9 @@ def extract_competitors_from_search(
     validated = []
     seen_domains = set()
     for c in competitors:
+        if not isinstance(c, dict):  # LLM sometimes returns bare strings, not objects
+            print(f"  [!] Skipped non-object entry: {c!r}")
+            continue
         name = c.get("name", "").strip()
         url = c.get("url", "").strip()
         if not name or not url:

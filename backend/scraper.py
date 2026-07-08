@@ -1,6 +1,5 @@
-import requests
 from bs4 import BeautifulSoup
-from security import assert_public_url, BlockedURLError
+from security import BlockedURLError, fetch_validated
 
 # Pretend to be a browser so sites don't block the request
 HEADERS = {
@@ -26,14 +25,12 @@ def scrape_page(url: str) -> str:
         return ""
 
     try:
-        assert_public_url(url)  # SSRF guard — reject internal/loopback targets
+        # SSRF guard runs on the URL and every redirect hop it would follow.
+        response = fetch_validated(url, headers=HEADERS, timeout=(5, 10))
+        response.raise_for_status()
     except BlockedURLError as e:
         print(f"  [scraper] Blocked '{url}': {e}")
         return ""
-
-    try:
-        response = requests.get(url, headers=HEADERS, timeout=(5, 10))
-        response.raise_for_status()
     except Exception as e:
         print(f"  [scraper] Could not fetch {url}: {e}")
         return ""
@@ -59,21 +56,20 @@ def scrape_key_pages(base_url: str) -> str:
 
     print(f"  [scraper] Scraping: {base_url}")
 
+    # Only include a section when it actually has text, so a fully-unscrapable
+    # site returns "" and the caller's fail-fast guard can fire (not a header-only string).
+    combined = ""
     homepage_text = scrape_page(base_url)
-    combined = f"=== Homepage: {base_url} ===\n{homepage_text}\n\n"
+    if homepage_text:
+        combined += f"=== Homepage: {base_url} ===\n{homepage_text}\n\n"
 
-    # Pages most likely to have useful company info
+    # Highest-signal pages only — keeps per-competitor fetch count low so a
+    # 20-competitor run stays within the request timeout. MAX_CHARS_TOTAL caps
+    # the combined text anyway, so extra low-value pages rarely made the cut.
     candidate_paths = [
         "/about",
-        "/about-us",
-        "/company",
         "/product",
-        "/products",
-        "/solutions",
         "/pricing",
-        "/plans",
-        "/customers",
-        "/case-studies",
     ]
 
     for path in candidate_paths:

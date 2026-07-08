@@ -6,11 +6,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import analyzer
+import scraper
 from analyzer import _is_valid_competitor_url, extract_competitors_from_search
 from blocklist import is_blocked
 from report import _extract_field, _normalise_url
 from searcher import validate_url
-from security import is_public_url
+from security import BlockedURLError, fetch_validated, is_public_url
 
 
 # --- SSRF guard (finding #2) ---
@@ -37,12 +38,38 @@ def test_validate_url_rejects_blocked_without_network():
     assert validate_url("https://www.reddit.com/r/startups") is False
 
 
+class _FakeResp:
+    def __init__(self, status, location=None):
+        self.status_code = status
+        self.headers = {"location": location} if location else {}
+        self.is_redirect = location is not None
+
+
+def test_ssrf_redirect_blocked(monkeypatch):
+    # A page that 302-redirects to cloud metadata must NOT be followed.
+    def fake_get(url, **kwargs):
+        if "169.254.169.254" in url:
+            return _FakeResp(200)  # would leak if we ever got here
+        return _FakeResp(302, location="http://169.254.169.254/latest/meta-data/")
+
+    monkeypatch.setattr("security.requests.get", fake_get)
+    try:
+        fetch_validated("https://evil.example.com", headers={}, timeout=(5, 10))
+        raised = False
+    except BlockedURLError:
+        raised = True
+    assert raised, "redirect to internal address was not blocked"
+
+
 # --- Blocklist (finding #8: single source of truth) ---
 
 def test_blocklist():
     assert is_blocked("https://www.reddit.com/r/x")
     assert is_blocked("https://g2.com/products")
     assert not is_blocked("https://adyen.com")
+    # F2: substring false-positives — these are legit domains, not blocked sources.
+    assert not is_blocked("https://www.netflix.com")  # contains "x.com"
+    assert not is_blocked("https://fox.com")
 
 
 def test_competitor_url_validation():
@@ -72,6 +99,18 @@ def test_extract_competitors_dedups_and_filters(monkeypatch):
 def test_extract_competitors_handles_bad_json(monkeypatch):
     monkeypatch.setattr(analyzer, "llm_call", lambda *a, **k: "not json at all")
     assert extract_competitors_from_search("X", "y", model="claude-haiku-4-5") == []
+
+
+def test_extract_competitors_ignores_non_dict(monkeypatch):
+    # F3: valid JSON array but of strings, not objects — must not crash.
+    monkeypatch.setattr(analyzer, "llm_call", lambda *a, **k: '["Adyen", "Square"]')
+    assert extract_competitors_from_search("Stripe", "y", model="claude-haiku-4-5") == []
+
+
+def test_scrape_key_pages_empty_when_no_text(monkeypatch):
+    # F4: an all-empty scrape must return "" so the fail-fast guard can fire.
+    monkeypatch.setattr(scraper, "scrape_page", lambda url: "")
+    assert scraper.scrape_key_pages("https://example.com") == ""
 
 
 # --- report.py helpers ---

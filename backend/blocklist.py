@@ -4,6 +4,8 @@ Previously this set was copy-pasted into both searcher.py and analyzer.py and ha
 already drifted (each file was missing entries the other had). Keep it here only.
 """
 
+from urllib.parse import urlparse
+
 # Sites that should never show up as a competitor no matter what the LLM says:
 # forums, encyclopaedias, social networks, news, and review/aggregator platforms.
 BLOCKED_DOMAINS = {
@@ -40,6 +42,10 @@ BLOCKED_DOMAINS = {
 
 
 def is_blocked(url: str) -> bool:
-    """True if the URL belongs to a domain we never want as a competitor."""
-    url_lower = url.lower()
-    return any(domain in url_lower for domain in BLOCKED_DOMAINS)
+    """True if the URL's host is (or is a subdomain of) a blocked domain.
+
+    Matches on the parsed host with a boundary check, not a raw substring —
+    otherwise short entries like "x.com" wrongly match "netflix.com".
+    """
+    host = (urlparse(url).hostname or url).lower()
+    return any(host == d or host.endswith("." + d) for d in BLOCKED_DOMAINS)

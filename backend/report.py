@@ -1,3 +1,5 @@
+from concurrent.futures import ThreadPoolExecutor
+
 import requests
 from scraper import scrape_key_pages
 from searcher import get_competitor_search_content, validate_url
@@ -144,34 +146,37 @@ def run_competitor_intelligence(
     for i, c in enumerate(competitors, 1):
         print(f"    {i}. {c['name']} ({c['url']})")
 
-    # Steps 5 & 6 — scrape each competitor and extract their profile
+    # Steps 5 & 6 — scrape each competitor and extract their profile.
+    # Run competitors concurrently: at max_competitors=20 a sequential loop
+    # (each doing several page fetches + an LLM call) blows past the 300s
+    # request timeout. A bounded pool keeps wall-clock in check.
     print("\n[Step 5 & 6] Scraping and profiling competitors...")
-    competitor_profiles = []
-    skipped = []
 
-    for comp in competitors:
+    def _profile_one(comp: dict) -> dict | None:
         name = comp["name"]
         url = comp["url"]
         print(f"\n  Processing: {name} ({url})")
-
         if not validate_url(url):
             print(f"  [!] Skipping {name} — URL unreachable or invalid.")
-            skipped.append(name)
-            continue
-
+            return None
         scraped = scrape_key_pages(url)
         if not scraped.strip():
             print(f"  [!] Skipping {name} — page returned no readable text.")
-            skipped.append(name)
-            continue
+            return None
         if len(scraped.strip()) < MIN_CONTENT_LENGTH:
             print(
                 f"  [!] Warning: only {len(scraped.strip())} characters scraped for {name}. "
                 f"Profile quality may be low."
             )
-
         profile = extract_competitor_profile(name, scraped, model=fast_model, api_keys=api_keys)
-        competitor_profiles.append({"name": name, "url": url, "profile": profile})
+        return {"name": name, "url": url, "profile": profile}
+
+    with ThreadPoolExecutor(max_workers=5) as pool:
+        results = list(pool.map(_profile_one, competitors))
+
+    # Preserve the LLM's relevance ranking (pool.map keeps input order).
+    competitor_profiles = [r for r in results if r is not None]
+    skipped = [c["name"] for c, r in zip(competitors, results) if r is None]
 
     if skipped:
         print(f"\n  [!] Skipped: {', '.join(skipped)}")

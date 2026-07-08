@@ -12,7 +12,9 @@ blocks DNS names that point at internal ranges, not just raw-IP URLs.
 
 import ipaddress
 import socket
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
+
+import requests
 
 
 class BlockedURLError(ValueError):
@@ -61,6 +63,22 @@ def is_public_url(url: str) -> bool:
         return True
     except BlockedURLError:
         return False
+
+
+def fetch_validated(url: str, headers: dict, timeout, max_redirects: int = 5):
+    """GET that re-runs the SSRF guard on EVERY redirect hop before following it.
+
+    requests' default allow_redirects=True would follow a 302 to an internal
+    address without re-checking. We disable auto-redirect and validate each hop.
+    """
+    for _ in range(max_redirects + 1):
+        assert_public_url(url)  # guard before every request, including redirects
+        resp = requests.get(url, headers=headers, timeout=timeout, allow_redirects=False)
+        if resp.is_redirect and resp.headers.get("location"):
+            url = urljoin(url, resp.headers["location"])
+            continue
+        return resp
+    raise BlockedURLError(f"Too many redirects fetching {url!r}")
 
 
 if __name__ == "__main__":
