@@ -1,20 +1,19 @@
 :root {
-  --bg: #eaeef7;
+  --bg: #ffffff;
   --panel: #ffffff;
-  --panel-2: #f4f7fc;
-  --text: #131f33;
+  --panel-2: #f5f7fa;
+  --text: #10192b;
   --muted: #5a6a82;
-  --muted-2: #8a98ac;
-  --line: #e3e9f3;
-  --line-2: #ccd6e6;
+  --muted-2: #97a3b6;
+  --line: #e6ebf2;
+  --line-2: #d3dced;
 
-  /* colorful accents — one per section */
-  --indigo: #4f46e5;
-  --teal: #0d9488;
+  /* vivid, popping edge colors — one per box */
+  --blue: #2563eb;
+  --emerald: #059669;
+  --orange: #ea580c;
   --violet: #7c3aed;
-  --amber: #e08a00;
   --rose: #e11d48;
-  --green: #10b981;
 
   --font-display: var(--fd-src), system-ui, sans-serif;
   --font-mono: var(--fm-src), ui-monospace, Menlo, Consolas, monospace;
@@ -36,10 +35,6 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.6;
-  background-image:
-    linear-gradient(rgba(79, 70, 229, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79, 70, 229, 0.04) 1px, transparent 1px);
-  background-size: 46px 46px;
 }
 
 .shell {
@@ -75,7 +70,7 @@ body {
   color: var(--muted);
 }
 .wordmark .mark {
-  color: var(--indigo);
+  color: var(--blue);
   font-size: 14px;
 }
 .wordmark .mark-name {
@@ -98,8 +93,8 @@ body {
   background: var(--muted-2);
 }
 .status[data-state="up"] .led {
-  background: var(--green);
-  box-shadow: 0 0 10px var(--green);
+  background: var(--emerald);
+  box-shadow: 0 0 10px var(--emerald);
   animation: pulse 2.4s ease-in-out infinite;
 }
 .status[data-state="down"] .led {
@@ -126,7 +121,7 @@ body {
   font-size: 12px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--indigo);
+  color: var(--blue);
 }
 .hero h1 {
   margin: 0 0 22px;
@@ -158,11 +153,11 @@ body {
 .radar-grid circle,
 .radar-grid line {
   fill: none;
-  stroke: rgba(79, 70, 229, 0.28);
+  stroke: rgba(37, 99, 235, 0.26);
   stroke-width: 1;
 }
 .radar-grid .blip {
-  fill: var(--violet);
+  fill: var(--orange);
   opacity: 0;
   animation: blip 4s linear infinite;
 }
@@ -179,7 +174,7 @@ body {
   }
   8% {
     opacity: 1;
-    filter: drop-shadow(0 0 5px var(--violet));
+    filter: drop-shadow(0 0 5px var(--orange));
   }
   40% {
     opacity: 0.15;
@@ -191,8 +186,8 @@ body {
   border-radius: 50%;
   background: conic-gradient(
     from 0deg,
-    rgba(79, 70, 229, 0.42) 0deg,
-    rgba(79, 70, 229, 0.05) 44deg,
+    rgba(37, 99, 235, 0.4) 0deg,
+    rgba(37, 99, 235, 0.05) 44deg,
     transparent 92deg,
     transparent 360deg
   );
@@ -210,66 +205,44 @@ body {
   }
 }
 
-/* ---------- layout: three boxes ---------- */
-.console {
-  display: block;
-}
+/* ---------- layout: input boxes in a row, result below ---------- */
 .inputs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 22px;
   align-items: start;
 }
 .inputs .run {
   grid-column: 1 / -1;
 }
 .result {
-  margin-top: 24px;
+  margin-top: 22px;
 }
 
-/* ---------- panels (colored viewfinder frame) ---------- */
+/* ---------- panels: bold popping colored edges ---------- */
 .panel {
   position: relative;
-  --accent: var(--indigo);
+  --accent: var(--blue);
   background: var(--panel);
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--accent);
-  padding: 30px 26px 26px;
-  box-shadow: 0 1px 2px rgba(19, 31, 51, 0.04), 0 18px 40px -30px rgba(19, 31, 51, 0.5);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 26px 24px 24px;
+  box-shadow: 0 6px 22px -8px color-mix(in srgb, var(--accent) 55%, transparent);
 }
 .target {
-  --accent: var(--indigo);
+  --accent: var(--blue);
 }
 .source {
-  --accent: var(--teal);
+  --accent: var(--emerald);
 }
 .result {
-  --accent: var(--violet);
-}
-.panel::before,
-.panel::after {
-  content: "";
-  position: absolute;
-  width: 11px;
-  height: 11px;
-  border-color: var(--accent);
-  border-style: solid;
-  opacity: 0.55;
-}
-.panel::before {
-  top: 6px;
-  left: -1px;
-  border-width: 1px 0 0 1px;
-}
-.panel::after {
-  bottom: -1px;
-  right: -1px;
-  border-width: 0 1px 1px 0;
+  --accent: var(--orange);
 }
 .panel-tab {
   display: inline-block;
   margin-bottom: 18px;
   padding: 4px 11px;
+  border-radius: 5px;
   background: var(--accent);
   color: #fff;
   font-family: var(--font-mono);
@@ -318,7 +291,7 @@ select {
   width: 100%;
   background: var(--panel-2);
   border: 1px solid var(--line-2);
-  border-radius: 6px;
+  border-radius: 7px;
   padding: 11px 12px;
   color: var(--text);
   font-family: var(--font-mono);
@@ -331,7 +304,7 @@ input:focus,
 select:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
 .privacy {
@@ -339,21 +312,21 @@ select:focus {
   gap: 10px;
   margin: 18px 0 0;
   padding: 11px 12px;
-  border-radius: 6px;
-  border-left: 3px solid var(--teal);
-  background: color-mix(in srgb, var(--teal) 8%, transparent);
+  border-radius: 7px;
+  border-left: 3px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
   font-size: 0.8rem;
   color: var(--muted);
 }
 .privacy .lock {
-  color: var(--teal);
+  color: var(--accent);
 }
 
 .run {
   border: none;
-  border-radius: 8px;
+  border-radius: 9px;
   padding: 15px;
-  background: var(--indigo);
+  background: var(--blue);
   color: #fff;
   font-family: var(--font-mono);
   font-size: 0.86rem;
@@ -376,8 +349,8 @@ select:focus {
 
 /* ---------- result panel ---------- */
 .output {
-  min-height: 320px;
-  padding: 30px;
+  min-height: 300px;
+  padding: 28px 28px 26px;
   overflow-x: auto;
 }
 .await-line {
@@ -401,12 +374,12 @@ select:focus {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
-  margin: -6px 0 8px;
+  margin: -4px 0 8px;
 }
 .out-actions button {
   background: transparent;
   border: 1px solid var(--line-2);
-  border-radius: 6px;
+  border-radius: 7px;
   color: var(--text);
   padding: 6px 14px;
   font-family: var(--font-mono);
@@ -416,8 +389,8 @@ select:focus {
   cursor: pointer;
 }
 .out-actions button:hover {
-  border-color: var(--violet);
-  color: var(--violet);
+  border-color: var(--orange);
+  color: var(--orange);
 }
 
 /* ---------- report markdown ---------- */
@@ -444,7 +417,7 @@ select:focus {
   font-size: 1.05rem;
 }
 .briefing a {
-  color: var(--indigo);
+  color: var(--blue);
 }
 .briefing table {
   border-collapse: collapse;
@@ -461,8 +434,8 @@ select:focus {
   vertical-align: top;
 }
 .briefing th {
-  background: color-mix(in srgb, var(--violet) 10%, var(--panel-2));
-  color: var(--violet);
+  background: color-mix(in srgb, var(--orange) 12%, #fff);
+  color: #b23c06;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 0.72rem;
@@ -497,10 +470,10 @@ select:focus {
   text-decoration: none;
 }
 .foot a:hover {
-  color: var(--indigo);
+  color: var(--blue);
 }
 
-/* ---------- responsive ---------- */
+/* ---------- responsive: keep inputs in a row until quite narrow ---------- */
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
@@ -512,6 +485,8 @@ select:focus {
     width: 176px;
     height: 176px;
   }
+}
+@media (max-width: 620px) {
   .inputs {
     grid-template-columns: 1fr;
   }
@@ -519,7 +494,7 @@ select:focus {
 
 /* ---------- a11y ---------- */
 :focus-visible {
-  outline: 2px solid var(--indigo);
+  outline: 2px solid var(--blue);
   outline-offset: 2px;
 }
 @media (prefers-reduced-motion: reduce) {
