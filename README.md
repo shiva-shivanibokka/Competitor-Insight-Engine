@@ -1,187 +1,181 @@
 # Competitor Intelligence Engine
 
-Give this tool any company's website URL and it automatically produces a full competitive intelligence report — including a side-by-side comparison of competitors, market positioning analysis, and strategic recommendations.
+> Give it one company URL; get back a full competitor analysis report in ~90 seconds.
 
-It ships as a deployed full-stack app: a **Next.js frontend on Vercel** and a **FastAPI backend on Hugging Face Spaces**, plus a Jupyter notebook for local runs. It's **BYOK** (Bring Your Own Key) — users enter their own API keys in the browser, and those keys never touch the server.
+[![CI](https://github.com/shiva-shivanibokka/Competitor-Insight-Engine/actions/workflows/ci.yml/badge.svg)](https://github.com/shiva-shivanibokka/Competitor-Insight-Engine/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
+![Next.js 14](https://img.shields.io/badge/Next.js-14-000000?logo=next.js&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?logo=fastapi&logoColor=white)
+
+**▶ Live demo: [competitor-insight-engine.vercel.app](https://competitor-insight-engine.vercel.app)** — bring your own model key (Groq/Gemini have free tiers); it never leaves your browser.
+
+---
+
+## Recruiter TL;DR
+
+- **What it does:** Enter one company's URL and it autonomously scrapes the site, finds that company's real competitors via live web search, profiles each one with an LLM, and generates a structured competitive-intelligence report (overview, side-by-side matrix, strategic recommendations).
+- **Hardest problem solved:** Safely fetching *arbitrary user-supplied URLs* from a public server. The scraper is a textbook SSRF vector, so every outbound request — including each redirect hop — is validated against a DNS-resolving guard that rejects private, loopback, and cloud-metadata addresses.
+- **Why it's cheap to run publicly:** A **BYOK** (bring-your-own-key) design means every visitor supplies their own API keys, held only in their browser tab and sent straight to the backend — so the project costs its owner nothing to host and stores no user secrets.
+
+---
+
+## Overview — the problem
+
+Competitive research is usually manual: open a dozen browser tabs, read each company's site, take notes, and hand-build a comparison table. It's slow and it goes stale the moment a new competitor appears.
+
+This tool automates the whole loop. You give it **one URL**; it returns a structured business report in about a minute and a half — competitors discovered from a *live* web search, not a static list, so the analysis reflects the market right now.
+
+It's built as a **portfolio piece**: a real, deployed, full-stack system rather than a notebook demo — though a notebook is included for local experimentation.
+
+---
+
+## Features
+
+- **One-input analysis** — a single company URL produces a complete Markdown report.
+- **Live competitor discovery** — Tavily web search finds current competitors, not a hardcoded list.
+- **Two-layer competitor filtering** — an LLM ranks candidates, then a hard-coded domain blocklist rejects forums/news/review sites, so only real companies survive.
+- **Bring Your Own Key (BYOK)** — pick a provider + model in the UI and paste your key; it's held in `sessionStorage` and sent browser → backend only. Never stored, logged, or seen by the hosting layer.
+- **Six LLM providers, one code path** — Anthropic, Google Gemini, Groq, OpenAI, Mistral, and local Ollama, all through a single OpenAI-compatible client. Switching models changes no code.
+- **SSRF-hardened scraping** — every fetch (and every redirect it would follow) is checked against a public-IP guard.
+- **Concurrent competitor profiling** — competitors are scraped and profiled in a bounded thread pool to keep total runtime within the platform's request timeout.
+- **Fails loudly, never silently** — validation and clear error messages at every step of the pipeline.
 
 ---
 
 ## Architecture
 
-```
-Browser ──HTTPS──▶  Next.js frontend  ──HTTPS──▶  FastAPI backend
-(BYOK keys held     (Vercel)                       (HF Spaces, Docker)
- in sessionStorage) - form + dropdowns             - the 7-step pipeline
-                    - renders the Markdown report   - keys used in-memory only,
-                                                       never stored or logged
+```mermaid
+flowchart LR
+    subgraph Browser["User's Browser"]
+        UI["Next.js UI<br/>(BYOK keys in sessionStorage)"]
+    end
+    subgraph Vercel["Vercel"]
+        FE["Static Next.js frontend"]
+    end
+    subgraph GCP["Google Cloud Run (Docker)"]
+        API["FastAPI<br/>/health · /providers · /report"]
+        PIPE["7-step pipeline<br/>scrape → search → filter → profile → report"]
+        SSRF["SSRF guard<br/>(validates every fetch + redirect)"]
+    end
+    Sites["Target and competitor<br/>websites"]
+    Tavily["Tavily Search API"]
+    LLM["LLM provider<br/>(Anthropic / Groq / Gemini / OpenAI / …)"]
+
+    UI -->|"static assets"| FE
+    UI -->|"POST /report + BYOK keys (HTTPS)"| API
+    API --> PIPE
+    PIPE --> SSRF
+    SSRF -->|"guarded HTTP"| Sites
+    PIPE -->|"competitor search"| Tavily
+    PIPE -->|"per-request key, in-memory only"| LLM
 ```
 
-Why the split: the pipeline runs 30–90s (sequential scraping + 4 LLM calls), which exceeds Vercel's serverless function limits, and datacenter-IP scraping is fragile there. So the long-running Python runs on HF Spaces; Vercel serves a fast static frontend. Keys go **browser → backend directly** — Vercel never sees them.
+**Why this shape:**
+
+- **Split frontend/backend.** The pipeline runs ~30–90s (web scraping + multiple LLM calls). That comfortably exceeds a typical static-host function budget and does poorly with datacenter-IP scraping, so the long-running Python lives on **Cloud Run** (300s request budget, real outbound networking) while **Vercel** serves a fast static UI.
+- **Keys flow browser → backend directly.** The Vercel layer only serves static assets; the user's API keys are POSTed straight to the Cloud Run backend over HTTPS and used in-memory for that one request. The hosting layer never sees a secret, so there's nothing to leak.
+- **Two-layer competitor filter.** LLMs occasionally return a Reddit thread or a news article as a "competitor." Relying on the prompt alone isn't enough, so a code-level blocklist runs *both* before the LLM sees search content and after it returns URLs — a site has to beat both independent layers to appear.
 
 ### BYOK — keys never leak
 
-- Entered in the frontend, stored only in the browser tab (`sessionStorage`).
+- Entered in the frontend, stored only in the browser tab (`sessionStorage`, key `cie_keys_v1`).
 - Sent in each request body over HTTPS, straight to the backend.
 - Used **in-memory for that one request** — never written to disk, env, or logs.
-- Error messages name the provider, never the key. Request bodies aren't logged.
+- Error messages name the provider, never the key. Request bodies aren't logged (uvicorn logs method/path/status only).
 
-This means the project costs its owner nothing to host publicly: every visitor brings their own key.
+### Security — SSRF guard
 
-### Security
-
-Because the backend fetches arbitrary user-supplied URLs, it includes an **SSRF guard** (`backend/security.py`): every outbound fetch resolves the target host and refuses private, loopback, link-local, and cloud-metadata addresses (e.g. `169.254.169.254`).
+Because the backend fetches arbitrary user-supplied URLs, it's a Server-Side Request Forgery vector. `backend/security.py` resolves each target host and refuses any that map to a private, loopback, link-local, reserved, or cloud-metadata address (e.g. `169.254.169.254`). Crucially, the guard re-runs on **every redirect hop** — a page that 302-redirects toward an internal address is not followed. The domain blocklist matches on the parsed host with a boundary check (so `x.com` in the blocklist can't accidentally match `netflix.com`).
 
 ---
 
-## What It Does
+## How it works
 
-Most competitive research is done manually: open ten browser tabs, read through each company's website, take notes, build a comparison table. This tool does all of that automatically using AI.
+The pipeline runs seven steps (`backend/report.py`):
 
-You input one URL. The tool outputs a structured business report in under 90 seconds.
+| Step | What happens | Model / service |
+|------|--------------|-----------------|
+| 1 | **Validate + scrape the main company** — check reachability, then fetch homepage + `/about`, `/product`, `/pricing` and extract clean text with BeautifulSoup | `requests` + `BeautifulSoup` |
+| 2 | **Extract a company profile** — structured signals: what they do, who they serve, pricing, positioning | Fast model (LLM) |
+| 3 | **Find competitors in real time** — live web search on name + industry, returns page *content* (not URLs) | Tavily |
+| 4 | **Filter, validate, rank competitors** — LLM picks real companies; code-level blocklist + domain dedup enforce it | Fast model + blocklist |
+| 5 | **Validate + scrape each competitor** — concurrently, skipping any that are unreachable | `requests` + thread pool |
+| 6 | **Profile each competitor** — same extraction format as step 2, for an apples-to-apples matrix | Fast model (per competitor) |
+| 7 | **Generate the report** — synthesize all profiles into the final Markdown report | Smart model |
 
----
+Steps 5–6 run competitors **concurrently** (`ThreadPoolExecutor`, bounded), because at up to 20 competitors a sequential loop of scrapes + LLM calls would exceed the request timeout.
 
-## How It Works
+### The report
 
-The pipeline has seven steps:
-
-**Step 1 — Validate and scrape the main company**
-Before scraping begins, the tool checks that the URL is actually reachable and returns a valid response. If the URL is wrong or the site is down, it stops immediately with a clear error message rather than failing silently later. It then makes an HTTP request to the company's homepage and key sub-pages (about, product, pricing, careers) using the `requests` library, and uses `BeautifulSoup` to parse the HTML, strip out noise (scripts, ads, navigation), and extract only the readable text.
-
-**Step 2 — Extract a company profile (LLM Call 1)**
-A fast, lightweight language model reads the scraped text and pulls out structured signals: what the company does, who they serve, how they price, and what makes them different. This project uses **Claude (`claude-haiku-4-5`)** for this step — Anthropic's fastest model, designed for high-throughput tasks that require speed over depth. The industry extracted here is also used to make the competitor search query more precise.
-
-**Step 3 — Find competitors in real time (Tavily)**
-The tool uses the Tavily Search API to search for the top competitors of this company right now — not from a static list, but from a live web search based on the company's name and industry. It retrieves the full text content of up to 10 search results, which is then passed to the next step rather than using the URLs directly. This is important: search results are pages *about* competitors (articles, listicles, Reddit threads) — not the competitor companies themselves.
-
-**Step 4 — Filter, validate, and rank competitors (LLM Call 2)**
-This is the most important quality step in the pipeline. The raw search content from Step 3 is fed to the LLM with a strict prompt that instructs it to identify only actual direct competitor companies and rank them from most relevant to least relevant. The LLM is explicitly told to never return Reddit, Wikipedia, Quora, news sites, review sites, or any non-company URL.
-
-After the LLM responds, a second layer of hard-coded validation runs — a blacklist of domains (Reddit, Forbes, G2, Capterra, LinkedIn, and 20+ others) that are permanently rejected regardless of what the LLM says. This two-layer approach — LLM filtering followed by code validation — is what ensures only real, relevant competitors make it through.
-
-The user's `max_competitors` setting then takes the top N from the ranked list, so the most relevant competitors are always chosen first.
-
-**Step 5 — Validate and scrape each competitor**
-Each competitor URL is checked for reachability before scraping begins. If a URL returns a 404, redirects to a login page, or times out, that competitor is skipped gracefully and the pipeline continues with the remaining ones. The same scraping logic from Step 1 is applied to each valid competitor site.
-
-**Step 6 — Extract competitor profiles (LLM Call 3)**
-`claude-haiku-4-5` runs once per competitor, extracting the same structured profile fields from each competitor's scraped content. The model is reused intentionally: consistency in the extraction format is what makes the side-by-side comparison in the final report accurate and meaningful.
-
-**Step 7 — Generate the full report (LLM Call 4)**
-**Claude (`claude-sonnet-4-5`)** takes all the profiles — the main company and all competitors — and generates the full report. Sonnet sits between Haiku and Opus: capable enough to synthesise multiple inputs, spot competitive patterns, and produce strategic recommendations, without the cost of the most powerful model. This is where the depth of Claude's reasoning is most visible in the output.
+A clean Markdown report with five sections: **Company Overview**, **Competitor Profiles**, **Competitive Matrix** (side-by-side table), **Market Standing**, and **Strategic Recommendations** (5–7 specific actions).
 
 ---
 
-## The Report
+## Tech stack
 
-The final output is a clean, readable Markdown report with five sections:
-
-1. **Company Overview** — what the company does and how it positions itself
-2. **Competitor Profiles** — a summary of each competitor
-3. **Competitive Matrix** — a side-by-side table comparing all companies on product, pricing, target customers, features, and positioning
-4. **Market Standing** — who leads on what, and where each company is strong or weak
-5. **Strategic Recommendations** — 5–7 specific, actionable things the main company can do to strengthen its position
-
----
-
-## Models Used
-
-This project uses **Anthropic Claude** as the default LLM for all pipeline steps.
-
-| Step | Model | Why |
-|------|-------|-----|
-| Extraction (LLM Calls 1, 2, 3) | `claude-haiku-4-5` | Anthropic's fastest model — ideal for structured extraction tasks |
-| Report generation (LLM Call 4) | `claude-sonnet-4-5` | Strong reasoning and writing — produces detailed, insightful reports |
-
-Claude was chosen for this project because of its strong instruction-following (critical for structured JSON output in the competitor filtering step) and its ability to produce well-reasoned, readable business writing in the final report.
+| Layer | Choice | Version | Why |
+|-------|--------|---------|-----|
+| Backend API | **FastAPI** + Uvicorn | 0.111 / 0.30 | Async-ready, typed request models via Pydantic, auto OpenAPI docs |
+| Validation | **Pydantic** | 2.7 | Declarative request validation at the trust boundary |
+| Scraping | **requests** + **BeautifulSoup4** | 2.32 / 4.13 | Simple, dependable HTML fetch + parse |
+| Search | **tavily-python** | 0.7 | Live web search built for LLM pipelines |
+| LLM client | **openai** SDK | 2.31 | Used as a *universal* client — every provider exposes an OpenAI-compatible API |
+| Frontend | **Next.js** (App Router) + React + TypeScript | 14.2 / 18.3 / 5.5 | Fast static hosting, `next/font`, first-class Vercel deploy |
+| Report rendering | **react-markdown** + **remark-gfm** | 9.0 / 4.0 | Renders the GFM tables in the report |
+| Backend host | **Google Cloud Run** (Docker) | — | 300s request budget + real outbound networking for scraping |
+| Frontend host | **Vercel** | — | Static Next.js hosting with git auto-deploy |
+| CI | **GitHub Actions** | — | Lint (ruff) + tests on the backend, build on the frontend |
 
 ---
 
-## Use Any AI Model
+## Skills demonstrated
 
-The project is built on a flexible API wrapper — you are not locked into Claude. All LLM calls are made using the **OpenAI Python SDK** as a universal client. Every supported provider exposes an OpenAI-compatible REST API, so the same `client.chat.completions.create()` call works across all six providers — only the `base_url` and `api_key` change. No provider-specific SDK is needed; switching models requires no code changes.
+- **RESTful API design** — a FastAPI service with typed request/response models (`/health`, `/providers`, `/report`).
+- **LLM application development** — a multi-step, multi-model pipeline that chains outputs (one call's result feeds the next), with structured-output prompting and a tool call (web search).
+- **Application security** — SSRF prevention with redirect-hop revalidation, input validation at the boundary, and a secretless BYOK design.
+- **Cloud deployment (GCP + Vercel)** — a containerized backend on Google Cloud Run and a static frontend on Vercel, deployed independently.
+- **Containerization & Docker** — the backend ships as a Docker image built and run on Cloud Run.
+- **CI/CD** — GitHub Actions runs linting and the test suite on every push.
+- **Concurrent systems design** — bounded-thread-pool fan-out for competitor processing to stay within the request timeout.
+- **Provider-agnostic integration** — one OpenAI-compatible client routing to six LLM providers with zero per-provider code.
+- **Test-driven development** — 12 offline unit tests covering the security guard, blocklist, and parsing edge cases; the most recent fixes were written test-first.
+- **System design & tradeoff reasoning** — documented why the frontend/backend are split and why competitor filtering is two-layered.
 
-To switch providers, change the model name in one of these two places:
+---
 
-- **For a single run:** update `FAST_MODEL_OVERRIDE` and `SMART_MODEL_OVERRIDE` in `competitor_intel.ipynb` Cell 3
-- **To change the default permanently:** update `FAST_MODEL` and `SMART_MODEL` in `backend/config.py`
+## Use any AI model
 
-Pick any model name from the table below — the wrapper automatically routes it to the right provider.
+All LLM calls go through the **OpenAI Python SDK** as a universal client: every supported provider exposes an OpenAI-compatible REST API, so the same `client.chat.completions.create()` call works everywhere — only `base_url` and `api_key` change. No provider-specific SDK, no code changes to switch.
 
-| Provider | Example Models | Cost |
+In the deployed app you pick the provider + model in the UI. For local/notebook runs, change the model name in `backend/config.py` (`FAST_MODEL` / `SMART_MODEL`).
+
+| Provider | Example models | Cost |
 |----------|---------------|------|
-| **Anthropic (default)** | `claude-haiku-4-5`, `claude-sonnet-4-5`, `claude-opus-4-5` | Paid |
+| **Anthropic** (default) | `claude-haiku-4-5`, `claude-sonnet-4-5`, `claude-opus-4-5` | Paid |
 | Groq | `llama-3.3-70b-versatile`, `llama-3.1-8b-instant`, `gemma2-9b-it` | Free |
 | Google Gemini | `gemini-2.0-flash`, `gemini-1.5-pro` | Free |
 | OpenAI | `gpt-4o`, `gpt-4o-mini` | Paid |
 | Mistral | `mistral-large-latest`, `open-mistral-7b` | Free tier |
 | Ollama (local) | `llama3.2`, `phi3`, `gemma3`, `deepseek-r1` | Free (runs on your machine) |
 
----
-
-## Project Structure
-
-```
-Competitor-Insight-Engine/
-├── backend/                    # FastAPI service → Hugging Face Spaces (Docker)
-│   ├── app.py                  # API: /health, /providers, /report
-│   ├── report.py               # Runs the full 7-step pipeline
-│   ├── analyzer.py             # All LLM calls — extraction and report generation
-│   ├── searcher.py             # Tavily search — finds competitors in real time
-│   ├── scraper.py              # Web scraper — fetches and cleans website content
-│   ├── security.py             # SSRF guard for outbound fetches
-│   ├── blocklist.py            # Single source of truth for non-competitor domains
-│   ├── config.py               # Providers, models, tiers, default settings
-│   ├── requirements.txt        # Pinned Python dependencies
-│   ├── Dockerfile              # HF Spaces container
-│   ├── README.md               # HF Space card + API docs
-│   └── tests/test_backend.py   # Offline unit tests (no keys / network needed)
-├── frontend/                   # Next.js BYOK UI → Vercel
-│   ├── app/page.tsx            # The whole app (form, dropdowns, report view)
-│   ├── app/globals.css
-│   └── package.json
-├── competitor_intel.ipynb      # Optional — run the pipeline locally
-├── .github/workflows/ci.yml    # CI: lint + test backend, build frontend
-├── .env.example                # API-key template for local use
-└── .gitignore
-```
-
-### What Each File Does
-
-**`competitor_intel.ipynb`**
-This is the only file you need to open. It is a Jupyter notebook with six cells. You set your company URL, name, and model choice in Cell 3, then run all cells in order. The report is displayed in Cell 5 and can optionally be saved to a `.md` file in Cell 6.
-
-**`report.py`**
-This is the brain of the project. It runs the full seven-step pipeline in the correct order — validate the URL, scrape, extract, search, filter, scrape competitors, profile them, generate the report. It also handles all the error checking between steps: if something goes wrong at any point, it stops cleanly with a helpful message instead of crashing with a raw error.
-
-**`analyzer.py`**
-This file contains all four LLM calls in the project. It handles routing to the correct AI provider, sending prompts, receiving responses, and validating that the responses are usable. It also contains the system prompts that tell the LLM what to extract and how to write the report.
-
-**`searcher.py`**
-This file talks to the Tavily Search API. It builds a search query using the company name and industry, retrieves up to 10 search results, and returns the raw text content of those results. It also contains a blacklist of sites (Reddit, Wikipedia, news sites, review platforms) that are filtered out before the content is even passed to the LLM.
-
-**`scraper.py`**
-This file fetches web pages. Given a URL, it makes an HTTP request, parses the HTML using BeautifulSoup, strips out everything that is not useful (scripts, ads, navigation bars, footers), and returns clean readable text. It tries the homepage first, then common sub-pages like `/about`, `/product`, and `/pricing`.
-
-**`config.py`**
-This file is the central settings file for the project. It lists every supported AI provider (Anthropic, Groq, Gemini, OpenAI, Mistral, Ollama) along with their API endpoints, environment variable names, and available model names. It also sets the default models used across the pipeline. If you want to change which model the project uses permanently, this is the file to edit.
-
-**`.env`**
-This file stores your API keys. It is never committed to git. You need at minimum `ANTHROPIC_API_KEY` and `TAVILY_API_KEY` to run the project with the default settings.
-
-**`requirements.txt`**
-Lists the Python packages needed to run the project. Install them all at once with `pip install -r requirements.txt`.
+> The deployed frontend surfaces Anthropic, Gemini, Groq, and OpenAI. Mistral and Ollama are available for local runs via `config.py`.
 
 ---
 
-## Run it locally
+## Getting started
+
+### Try the hosted app
+
+Open **[competitor-insight-engine.vercel.app](https://competitor-insight-engine.vercel.app)**, pick a provider + model, paste your key(s), and generate a report. The fastest free path: a free **Groq** key (`llama-3.3-70b-versatile`) + a free **Tavily** key. Keys stay in your browser.
+
+### Run it locally
 
 **Backend (API):**
 ```bash
 cd backend
 pip install -r requirements.txt
 uvicorn app:app --reload --port 7860      # http://localhost:7860/docs
-python -m pytest tests/ -q                 # offline tests, no keys needed
 ```
 
 **Frontend (UI):**
@@ -192,100 +186,109 @@ echo "NEXT_PUBLIC_BACKEND_URL=http://localhost:7860" > .env.local
 npm run dev                                # http://localhost:3000
 ```
 
-Then open the UI, pick a provider + model, paste your keys, and generate a report. Keys stay in your browser.
+Then open the UI, pick a provider + model, paste your keys, and generate a report.
 
-**Or run the pipeline in the notebook** (uses `.env` for keys instead of BYOK):
+**Or run the pipeline in the notebook** (uses a local `.env` for keys instead of BYOK):
 ```bash
 cp .env.example .env      # then fill in ANTHROPIC_API_KEY + TAVILY_API_KEY
 jupyter notebook competitor_intel.ipynb
 ```
+
 Get keys: [Tavily (free)](https://app.tavily.com) · [Groq (free)](https://console.groq.com) · [Gemini (free)](https://aistudio.google.com/apikey) · [Anthropic](https://console.anthropic.com) · [OpenAI](https://platform.openai.com/api-keys)
 
 ---
 
-## Deployment (free tier)
+## Testing
 
-**Backend → Hugging Face Spaces (Docker):**
-1. Create a new Space → SDK: **Docker**.
-2. Push the contents of `backend/` to the Space repo (`backend/README.md` has the Space card frontmatter and `app_port: 7860`).
-3. The Space builds the Dockerfile and serves the API. No secrets to set — it's BYOK.
-4. (Optional) set `ALLOWED_ORIGINS` to your Vercel URL to lock down CORS.
+Offline unit tests — no API keys and no network needed (LLM/Tavily calls are monkeypatched):
+
+```bash
+cd backend
+python -m pytest tests/ -q        # 12 tests
+ruff check .                      # lint (same as CI)
+python security.py                # SSRF-guard self-check
+```
+
+The suite covers the SSRF guard (including the redirect-bypass case), the domain blocklist (including substring false-positives), competitor dedup/filtering, malformed-LLM-output handling, and the URL/field parsing helpers. GitHub Actions runs the same lint + tests on every push, plus a frontend build.
+
+---
+
+## Deployment
+
+**Backend → Google Cloud Run (Docker):**
+```bash
+cd backend
+gcloud run deploy competitor-intelligence-engine \
+  --source . --region us-central1 --allow-unauthenticated
+```
+The `Dockerfile` binds Uvicorn to Cloud Run's injected `$PORT`. It's BYOK, so there are no secrets to configure. Optionally set `ALLOWED_ORIGINS` (comma-separated) to lock CORS to your frontend origin.
 
 **Frontend → Vercel:**
-1. Import the repo, set the **Root Directory** to `frontend`.
-2. Add env var `NEXT_PUBLIC_BACKEND_URL` = your Space URL (e.g. `https://you-cie.hf.space`).
-3. Deploy. Vercel auto-detects Next.js.
+1. Import the repo and set the **Root Directory** to `frontend` (the app is in a subdirectory).
+2. Add env var `NEXT_PUBLIC_BACKEND_URL` = your Cloud Run URL.
+3. Deploy — Vercel auto-detects Next.js and auto-deploys on every push to `main`.
 
 ---
 
-## Guardrails and Edge Cases
+## Project structure
 
-A lot of things can go wrong when you combine web scraping, a search API, and multiple LLM calls. The pipeline is built to handle failures at every step — it never crashes silently, and every error message tells you exactly what went wrong and what to do about it.
-
-### Input Validation (before anything runs)
-
-| Situation | What Happens |
-|-----------|-------------|
-| `company_url` is empty or not a string | Raises an error immediately with an example of the correct format |
-| `company_name` is empty or not a string | Raises an error immediately |
-| `max_competitors` is set to 0 or less | Raises an error — must be at least 1 |
-| URL is missing `https://` (e.g. `stripe.com`) | Automatically prepends `https://` and logs a warning — no need to re-run |
-
-### Scraping Guardrails
-
-| Situation | What Happens |
-|-----------|-------------|
-| Main company URL is unreachable or returns an error | Stops immediately with a message listing what to check |
-| Main company page scrapes successfully but returns very little text | Warns that profile quality may be low and continues |
-| Main company page returns no text at all (JavaScript-heavy site) | Stops and suggests trying a specific sub-page like `/about` |
-| A competitor URL has no `https://` scheme | Logged and skipped — never passed to the scraper |
-| A competitor URL is unreachable | Skipped with a log message — pipeline continues with remaining competitors |
-| A competitor page returns no readable text | Skipped with a log message — pipeline continues |
-| A competitor page returns very little text | Warns that profile quality may be low and continues |
-
-### LLM and Search Guardrails
-
-| Situation | What Happens |
-|-----------|-------------|
-| Tavily API call fails (network error, rate limit, bad key) | Raises a clear error naming the likely cause and what to check |
-| Tavily returns fewer than 3 results | Warns that competitor identification may be limited |
-| Tavily returns no results at all | Raises an error with instructions to check the API key |
-| LLM returns a site like Reddit, Wikipedia, or Forbes as a competitor | Stripped from search content before the LLM even sees it (Layer 1) |
-| LLM still returns a blacklisted site despite instructions | Hard-coded blacklist rejects it after the LLM responds (Layer 2) |
-| LLM returns the same competitor twice under different names | Deduplicated by domain — only the first occurrence is kept |
-| LLM returns malformed or non-JSON output | Caught, logged with the raw output for debugging, returns empty list |
-| LLM returns a profile where most fields are "unknown" | Warns that the scraped page was likely a bot-detection wall or login screen |
-| API key for the chosen provider is missing from `.env` | Raises an error immediately naming the exact environment variable to set |
-| LLM call fails due to a network or authentication error | Raises a clear error with the provider name, model, and what to check |
-| The model name set in `config.py` does not exist | Caught at import time — fails immediately before any pipeline runs |
-
-### Report Guardrails
-
-| Situation | What Happens |
-|-----------|-------------|
-| All competitor websites fail to scrape | Raises an error suggesting to try again |
-| Fewer competitors profiled than requested | Warning is printed — report is still generated with what was found |
-| Only 1 competitor was successfully profiled | Warns that comparisons in the report may be limited |
-| Main company profile comes back empty | Raises an error before wasting API calls on the search and competitors |
-| Report generation returns an empty response | Raises an error suggesting to try again or switch to a different model |
-
-### Why Two Layers of Competitor Filtering?
-
-Relying solely on the LLM to filter competitors is not enough — language models can still return unexpected results. The pipeline uses two independent layers:
-
-1. **Before the LLM**: blacklisted domains are stripped from the Tavily search content so the LLM never even sees them (`searcher.py`)
-2. **After the LLM**: every URL the LLM returns is checked against the same blacklist in code — a hard rejection that cannot be overridden by the model (`analyzer.py`)
-
-This means a site like Reddit would have to get past both layers independently to appear in the report — which is not possible.
+```
+Competitor-Insight-Engine/
+├── backend/                    # FastAPI service → Google Cloud Run (Docker)
+│   ├── app.py                  # API: /health, /providers, /report (Pydantic-validated)
+│   ├── report.py               # Orchestrates the 7-step pipeline; concurrent competitor profiling
+│   ├── analyzer.py             # LLM calls — extraction + report generation; provider routing
+│   ├── searcher.py             # Tavily search — finds competitors in real time
+│   ├── scraper.py              # Web scraper — fetch (SSRF-guarded) + clean text
+│   ├── security.py             # SSRF guard: validates every fetch and redirect hop
+│   ├── blocklist.py            # Single source of truth for non-competitor domains
+│   ├── config.py               # Providers, models, tiers, default models
+│   ├── requirements.txt        # Pinned Python dependencies
+│   ├── Dockerfile              # Cloud Run container (binds to $PORT)
+│   ├── README.md               # Backend/API notes
+│   └── tests/test_backend.py   # 12 offline unit tests (no keys / network)
+├── frontend/                   # Next.js BYOK UI → Vercel
+│   ├── app/page.tsx            # The app: form, provider/model dropdowns, report view
+│   ├── app/layout.tsx          # Fonts (next/font) + metadata
+│   ├── app/globals.css         # Styling
+│   └── package.json
+├── competitor_intel.ipynb      # Optional — run the pipeline locally
+├── .github/workflows/ci.yml    # CI: lint + test backend, build frontend
+├── .env.example                # API-key template for local/notebook use
+├── LICENSE                     # MIT
+└── .gitignore
+```
 
 ---
 
-## Key Concepts Demonstrated
+## Guardrails and edge cases
 
-- **Multi-step LLM pipelines** — using different models for different tasks (fast model for extraction, strong model for generation)
-- **Real-time web search** with the Tavily API
-- **Web scraping** with `requests` and `BeautifulSoup`
-- **Provider-agnostic LLM calls** — one wrapper, six providers, zero code changes to switch
-- **Prompt engineering** — structured extraction prompts, ranking instructions, and strict output constraints
-- **Chaining outputs** — the output of one LLM call becomes the input of the next
-- **Defensive pipeline design** — input validation, output validation, graceful degradation, and informative error messages at every step
+Combining web scraping, a search API, and multiple LLM calls means a lot can go wrong. The pipeline validates at every step and fails with a clear message rather than crashing silently.
+
+**Input:** empty/invalid `company_url` or `company_name` → immediate error with an example; missing URL scheme → `https://` prepended automatically; `max_competitors < 1` → rejected.
+
+**Scraping:** unreachable main URL → stops with a checklist; page with little/no text → warns (or stops if truly empty) and suggests a specific sub-page; a competitor that 404s, redirects to a login, or times out → skipped, pipeline continues.
+
+**Search + LLM:** Tavily failure or empty results → clear error naming the likely cause; blocklisted sites (Reddit, Forbes, G2, …) → stripped before *and* after the LLM; duplicate competitors → deduped by domain; malformed or non-object LLM output → caught and skipped, returns an empty list instead of crashing; missing/invalid provider key → error naming the exact provider.
+
+**Report:** all competitor scrapes fail → error suggesting a retry; fewer competitors than requested → report still generated with what was found; empty report response → error suggesting a different model.
+
+### Why two layers of competitor filtering?
+
+An LLM alone can still return a Reddit thread or a news article as a "competitor." So the blocklist runs twice, independently: **before** the LLM (blocklisted domains stripped from search content) and **after** (every returned URL re-checked in code). A site has to beat both layers to appear — which it can't.
+
+---
+
+## Roadmap / known limitations
+
+- **JavaScript-heavy sites** scrape poorly (static HTML fetch only) — the report warns when a page yields little text. A headless-browser fallback is a natural next step.
+- **No persistence or caching** — every run is fresh; repeat lookups re-scrape and re-search. A cache layer would cut latency and API spend.
+- **Best-effort scraping** — some sites bot-wall the scraper; those competitors are skipped rather than worked around.
+- **Logging is `print`-based**, not structured — fine for Cloud Run stdout, but structured logging + metrics would be the production upgrade.
+- **Single region** (Cloud Run `us-central1`); no autoscaling tuning beyond defaults.
+
+---
+
+## License
+
+Released under the [MIT License](LICENSE).
