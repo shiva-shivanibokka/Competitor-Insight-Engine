@@ -48,7 +48,7 @@ class ReportRequest(BaseModel):
     model: str
     llm_key: str = Field(..., min_length=1)  # BYOK — used in-memory only
     tavily_key: str = Field(..., min_length=1)  # BYOK — used in-memory only
-    max_competitors: int = Field(4, ge=1, le=8)
+    max_competitors: int = Field(4, ge=1, le=20)
 
 
 @app.get("/health")

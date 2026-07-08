@@ -1,19 +1,21 @@
 :root {
-  --bg: #ffffff;
-  --panel: #ffffff;
-  --panel-2: #f5f7fa;
-  --text: #10192b;
-  --muted: #5a6a82;
-  --muted-2: #97a3b6;
-  --line: #e6ebf2;
-  --line-2: #d3dced;
+  /* dark canvas so the accent edges glow */
+  --bg: #070a12;
+  --bg-2: #0b1020;
+  --panel: #0e1424;
+  --panel-2: #131a2c;
+  --text: #eef2fb;
+  --muted: #9aa7c0;
+  --muted-2: #64708a;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.14);
 
-  /* vivid, popping edge colors — one per box */
-  --blue: #2563eb;
-  --emerald: #059669;
-  --orange: #ea580c;
-  --violet: #7c3aed;
-  --rose: #e11d48;
+  /* vivid edge colors — one per box, tuned to pop on dark */
+  --blue: #3b82f6;
+  --emerald: #10d197;
+  --orange: #ff7a1a;
+  --violet: #a855f7;
+  --rose: #fb4d6a;
 
   --font-display: var(--fd-src), system-ui, sans-serif;
   --font-mono: var(--fm-src), ui-monospace, Menlo, Consolas, monospace;
@@ -31,7 +33,8 @@ body {
 }
 
 body {
-  background: var(--bg);
+  background: radial-gradient(1200px 600px at 80% -10%, #101a33 0%, transparent 60%),
+    var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.6;
@@ -107,13 +110,10 @@ body {
   }
 }
 
-/* ---------- hero ---------- */
+/* ---------- hero: text runs the full page width ---------- */
 .hero {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 48px;
-  padding: 60px 0 52px;
+  position: relative;
+  padding: 62px 0 52px;
 }
 .eyebrow {
   margin: 0 0 18px;
@@ -125,24 +125,28 @@ body {
 }
 .hero h1 {
   margin: 0 0 22px;
+  max-width: 20ch;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2.1rem, 4.6vw, 3.6rem);
-  line-height: 1.04;
+  font-size: clamp(2.1rem, 5.2vw, 3.9rem);
+  line-height: 1.05;
   letter-spacing: -0.01em;
 }
 .lede {
   margin: 0;
-  max-width: 46ch;
+  max-width: 92ch; /* full-width feel, no mid-sentence wrapping */
   color: var(--muted);
-  font-size: 1.02rem;
+  font-size: 1.05rem;
 }
 
-/* ---------- radar signature ---------- */
+/* ---------- radar signature: floats top-right, never squeezes copy ---------- */
 .radar {
-  position: relative;
-  width: 232px;
-  height: 232px;
+  position: absolute;
+  top: 44px;
+  right: 0;
+  width: 190px;
+  height: 190px;
+  pointer-events: none;
 }
 .radar-grid {
   position: absolute;
@@ -153,7 +157,7 @@ body {
 .radar-grid circle,
 .radar-grid line {
   fill: none;
-  stroke: rgba(37, 99, 235, 0.26);
+  stroke: rgba(59, 130, 246, 0.32);
   stroke-width: 1;
 }
 .radar-grid .blip {
@@ -186,13 +190,13 @@ body {
   border-radius: 50%;
   background: conic-gradient(
     from 0deg,
-    rgba(37, 99, 235, 0.4) 0deg,
-    rgba(37, 99, 235, 0.05) 44deg,
+    rgba(59, 130, 246, 0.55) 0deg,
+    rgba(59, 130, 246, 0.08) 44deg,
     transparent 92deg,
     transparent 360deg
   );
-  -webkit-mask: radial-gradient(circle, #000 0 92px, transparent 93px);
-  mask: radial-gradient(circle, #000 0 92px, transparent 93px);
+  -webkit-mask: radial-gradient(circle, #000 0 74px, transparent 75px);
+  mask: radial-gradient(circle, #000 0 74px, transparent 75px);
   animation: sweep 4s linear infinite;
 }
 .radar[data-scanning="true"] .radar-sweep,
@@ -204,30 +208,35 @@ body {
     transform: rotate(360deg);
   }
 }
-
-/* ---------- layout: input boxes in a row, result below ---------- */
-.inputs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-  align-items: start;
+@media (max-width: 760px) {
+  .radar {
+    display: none;
+  }
+  .hero h1 {
+    max-width: none;
+  }
 }
-.inputs .run {
-  grid-column: 1 / -1;
+
+/* ---------- layout: full-width horizontal-bar panels, stacked ---------- */
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .result {
-  margin-top: 22px;
+  margin-top: 20px;
 }
 
-/* ---------- panels: bold popping colored edges ---------- */
+/* ---------- panels: bold glowing colored edges ---------- */
 .panel {
   position: relative;
   --accent: var(--blue);
   background: var(--panel);
-  border: 2px solid var(--accent);
-  border-radius: 12px;
-  padding: 26px 24px 24px;
-  box-shadow: 0 6px 22px -8px color-mix(in srgb, var(--accent) 55%, transparent);
+  border: 1.5px solid var(--accent);
+  border-radius: 14px;
+  padding: 22px 24px 24px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent),
+    0 10px 34px -14px color-mix(in srgb, var(--accent) 80%, transparent);
 }
 .target {
   --accent: var(--blue);
@@ -240,29 +249,32 @@ body {
 }
 .panel-tab {
   display: inline-block;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   padding: 4px 11px;
   border-radius: 5px;
   background: var(--accent);
-  color: #fff;
+  color: #05070d;
   font-family: var(--font-mono);
+  font-weight: 600;
   font-size: 10.5px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 .panel-tab.err {
   background: var(--rose);
+  color: #fff;
 }
 
 /* ---------- form ---------- */
 .panel label {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 0;
 }
 .fl {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  gap: 10px;
   margin-bottom: 7px;
   font-family: var(--font-mono);
   font-size: 10.5px;
@@ -274,16 +286,34 @@ body {
   color: var(--accent);
   text-decoration: none;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 .fl .get:hover {
   text-decoration: underline;
 }
+
+/* horizontal bar of fields inside a panel */
 .field-row {
   display: flex;
-  gap: 14px;
+  gap: 16px;
 }
 .field-row label {
   flex: 1;
+}
+.field-row label.narrow {
+  flex: 0 0 140px;
+}
+.field-row + .field-row {
+  margin-top: 16px;
+}
+@media (max-width: 680px) {
+  .field-row {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .field-row label.narrow {
+    flex: 1;
+  }
 }
 
 input,
@@ -291,11 +321,15 @@ select {
   width: 100%;
   background: var(--panel-2);
   border: 1px solid var(--line-2);
-  border-radius: 7px;
+  border-radius: 8px;
   padding: 11px 12px;
   color: var(--text);
   font-family: var(--font-mono);
   font-size: 0.9rem;
+}
+select option {
+  background: var(--panel-2);
+  color: var(--text);
 }
 input::placeholder {
   color: var(--muted-2);
@@ -304,7 +338,7 @@ input:focus,
 select:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 26%, transparent);
 }
 
 .privacy {
@@ -312,9 +346,9 @@ select:focus {
   gap: 10px;
   margin: 18px 0 0;
   padding: 11px 12px;
-  border-radius: 7px;
+  border-radius: 8px;
   border-left: 3px solid var(--accent);
-  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
   font-size: 0.8rem;
   color: var(--muted);
 }
@@ -324,9 +358,9 @@ select:focus {
 
 .run {
   border: none;
-  border-radius: 9px;
+  border-radius: 10px;
   padding: 15px;
-  background: var(--blue);
+  background: linear-gradient(90deg, var(--blue), var(--violet));
   color: #fff;
   font-family: var(--font-mono);
   font-size: 0.86rem;
@@ -334,23 +368,25 @@ select:focus {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   cursor: pointer;
+  box-shadow: 0 10px 30px -12px var(--blue);
   transition: filter 0.15s, transform 0.05s;
 }
 .run:hover:not(:disabled) {
-  filter: brightness(1.1);
+  filter: brightness(1.12);
 }
 .run:active:not(:disabled) {
   transform: translateY(1px);
 }
 .run:disabled {
   background: var(--muted-2);
+  box-shadow: none;
   cursor: progress;
 }
 
 /* ---------- result panel ---------- */
 .output {
   min-height: 300px;
-  padding: 28px 28px 26px;
+  padding: 26px 28px 26px;
   overflow-x: auto;
 }
 .await-line {
@@ -361,7 +397,7 @@ select:focus {
 }
 .await-sub {
   margin: 0;
-  max-width: 44ch;
+  max-width: 60ch;
   color: var(--muted);
   font-size: 0.92rem;
 }
@@ -417,7 +453,7 @@ select:focus {
   font-size: 1.05rem;
 }
 .briefing a {
-  color: var(--blue);
+  color: var(--orange);
 }
 .briefing table {
   border-collapse: collapse;
@@ -428,14 +464,14 @@ select:focus {
 }
 .briefing th,
 .briefing td {
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-2);
   padding: 8px 10px;
   text-align: left;
   vertical-align: top;
 }
 .briefing th {
-  background: color-mix(in srgb, var(--orange) 12%, #fff);
-  color: #b23c06;
+  background: color-mix(in srgb, var(--orange) 18%, transparent);
+  color: var(--orange);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 0.72rem;
@@ -471,25 +507,6 @@ select:focus {
 }
 .foot a:hover {
   color: var(--blue);
-}
-
-/* ---------- responsive: keep inputs in a row until quite narrow ---------- */
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 40px 0 36px;
-  }
-  .radar {
-    justify-self: start;
-    width: 176px;
-    height: 176px;
-  }
-}
-@media (max-width: 620px) {
-  .inputs {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ---------- a11y ---------- */

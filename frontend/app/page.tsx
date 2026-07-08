@@ -142,9 +142,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">Competitive reconnaissance</p>
-          <h1>
-            Map the competitive terrain of any&nbsp;company.
-          </h1>
+          <h1>Map the competitive terrain of any company.</h1>
           <p className="lede">
             Enter one URL. The engine scrapes the market, finds real competitors in real time, and
             returns a full intelligence report — profiles, a side-by-side matrix, and strategic
@@ -170,28 +168,37 @@ export default function Home() {
         <form className="inputs" onSubmit={onSubmit}>
           <section className="panel target">
             <span className="panel-tab">Target</span>
-            <label>
-              <span className="fl">Company URL</span>
-              <input value={companyUrl} onChange={(e) => setCompanyUrl(e.target.value)} required />
-            </label>
-            <label>
-              <span className="fl">Company name</span>
-              <input
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-                required
-              />
-            </label>
-            <label>
-              <span className="fl">Competitors to analyze</span>
-              <input
-                type="number"
-                min={1}
-                max={8}
-                value={maxCompetitors}
-                onChange={(e) => setMaxCompetitors(Number(e.target.value))}
-              />
-            </label>
+            <div className="field-row">
+              <label>
+                <span className="fl">Company name</span>
+                <input
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  required
+                />
+              </label>
+              <label>
+                <span className="fl">Company URL</span>
+                <input
+                  value={companyUrl}
+                  onChange={(e) => setCompanyUrl(e.target.value)}
+                  required
+                />
+              </label>
+              <label className="narrow">
+                <span className="fl">Competitors</span>
+                <select
+                  value={maxCompetitors}
+                  onChange={(e) => setMaxCompetitors(Number(e.target.value))}
+                >
+                  {Array.from({ length: 20 }, (_, i) => i + 1).map((n) => (
+                    <option key={n} value={n}>
+                      {n}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
           </section>
 
           <section className="panel source">
@@ -219,38 +226,40 @@ export default function Home() {
               </label>
             </div>
 
-            <label>
-              <span className="fl">
-                {provider?.label || "Provider"} key
-                {provider?.key_url && (
-                  <a className="get" href={provider.key_url} target="_blank" rel="noreferrer">
+            <div className="field-row">
+              <label>
+                <span className="fl">
+                  {provider?.label || "Provider"} key
+                  {provider?.key_url && (
+                    <a className="get" href={provider.key_url} target="_blank" rel="noreferrer">
+                      get key ↗
+                    </a>
+                  )}
+                </span>
+                <input
+                  type="password"
+                  placeholder="Stays in this browser tab"
+                  value={llmKey}
+                  onChange={(e) => setLlmKeys({ ...llmKeys, [providerId]: e.target.value })}
+                  autoComplete="off"
+                />
+              </label>
+              <label>
+                <span className="fl">
+                  Tavily key
+                  <a className="get" href="https://app.tavily.com" target="_blank" rel="noreferrer">
                     get key ↗
                   </a>
-                )}
-              </span>
-              <input
-                type="password"
-                placeholder="Stays in this browser tab"
-                value={llmKey}
-                onChange={(e) => setLlmKeys({ ...llmKeys, [providerId]: e.target.value })}
-                autoComplete="off"
-              />
-            </label>
-            <label>
-              <span className="fl">
-                Tavily key
-                <a className="get" href="https://app.tavily.com" target="_blank" rel="noreferrer">
-                  get key ↗
-                </a>
-              </span>
-              <input
-                type="password"
-                placeholder="For live competitor search"
-                value={tavilyKey}
-                onChange={(e) => setTavilyKey(e.target.value)}
-                autoComplete="off"
-              />
-            </label>
+                </span>
+                <input
+                  type="password"
+                  placeholder="For live competitor search"
+                  value={tavilyKey}
+                  onChange={(e) => setTavilyKey(e.target.value)}
+                  autoComplete="off"
+                />
+              </label>
+            </div>
 
             <p className="privacy">
               <span className="lock" aria-hidden>
