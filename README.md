@@ -156,7 +156,7 @@ A clean Markdown report with five sections: **Company Overview**, **Competitor P
 - **CI/CD** — GitHub Actions runs linting and the test suite on every push.
 - **Concurrent systems design** — bounded-thread-pool fan-out for competitor processing to stay within the request timeout.
 - **Provider-agnostic integration** — one OpenAI-compatible client routing to six LLM providers with zero per-provider code.
-- **Test-driven development** — 20 offline unit tests covering the security guard, blocklist, parsing edge cases, the temperature-rejection retry, and that every route answers under both mount points.
+- **Test-driven development** — 21 offline unit tests covering the security guard, blocklist, parsing edge cases, the temperature-rejection retry, and that every route answers under both mount points.
 - **System design & tradeoff reasoning** — documented why the frontend/backend are split and why competitor filtering is two-layered.
 
 ---
@@ -221,7 +221,7 @@ Offline unit tests — no API keys and no network needed (LLM/Tavily calls are m
 
 ```bash
 cd backend
-python -m pytest tests/ -q        # 20 tests
+python -m pytest tests/ -q        # 21 tests
 ruff check .                      # lint (same as CI)
 python security.py                # SSRF-guard self-check
 ```
@@ -275,7 +275,7 @@ Competitor-Insight-Engine/
 │   ├── Dockerfile              # for self-hosting; the deployment builds from source
 │   ├── ruff.toml               # pinned lint rules (version pinned in CI)
 │   ├── README.md               # Backend/API notes
-│   └── tests/test_backend.py   # 20 offline unit tests (no keys / network)
+│   └── tests/test_backend.py   # 21 offline unit tests (no keys / network)
 ├── frontend/                   # Next.js BYOK UI → Vercel `web` service
 │   ├── app/page.tsx            # The app: form, provider/model dropdowns, report view
 │   ├── app/layout.tsx          # Fonts (next/font) + metadata
@@ -299,7 +299,7 @@ Combining web scraping, a search API, and multiple LLM calls means a lot can go 
 
 **Scraping:** unreachable main URL → stops with a checklist; page with little/no text → warns (or stops if truly empty) and suggests a specific sub-page; a competitor that 404s, redirects to a login, or times out → skipped, pipeline continues.
 
-**Search + LLM:** Tavily failure or empty results → clear error naming the likely cause; blocklisted sites (Reddit, Forbes, G2, …) → stripped before *and* after the LLM; duplicate competitors → deduped by domain; malformed or non-object LLM output → caught and skipped, returns an empty list instead of crashing; missing/invalid provider key → error naming the exact provider.
+**Search + LLM:** a rejected key or exhausted quota (Tavily or the model provider) returns 422 with the reason, not 500 — it is the caller's to fix, not a fault in the service; blocklisted sites (Reddit, Forbes, G2, …) → stripped before *and* after the LLM; duplicate competitors → deduped by domain; malformed or non-object LLM output → caught and skipped, returns an empty list instead of crashing; missing/invalid provider key → error naming the exact provider.
 
 **Report:** all competitor scrapes fail → error suggesting a retry; fewer competitors than requested → report still generated with what was found; empty report response → error suggesting a different model.
 

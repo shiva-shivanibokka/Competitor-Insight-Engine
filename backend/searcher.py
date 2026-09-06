@@ -57,10 +57,14 @@ def get_competitor_search_content(
             include_answer=True,
         )
     except Exception as e:
-        raise RuntimeError(
+        # ValueError, not RuntimeError: a rejected key or an exhausted quota is
+        # the caller's to fix, and the API maps ValueError to 422. RuntimeError
+        # reported a user's typo as a server crash, logged a stack trace for it,
+        # and told them to check a .env file the deployed app does not have.
+        raise ValueError(
             f"Tavily search failed: {e}\n"
-            f"Check your TAVILY_API_KEY in .env. If the key is correct, "
-            f"you may have hit your monthly search limit."
+            f"Check the Tavily key you entered. If it is correct, you may have "
+            f"used up the free monthly search quota."
         ) from e
 
     results = response.get("results", [])

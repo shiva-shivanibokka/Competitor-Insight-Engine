@@ -108,7 +108,10 @@ def llm_call(
                 response = create()
         return response.choices[0].message.content or ""
     except Exception as e:
-        raise RuntimeError(
+        # ValueError so the API answers 422: a rejected key, an unavailable
+        # model or a rate limit is something the caller can act on, not a fault
+        # in this service.
+        raise ValueError(
             f"LLM call failed ({provider_name} | {model}): {e}\n"
             f"Check that your {provider_name} key is valid and the model name is current."
         ) from e
@@ -381,7 +384,7 @@ def generate_intelligence_report(
         temperature=0.3,
     )
     if not report.strip():
-        raise RuntimeError(
+        raise ValueError(
             "Report generation returned an empty response. Try again or switch to a different model."
         )
     return report

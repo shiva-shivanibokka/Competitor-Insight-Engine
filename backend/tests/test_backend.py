@@ -194,7 +194,7 @@ def test_llm_call_does_not_swallow_unrelated_bad_requests(monkeypatch):
     try:
         analyzer.llm_call("sys", "user", model="claude-haiku-4-5")
         failed = False
-    except RuntimeError as e:
+    except ValueError as e:
         failed = "context window" in str(e)
     assert failed, "a non-temperature 400 must not be retried away"
 
@@ -218,6 +218,24 @@ def test_list_models_reads_from_the_provider(monkeypatch):
     client = type("C", (), {"models": type("Mo", (), {"list": lambda self: listed})()})()
     monkeypatch.setattr(analyzer, "client_for", lambda *a, **k: client)
     assert analyzer.list_models("anthropic", "sk-test") == ["a", "b"]
+
+
+# --- a caller's bad key is a 422, not a 500 ---
+
+def test_bad_provider_key_is_reported_as_the_callers_problem(monkeypatch):
+    # A rejected key used to surface as HTTP 500 with a logged stack trace,
+    # which reads as "this service is broken" rather than "fix your key".
+    class Rejects:
+        def create(self, **kwargs):
+            raise RuntimeError("401 invalid x-api-key")
+
+    _patch_client(monkeypatch, Rejects())
+    try:
+        analyzer.llm_call("sys", "user", model="claude-haiku-4-5")
+        raised = None
+    except Exception as e:  # noqa: BLE001 - the type under test
+        raised = e
+    assert isinstance(raised, ValueError), f"expected ValueError, got {type(raised).__name__}"
 
 
 # --- the API is reachable under both mount points ---
