@@ -470,7 +470,9 @@ export default function Home() {
               <span className="panel-tab replay">Replay</span>
               <p className="replay-note">
                 Recorded {recording?.recorded_at} against {recording?.company_url} —{" "}
-                {recording?.max_competitors} competitors, {recording?.fast_model} for extraction and{" "}
+                {recording?.competitors_profiled ?? recording?.max_competitors} of{" "}
+                {recording?.max_competitors} competitors profiled, {recording?.fast_model} for
+                extraction and{" "}
                 {recording?.smart_model} for the report. It took{" "}
                 {Math.round(recording?.duration_seconds ?? 0)}s; this plays at 6×. Nothing is
                 executing now.
@@ -485,7 +487,8 @@ export default function Home() {
               {recording && (
                 <p className="replay-note">
                   This is the report from a real run recorded {recording.recorded_at} —{" "}
-                  {recording.company}, {recording.max_competitors} competitors,{" "}
+                  {recording.company}, {recording.competitors_profiled ?? recording.max_competitors}{" "}
+                  of {recording.max_competitors} competitors profiled,{" "}
                   {Math.round(recording.duration_seconds)}s, {recording.smart_model}. Enter your own
                   keys above to run it live against any company.
                 </p>
