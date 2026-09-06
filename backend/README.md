@@ -56,7 +56,7 @@ Interactive API tests need real keys, either in the request body (BYOK) or in a
 local `.env` (see `../.env.example`). Offline unit tests need neither:
 
 ```bash
-python -m pytest tests/ -q     # 20 tests
+python -m pytest tests/ -q     # 22 tests
 ruff check .                   # same version CI pins
 python security.py             # SSRF-guard self-check
 ```

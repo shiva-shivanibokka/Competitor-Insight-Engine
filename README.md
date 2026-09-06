@@ -189,7 +189,7 @@ A clean Markdown report with five sections: **Company Overview**, **Competitor P
 - **CI/CD** — GitHub Actions runs linting and the test suite on every push.
 - **Concurrent systems design** — bounded-thread-pool fan-out for competitor processing to stay within the request timeout.
 - **Provider-agnostic integration** — one OpenAI-compatible client routing to six LLM providers with zero per-provider code.
-- **Test-driven development** — 21 offline unit tests covering the security guard, blocklist, parsing edge cases, the temperature-rejection retry, and that every route answers under both mount points.
+- **Test-driven development** — 22 offline unit tests covering the security guard, blocklist, parsing edge cases, the temperature-rejection retry, that every route answers under both mount points, and that the committed recording carries no key.
 - **System design & tradeoff reasoning** — documented why the frontend/backend are split and why competitor filtering is two-layered.
 
 ---
@@ -254,7 +254,7 @@ Offline unit tests — no API keys and no network needed (LLM/Tavily calls are m
 
 ```bash
 cd backend
-python -m pytest tests/ -q        # 21 tests
+python -m pytest tests/ -q        # 22 tests
 ruff check .                      # lint (same as CI)
 python security.py                # SSRF-guard self-check
 ```
@@ -309,7 +309,7 @@ Competitor-Insight-Engine/
 │   ├── ruff.toml               # pinned lint rules (version pinned in CI)
 │   ├── record_demo.py          # records one real run for the keyless replay
 │   ├── README.md               # Backend/API notes
-│   └── tests/test_backend.py   # 21 offline unit tests (no keys / network)
+│   └── tests/test_backend.py   # 22 offline unit tests (no keys / network)
 ├── frontend/                   # Next.js BYOK UI → Vercel `web` service
 │   ├── app/page.tsx            # The app: form, provider/model dropdowns, report view
 │   ├── app/layout.tsx          # Fonts (next/font) + metadata
