@@ -501,6 +501,52 @@ select:focus {
   text-transform: uppercase;
   color: var(--muted-2);
 }
+/* ---------- replay ---------- */
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.actions .run {
+  flex: 1 1 260px;
+}
+.run.ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.run.ghost:hover:not(:disabled) {
+  border-color: var(--blue);
+  color: var(--text);
+}
+.panel-tab.replay {
+  background: var(--orange);
+  color: #12131a;
+}
+.replay-note {
+  margin: 10px 0 14px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  border-left: 2px solid var(--orange);
+  padding-left: 12px;
+}
+.replay-log {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: var(--muted);
+  background: #0d0f16;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px;
+  max-height: 380px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .foot .byline {
   color: var(--text);
   letter-spacing: 0.18em;

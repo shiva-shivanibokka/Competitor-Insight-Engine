@@ -11,6 +11,17 @@ const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL?.replace(/\/$/, "") ?? "
 const API = `${BACKEND_URL}/api`;
 
 type Model = { name: string; tier: string };
+type Recording = {
+  recorded_at: string;
+  company: string;
+  company_url: string;
+  max_competitors: number;
+  fast_model: string;
+  smart_model: string;
+  duration_seconds: number;
+  frames: { t: number; line: string }[];
+  report: string;
+};
 type Provider = {
   id: string;
   label: string;
@@ -40,6 +51,9 @@ export default function Home() {
   const [llmKeys, setLlmKeys] = useState<Record<string, string>>({});
   const [tavilyKey, setTavilyKey] = useState("");
   const [liveModels, setLiveModels] = useState<Record<string, string[]>>({});
+  const [recording, setRecording] = useState<Recording | null>(null);
+  const [replaying, setReplaying] = useState(false);
+  const [replayLines, setReplayLines] = useState<string[]>([]);
 
   const [companyUrl, setCompanyUrl] = useState("https://stripe.com");
   const [companyName, setCompanyName] = useState("Stripe");
@@ -121,6 +135,8 @@ export default function Home() {
     e.preventDefault();
     setError("");
     setReport("");
+    setRecording(null);
+    setReplayLines([]);
     if (!llmKey || !tavilyKey) {
       setError("Enter both your provider key and your Tavily key to run the analysis.");
       return;
@@ -148,6 +164,41 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
+  }
+
+  // A visitor with no keys would otherwise see a form and nothing else. This
+  // plays back a recording of an actual run -- its real log stream at its real
+  // pacing, compressed -- and then shows the report that run produced. It is
+  // labelled as a replay throughout; nothing here pretends to be executing.
+  async function playRecording() {
+    if (replaying) return;
+    setError("");
+    setReport("");
+    setReplayLines([]);
+    let run: Recording;
+    try {
+      const res = await fetch("/demo/run.json");
+      if (!res.ok) throw new Error();
+      run = await res.json();
+    } catch {
+      // No recording committed. Say so rather than showing a fabricated one.
+      setError("No recorded run is committed in this build.");
+      return;
+    }
+    setRecording(run);
+    setReplaying(true);
+    const SPEEDUP = 6; // the real run took ~70s; that is too long to sit through
+    let previous = 0;
+    for (const frame of run.frames) {
+      // frame.t is absolute seconds from the start of the run, so wait the gap
+      // to the previous frame rather than the timestamp itself.
+      const gap = Math.min(((frame.t - previous) * 1000) / SPEEDUP, 900);
+      previous = frame.t;
+      if (gap > 0) await new Promise((r) => setTimeout(r, gap));
+      setReplayLines((prev) => [...prev, frame.line]);
+    }
+    setReport(run.report);
+    setReplaying(false);
   }
 
   function download() {
@@ -306,9 +357,19 @@ export default function Home() {
             </p>
           </section>
 
-          <button className="run" type="submit" disabled={loading}>
-            {loading ? "Scanning the market…" : "Generate report"}
-          </button>
+          <div className="actions">
+            <button className="run" type="submit" disabled={loading || replaying}>
+              {loading ? "Scanning the market…" : "Generate report"}
+            </button>
+            <button
+              className="run ghost"
+              type="button"
+              onClick={playRecording}
+              disabled={loading || replaying}
+            >
+              {replaying ? "Replaying…" : "Watch a recorded run — no keys"}
+            </button>
+          </div>
         </form>
 
         <section className="panel output result">
@@ -317,9 +378,29 @@ export default function Home() {
               <span className="panel-tab err">Signal lost</span>
               <p>{error}</p>
             </div>
+          ) : replaying ? (
+            <div className="await">
+              <span className="panel-tab replay">Replay</span>
+              <p className="replay-note">
+                Recorded {recording?.recorded_at} against {recording?.company_url} —{" "}
+                {recording?.max_competitors} competitors, {recording?.fast_model} for extraction and{" "}
+                {recording?.smart_model} for the report. It took{" "}
+                {Math.round(recording?.duration_seconds ?? 0)}s; this plays at 6×. Nothing is
+                executing now.
+              </p>
+              <pre className="replay-log">{replayLines.join("\n")}</pre>
+            </div>
           ) : report ? (
             <>
-              <span className="panel-tab">Field briefing</span>
+              <span className="panel-tab">{recording ? "Recorded briefing" : "Field briefing"}</span>
+              {recording && (
+                <p className="replay-note">
+                  This is the report from a real run recorded {recording.recorded_at} —{" "}
+                  {recording.company}, {recording.max_competitors} competitors,{" "}
+                  {Math.round(recording.duration_seconds)}s, {recording.smart_model}. Enter your own
+                  keys above to run it live against any company.
+                </p>
+              )}
               <div className="out-actions">
                 <button type="button" onClick={() => navigator.clipboard.writeText(report)}>
                   Copy

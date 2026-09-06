@@ -266,6 +266,37 @@ def test_routes_are_served_with_and_without_the_api_prefix():
         assert rejected.status_code == 400, prefix
 
 
+# --- the committed recording must never carry a key ---
+
+def test_recorded_run_is_well_formed_and_secret_free():
+    """The replay is a real run's output committed as a static file.
+
+    That makes it the one artifact in this repo that could publish a key by
+    accident, and the one nobody would think to re-read before shipping. If it
+    is absent the replay simply isn't offered, which is fine; if it is present
+    it has to be clean.
+    """
+    import json
+    import re
+
+    run = Path(__file__).resolve().parents[2] / "frontend" / "public" / "demo" / "run.json"
+    if not run.is_file():
+        return  # no recording committed; the UI says so rather than faking one
+
+    raw = run.read_text(encoding="utf-8")
+    secrets = re.findall(r"sk-[A-Za-z0-9_\-]{8,}|tvly-[A-Za-z0-9_\-]{8,}|gsk_[A-Za-z0-9_\-]{8,}", raw)
+    assert not secrets, f"key-shaped string in the committed recording: {secrets[:1]}"
+
+    d = json.loads(raw)
+    for field in ("recorded_at", "company", "duration_seconds", "smart_model", "frames", "report"):
+        assert field in d, f"recording is missing {field}"
+    assert d["frames"], "a recording with no frames would replay as a blank panel"
+    assert d["report"].strip(), "a recording with no report has nothing to show at the end"
+    # Timestamps drive the playback delays; unsorted ones produce negative gaps.
+    times = [f["t"] for f in d["frames"]]
+    assert times == sorted(times), "frame timestamps are not monotonic"
+
+
 # --- report.py helpers ---
 
 def test_normalise_url_prepends_scheme():

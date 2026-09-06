@@ -2,7 +2,12 @@ import os
 
 from dotenv import load_dotenv
 
-load_dotenv(override=True)
+# No override=True. A real environment variable must win over a .env file:
+# with override on, the placeholder ANTHROPIC_API_KEY sitting in this repo's
+# .env (copied from .env.example) silently replaced a valid key already in the
+# environment, and the run failed with a 401 that pointed at the key rather
+# than at the file that had just overwritten it.
+load_dotenv()
 
 # All supported providers and their models.
 # To add a new provider, just add a new entry here.
