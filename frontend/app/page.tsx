@@ -91,7 +91,13 @@ export default function Home() {
       })
         .then((r) => (r.ok ? r.json() : null))
         .then((d) => {
-          if (d?.models?.length) setLiveModels((m) => ({ ...m, [providerId]: d.models }));
+          if (!d?.models?.length) return;
+          setLiveModels((m) => ({ ...m, [providerId]: d.models }));
+          // If the selected model isn't in the provider's real list, move to
+          // one that is. A <select> whose value matches no option falls back
+          // to showing the first one, while state keeps the old name — so the
+          // dropdown would show one model and the run would use another.
+          setModel((current) => (d.models.includes(current) ? current : d.models[0]));
         })
         .catch(() => {
           /* an unusable key just leaves the built-in list in place */
