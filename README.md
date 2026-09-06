@@ -42,6 +42,7 @@ It's built as a **portfolio piece**: a real, deployed, full-stack system rather 
 - **Six LLM providers, one code path** — Anthropic, Google Gemini, Groq, OpenAI, Mistral, and local Ollama, all through a single OpenAI-compatible client. Switching models changes no code.
 - **SSRF-hardened scraping** — every fetch (and every redirect it would follow) is checked against a public-IP guard.
 - **Concurrent competitor profiling** — competitors are scraped and profiled in a bounded thread pool to keep total runtime within the platform's request timeout.
+- **Watchable without keys** — a recording of a real run replays in the browser, so you can see what the tool produces before deciding whether to fetch two API keys.
 - **Fails loudly, never silently** — validation and clear error messages at every step of the pipeline.
 
 ---
@@ -91,6 +92,38 @@ flowchart LR
 Because the backend fetches arbitrary user-supplied URLs, it's a Server-Side Request Forgery vector. `backend/security.py` resolves each target host and refuses any that map to a private, loopback, link-local, reserved, or cloud-metadata address (e.g. `169.254.169.254`). Crucially, the guard re-runs on **every redirect hop** — a page that 302-redirects toward an internal address is not followed. The domain blocklist matches on the parsed host with a boundary check (so `x.com` in the blocklist can't accidentally match `netflix.com`).
 
 **What it does not defend against**, stated rather than implied: the guard resolves the host, then `requests` resolves it again to open the socket. A DNS entry that answers with a public address the first time and a private one the second — a rebinding attack — would slip between those two lookups. Closing it properly means pinning the resolved IP into the connection, which this does not do. It is a real limit of a check that validates a name rather than a socket.
+
+---
+
+## The recorded run
+
+BYOK has an obvious cost: someone who opens the link without an Anthropic key
+*and* a Tavily key sees a form and nothing else. That is the entire product for
+most people who click through.
+
+So **Watch a recorded run** replays an actual run. `backend/record_demo.py`
+executes the real pipeline and captures its real log stream with real
+timestamps plus the report it produced; the page plays that back at 6x into the
+same output panel, then renders the report. The one committed here is Stripe,
+4 competitors, `claude-haiku-4-5` for extraction and `claude-sonnet-5` for the
+report -- 67 log frames over a true 70.6 seconds.
+
+It is labelled as a replay wherever it appears, with the date, the models and
+the real duration, and it says plainly that nothing is executing. Nothing is
+simulated and nothing is re-enacted. If no recording is committed the button
+says so rather than showing a fabricated one, and the live form is untouched --
+enter your own keys and it runs against any company you name.
+
+Re-record it with:
+
+```bash
+cd backend && python record_demo.py --company Stripe --url https://stripe.com
+```
+
+Keys are scrubbed on the way out, the recorder asserts none survived, and a
+test re-checks the committed file. That file is the one artifact in this repo
+that could publish a key by accident and the one nobody would think to re-read
+before shipping.
 
 ---
 
@@ -184,7 +217,7 @@ In the deployed app you pick the provider + model in the UI. For local/notebook 
 
 ### Try the hosted app
 
-Open **[competitor-insight-engine.vercel.app](https://competitor-insight-engine.vercel.app)**, pick a provider + model, paste your key(s), and generate a report. The fastest free path: a free **Groq** key (`llama-3.3-70b-versatile`) + a free **Tavily** key. Keys stay in your browser.
+Open **[competitor-insight-engine.vercel.app](https://competitor-insight-engine.vercel.app)**. **Watch a recorded run** needs no keys at all. To run it live against a company of your own, pick a provider + model and paste your key(s). The fastest free path: a free **Groq** key (`llama-3.3-70b-versatile`) + a free **Tavily** key. Keys stay in your browser.
 
 ### Run it locally
 
@@ -274,12 +307,14 @@ Competitor-Insight-Engine/
 │   ├── requirements.txt        # Pinned Python dependencies
 │   ├── Dockerfile              # for self-hosting; the deployment builds from source
 │   ├── ruff.toml               # pinned lint rules (version pinned in CI)
+│   ├── record_demo.py          # records one real run for the keyless replay
 │   ├── README.md               # Backend/API notes
 │   └── tests/test_backend.py   # 21 offline unit tests (no keys / network)
 ├── frontend/                   # Next.js BYOK UI → Vercel `web` service
 │   ├── app/page.tsx            # The app: form, provider/model dropdowns, report view
 │   ├── app/layout.tsx          # Fonts (next/font) + metadata
 │   ├── app/globals.css         # Styling
+│   ├── public/demo/run.json    # the committed recording (real run, no keys in it)
 │   └── package.json
 ├── vercel.json                 # the two services and the /api/* rewrite
 ├── competitor_intel.ipynb      # Optional — run the pipeline locally

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -54,6 +54,7 @@ export default function Home() {
   const [recording, setRecording] = useState<Recording | null>(null);
   const [replaying, setReplaying] = useState(false);
   const [replayLines, setReplayLines] = useState<string[]>([]);
+  const logRef = useRef<HTMLPreElement | null>(null);
 
   const [companyUrl, setCompanyUrl] = useState("https://stripe.com");
   const [companyName, setCompanyName] = useState("Stripe");
@@ -124,6 +125,13 @@ export default function Home() {
     if (typeof window === "undefined") return;
     sessionStorage.setItem(KEYS_STORAGE, JSON.stringify({ llm: llmKeys, tavily: tavilyKey }));
   }, [llmKeys, tavilyKey]);
+
+  // Follow the log as it streams. Without this the pane holds the first few
+  // lines while the run scrolls on underneath, so the replay looks stuck.
+  useEffect(() => {
+    const el = logRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [replayLines]);
 
   function onProviderChange(id: string) {
     setProviderId(id);
@@ -206,7 +214,10 @@ export default function Home() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `${companyName.replace(/\W+/g, "_").toLowerCase()}_competitor_report.md`;
+    // Name the file after what the report is about. When a recording is on
+    // screen that is the recorded company, not whatever is in the form.
+    const subject = recording?.company ?? companyName;
+    a.download = `${subject.replace(/\W+/g, "_").toLowerCase()}_competitor_report.md`;
     a.click();
     URL.revokeObjectURL(url); // otherwise every download leaks the blob for the tab's lifetime
   }
@@ -388,7 +399,9 @@ export default function Home() {
                 {Math.round(recording?.duration_seconds ?? 0)}s; this plays at 6×. Nothing is
                 executing now.
               </p>
-              <pre className="replay-log">{replayLines.join("\n")}</pre>
+              <pre className="replay-log" ref={logRef}>
+                {replayLines.join("\n")}
+              </pre>
             </div>
           ) : report ? (
             <>
