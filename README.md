@@ -10,6 +10,8 @@
 
 **▶ Live demo: [competitor-insight-engine.vercel.app](https://competitor-insight-engine.vercel.app)** — bring your own model key (Groq/Gemini have free tiers); it never leaves your browser.
 
+Built by Shivani Bokka.
+
 ---
 
 ## Recruiter TL;DR
@@ -17,6 +19,7 @@
 - **What it does:** Enter one company's URL and it autonomously scrapes the site, finds that company's real competitors via live web search, profiles each one with an LLM, and generates a structured competitive-intelligence report (overview, side-by-side matrix, strategic recommendations).
 - **Hardest problem solved:** Safely fetching *arbitrary user-supplied URLs* from a public server. The scraper is a textbook SSRF vector, so every outbound request — including each redirect hop — is validated against a DNS-resolving guard that rejects private, loopback, and cloud-metadata addresses.
 - **Why it's cheap to run publicly:** A **BYOK** (bring-your-own-key) design means every visitor supplies their own API keys, held only in their browser tab and sent straight to the backend — so the project costs its owner nothing to host and stores no user secrets.
+- **The bug worth reading about:** the model dropdown was a hardcoded list, and one of its entries had been retired by the provider months earlier. It 404'd for anyone who selected it, and nothing in the codebase could notice. The fix was to stop hardcoding: the app now asks the provider which models a given key can use. See [Keeping the model list honest](#keeping-the-model-list-honest).
 
 ---
 
@@ -50,11 +53,9 @@ flowchart LR
     subgraph Browser["User's Browser"]
         UI["Next.js UI<br/>(BYOK keys in sessionStorage)"]
     end
-    subgraph Vercel["Vercel"]
-        FE["Static Next.js frontend"]
-    end
-    subgraph GCP["Google Cloud Run (Docker)"]
-        API["FastAPI<br/>/health · /providers · /report"]
+    subgraph Vercel["One Vercel project, two services"]
+        FE["web service<br/>Next.js (static)"]
+        API["api service<br/>FastAPI, /api/*"]
         PIPE["7-step pipeline<br/>scrape → search → filter → profile → report"]
         SSRF["SSRF guard<br/>(validates every fetch + redirect)"]
     end
@@ -63,7 +64,7 @@ flowchart LR
     LLM["LLM provider<br/>(Anthropic / Groq / Gemini / OpenAI / …)"]
 
     UI -->|"static assets"| FE
-    UI -->|"POST /report + BYOK keys (HTTPS)"| API
+    UI -->|"POST /api/report + BYOK keys (same origin)"| API
     API --> PIPE
     PIPE --> SSRF
     SSRF -->|"guarded HTTP"| Sites
@@ -73,8 +74,9 @@ flowchart LR
 
 **Why this shape:**
 
-- **Split frontend/backend.** The pipeline runs ~30–90s (web scraping + multiple LLM calls). That comfortably exceeds a typical static-host function budget and does poorly with datacenter-IP scraping, so the long-running Python lives on **Cloud Run** (300s request budget, real outbound networking) while **Vercel** serves a fast static UI.
-- **Keys flow browser → backend directly.** The Vercel layer only serves static assets; the user's API keys are POSTed straight to the Cloud Run backend over HTTPS and used in-memory for that one request. The hosting layer never sees a secret, so there's nothing to leak.
+- **One project, two services.** `vercel.json` declares a `web` service rooted at `frontend/` and an `api` service rooted at `backend/`, with `/api/*` rewritten to the second. The UI and the pipeline deploy together from one push, and the browser calls the API same-origin — no CORS, no second host to keep alive, no environment variable that can point at the wrong backend.
+- **Why not a separate backend host.** It was on Google Cloud Run until September 2026, which worked, and then the account's trial was set to lapse and take the service with it. That is the failure mode worth designing against: a portfolio demo whose backend quietly expires. Vercel Hobby has no trial to end, and a `maxDuration` of 300s on the API service matches the request budget Cloud Run gave it, so nothing about the pipeline had to change.
+- **Keys flow browser → API directly.** The static layer never sees a key; they're POSTed to `/api/report` and used in-memory for that one request. There is no server-side secret to leak because there is no server-side secret.
 - **Two-layer competitor filter.** LLMs occasionally return a Reddit thread or a news article as a "competitor." Relying on the prompt alone isn't enough, so a code-level blocklist runs *both* before the LLM sees search content and after it returns URLs — a site has to beat both independent layers to appear.
 
 ### BYOK — keys never leak
@@ -87,6 +89,22 @@ flowchart LR
 ### Security — SSRF guard
 
 Because the backend fetches arbitrary user-supplied URLs, it's a Server-Side Request Forgery vector. `backend/security.py` resolves each target host and refuses any that map to a private, loopback, link-local, reserved, or cloud-metadata address (e.g. `169.254.169.254`). Crucially, the guard re-runs on **every redirect hop** — a page that 302-redirects toward an internal address is not followed. The domain blocklist matches on the parsed host with a boundary check (so `x.com` in the blocklist can't accidentally match `netflix.com`).
+
+**What it does not defend against**, stated rather than implied: the guard resolves the host, then `requests` resolves it again to open the socket. A DNS entry that answers with a public address the first time and a private one the second — a rebinding attack — would slip between those two lookups. Closing it properly means pinning the resolved IP into the connection, which this does not do. It is a real limit of a check that validates a name rather than a socket.
+
+---
+
+## Keeping the model list honest
+
+The provider/model dropdowns started as a hardcoded table in `config.py`. That table listed `claude-3-haiku-20240307` long after Anthropic retired it, so a visitor who picked it got a 404 partway through a run and no explanation. Nothing in the repo could have caught it: the name was a valid string, the tests were offline, and CI was green.
+
+Two changes, because the obvious one alone doesn't hold:
+
+1. **Ask the provider.** `POST /api/models` returns the models a given key can actually use, via the OpenAI-compatible `/v1/models` every provider here exposes. The UI calls it as soon as a key is pasted and replaces its dropdown with the answer, and `/api/report` checks an unrecognised model against the provider rather than refusing it from a stale local list. The built-in catalogue is now a first-paint fallback for visitors who haven't entered a key yet.
+
+2. **Stop hardcoding model quirks too.** Updating the catalogue to current models immediately broke them for a different reason: newer Anthropic models reject `temperature` outright with a 400, and every call in this pipeline sends one. Replacing a stale list of model *names* with a hand-written list of model *behaviours* would rot exactly the same way, so `llm_call` retries without `temperature` on that specific error and remembers which models it applies to. A 400 about anything else is still raised.
+
+The general lesson, which cost a live 404 to learn: **a hardcoded list describing someone else's service is a claim with no expiry date on it.** Either ask the service, or expect the list to be wrong eventually and silently.
 
 ---
 
@@ -123,23 +141,22 @@ A clean Markdown report with five sections: **Company Overview**, **Competitor P
 | LLM client | **openai** SDK | 2.31 | Used as a *universal* client — every provider exposes an OpenAI-compatible API |
 | Frontend | **Next.js** (App Router) + React + TypeScript | 14.2 / 18.3 / 5.5 | Fast static hosting, `next/font`, first-class Vercel deploy |
 | Report rendering | **react-markdown** + **remark-gfm** | 9.0 / 4.0 | Renders the GFM tables in the report |
-| Backend host | **Google Cloud Run** (Docker) | — | 300s request budget + real outbound networking for scraping |
-| Frontend host | **Vercel** | — | Static Next.js hosting with git auto-deploy |
+| Hosting | **Vercel** (two services, one project) | — | Static UI and a 300s Python service deploy together; no second host, nothing to expire |
 | CI | **GitHub Actions** | — | Lint (ruff) + tests on the backend, build on the frontend |
 
 ---
 
 ## Skills demonstrated
 
-- **RESTful API design** — a FastAPI service with typed request/response models (`/health`, `/providers`, `/report`).
+- **RESTful API design** — a FastAPI service with typed request/response models (`/health`, `/providers`, `/models`, `/report`).
 - **LLM application development** — a multi-step, multi-model pipeline that chains outputs (one call's result feeds the next), with structured-output prompting and a tool call (web search).
 - **Application security** — SSRF prevention with redirect-hop revalidation, input validation at the boundary, and a secretless BYOK design.
-- **Cloud deployment (GCP + Vercel)** — a containerized backend on Google Cloud Run and a static frontend on Vercel, deployed independently.
-- **Containerization & Docker** — the backend ships as a Docker image built and run on Cloud Run.
+- **Deployment and migration** — originally a container on Google Cloud Run plus a static Vercel frontend; migrated to a single Vercel project with two services when the Cloud Run account was set to lapse, without changing the pipeline.
+- **Containerization & Docker** — the API is a plain container (`backend/Dockerfile`) and can be self-hosted as one; the current deployment builds it from source instead.
 - **CI/CD** — GitHub Actions runs linting and the test suite on every push.
 - **Concurrent systems design** — bounded-thread-pool fan-out for competitor processing to stay within the request timeout.
 - **Provider-agnostic integration** — one OpenAI-compatible client routing to six LLM providers with zero per-provider code.
-- **Test-driven development** — 12 offline unit tests covering the security guard, blocklist, and parsing edge cases; the most recent fixes were written test-first.
+- **Test-driven development** — 20 offline unit tests covering the security guard, blocklist, parsing edge cases, the temperature-rejection retry, and that every route answers under both mount points.
 - **System design & tradeoff reasoning** — documented why the frontend/backend are split and why competitor filtering is two-layered.
 
 ---
@@ -152,10 +169,10 @@ In the deployed app you pick the provider + model in the UI. For local/notebook 
 
 | Provider | Example models | Cost |
 |----------|---------------|------|
-| **Anthropic** (default) | `claude-haiku-4-5`, `claude-sonnet-4-5`, `claude-opus-4-5` | Paid |
+| **Anthropic** (default) | `claude-sonnet-5`, `claude-haiku-4-5`, `claude-opus-5` | Paid |
 | Groq | `llama-3.3-70b-versatile`, `llama-3.1-8b-instant`, `gemma2-9b-it` | Free |
-| Google Gemini | `gemini-2.0-flash`, `gemini-1.5-pro` | Free |
-| OpenAI | `gpt-4o`, `gpt-4o-mini` | Paid |
+| Google Gemini | `gemini-2.5-flash`, `gemini-2.0-flash` | Free |
+| OpenAI | `gpt-4o-mini`, `gpt-4o` | Paid |
 | Mistral | `mistral-large-latest`, `open-mistral-7b` | Free tier |
 | Ollama (local) | `llama3.2`, `phi3`, `gemma3`, `deepseek-r1` | Free (runs on your machine) |
 
@@ -204,29 +221,40 @@ Offline unit tests — no API keys and no network needed (LLM/Tavily calls are m
 
 ```bash
 cd backend
-python -m pytest tests/ -q        # 12 tests
+python -m pytest tests/ -q        # 20 tests
 ruff check .                      # lint (same as CI)
 python security.py                # SSRF-guard self-check
 ```
 
-The suite covers the SSRF guard (including the redirect-bypass case), the domain blocklist (including substring false-positives), competitor dedup/filtering, malformed-LLM-output handling, and the URL/field parsing helpers. GitHub Actions runs the same lint + tests on every push, plus a frontend build.
+The suite covers the SSRF guard (including the redirect-bypass case), the domain blocklist (including substring false-positives), competitor dedup/filtering, malformed-LLM-output handling, the URL/field parsing helpers, the retry that drops `temperature` for models that reject it, and that every route answers under both `/x` and `/api/x`. GitHub Actions runs the same lint + tests on every push, plus a frontend build.
+
+**ruff is pinned** (`ruff==0.16.3` in CI, rules in `backend/ruff.toml`). Unpinned, CI installs whatever shipped most recently, so the result tracks the day it ran rather than the commit — this repo was green in July and red on the identical tree two months later.
 
 ---
 
 ## Deployment
 
-**Backend → Google Cloud Run (Docker):**
-```bash
-cd backend
-gcloud run deploy competitor-intelligence-engine \
-  --source . --region us-central1 --allow-unauthenticated
-```
-The `Dockerfile` binds Uvicorn to Cloud Run's injected `$PORT`. It's BYOK, so there are no secrets to configure. Optionally set `ALLOWED_ORIGINS` (comma-separated) to lock CORS to your frontend origin.
+Both halves are one Vercel project. Import the repo, leave **Root Directory** at the repo root, and deploy — `vercel.json` does the rest:
 
-**Frontend → Vercel:**
-1. Import the repo and set the **Root Directory** to `frontend` (the app is in a subdirectory).
-2. Add env var `NEXT_PUBLIC_BACKEND_URL` = your Cloud Run URL.
-3. Deploy — Vercel auto-detects Next.js and auto-deploys on every push to `main`.
+```json
+"services": {
+  "web": { "root": "frontend/" },
+  "api": { "root": "backend/", "framework": "fastapi", "entrypoint": "app:app",
+           "functions": { "app.py": { "maxDuration": 300 } } }
+}
+```
+
+There are **no environment variables to set**. It's BYOK, so the deployment holds no keys, and the frontend reaches the API same-origin at `/api/*` rather than through a configured URL. `ALLOWED_ORIGINS` exists for the case where you host the API somewhere else and need to narrow CORS; same-origin doesn't need it.
+
+Pushes to `main` redeploy both services together.
+
+**Self-hosting the API instead.** It's an ordinary container:
+
+```bash
+cd backend && docker build -t cie-api . && docker run -p 7860:7860 cie-api
+```
+
+Then point the frontend at it with `NEXT_PUBLIC_BACKEND_URL=http://localhost:7860`.
 
 ---
 
@@ -234,8 +262,8 @@ The `Dockerfile` binds Uvicorn to Cloud Run's injected `$PORT`. It's BYOK, so th
 
 ```
 Competitor-Insight-Engine/
-├── backend/                    # FastAPI service → Google Cloud Run (Docker)
-│   ├── app.py                  # API: /health, /providers, /report (Pydantic-validated)
+├── backend/                    # FastAPI service → Vercel `api` service
+│   ├── app.py                  # API: /health, /providers, /models, /report (Pydantic-validated)
 │   ├── report.py               # Orchestrates the 7-step pipeline; concurrent competitor profiling
 │   ├── analyzer.py             # LLM calls — extraction + report generation; provider routing
 │   ├── searcher.py             # Tavily search — finds competitors in real time
@@ -244,14 +272,16 @@ Competitor-Insight-Engine/
 │   ├── blocklist.py            # Single source of truth for non-competitor domains
 │   ├── config.py               # Providers, models, tiers, default models
 │   ├── requirements.txt        # Pinned Python dependencies
-│   ├── Dockerfile              # Cloud Run container (binds to $PORT)
+│   ├── Dockerfile              # for self-hosting; the deployment builds from source
+│   ├── ruff.toml               # pinned lint rules (version pinned in CI)
 │   ├── README.md               # Backend/API notes
-│   └── tests/test_backend.py   # 12 offline unit tests (no keys / network)
-├── frontend/                   # Next.js BYOK UI → Vercel
+│   └── tests/test_backend.py   # 20 offline unit tests (no keys / network)
+├── frontend/                   # Next.js BYOK UI → Vercel `web` service
 │   ├── app/page.tsx            # The app: form, provider/model dropdowns, report view
 │   ├── app/layout.tsx          # Fonts (next/font) + metadata
 │   ├── app/globals.css         # Styling
 │   └── package.json
+├── vercel.json                 # the two services and the /api/* rewrite
 ├── competitor_intel.ipynb      # Optional — run the pipeline locally
 ├── .github/workflows/ci.yml    # CI: lint + test backend, build frontend
 ├── .env.example                # API-key template for local/notebook use
@@ -284,8 +314,9 @@ An LLM alone can still return a Reddit thread or a news article as a "competitor
 - **JavaScript-heavy sites** scrape poorly (static HTML fetch only) — the report warns when a page yields little text. A headless-browser fallback is a natural next step.
 - **No persistence or caching** — every run is fresh; repeat lookups re-scrape and re-search. A cache layer would cut latency and API spend.
 - **Best-effort scraping** — some sites bot-wall the scraper; those competitors are skipped rather than worked around.
-- **Logging is `print`-based**, not structured — fine for Cloud Run stdout, but structured logging + metrics would be the production upgrade.
-- **Single region** (Cloud Run `us-central1`); no autoscaling tuning beyond defaults.
+- **Logging is `print`-based**, not structured — readable in the platform's log stream, but structured logging + metrics would be the production upgrade.
+- **The SSRF guard validates a hostname, not a socket**, so DNS rebinding is out of scope. See the security note above.
+- **The Gemini, Groq and OpenAI catalogues in `config.py` are unverified** — there was no key on hand to check them against. They only matter before a visitor enters a key, after which the list comes from the provider.
 
 ---
 

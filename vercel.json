@@ -7,16 +7,16 @@
     "api": {
       "root": "backend/",
       "framework": "fastapi",
-      "entrypoint": "app:app"
+      "entrypoint": "app:app",
+      "functions": {
+        "app.py": {
+          "maxDuration": 300
+        }
+      }
     }
   },
   "rewrites": [
     { "source": "/api/(.*)", "destination": { "service": "api" } },
     { "source": "/(.*)", "destination": { "service": "web" } }
-  ],
-  "functions": {
-    "backend/app.py": {
-      "maxDuration": 300
-    }
-  }
+  ]
 }

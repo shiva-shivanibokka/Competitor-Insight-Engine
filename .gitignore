@@ -15,3 +15,4 @@ frontend/out/
 # Local audit deliverables — not committed
 AUDIT.md
 PLAN.md
+.vercel

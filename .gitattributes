@@ -1,0 +1,4 @@
+# Keep line endings LF in the repo. A Windows checkout that commits CRLF has
+# broken Linux runners here before: a shell reading a CRLF list rejects every
+# line and it presents as a total outage rather than an encoding fault.
+* text=auto eol=lf
