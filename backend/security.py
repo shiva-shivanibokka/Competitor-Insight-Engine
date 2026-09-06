@@ -12,6 +12,8 @@ blocks DNS names that point at internal ranges, not just raw-IP URLs.
 
 import ipaddress
 import socket
+from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import TimeoutError as FuturesTimeout
 from urllib.parse import urljoin, urlparse
 
 import requests
@@ -33,6 +35,30 @@ def _ip_is_public(ip_str: str) -> bool:
     )
 
 
+DNS_TIMEOUT = 5.0
+
+# One executor for the process. getaddrinfo releases the GIL, so a stuck lookup
+# occupies a worker rather than the request thread.
+_resolver = ThreadPoolExecutor(max_workers=8, thread_name_prefix="dns")
+
+
+def _resolve(host: str):
+    """getaddrinfo with a deadline.
+
+    `socket.getaddrinfo` takes no timeout and ignores `setdefaulttimeout`, so a
+    host whose DNS server simply never answers blocks the calling thread for as
+    long as the resolver wants. On a platform that caps a request at 300s that
+    is the whole budget spent on a name lookup, and it presents as the service
+    hanging rather than as a bad URL.
+    """
+    try:
+        return _resolver.submit(socket.getaddrinfo, host, None).result(timeout=DNS_TIMEOUT)
+    except FuturesTimeout as e:
+        # The worker thread stays blocked until the OS gives up; that is the
+        # cost of a resolver with no cancellation. The request does not wait.
+        raise TimeoutError(f"DNS lookup for {host!r} exceeded {DNS_TIMEOUT}s") from e
+
+
 def assert_public_url(url: str) -> None:
     """Raise BlockedURLError unless url is http(s) to a publicly-routable host."""
     parsed = urlparse(url)
@@ -44,9 +70,11 @@ def assert_public_url(url: str) -> None:
 
     try:
         # Resolve every address the host maps to and check all of them.
-        infos = socket.getaddrinfo(host, None)
+        infos = _resolve(host)
     except socket.gaierror as e:
         raise BlockedURLError(f"Could not resolve host {host!r}: {e}") from e
+    except TimeoutError as e:
+        raise BlockedURLError(f"Timed out resolving host {host!r}") from e
 
     for info in infos:
         ip_str = info[4][0]

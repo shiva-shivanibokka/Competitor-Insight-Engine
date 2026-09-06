@@ -1,0 +1,281 @@
+{
+  "recorded_at": "2026-09-06",
+  "company": "Stripe",
+  "company_url": "https://stripe.com",
+  "max_competitors": 4,
+  "competitors_profiled": 4,
+  "fast_model": "claude-haiku-4-5",
+  "smart_model": "claude-sonnet-5",
+  "duration_seconds": 72.4,
+  "frames": [
+    {
+      "t": 0.0,
+      "line": ""
+    },
+    {
+      "t": 0.0,
+      "line": "============================================================"
+    },
+    {
+      "t": 0.0,
+      "line": " Competitor Intelligence Report for: Stripe"
+    },
+    {
+      "t": 0.0,
+      "line": "============================================================"
+    },
+    {
+      "t": 0.0,
+      "line": ""
+    },
+    {
+      "t": 0.0,
+      "line": "[Step 1] Checking and scraping main company website..."
+    },
+    {
+      "t": 0.36,
+      "line": "  [scraper] Scraping: https://stripe.com"
+    },
+    {
+      "t": 1.71,
+      "line": "  [scraper] Could not fetch https://stripe.com/product: 404 Client Error: Not Found for url: https://stripe.com/product"
+    },
+    {
+      "t": 2.5,
+      "line": ""
+    },
+    {
+      "t": 2.5,
+      "line": "[Step 2] Extracting main company profile..."
+    },
+    {
+      "t": 2.5,
+      "line": "  [step] Extracting company profile..."
+    },
+    {
+      "t": 2.54,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 8.22,
+      "line": ""
+    },
+    {
+      "t": 8.22,
+      "line": "  Profile extracted:"
+    },
+    {
+      "t": 8.22,
+      "line": "COMPANY NAME: Stripe"
+    },
+    {
+      "t": 8.22,
+      "line": ""
+    },
+    {
+      "t": 8.22,
+      "line": "INDUSTRY: Financial Technology / Payments Infrastructure"
+    },
+    {
+      "t": 8.22,
+      "line": ""
+    },
+    {
+      "t": 8.22,
+      "line": "PRODUCT OR SERVICE: Stripe provides programmable financial infrastructure enabling businesses to accept payments, manage billing, issue cards, and implement custom revenue models globally. They offer a comprehensive suit..."
+    },
+    {
+      "t": 8.22,
+      "line": ""
+    },
+    {
+      "t": 8.22,
+      "line": "[Step 3] Searching for competitors via Tavily..."
+    },
+    {
+      "t": 8.22,
+      "line": "  [searcher] Searching: 'top direct competitors of Stripe in Financial Technology / Payments Infrastructure'"
+    },
+    {
+      "t": 11.54,
+      "line": "  [searcher] Retrieved 10 search results."
+    },
+    {
+      "t": 11.54,
+      "line": ""
+    },
+    {
+      "t": 11.54,
+      "line": "[Step 4] Identifying and ranking competitors..."
+    },
+    {
+      "t": 11.54,
+      "line": "  [step] Extracting and ranking real competitors from search results..."
+    },
+    {
+      "t": 11.55,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 16.19,
+      "line": "  [step] 20 competitor(s) passed validation."
+    },
+    {
+      "t": 16.19,
+      "line": ""
+    },
+    {
+      "t": 16.19,
+      "line": "  Top 4 competitor(s) selected:"
+    },
+    {
+      "t": 16.19,
+      "line": "    1. Adyen (https://www.adyen.com)"
+    },
+    {
+      "t": 16.19,
+      "line": "    2. PayPal (https://www.paypal.com)"
+    },
+    {
+      "t": 16.19,
+      "line": "    3. Square (https://www.squareup.com)"
+    },
+    {
+      "t": 16.19,
+      "line": "    4. Braintree (https://www.braintreepayments.com)"
+    },
+    {
+      "t": 16.19,
+      "line": ""
+    },
+    {
+      "t": 16.19,
+      "line": "[Step 5 & 6] Scraping and profiling competitors..."
+    },
+    {
+      "t": 16.19,
+      "line": ""
+    },
+    {
+      "t": 16.19,
+      "line": "  Processing: Adyen (https://www.adyen.com)"
+    },
+    {
+      "t": 16.19,
+      "line": ""
+    },
+    {
+      "t": 16.19,
+      "line": "  Processing: PayPal (https://www.paypal.com)"
+    },
+    {
+      "t": 16.19,
+      "line": ""
+    },
+    {
+      "t": 16.19,
+      "line": "  Processing: Square (https://www.squareup.com)"
+    },
+    {
+      "t": 16.19,
+      "line": ""
+    },
+    {
+      "t": 16.19,
+      "line": "  Processing: Braintree (https://www.braintreepayments.com)"
+    },
+    {
+      "t": 16.7,
+      "line": "  [scraper] Scraping: https://www.squareup.com"
+    },
+    {
+      "t": 16.78,
+      "line": "  [scraper] Scraping: https://www.adyen.com"
+    },
+    {
+      "t": 17.19,
+      "line": "  [scraper] Scraping: https://www.paypal.com"
+    },
+    {
+      "t": 17.28,
+      "line": "  [scraper] Scraping: https://www.braintreepayments.com"
+    },
+    {
+      "t": 18.13,
+      "line": "  [step] Extracting profile for: Square"
+    },
+    {
+      "t": 18.14,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 18.94,
+      "line": "  [step] Extracting profile for: Braintree"
+    },
+    {
+      "t": 18.94,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 21.02,
+      "line": "  [scraper] Could not fetch https://www.adyen.com/product: 404 Client Error: Not Found for url: https://www.adyen.com/product"
+    },
+    {
+      "t": 21.39,
+      "line": "  [scraper] Could not fetch https://www.paypal.com/product: 404 Client Error: Not Found for url: https://www.paypal.com/product"
+    },
+    {
+      "t": 22.02,
+      "line": "  [step] Extracting profile for: Adyen"
+    },
+    {
+      "t": 22.03,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 24.62,
+      "line": "  [scraper] Could not fetch https://www.paypal.com/pricing: 404 Client Error: Not Found for url: https://www.paypal.com/pricing"
+    },
+    {
+      "t": 24.62,
+      "line": "  [step] Extracting profile for: PayPal"
+    },
+    {
+      "t": 24.63,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 29.82,
+      "line": ""
+    },
+    {
+      "t": 29.82,
+      "line": "[Step 7] Generating full report using claude-sonnet-5..."
+    },
+    {
+      "t": 29.82,
+      "line": "  [step] Generating full intelligence report..."
+    },
+    {
+      "t": 29.83,
+      "line": "    [llm] anthropic | claude-sonnet-5"
+    },
+    {
+      "t": 30.18,
+      "line": "    [llm] claude-sonnet-5 rejects temperature — retrying without it"
+    },
+    {
+      "t": 72.35,
+      "line": ""
+    },
+    {
+      "t": 72.35,
+      "line": "[Done] Report generated successfully."
+    },
+    {
+      "t": 72.35,
+      "line": ""
+    }
+  ],
+  "report": "# Competitive Intelligence Report: Stripe\n\n---\n\n## 1. Company Overview\n\nStripe is a global financial infrastructure company that enables businesses — from solo founders to Fortune 100 enterprises — to accept payments, manage billing, issue cards, and build custom financial products across 160+ countries. Its core value proposition is developer-centric programmability: rather than a fixed product suite, Stripe offers composable APIs that let businesses build exactly the financial workflows they need, from simple checkout to complex multi-sided marketplace payouts (Connect) to embedded finance and crypto infrastructure.\n\nWith $1.9T in annual payment volume, 99.999% uptime, and adoption by 50% of Fortune 100 companies, Stripe has established itself as the default infrastructure layer for internet-native and scaling businesses. Its positioning is unambiguously developer- and enterprise-facing: reliability, API quality, and breadth of financial tooling (not consumer-facing convenience) are the core pillars of its brand. Stripe competes less on being a \"wallet\" or \"POS system\" and more on being the invisible financial backbone that ambitious, technically sophisticated companies build on top of.\n\n---\n\n## 2. Competitor Profiles\n\n**Adyen** — A premium, bank-licensed, enterprise-only platform built entirely in-house. Strength: unified stack (payments + issuing + banking) with genuine banking licenses in US/UK/EU, giving it more direct control over money movement than API-layer competitors. Positioning: reliability and control for large multinational enterprises; direct head-to-head competitor with Stripe at the top end of the market, but with less emphasis on developer experience/self-serve onboarding and more on white-glove enterprise relationships.\n\n**PayPal** — The dominant consumer-facing digital wallet, with checkout, P2P transfers, BNPL, savings, and crypto trading bundled into one consumer ecosystem. Strength: unmatched consumer brand trust and reach (hundreds of millions of wallet users), plus freemium accessibility. Weakness: not developer/infrastructure-oriented; competes with Stripe mainly indirectly (as a payment method Stripe itself supports) and directly only through its enterprise arm.\n\n**Square** — SMB and mid-market focused \"business operating system\" combining hardware POS, software, banking, and vertical tools (restaurants, retail, appointments). Strength: dominant in physical/omnichannel SMB commerce with owned hardware, a space Stripe has only recently entered (Terminal). Weakness: less suited for complex global, high-volume, or platform/marketplace use cases where Stripe excels.\n\n**Braintree** — PayPal's enterprise payments arm, offering global checkout with strong multi-method support (PayPal, Venmo, cards, wallets) and large-scale volume ($1.53T annually). Strength: leverages PayPal's brand recognition and consumer payment methods within an enterprise developer product. Weakness: perceived as less innovative/actively developed than Stripe, more of a mature, stable utility than a cutting-edge platform.\n\n---\n\n## 3. Competitive Matrix\n\n| Dimension | **Stripe** | Adyen | PayPal | Square | Braintree |\n|---|---|---|---|---|---|\n| **Product/Service** | Programmable financial infrastructure (payments, billing, issuing, crypto) | Unified enterprise payments + embedded finance platform | Consumer digital wallet + payments ecosystem | Business operating system (POS, hardware, software, banking) | Enterprise payment processing/checkout platform |\n| **Target Customers** | Solo founders → Fortune 100, global, developer-led | Large global enterprises | Individual consumers/online shoppers | Solo entrepreneurs → large chains, SMB/mid-market | Enterprise merchants |\n| **Pricing Model** | Usage-based + enterprise custom | Usage-based (fixed fee + method fees) | Freemium + paid premium features | Unknown/not specified | Enterprise custom |\n| **Key Features** | Global payments, subscriptions, Connect, Radar, Sigma, card issuing, crypto | Multi-channel payments, embedded finance, banking licenses | Wallet, BNPL, P2P transfer, savings, crypto trading | POS hardware, inventory, scheduling, loyalty, banking | Multi-method checkout, orchestration, fraud mgmt, global payouts |\n| **Unique Selling Points** | $1.9T volume, 99.999% uptime, top developer APIs, 50% of Fortune 100 | Banking licenses, in-house built stack, €1.4T volume | Massive consumer trust, all-in-one personal finance | First mobile reader, 4M+ sellers, SMB-to-enterprise range | Backed by PayPal, $1.53T volume, 25B transactions |\n| **Tone & Positioning** | Developer/enterprise, reliable & innovative, growth-enabling | Premium enterprise, control & compliance | Consumer-friendly, accessible, trusted | Inclusive SMB-to-enterprise, democratizing tech | Enterprise, security-conscious, scale-focused |\n\n---\n\n## 4. Market Standing\n\n**Overall Leader (Enterprise/Developer Infrastructure): Stripe**, closely contested by **Adyen**. Both dominate the high-end, global, API-driven enterprise segment, but from different angles — Stripe leads on developer experience and product breadth (crypto, Sigma analytics, Connect for platforms); Adyen leads on owning the regulatory/banking stack directly.\n\n- **Feature Leadership:** Stripe — broadest and most rapidly-iterating product suite (billing, issuing, crypto, fraud, analytics, treasury) unmatched in surface area by any competitor. Adyen is close on core payments/embedded finance but narrower in ancillary tooling (e.g., no direct crypto play, less developer-tooling emphasis).\n\n- **Pricing Leadership:** Ambiguous across the board — all major players use usage-based/custom pricing with no public rate transparency. **PayPal** is the standout on pricing accessibility, with a true freemium/no-code entry point for individuals and small merchants that Stripe doesn't match at the consumer level.\n\n- **Brand Leadership:** **PayPal** has the strongest raw consumer brand recognition (arguably the most recognized payments brand globally). Among developers/enterprises, **Stripe** has the strongest brand — synonymous with \"how to build payments\" for a generation of startups and increasingly enterprises.\n\n- **Target Market Reach:** **Square** and **PayPal** have the broadest reach into non-technical, offline, and consumer segments (physical retail, everyday consumers). **Stripe** and **Adyen** have superior reach into complex, global, digital-first, and platform/marketplace businesses. Stripe's international footprint (160+ countries) and self-serve onboarding give it an edge over Adyen in reaching smaller and mid-market international businesses, a segment Adyen underserves.\n\n**Summary ranking by segment:**\n1. Enterprise/Developer Infrastructure: **Stripe ≈ Adyen** (Stripe ahead on breadth/DX, Adyen ahead on banking control)\n2. SMB/Omnichannel Physical Commerce: **Square** leads\n3. Consumer Payments/Wallets: **PayPal** leads decisively\n4. Enterprise Checkout (mid-tier): **Braintree** trails Stripe/Adyen in innovation perception despite comparable volume\n\n---\n\n## 5. Strategic Recommendations\n\n1. **Close the banking-license gap with Adyen.** Adyen's US/UK/EU banking licenses let it offer issuing, accounts, and capital without third-party bank partners, reducing costs and increasing control. Stripe should accelerate its own banking-as-a-service/charter strategy (beyond partner-bank models) to match Adyen's structural cost and compliance advantages for large enterprise deals.\n\n2. **Strengthen SMB/offline retail presence to counter Square.** Square's integrated hardware + POS + vertical software (restaurants, retail, appointments) gives it a stickier, more \"operating system\"-like relationship with brick-and-mortar SMBs than Stripe Terminal currently offers. Stripe should invest in vertical-specific POS bundles and deeper in-person hardware/software integration to capture omnichannel SMBs currently defaulting to Square.\n\n3. **Build a consumer-facing trust layer to compete indirectly with PayPal/Venmo.** Stripe has no direct consumer brand or wallet-level trust with end-users, which matters at checkout conversion (shoppers recognize and prefer PayPal at checkout). Stripe should expand \"Link\" (its accelerated checkout product) with more aggressive consumer marketing to build recognition comparable to PayPal/Venmo at the point of purchase, improving conversion rates for its merchants.\n\n4. **Introduce clearer, more transparent pricing tiers for smaller merchants.** PayPal's freemium model lowers the barrier to entry for solo founders/micro-merchants. While Stripe already serves this segment, its usage-based-only pricing lacks the perceived \"free to start\" simplicity of PayPal. A published, simplified starter tier (with clear included features) could improve small-business acquisition and reduce PayPal's positioning advantage.\n\n5. **Differentiate crypto/stablecoin offering more aggressively.** Stripe's crypto/stablecoin infrastructure is a genuine point of differentiation versus Adyen, Square, and Braintree (none have comparable public crypto stacks). Stripe should market this more prominently as a forward-looking enterprise treasury/settlement solution, especially to global businesses facing FX friction — an area where Adyen's banking-license approach doesn't yet extend.\n\n6. **Deepen embedded finance/platform tooling to defend against Braintree's PayPal-method advantage.** Braintree's native access to PayPal and Venmo as payment methods gives it an edge in markets where PayPal/Venmo are default consumer choices. Stripe should ensure Connect and payment-method coverage keep pace with wallet-method proliferation (regional wallets, BNPL providers) to avoid ceding ground on payment-method breadth.\n\n7. **Invest in narrative around reliability/compliance parity with Adyen for regulated industries.** Adyen's banking licenses give it a compliance-story advantage in regulated sectors (financial services, high-risk verticals). Stripe should publish more transparent compliance/certification content and potentially pursue additional licensing to reduce enterprise procurement friction in these verticals, where Adyen currently has a perception edge."
+}

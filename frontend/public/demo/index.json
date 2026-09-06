@@ -1,0 +1,59 @@
+{
+  "runs": [
+    {
+      "slug": "atlassian",
+      "company": "Atlassian",
+      "company_url": "https://www.atlassian.com",
+      "recorded_at": "2026-09-06",
+      "max_competitors": 4,
+      "competitors_profiled": 4,
+      "duration_seconds": 60.6,
+      "smart_model": "claude-sonnet-5",
+      "report_chars": 9727
+    },
+    {
+      "slug": "duolingo",
+      "company": "Duolingo",
+      "company_url": "https://www.duolingo.com",
+      "recorded_at": "2026-09-06",
+      "max_competitors": 4,
+      "competitors_profiled": 4,
+      "duration_seconds": 65.2,
+      "smart_model": "claude-sonnet-5",
+      "report_chars": 11173
+    },
+    {
+      "slug": "hubspot",
+      "company": "HubSpot",
+      "company_url": "https://www.hubspot.com",
+      "recorded_at": "2026-09-06",
+      "max_competitors": 4,
+      "competitors_profiled": 3,
+      "duration_seconds": 70.8,
+      "smart_model": "claude-sonnet-5",
+      "report_chars": 11128
+    },
+    {
+      "slug": "shopify",
+      "company": "Shopify",
+      "company_url": "https://www.shopify.com",
+      "recorded_at": "2026-09-06",
+      "max_competitors": 4,
+      "competitors_profiled": 3,
+      "duration_seconds": 60.0,
+      "smart_model": "claude-sonnet-5",
+      "report_chars": 9084
+    },
+    {
+      "slug": "stripe",
+      "company": "Stripe",
+      "company_url": "https://stripe.com",
+      "recorded_at": "2026-09-06",
+      "max_competitors": 4,
+      "competitors_profiled": 4,
+      "duration_seconds": 72.4,
+      "smart_model": "claude-sonnet-5",
+      "report_chars": 10185
+    }
+  ]
+}

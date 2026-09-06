@@ -8,7 +8,7 @@
 ![Next.js 14](https://img.shields.io/badge/Next.js-14-000000?logo=next.js&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?logo=fastapi&logoColor=white)
 
-**▶ Live demo: [competitor-insight-engine.vercel.app](https://competitor-insight-engine.vercel.app)** — bring your own model key (Groq/Gemini have free tiers); it never leaves your browser.
+**▶ Live demo: [competitor-insight-engine.vercel.app](https://competitor-insight-engine.vercel.app)** — opens on recorded real runs, so **no keys are needed to watch it work**. Bring your own model key (Groq/Gemini have free tiers) to run it against a company of your choice; it never leaves your browser.
 
 Built by Shivani Bokka.
 
@@ -19,6 +19,7 @@ Built by Shivani Bokka.
 - **What it does:** Enter one company's URL and it autonomously scrapes the site, finds that company's real competitors via live web search, profiles each one with an LLM, and generates a structured competitive-intelligence report (overview, side-by-side matrix, strategic recommendations).
 - **Hardest problem solved:** Safely fetching *arbitrary user-supplied URLs* from a public server. The scraper is a textbook SSRF vector, so every outbound request — including each redirect hop — is validated against a DNS-resolving guard that rejects private, loopback, and cloud-metadata addresses.
 - **Why it's cheap to run publicly:** A **BYOK** (bring-your-own-key) design means every visitor supplies their own API keys, held only in their browser tab and sent straight to the backend — so the project costs its owner nothing to host and stores no user secrets.
+- **See it work in one click:** the page opens on recorded real runs, so you can watch the pipeline execute end to end without going and fetching two API keys first.
 - **The bug worth reading about:** the model dropdown was a hardcoded list, and one of its entries had been retired by the provider months earlier. It 404'd for anyone who selected it, and nothing in the codebase could notice. The fix was to stop hardcoding: the app now asks the provider which models a given key can use. See [Keeping the model list honest](#keeping-the-model-list-honest).
 
 ---
@@ -42,7 +43,7 @@ It's built as a **portfolio piece**: a real, deployed, full-stack system rather 
 - **Six LLM providers, one code path** — Anthropic, Google Gemini, Groq, OpenAI, Mistral, and local Ollama, all through a single OpenAI-compatible client. Switching models changes no code.
 - **SSRF-hardened scraping** — every fetch (and every redirect it would follow) is checked against a public-IP guard.
 - **Concurrent competitor profiling** — competitors are scraped and profiled in a bounded thread pool to keep total runtime within the platform's request timeout.
-- **Watchable without keys** — a recording of a real run replays in the browser, so you can see what the tool produces before deciding whether to fetch two API keys.
+- **Watchable without keys** — the app opens on a set of recorded real runs across different industries. Pick one and watch the pipeline execute; the live form is the second tab.
 - **Fails loudly, never silently** — validation and clear error messages at every step of the pipeline.
 
 ---
@@ -95,35 +96,49 @@ Because the backend fetches arbitrary user-supplied URLs, it's a Server-Side Req
 
 ---
 
-## The recorded run
+## Two tabs: recorded runs, and your own
 
-BYOK has an obvious cost: someone who opens the link without an Anthropic key
-*and* a Tavily key sees a form and nothing else. That is the entire product for
-most people who click through.
+BYOK has an obvious cost. Someone who opens the link without an Anthropic key
+*and* a Tavily key sees a form demanding two API keys and leaves — which for
+most people who click through is the entire product.
 
-So **Watch a recorded run** replays an actual run. `backend/record_demo.py`
-executes the real pipeline and captures its real log stream with real
-timestamps plus the report it produced; the page plays that back at 6x into the
-same output panel, then renders the report. The one committed here is Stripe,
-4 competitors, `claude-haiku-4-5` for extraction and `claude-sonnet-5` for the
-report -- 67 log frames over a true 70.6 seconds.
+So the app opens on **Recorded runs**, not on the form. Pick a company from the
+list and watch the pipeline execute against it: the real log stream at its real
+pacing, then the report that run produced. **Run it live** is the second tab,
+for anyone who wants it pointed at a company of their own.
 
-It is labelled as a replay wherever it appears, with the date, the models and
-the real duration, and it says plainly that nothing is executing. Nothing is
-simulated and nothing is re-enacted. If no recording is committed the button
-says so rather than showing a fabricated one, and the live form is untouched --
-enter your own keys and it runs against any company you name.
+Each recording is an actual run. `backend/record_demo.py` executes the pipeline
+and captures its stdout with real timestamps plus the report; the page replays
+that at 6×. The recordings are of several different companies across different
+industries, on purpose — one run shows the pipeline works, a set shows it isn't
+tuned to a single site's HTML.
 
-Re-record it with:
+Every recording is labelled with its date, its models, how many competitors were
+actually profiled, and the true duration, and it says plainly that nothing is
+executing. Nothing is simulated and nothing is re-enacted. If no recordings are
+committed the tab says so rather than showing a fabricated one.
+
+Re-record them with:
 
 ```bash
-cd backend && python record_demo.py --company Stripe --url https://stripe.com
+cd backend && python record_demo.py --set                     # the whole set
+cd backend && python record_demo.py --company X --url https://x.com   # just one
 ```
 
-Keys are scrubbed on the way out, the recorder asserts none survived, and a
-test re-checks the committed file. That file is the one artifact in this repo
-that could publish a key by accident and the one nobody would think to re-read
+`index.json` — what the picker reads — is generated from whatever recordings are
+on disk rather than maintained by hand, because a hand-written list of files is
+the same rotting-catalogue problem as a hardcoded model list, one directory
+further along. Deleting a recording is all it takes to retire it. A test checks
+the index against the directory, since a stale entry is a button that 404s.
+
+Keys are scrubbed on the way out, the recorder asserts none survived, and a test
+re-checks every committed recording. Those files are the artifacts here most
+able to publish a key by accident, and the ones nobody would think to re-read
 before shipping.
+
+**A caveat kept rather than hidden:** the count on each card is competitors
+*profiled*, not requested. Some companies bot-wall the scraper and get skipped,
+so asking for four does not always yield four — and the card says which.
 
 ---
 
@@ -217,7 +232,7 @@ In the deployed app you pick the provider + model in the UI. For local/notebook 
 
 ### Try the hosted app
 
-Open **[competitor-insight-engine.vercel.app](https://competitor-insight-engine.vercel.app)**. **Watch a recorded run** needs no keys at all. To run it live against a company of your own, pick a provider + model and paste your key(s). The fastest free path: a free **Groq** key (`llama-3.3-70b-versatile`) + a free **Tavily** key. Keys stay in your browser.
+Open **[competitor-insight-engine.vercel.app](https://competitor-insight-engine.vercel.app)**. It lands on **Recorded runs** — pick a company and watch a real run, no keys needed. Switch to **Run it live** to point it at a company of your own. The fastest free path: a free **Groq** key (`llama-3.3-70b-versatile`) + a free **Tavily** key. Keys stay in your browser.
 
 ### Run it locally
 
@@ -307,14 +322,14 @@ Competitor-Insight-Engine/
 │   ├── requirements.txt        # Pinned Python dependencies
 │   ├── Dockerfile              # for self-hosting; the deployment builds from source
 │   ├── ruff.toml               # pinned lint rules (version pinned in CI)
-│   ├── record_demo.py          # records one real run for the keyless replay
+│   ├── record_demo.py          # records the real runs behind the replay tab
 │   ├── README.md               # Backend/API notes
 │   └── tests/test_backend.py   # 22 offline unit tests (no keys / network)
 ├── frontend/                   # Next.js BYOK UI → Vercel `web` service
 │   ├── app/page.tsx            # The app: form, provider/model dropdowns, report view
 │   ├── app/layout.tsx          # Fonts (next/font) + metadata
 │   ├── app/globals.css         # Styling
-│   ├── public/demo/run.json    # the committed recording (real run, no keys in it)
+│   ├── public/demo/*.json      # the committed recordings + a generated index.json
 │   └── package.json
 ├── vercel.json                 # the two services and the /api/* rewrite
 ├── competitor_intel.ipynb      # Optional — run the pipeline locally

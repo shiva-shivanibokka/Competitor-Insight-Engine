@@ -1,0 +1,285 @@
+{
+  "recorded_at": "2026-09-06",
+  "company": "Atlassian",
+  "company_url": "https://www.atlassian.com",
+  "max_competitors": 4,
+  "competitors_profiled": 4,
+  "fast_model": "claude-haiku-4-5",
+  "smart_model": "claude-sonnet-5",
+  "duration_seconds": 60.6,
+  "frames": [
+    {
+      "t": 0.0,
+      "line": ""
+    },
+    {
+      "t": 0.0,
+      "line": "============================================================"
+    },
+    {
+      "t": 0.0,
+      "line": " Competitor Intelligence Report for: Atlassian"
+    },
+    {
+      "t": 0.0,
+      "line": "============================================================"
+    },
+    {
+      "t": 0.0,
+      "line": ""
+    },
+    {
+      "t": 0.0,
+      "line": "[Step 1] Checking and scraping main company website..."
+    },
+    {
+      "t": 0.8,
+      "line": "  [scraper] Scraping: https://www.atlassian.com"
+    },
+    {
+      "t": 2.01,
+      "line": "  [scraper] Could not fetch https://www.atlassian.com/about: 404 Client Error: Not Found for url: https://www.atlassian.com/about"
+    },
+    {
+      "t": 2.22,
+      "line": "  [scraper] Could not fetch https://www.atlassian.com/product: 404 Client Error: Not Found for url: https://www.atlassian.com/product"
+    },
+    {
+      "t": 2.4,
+      "line": "  [scraper] Could not fetch https://www.atlassian.com/pricing: 404 Client Error: Not Found for url: https://www.atlassian.com/pricing"
+    },
+    {
+      "t": 2.4,
+      "line": ""
+    },
+    {
+      "t": 2.4,
+      "line": "[Step 2] Extracting main company profile..."
+    },
+    {
+      "t": 2.4,
+      "line": "  [step] Extracting company profile..."
+    },
+    {
+      "t": 2.44,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 7.53,
+      "line": ""
+    },
+    {
+      "t": 7.53,
+      "line": "  Profile extracted:"
+    },
+    {
+      "t": 7.53,
+      "line": "COMPANY NAME: Atlassian"
+    },
+    {
+      "t": 7.53,
+      "line": ""
+    },
+    {
+      "t": 7.53,
+      "line": "INDUSTRY: Enterprise Software / Collaboration & Productivity Tools"
+    },
+    {
+      "t": 7.53,
+      "line": ""
+    },
+    {
+      "t": 7.53,
+      "line": "PRODUCT OR SERVICE: Atlassian provides a teamwork platform with integrated tools for project management, service management, software development, and product management, enhanced with AI capabilities throug..."
+    },
+    {
+      "t": 7.53,
+      "line": ""
+    },
+    {
+      "t": 7.53,
+      "line": "[Step 3] Searching for competitors via Tavily..."
+    },
+    {
+      "t": 7.53,
+      "line": "  [searcher] Searching: 'top direct competitors of Atlassian in Enterprise Software / Collaboration & Productivity Tools'"
+    },
+    {
+      "t": 7.9,
+      "line": "  [searcher] Retrieved 10 search results."
+    },
+    {
+      "t": 7.9,
+      "line": ""
+    },
+    {
+      "t": 7.9,
+      "line": "[Step 4] Identifying and ranking competitors..."
+    },
+    {
+      "t": 7.9,
+      "line": "  [step] Extracting and ranking real competitors from search results..."
+    },
+    {
+      "t": 7.91,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 11.78,
+      "line": "  [step] 18 competitor(s) passed validation."
+    },
+    {
+      "t": 11.78,
+      "line": ""
+    },
+    {
+      "t": 11.78,
+      "line": "  Top 4 competitor(s) selected:"
+    },
+    {
+      "t": 11.78,
+      "line": "    1. Asana (https://www.asana.com)"
+    },
+    {
+      "t": 11.78,
+      "line": "    2. Monday.com (https://www.monday.com)"
+    },
+    {
+      "t": 11.78,
+      "line": "    3. ClickUp (https://www.clickup.com)"
+    },
+    {
+      "t": 11.78,
+      "line": "    4. Notion (https://www.notion.com)"
+    },
+    {
+      "t": 11.78,
+      "line": ""
+    },
+    {
+      "t": 11.78,
+      "line": "[Step 5 & 6] Scraping and profiling competitors..."
+    },
+    {
+      "t": 11.78,
+      "line": ""
+    },
+    {
+      "t": 11.78,
+      "line": "  Processing: Asana (https://www.asana.com)"
+    },
+    {
+      "t": 11.78,
+      "line": ""
+    },
+    {
+      "t": 11.78,
+      "line": "  Processing: Monday.com (https://www.monday.com)"
+    },
+    {
+      "t": 11.78,
+      "line": ""
+    },
+    {
+      "t": 11.78,
+      "line": "  Processing: ClickUp (https://www.clickup.com)"
+    },
+    {
+      "t": 11.78,
+      "line": ""
+    },
+    {
+      "t": 11.78,
+      "line": "  Processing: Notion (https://www.notion.com)"
+    },
+    {
+      "t": 11.99,
+      "line": "  [scraper] Scraping: https://www.monday.com"
+    },
+    {
+      "t": 11.99,
+      "line": "  [scraper] Scraping: https://www.clickup.com"
+    },
+    {
+      "t": 12.0,
+      "line": "  [scraper] Scraping: https://www.asana.com"
+    },
+    {
+      "t": 12.23,
+      "line": "  [scraper] Could not fetch https://www.clickup.com: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))"
+    },
+    {
+      "t": 12.25,
+      "line": "  [scraper] Scraping: https://www.notion.com"
+    },
+    {
+      "t": 12.94,
+      "line": "  [scraper] Could not fetch https://www.clickup.com/product: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))"
+    },
+    {
+      "t": 13.47,
+      "line": "  [step] Extracting profile for: ClickUp"
+    },
+    {
+      "t": 13.48,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 13.78,
+      "line": "  [step] Extracting profile for: Asana"
+    },
+    {
+      "t": 13.79,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 13.91,
+      "line": "  [step] Extracting profile for: Notion"
+    },
+    {
+      "t": 13.92,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 15.72,
+      "line": "  [step] Extracting profile for: Monday.com"
+    },
+    {
+      "t": 15.72,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 20.84,
+      "line": ""
+    },
+    {
+      "t": 20.84,
+      "line": "[Step 7] Generating full report using claude-sonnet-5..."
+    },
+    {
+      "t": 20.84,
+      "line": "  [step] Generating full intelligence report..."
+    },
+    {
+      "t": 20.85,
+      "line": "    [llm] anthropic | claude-sonnet-5"
+    },
+    {
+      "t": 21.17,
+      "line": "    [llm] claude-sonnet-5 rejects temperature — retrying without it"
+    },
+    {
+      "t": 60.63,
+      "line": ""
+    },
+    {
+      "t": 60.63,
+      "line": "[Done] Report generated successfully."
+    },
+    {
+      "t": 60.63,
+      "line": ""
+    }
+  ],
+  "report": "# Competitive Intelligence Report: Atlassian\n\n---\n\n## 1. Company Overview\n\nAtlassian is an enterprise collaboration and productivity software provider best known for its deeply integrated suite of tools spanning software development (Bitbucket, Pipelines), IT service management (Jira Service Management), project/product management (Jira), and knowledge management (Confluence, Loom). Its core differentiator is the **Teamwork Graph** — a connective data layer that links people, work, and goals — now enhanced by **Rovo AI agents** that deliver context-aware insights across the platform.\n\nAtlassian's positioning skews toward **technical, engineering-led organizations** and large enterprises that need deep, specialized functionality (issue tracking, DevOps pipelines, service desks) rather than generalized work management. Its brand tone is enterprise-premium and innovation-focused, emphasizing \"agentic enterprise transformation\" — the idea that AI agents will increasingly do the coordination work traditionally done by humans across complex, multi-tool environments. Compared to competitors, Atlassian's heritage is rooted in **developer and IT workflows**, which it is now extending into broader business use cases via AI orchestration.\n\n---\n\n## 2. Competitor Profiles\n\n**Asana** — An \"operating system for human-agent teams,\" Asana leans on 18 years of Work Graph® data architecture and is aggressively pushing a \"multiplayer\" human+AI collaboration model (AI Teammates, AI Studio, Asana Dash). Strength: extremely strong enterprise penetration (85% of Fortune 100), polished governance/security, and a clear narrative around AI agents that *learn* from teams over time. Positioning: premium, enterprise-first, innovation-driven, generalist work management (not developer-centric).\n\n**monday.com** — A highly flexible, no-code/low-code \"work OS\" spanning PM, CRM, marketing, dev, and service use cases. Strength: broad horizontal applicability, strong SMB-to-enterprise range (60%+ of Fortune 500), and an accessible, customizable UI with an AI agent builder. Positioning: AI-forward but approachable, positions as a single platform for \"any business use case,\" competing on flexibility and ease of adoption rather than deep specialization.\n\n**ClickUp** — An all-in-one consolidation play, explicitly targeting tool fragmentation with a \"convergence of software, AI, and humans\" narrative. Strength: aggressive feature breadth (views, docs, automations, AI notetaker) at a lower price point than Atlassian/Asana, plus enterprise-grade compliance (SAML SSO, SCIM, HIPAA). Positioning: energetic, mission-driven, value-for-money challenger brand targeting teams frustrated by tool sprawl.\n\n**Notion** — An AI-native \"system of record\" workspace built around flexible documents/databases rather than rigid project structures. Strength: exceptional brand affinity with modern, high-growth companies (98% of Forbes Cloud 100), strong AI knowledge-retrieval/citation features, and a highly customizable, design-forward UX. Positioning: premium, innovation-led, appeals to teams that want a flexible knowledge/workspace layer more than a structured PM/dev tool.\n\n---\n\n## 3. Competitive Matrix\n\n| Dimension | **Atlassian** | Asana | monday.com | ClickUp | Notion |\n|---|---|---|---|---|---|\n| **Product/Service** | Integrated dev/IT/PM/knowledge suite (Jira, Confluence, Bitbucket) + Rovo AI | Human-agent work OS with Work Graph® | AI-powered flexible work platform (PM, CRM, dev, ops) | All-in-one work management (tasks, docs, views) | AI-native workspace/system of record |\n| **Target Customers** | Software dev, IT ops, enterprises, technical teams | Enterprises, Fortune 100, cross-dept teams | SMB to enterprise, Fortune 500, cross-functional teams | Teams of all sizes, tool-fragmentation sufferers | Teams of all sizes, Cloud 100 companies |\n| **Pricing Model** | Enterprise/subscription, freemium tier | Freemium, subscription tiers | Freemium, subscription + enterprise pricing | Freemium, low-cost tiers ($7-19/user) | Freemium, tiered subscription (up to 20% annual savings) |\n| **Key Features** | Teamwork Graph, Rovo AI agents, dev lifecycle tools, service mgmt | Work Graph®, AI Teammates, AI Studio, Asana Dash | AI agent builder, customizable boards, multi-product suite | Multi-view PM, AI notetaker, unlimited automations | AI knowledge retrieval w/ citations, custom AI agents, flexible blocks |\n| **Unique Selling Points** | AI-native orchestration for developer/enterprise workflows; secure curated AI/app ecosystem | Human-agent \"multiplayer\" model; 18-yr data graph; Fortune 100 trust | \"Any use case\" flexibility; AI + human collaboration at scale | Consolidation/convergence narrative; cost efficiency | AI-native knowledge system; design flexibility; premium brand halo |\n| **Tone & Positioning** | Enterprise/premium, AI-native, technical/developer-rooted | Enterprise, premium, innovation-driven, generalist | AI-forward, enterprise + SMB accessible | Energetic, challenger, value-driven | Premium, innovative, design-centric |\n\n---\n\n## 4. Market Standing\n\n**Overall Leadership Tiers:**\n1. **Atlassian & Asana** — Co-lead in enterprise credibility and depth of platform capability, but from different angles: Atlassian owns the **developer/IT/DevOps** stack; Asana owns broader **cross-functional enterprise workflow** trust (Fortune 100 penetration).\n2. **monday.com** — Strong challenger with the widest cross-market reach (SMB to Fortune 500) due to platform flexibility and ease of customization.\n3. **ClickUp** — Fastest-growing value/consolidation challenger, undercutting on price while matching feature breadth.\n4. **Notion** — Strongest brand affinity among modern/high-growth companies; leads on flexible knowledge management and AI-native UX, but weaker on structured PM/dev-specific depth.\n\n**Who Leads Where:**\n- **Features (breadth):** ClickUp and monday.com lead on raw feature/view breadth and customization; Atlassian leads on **depth for technical/dev workflows** (no rival matches Bitbucket + Jira + Pipelines integration).\n- **Pricing:** ClickUp is the clear price leader (lowest tiered pricing with enterprise-grade compliance included); Atlassian and Asana sit at the premium end.\n- **Brand:** Notion has the strongest modern/premium brand halo (Cloud 100 penetration); Atlassian has the strongest **enterprise/technical credibility** brand; Asana has the strongest **Fortune 100 trust** signal.\n- **Target Market Reach:** monday.com and ClickUp have the broadest SMB-to-enterprise reach due to flexible, low-friction adoption; Atlassian's reach is narrower and skews toward technical/engineering-heavy organizations.\n- **AI Narrative:** All five now claim \"AI-native\" positioning — this is becoming table stakes, not a differentiator. Asana's \"human-agent multiplayer\" and monday's \"unlimited workforce\" framing are arguably sharper storytelling than Atlassian's \"Teamwork Graph + Rovo\" messaging, which is more technical/abstract.\n\n---\n\n## 5. Strategic Recommendations\n\n1. **Sharpen the AI narrative for non-technical buyers.** Atlassian's Rovo/Teamwork Graph messaging is dense and engineering-flavored compared to Asana's \"AI Teammates\" or monday's \"unlimited workforce\" — both of which are simpler, more visceral concepts for business (non-dev) buyers. Simplify the story to compete for the cross-functional business team budget, not just IT/dev.\n\n2. **Close the SMB/mid-market accessibility gap.** monday.com and ClickUp win on ease of onboarding and low-friction customization for smaller teams. Atlassian should invest in a more streamlined, templated onboarding experience (beyond just freemium tiers) to reduce perceived complexity and compete for the SMB segment currently ceded to rivals.\n\n3. **Counter ClickUp's price-value positioning.** ClickUp offers comparable enterprise-grade compliance (SAML SSO, SCIM, HIPAA) at a fraction of typical enterprise software cost. Atlassian should consider tiered pricing transparency or bundled discounts for mid-market customers to defend against price-sensitive switchers, especially those consolidating tools.\n\n4. **Invest in a unified \"system of record\" narrative to compete with Notion.** Notion's flexible, AI-searchable knowledge workspace is winning modern/high-growth companies. Confluence + Loom should be repositioned and integrated more visibly as Atlassian's answer to \"one AI-searchable knowledge layer,\" with clearer citation/answer-retrieval AI features to match Notion's core hook.\n\n5. **Publicize enterprise trust metrics like competitors do.** Asana (85% of Fortune 100) and monday.com (60%+ of Fortune 500) both lead with quantified enterprise adoption stats as trust signals. Atlassian should surface comparable adoption metrics (e.g., % of Fortune 500 using Jira/Confluence) prominently in positioning to reinforce enterprise credibility against these direct claims.\n\n6. **Extend human-agent collaboration framing beyond insights to action.** Rovo is currently positioned around \"context-aware insights,\" while Asana and monday explicitly frame AI agents as active collaborators/teammates that execute work. Atlassian should evolve Rovo's narrative from advisory AI to autonomous task-execution AI to avoid appearing a step behind in the agentic-AI arms race.\n\n7. **Reduce cross-tool friction perception.** ClickUp and Notion both explicitly market against \"tool fragmentation,\" implicitly including multi-product suites like Atlassian's (Jira+Confluence+Bitbucket as separate tools). Atlassian should invest in single-pane-of-glass UX demonstrations showing the Teamwork Graph erasing tool boundaries in practice — not just as an architectural concept — to preempt the \"fragmented suite\" critique."
+}

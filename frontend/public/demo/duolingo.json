@@ -1,0 +1,293 @@
+{
+  "recorded_at": "2026-09-06",
+  "company": "Duolingo",
+  "company_url": "https://www.duolingo.com",
+  "max_competitors": 4,
+  "competitors_profiled": 4,
+  "fast_model": "claude-haiku-4-5",
+  "smart_model": "claude-sonnet-5",
+  "duration_seconds": 65.2,
+  "frames": [
+    {
+      "t": 0.0,
+      "line": ""
+    },
+    {
+      "t": 0.0,
+      "line": "============================================================"
+    },
+    {
+      "t": 0.0,
+      "line": " Competitor Intelligence Report for: Duolingo"
+    },
+    {
+      "t": 0.0,
+      "line": "============================================================"
+    },
+    {
+      "t": 0.0,
+      "line": ""
+    },
+    {
+      "t": 0.0,
+      "line": "[Step 1] Checking and scraping main company website..."
+    },
+    {
+      "t": 0.35,
+      "line": "  [scraper] Scraping: https://www.duolingo.com"
+    },
+    {
+      "t": 1.56,
+      "line": "  [!] Warning: only 130 characters scraped from main company. The profile quality may be low."
+    },
+    {
+      "t": 1.56,
+      "line": ""
+    },
+    {
+      "t": 1.56,
+      "line": "[Step 2] Extracting main company profile..."
+    },
+    {
+      "t": 1.56,
+      "line": "  [step] Extracting company profile..."
+    },
+    {
+      "t": 1.6,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 4.1,
+      "line": ""
+    },
+    {
+      "t": 4.1,
+      "line": "  Profile extracted:"
+    },
+    {
+      "t": 4.1,
+      "line": "I appreciate your request, but the scraped content you've provided only contains the company name \"Duolingo\" repeated across multiple pages without any actual descriptive text, features, pricing details, or other substantive information."
+    },
+    {
+      "t": 4.1,
+      "line": ""
+    },
+    {
+      "t": 4.1,
+      "line": "To extract a proper structured profile, I would need actual w..."
+    },
+    {
+      "t": 4.1,
+      "line": ""
+    },
+    {
+      "t": 4.1,
+      "line": "  [!] Could not find 'INDUSTRY' in profile — using 'technology' as fallback."
+    },
+    {
+      "t": 4.1,
+      "line": "[Step 3] Searching for competitors via Tavily..."
+    },
+    {
+      "t": 4.1,
+      "line": "  [searcher] Searching: 'top direct competitors of Duolingo in technology'"
+    },
+    {
+      "t": 4.51,
+      "line": "  [searcher] Retrieved 10 search results."
+    },
+    {
+      "t": 4.51,
+      "line": ""
+    },
+    {
+      "t": 4.51,
+      "line": "[Step 4] Identifying and ranking competitors..."
+    },
+    {
+      "t": 4.51,
+      "line": "  [step] Extracting and ranking real competitors from search results..."
+    },
+    {
+      "t": 4.51,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 7.41,
+      "line": "  [step] 11 competitor(s) passed validation."
+    },
+    {
+      "t": 7.41,
+      "line": ""
+    },
+    {
+      "t": 7.41,
+      "line": "  Top 4 competitor(s) selected:"
+    },
+    {
+      "t": 7.41,
+      "line": "    1. Babbel (https://www.babbel.com)"
+    },
+    {
+      "t": 7.41,
+      "line": "    2. Rosetta Stone (https://www.rosettastone.com)"
+    },
+    {
+      "t": 7.41,
+      "line": "    3. Busuu (https://www.busuu.com)"
+    },
+    {
+      "t": 7.41,
+      "line": "    4. Pimsleur (https://www.pimsleur.com)"
+    },
+    {
+      "t": 7.41,
+      "line": ""
+    },
+    {
+      "t": 7.41,
+      "line": "[Step 5 & 6] Scraping and profiling competitors..."
+    },
+    {
+      "t": 7.41,
+      "line": ""
+    },
+    {
+      "t": 7.41,
+      "line": "  Processing: Babbel (https://www.babbel.com)"
+    },
+    {
+      "t": 7.41,
+      "line": ""
+    },
+    {
+      "t": 7.41,
+      "line": "  Processing: Rosetta Stone (https://www.rosettastone.com)"
+    },
+    {
+      "t": 7.41,
+      "line": ""
+    },
+    {
+      "t": 7.41,
+      "line": "  Processing: Busuu (https://www.busuu.com)"
+    },
+    {
+      "t": 7.41,
+      "line": ""
+    },
+    {
+      "t": 7.41,
+      "line": "  Processing: Pimsleur (https://www.pimsleur.com)"
+    },
+    {
+      "t": 7.55,
+      "line": "  [scraper] Scraping: https://www.busuu.com"
+    },
+    {
+      "t": 7.64,
+      "line": "  [scraper] Scraping: https://www.rosettastone.com"
+    },
+    {
+      "t": 7.77,
+      "line": "  [scraper] Scraping: https://www.babbel.com"
+    },
+    {
+      "t": 7.79,
+      "line": "  [scraper] Scraping: https://www.pimsleur.com"
+    },
+    {
+      "t": 8.45,
+      "line": "  [scraper] Could not fetch https://www.babbel.com/about: 404 Client Error: Not Found for url: https://www.babbel.com/about"
+    },
+    {
+      "t": 8.79,
+      "line": "  [step] Extracting profile for: Pimsleur"
+    },
+    {
+      "t": 8.79,
+      "line": "  [scraper] Could not fetch https://www.babbel.com/product: 404 Client Error: Not Found for url: https://www.babbel.com/product"
+    },
+    {
+      "t": 8.8,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 9.16,
+      "line": "  [scraper] Could not fetch https://www.babbel.com/pricing: 404 Client Error: Not Found for url: https://www.babbel.com/pricing"
+    },
+    {
+      "t": 9.16,
+      "line": "  [step] Extracting profile for: Babbel"
+    },
+    {
+      "t": 9.17,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 10.17,
+      "line": "  [scraper] Could not fetch https://www.busuu.com/product: 404 Client Error: Not Found for url: https://www.busuu.com/product"
+    },
+    {
+      "t": 11.4,
+      "line": "  [scraper] Could not fetch https://www.rosettastone.com/product: 404 Client Error: Not Found for url: https://www.rosettastone.com/product"
+    },
+    {
+      "t": 11.63,
+      "line": "  [scraper] Could not fetch https://www.busuu.com/pricing: 404 Client Error: Not Found for url: https://www.busuu.com/pricing"
+    },
+    {
+      "t": 11.63,
+      "line": "  [step] Extracting profile for: Busuu"
+    },
+    {
+      "t": 11.63,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 11.74,
+      "line": "  [scraper] Could not fetch https://www.rosettastone.com/pricing: 404 Client Error: Not Found for url: https://www.rosettastone.com/pricing"
+    },
+    {
+      "t": 11.74,
+      "line": "  [step] Extracting profile for: Rosetta Stone"
+    },
+    {
+      "t": 11.75,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 16.99,
+      "line": ""
+    },
+    {
+      "t": 16.99,
+      "line": "[Step 7] Generating full report using claude-sonnet-5..."
+    },
+    {
+      "t": 16.99,
+      "line": "  [step] Generating full intelligence report..."
+    },
+    {
+      "t": 16.99,
+      "line": "    [llm] anthropic | claude-sonnet-5"
+    },
+    {
+      "t": 17.24,
+      "line": "    [llm] claude-sonnet-5 rejects temperature — retrying without it"
+    },
+    {
+      "t": 65.15,
+      "line": ""
+    },
+    {
+      "t": 65.15,
+      "line": "[Done] Report generated successfully."
+    },
+    {
+      "t": 65.15,
+      "line": ""
+    }
+  ],
+  "report": "# Competitive Intelligence Report: Duolingo\n\n> **Note on Data Limitations:** The scraped profile provided for Duolingo contained no substantive content (only repeated company name references). The analysis below draws on well-established public knowledge of Duolingo's product, positioning, and business model to enable a meaningful comparison. **We recommend re-scraping Duolingo's site or supplying internal materials to validate and refine this report's assumptions**, particularly around current pricing tiers and newest feature releases.\n\n---\n\n## 1. Company Overview\n\nDuolingo is the world's most widely-used language learning platform, built around a **free, gamified, mobile-first** learning experience. It serves a mass-market, global audience — from casual hobbyists to serious language learners — spanning 40+ languages including major world languages and constructed/niche languages (e.g., Klingon, High Valyrian).\n\n**Core positioning:** Duolingo differentiates through **accessibility and habit formation** rather than premium depth. Its core product is free and monetized via a \"freemium\" model (Duolingo Plus/Super Duolingo subscription removes ads, adds offline access, and unlocks unlimited hearts/lives). The brand is built on:\n- **Gamification** (streaks, XP, leaderboards, achievements, league rankings)\n- **Bite-sized, mobile-first lessons** (5-10 minutes)\n- **Playful, meme-driven brand voice** (the \"Duo the Owl\" mascot, aggressive notification humor, viral social media presence)\n- **Massive scale** (500M+ downloads, largest user base in the category)\n- **Broadening into adjacent education** (Duolingo English Test, Duolingo Math, Duolingo Music)\n\nDuolingo primarily serves **individual, self-directed consumers** — students, travelers, hobbyists — with far less enterprise/B2B or institutional focus than several competitors. Its value proposition centers on \"language learning that doesn't feel like work,\" prioritizing engagement and retention over pedagogical depth or fluency guarantees.\n\n---\n\n## 2. Competitor Profiles\n\n### Babbel\nA premium, curriculum-driven platform built by 200+ linguists. Babbel emphasizes **practical, real-life conversational skill-building** over gamification, using structured lessons, speech recognition, and AI conversation partners. Strengths: strong efficacy claims (92% improvement in 2 months), polished multimedia content (podcasts, videos), and a \"serious learner\" brand appeal. Positioning: results-driven, accessible premium.\n\n### Rosetta Stone\nThe legacy leader (30+ years) now backed by IXL Learning. Uses proprietary **Dynamic Immersion** (no-translation, contextual learning) plus TruAccent speech tech and live tutoring. Uniquely spans **individual, enterprise (43,000+ businesses), and institutional/school markets**, plus a philanthropic Endangered Languages Program. Positioning: trusted, scientific, enterprise-capable — the most \"institutional\" brand in the set.\n\n### Busuu\nA **community-powered** platform combining self-paced courses with feedback from a global native-speaker community (120M users). Also has a credible enterprise arm (Puma, L'Oréal). Offers CEFR-aligned certification — a notable credibility differentiator. Positioning: inclusive, budget-friendly, socially-driven, with legitimacy for both consumers and corporate buyers.\n\n### Pimsleur\nBuilt on the **proprietary Pimsleur Method** — audio-first, spaced-repetition, oral/aural skill focus, minimal reading/grammar emphasis. Strong niche appeal for auditory learners and commuters (CarPlay/Android Auto integration). Positioning: convenience-focused, scientifically branded, alternative to app-heavy competitors.\n\n---\n\n## 3. Competitive Matrix\n\n| Dimension | **Duolingo** | Babbel | Rosetta Stone | Busuu | Pimsleur |\n|---|---|---|---|---|---|\n| **Product/Service** | Gamified mobile app for language (+ math/music/English test) learning | Curriculum-based lessons + AI conversation partner | Dynamic Immersion platform + live tutoring | Community-based courses + native speaker feedback | Audio-first spaced-repetition method |\n| **Target Customers** | Mass-market individual consumers, casual learners, students | Individual learners seeking practical/travel/work fluency | Individuals, enterprises (43K+), schools, institutions | Individuals + enterprises (600+ orgs, e.g., Puma, L'Oréal) | Individuals wanting conversational fluency, commuters |\n| **Pricing Model** | Freemium (free app; Super Duolingo subscription) | Subscription (+ lifetime promo option) | Subscription (freemium trial) | Freemium (free tier + premium subscription) | Subscription (frequent discount promos) |\n| **Key Features** | Gamification (streaks, leagues, XP), bite-sized lessons, mascot-driven app, broad language catalog | Speech recognition, AI conversation partner, podcasts/video content, grammar integration | TruAccent speech tech, Chat Missions, 500+ flashcard sets, live tutors, Sapphire Studio | Native-speaker community feedback, AI grammar training, CEFR certification | Voice Coach AI, offline/CarPlay support, roleplay & speed-round games |\n| **Unique Selling Points** | Largest user base/free scale, viral brand/meme marketing, habit-forming gamification | \"Babbel Method\" (200+ experts), 92% proficiency improvement claim, 25M+ subscriptions | 30+ yrs expertise, enterprise + institutional reach, Endangered Languages Program, IXL backing | Global native-speaker community, CEFR-certified credentials, strong enterprise roster | Proprietary oral/aural method, minimal daily time commitment, driving-friendly format |\n| **Tone & Positioning** | Playful, irreverent, mass-accessible, engagement-first | Premium, results-driven, practical | Premium, enterprise-grade, scientifically trusted | Inclusive, community-driven, budget-friendly | Accessible, convenience-focused, method-branded |\n\n---\n\n## 4. Market Standing\n\n**Overall Market Leadership (Scale & Brand Awareness): Duolingo** — by a wide margin. No competitor matches its download volume, brand recognition, or organic/viral marketing reach (social media, mascot culture). Duolingo effectively **owns the top-of-funnel** and casual/beginner learner segment globally.\n\n**By Dimension:**\n\n- **Features/Learning Depth:** **Rosetta Stone** and **Babbel** lead. Rosetta Stone's immersion method + live tutoring, and Babbel's expert-designed curriculum + AI conversation partner, both offer deeper skill-building than Duolingo's gamified drills, which are often critiqued for weak speaking/conversational output despite high engagement.\n- **Pricing/Accessibility:** **Duolingo and Busuu** lead — both offer genuinely usable free tiers. Duolingo's free tier is more feature-complete for casual use than Babbel/Rosetta Stone/Pimsleur, which gate almost all substantive content behind subscriptions.\n- **Brand Trust/Credibility (efficacy & institutional trust):** **Rosetta Stone** leads on legacy trust and enterprise/institutional credibility (43,000+ businesses, IXL backing); **Busuu** leads on formal credentialing (CEFR certification). Duolingo's brand is strong on *awareness* but weaker on *efficacy perception* — a well-documented reputational gap (users report high engagement but plateauing actual proficiency).\n- **Target Market Reach:** **Rosetta Stone and Busuu** have the broadest reach across consumer + enterprise + institutional/school markets. Duolingo is comparatively **under-penetrated in B2B/enterprise** and formal education/institutional channels, despite Duolingo English Test gaining traction in academic admissions.\n- **Niche Differentiation:** **Pimsleur** owns the audio-first/commuter niche; no direct Duolingo equivalent exists for hands-free/eyes-free learning.\n\n**Summary Ranking (Composite Market Position):**\n1. **Duolingo** — Scale/brand/accessibility leader, weaker on depth & credibility\n2. **Rosetta Stone** — Broadest reach (B2C/B2B/institutional), strong trust, premium price\n3. **Babbel** — Strong mid-market premium challenger, efficacy-focused\n4. **Busuu** — Strong community + credentialing niche, growing enterprise presence\n5. **Pimsleur** — Smallest footprint but defensible niche (audio-first commuters)\n\n---\n\n## 5. Strategic Recommendations\n\n1. **Close the \"Engagement vs. Efficacy\" Perception Gap.**\n   Babbel's headline claim (92% improvement in 2 months) and Rosetta Stone's scientific-method branding directly address a known criticism of Duolingo: high engagement, uncertain fluency outcomes. Duolingo should invest in and publicize **third-party efficacy studies or outcome-based proficiency benchmarks** (e.g., CEFR-aligned progress tracking, similar to Busuu's certification) to counter this narrative.\n\n2. **Introduce Certification/Credentialing Beyond the English Test.**\n   Busuu's CEFR-aligned certificates give it credibility in professional/academic contexts that Duolingo largely lacks outside of the Duolingo English Test. Launch **CEFR-mapped certificates for core language tracks** to capture resume-builders, students, and professionals seeking documented proficiency — a segment currently ceded to Busuu and Rosetta Stone.\n\n3. **Build a Dedicated Enterprise/B2B Offering.**\n   Rosetta Stone (43,000+ businesses) and Busuu (Puma, L'Oréal, 600+ orgs) have established, monetizable enterprise language-training arms. Duolingo has minimal visible presence here. A **\"Duolingo for Business\"** product — leveraging existing gamification IP for corporate upskilling/compliance training — represents a significant untapped revenue stream and reach expansion.\n\n4. **Add a Live/Human Conversation Tier.**\n   Rosetta Stone (live tutors) and Babbel (AI conversation partner) both address the \"speaking practice\" gap that automated gamified drills struggle to fill. Duolingo should expand **live tutoring or structured AI conversational partner features** (beyond its current basic chatbot) as a premium Super Duolingo tier differentiator, directly targeting users who plateau on speaking ability.\n\n5. **Develop an Audio-First/Hands-Free Mode.**\n   Pimsleur's CarPlay/Android Auto integration and audio-only method serve a real, underserved use case (commuting, multitasking) that Duolingo's visually-driven app doesn't address. A **\"Duolingo Audio\" mode** could capture this niche without cannibalizing the core app experience.\n\n6. **Strengthen Institutional/Academic Channel Partnerships.**\n   Rosetta Stone's presence in schools and institutions is a reach advantage Duolingo hasn't fully replicated outside test-prep. Pursue **formal school/university licensing programs** (K-12 and higher ed), leveraging Duolingo's existing brand affinity with younger demographics.\n\n7. **Reduce Over-Reliance on Freemium Friction (Hearts/Ads) for Serious Learners.**\n   Compared to Babbel and Pimsleur's straightforward subscription value (full content access), Duolingo's heart/lives system and ad interruptions can frustrate committed learners and push them toward competitors offering a cleaner premium experience. Consider **tiered subscription simplification** — a clear \"focused learner\" tier that removes gamification friction (not just ads) to retain intermediate/advanced users who currently churn to Babbel or Rosetta Stone."
+}

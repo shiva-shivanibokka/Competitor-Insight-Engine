@@ -1,0 +1,269 @@
+{
+  "recorded_at": "2026-09-06",
+  "company": "Shopify",
+  "company_url": "https://www.shopify.com",
+  "max_competitors": 4,
+  "competitors_profiled": 3,
+  "fast_model": "claude-haiku-4-5",
+  "smart_model": "claude-sonnet-5",
+  "duration_seconds": 60.0,
+  "frames": [
+    {
+      "t": 0.0,
+      "line": ""
+    },
+    {
+      "t": 0.0,
+      "line": "============================================================"
+    },
+    {
+      "t": 0.0,
+      "line": " Competitor Intelligence Report for: Shopify"
+    },
+    {
+      "t": 0.0,
+      "line": "============================================================"
+    },
+    {
+      "t": 0.0,
+      "line": ""
+    },
+    {
+      "t": 0.0,
+      "line": "[Step 1] Checking and scraping main company website..."
+    },
+    {
+      "t": 0.77,
+      "line": "  [scraper] Scraping: https://www.shopify.com"
+    },
+    {
+      "t": 2.31,
+      "line": ""
+    },
+    {
+      "t": 2.31,
+      "line": "[Step 2] Extracting main company profile..."
+    },
+    {
+      "t": 2.31,
+      "line": "  [step] Extracting company profile..."
+    },
+    {
+      "t": 2.31,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 7.54,
+      "line": ""
+    },
+    {
+      "t": 7.54,
+      "line": "  Profile extracted:"
+    },
+    {
+      "t": 7.54,
+      "line": "COMPANY NAME: Shopify"
+    },
+    {
+      "t": 7.54,
+      "line": ""
+    },
+    {
+      "t": 7.54,
+      "line": "INDUSTRY: E-commerce / Commerce Platform"
+    },
+    {
+      "t": 7.54,
+      "line": ""
+    },
+    {
+      "t": 7.54,
+      "line": "PRODUCT OR SERVICE: Shopify is an all-in-one commerce platform that enables businesses to sell online and in person across multiple channels. It provides store creation, inventory management, payment processing, and omnichannel selling..."
+    },
+    {
+      "t": 7.54,
+      "line": ""
+    },
+    {
+      "t": 7.54,
+      "line": "[Step 3] Searching for competitors via Tavily..."
+    },
+    {
+      "t": 7.54,
+      "line": "  [searcher] Searching: 'top direct competitors of Shopify in E-commerce / Commerce Platform'"
+    },
+    {
+      "t": 10.63,
+      "line": "  [searcher] Retrieved 10 search results."
+    },
+    {
+      "t": 10.63,
+      "line": ""
+    },
+    {
+      "t": 10.63,
+      "line": "[Step 4] Identifying and ranking competitors..."
+    },
+    {
+      "t": 10.63,
+      "line": "  [step] Extracting and ranking real competitors from search results..."
+    },
+    {
+      "t": 10.63,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 13.75,
+      "line": "  [step] 16 competitor(s) passed validation."
+    },
+    {
+      "t": 13.75,
+      "line": ""
+    },
+    {
+      "t": 13.75,
+      "line": "  Top 4 competitor(s) selected:"
+    },
+    {
+      "t": 13.75,
+      "line": "    1. BigCommerce (https://www.bigcommerce.com)"
+    },
+    {
+      "t": 13.75,
+      "line": "    2. WooCommerce (https://woocommerce.com)"
+    },
+    {
+      "t": 13.75,
+      "line": "    3. Adobe Commerce (https://business.adobe.com/products/magento/magento-commerce.html)"
+    },
+    {
+      "t": 13.75,
+      "line": "    4. Wix (https://www.wix.com)"
+    },
+    {
+      "t": 13.75,
+      "line": ""
+    },
+    {
+      "t": 13.75,
+      "line": "[Step 5 & 6] Scraping and profiling competitors..."
+    },
+    {
+      "t": 13.75,
+      "line": ""
+    },
+    {
+      "t": 13.75,
+      "line": "  Processing: BigCommerce (https://www.bigcommerce.com)"
+    },
+    {
+      "t": 13.75,
+      "line": ""
+    },
+    {
+      "t": 13.75,
+      "line": "  Processing: WooCommerce (https://woocommerce.com)"
+    },
+    {
+      "t": 13.75,
+      "line": ""
+    },
+    {
+      "t": 13.75,
+      "line": "  Processing: Adobe Commerce (https://business.adobe.com/products/magento/magento-commerce.html)"
+    },
+    {
+      "t": 13.75,
+      "line": ""
+    },
+    {
+      "t": 13.75,
+      "line": "  Processing: Wix (https://www.wix.com)"
+    },
+    {
+      "t": 13.95,
+      "line": "  [scraper] Scraping: https://woocommerce.com"
+    },
+    {
+      "t": 14.16,
+      "line": "  [scraper] Scraping: https://www.wix.com"
+    },
+    {
+      "t": 14.26,
+      "line": "  [scraper] Scraping: https://www.bigcommerce.com"
+    },
+    {
+      "t": 15.56,
+      "line": "  [step] Extracting profile for: Wix"
+    },
+    {
+      "t": 15.57,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 15.73,
+      "line": "  [step] Extracting profile for: BigCommerce"
+    },
+    {
+      "t": 15.73,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 17.05,
+      "line": "  [step] Extracting profile for: WooCommerce"
+    },
+    {
+      "t": 17.06,
+      "line": "    [llm] anthropic | claude-haiku-4-5"
+    },
+    {
+      "t": 19.97,
+      "line": "  [!] Skipping Adobe Commerce — URL unreachable or invalid."
+    },
+    {
+      "t": 22.46,
+      "line": ""
+    },
+    {
+      "t": 22.46,
+      "line": "  [!] Skipped: Adobe Commerce"
+    },
+    {
+      "t": 22.46,
+      "line": ""
+    },
+    {
+      "t": 22.46,
+      "line": "  [!] 3 of 4 competitors were successfully profiled."
+    },
+    {
+      "t": 22.46,
+      "line": ""
+    },
+    {
+      "t": 22.46,
+      "line": "[Step 7] Generating full report using claude-sonnet-5..."
+    },
+    {
+      "t": 22.46,
+      "line": "  [step] Generating full intelligence report..."
+    },
+    {
+      "t": 22.46,
+      "line": "    [llm] anthropic | claude-sonnet-5"
+    },
+    {
+      "t": 60.04,
+      "line": ""
+    },
+    {
+      "t": 60.04,
+      "line": "[Done] Report generated successfully."
+    },
+    {
+      "t": 60.04,
+      "line": ""
+    }
+  ],
+  "report": "# Competitive Intelligence Report: Shopify\n\n---\n\n## 1. Company Overview\n\nShopify is the dominant all-in-one commerce platform, positioning itself as the operating system for businesses of any size — from side-hustle entrepreneurs to global enterprise brands. Its core value proposition centers on removing complexity: merchants get store creation, payments, inventory, and omnichannel selling (online, social, marketplace, in-person) in a single, tightly integrated ecosystem, increasingly infused with AI (Sidekick, Agentic Storefronts). Shopify's competitive edge is built on three pillars: **conversion performance** (Shop Pay's industry-leading checkout), **scale/trust** (10% of all U.S. ecommerce, 250M+ Shop app shoppers), and **extensibility** (21,000+ apps, Hydrogen headless framework). Its tone is growth-oriented and aspirational — \"side hustle to global empire\" — while remaining developer-friendly enough to satisfy technical buyers. Pricing is tiered SaaS ($29–$2,300/mo), which trades lower-end affordability for a much deeper enterprise offering (Plus) than most competitors.\n\n---\n\n## 2. Competitor Profiles\n\n### BigCommerce\nAn enterprise-leaning, open-architecture platform that positions itself as the anti-\"one-size-fits-all\" alternative to Shopify. Strong in **B2B commerce**, multi-storefront management, and headless architecture. Actively courts merchants migrating away from Shopify, WooCommerce, and Magento — implying it competes primarily on flexibility and lower platform fees at scale (no forced app tax narrative). Weaker consumer brand recognition and no equivalent to Shop Pay's shopper network.\n\n### WooCommerce\nThe open-source, WordPress-native alternative — free core platform with monetized extensions. Appeals to developers, agencies, and cost-conscious SMBs who want total control over data, hosting, and customization with zero vendor lock-in. Massive install base (31% of top 1M ecommerce sites, 4M+ stores) via WordPress ubiquity, but this comes with a **do-it-yourself burden**: no unified checkout, hosting, or support layer — merchants must assemble their own stack. Weakest in out-of-the-box conversion optimization and unified support compared to Shopify.\n\n### Wix\nA website-builder-first company that has expanded into ecommerce, positioning itself around **ease-of-use and AI-generated design** for non-technical users (creators, freelancers, service businesses). Its freemium model and Wix Studio (agency/enterprise tier) broaden reach, and its 300M+ sites dwarf Shopify's merchant count — but the bulk of that base is website/portfolio use cases, not serious commerce operations. Ecommerce feature depth (B2B, headless, multichannel POS) lags Shopify and BigCommerce significantly.\n\n---\n\n## 3. Competitive Matrix\n\n| Dimension | **Shopify** | BigCommerce | WooCommerce | Wix |\n|---|---|---|---|---|\n| **Product/Service** | All-in-one AI-powered commerce platform, online + in-person | Cloud ecommerce platform, B2B/B2C, headless-capable | Open-source ecommerce plugin for WordPress | AI website builder with integrated ecommerce/business tools |\n| **Target Customers** | Solo entrepreneurs to global enterprises | SMB to enterprise, B2B/B2C, platform migrators | SMBs, developers, agencies, WordPress users | Freelancers, creators, SMBs, agencies, some enterprise |\n| **Pricing Model** | Tiered subscription ($29–$2,300/mo) | Subscription, free trial | Free core + paid extensions | Freemium + premium tiers |\n| **Key Features** | AI agents (Sidekick), Shop Pay checkout, 21K+ apps, POS, Markets | Visual + headless builder, 1,200+ apps, multi-storefront, B2B tools | Full customization, no lock-in, WordPress ecosystem, extensions | AI site generation (Harmony), booking, courses, events, basic ecommerce |\n| **Unique Selling Points** | Best-in-class conversion (Shop Pay), 250M+ Shop app shoppers, AI-native, 10% of US ecommerce | Open architecture \"no compromise,\" strong migration support, enterprise B2B depth | 100% open-source, no ceiling, powers 4M+ stores, full data control | All-in-one non-plugin design, 300M+ sites, AI content/design tools |\n| **Tone & Positioning** | Growth-oriented, AI-forward, empowering, scale-agnostic | Flexible enterprise alternative, developer-friendly | Control-and-freedom, developer-centric, anti-vendor-lock-in | Accessible, creative, non-technical, innovation-driven |\n\n---\n\n## 4. Market Standing\n\n**Overall Market Leader: Shopify**\nShopify leads on brand recognition, checkout conversion technology, and commerce-specific ecosystem depth. It has effectively become the default \"serious commerce\" platform for merchants who want speed-to-launch without sacrificing scalability.\n\n| Category | Leader | Rationale |\n|---|---|---|\n| **Features (commerce-specific)** | Shopify | Broadest native commerce feature set (POS, Markets, Shop Pay, AI agents) without needing third-party stitching |\n| **Features (flexibility/architecture)** | BigCommerce | Strongest open/headless architecture and native B2B commerce depth |\n| **Pricing (lowest cost of entry)** | WooCommerce | Free core platform; Wix close second with genuine free tier |\n| **Pricing (enterprise value/predictability)** | BigCommerce | No forced transaction-fee structure narrative; often cited as lower TCO at scale |\n| **Brand / Trust in Commerce** | Shopify | 10% of US ecommerce sales, category-defining brand, \"Shopify\" is synonymous with online store |\n| **Target Market Reach (raw volume)** | Wix / WooCommerce | 300M+ sites (Wix) and 4M+ stores (WooCommerce) far exceed Shopify's merchant count, but skew toward lower commerce intent |\n| **Developer/Customization Freedom** | WooCommerce | Full open-source access, no vendor lock-in |\n| **Ease of Use (non-technical)** | Wix | Purpose-built for non-technical creators with AI generation |\n\n**Positioning takeaway:** Shopify dominates the \"serious commerce\" segment (merchants prioritizing conversion, scale, omnichannel). WooCommerce and BigCommerce compete on control/flexibility and cost structure for technical or B2B buyers. Wix competes on volume and simplicity but is not yet a true ecommerce-first threat — its risk to Shopify is at the low-end/starter segment, not mid-market or enterprise.\n\n---\n\n## 5. Strategic Recommendations\n\n1. **Neutralize the \"flexible alternative\" narrative from BigCommerce.** BigCommerce explicitly markets to merchants who feel constrained by Shopify's architecture (app dependency, checkout customization limits, B2B gaps). Shopify should invest in more native, deeper B2B commerce functionality (custom pricing, quoting, account hierarchies) rather than relying on the app ecosystem to fill this gap — this closes the door on a primary migration argument.\n\n2. **Address the \"vendor lock-in\" and cost-control criticism head-on.** WooCommerce and BigCommerce both position around merchant control over data/costs (no forced transaction fees, no platform lock-in). Shopify should improve pricing transparency at the Advanced/Plus tiers and consider more flexible payment-processor options for merchants wary of lock-in, or better communicate the ROI of its ecosystem to offset this perception.\n\n3. **Capture the low-end/starter segment before Wix does.** Wix's freemium model and AI-generated site creation are winning non-technical, pre-revenue users who may later need ecommerce. Shopify's $1/month promo is a start, but Shopify should build a more robust free/near-free tier with AI-assisted store generation (leveraging Sidekick) to capture these users earlier in their lifecycle before they anchor to Wix.\n\n4. **Expand headless/developer tooling visibility.** Both BigCommerce and WooCommerce lean heavily into \"no compromise\" architecture messaging for developers. While Shopify has Hydrogen, it's underexposed in positioning compared to competitors' headless-first marketing. Increase developer marketing and documentation investment to defend the technical/agency buyer segment.\n\n5. **Leverage Shop Pay's 250M+ shopper network more aggressively as a growth channel, not just a conversion tool.** This is a genuinely differentiated asset none of the three competitors can match. Shopify should package this network effect more explicitly in sales messaging against WooCommerce/BigCommerce migrations — \"instant access to 250M buyers\" is a stronger acquisition argument than feature comparisons alone.\n\n6. **Simplify enterprise pricing transition (Advanced → Plus gap).** The jump from $299/month to $2,300/month is steep and creates a mid-market pricing cliff that BigCommerce (with more graduated enterprise tiers) can exploit for mid-market prospects. Introduce an intermediate tier or more transparent custom-pricing pathway to retain scaling merchants before they shop competitors.\n\n7. **Counter WooCommerce's open-source trust narrative with data portability guarantees.** Merchants wary of SaaS lock-in gravitate to WooCommerce for data ownership. Shopify should publicize clearer data export/ownership policies and migration tooling to reduce this fear, particularly for SMBs evaluating platform commitment for the first time."
+}

@@ -22,13 +22,16 @@ def _check_url_reachable(url: str) -> bool:
     if not is_public_url(url):  # SSRF guard — reject internal/loopback targets
         return False
     try:
+        # See searcher.validate_url: timeout is per hop, and following up to 30
+        # of them turns an 8s check into a 4-minute one. A redirect still means
+        # the host is reachable.
         r = requests.head(
             url,
             headers={"User-Agent": "Mozilla/5.0"},
             timeout=8,
-            allow_redirects=True,
+            allow_redirects=False,
         )
-        return r.status_code < 400
+        return r.status_code < 400 or r.is_redirect
     except Exception:  # noqa: BLE001 - any failure to reach it means "do not scrape it"
         return False
 

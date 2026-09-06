@@ -25,13 +25,19 @@ def validate_url(url: str) -> bool:
     if not is_public_url(url):  # SSRF guard
         return False
     try:
+        # allow_redirects=False deliberately. `timeout` applies per hop, not to
+        # the whole call, and requests follows up to 30 redirects by default --
+        # so this "quick check" could spend 6s x 30 before returning, which is
+        # most of the request budget for one URL. A 3xx means the host answered,
+        # which is all this needs to know; scrape_page follows the chain safely
+        # afterwards, revalidating every hop.
         response = requests.head(
             url,
             headers={"User-Agent": "Mozilla/5.0"},
             timeout=6,
-            allow_redirects=True,
+            allow_redirects=False,
         )
-        return response.status_code < 400
+        return response.status_code < 400 or response.is_redirect
     except Exception:  # noqa: BLE001 - unreachable for any reason means skip it
         return False
 

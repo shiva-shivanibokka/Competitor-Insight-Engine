@@ -61,6 +61,37 @@ def test_ssrf_redirect_blocked(monkeypatch):
     assert raised, "redirect to internal address was not blocked"
 
 
+def test_reachability_checks_do_not_follow_redirect_chains():
+    """`timeout` is per hop, so following 30 of them is 30x the stated budget.
+
+    A reachability pre-check that can take four minutes is worse than no
+    pre-check: it burns the request budget the actual work needs. A 3xx already
+    proves the host answered, and scrape_page follows the chain safely later.
+    """
+    import report as report_mod
+    import searcher as searcher_mod
+
+    calls = []
+
+    def fake_head(url, **kwargs):
+        calls.append(kwargs)
+        return _FakeResp(301, location="https://elsewhere.example.com/")
+
+    original_search, original_report = searcher_mod.requests.head, report_mod.requests.head
+    searcher_mod.requests.head = fake_head
+    report_mod.requests.head = fake_head
+    try:
+        assert searcher_mod.validate_url("https://stripe.com") is True
+        assert report_mod._check_url_reachable("https://stripe.com") is True
+    finally:
+        searcher_mod.requests.head = original_search
+        report_mod.requests.head = original_report
+
+    assert len(calls) == 2
+    for kwargs in calls:
+        assert kwargs["allow_redirects"] is False, "a redirect chain can outlast the request budget"
+
+
 # --- Blocklist (finding #8: single source of truth) ---
 
 def test_blocklist():
@@ -268,33 +299,89 @@ def test_routes_are_served_with_and_without_the_api_prefix():
 
 # --- the committed recording must never carry a key ---
 
-def test_recorded_run_is_well_formed_and_secret_free():
-    """The replay is a real run's output committed as a static file.
+DEMO_DIR = Path(__file__).resolve().parents[2] / "frontend" / "public" / "demo"
 
-    That makes it the one artifact in this repo that could publish a key by
-    accident, and the one nobody would think to re-read before shipping. If it
-    is absent the replay simply isn't offered, which is fine; if it is present
-    it has to be clean.
+
+def _recordings():
+    return sorted(p for p in DEMO_DIR.glob("*.json") if p.name != "index.json")
+
+
+def test_secret_pattern_catches_keys_without_crying_wolf():
+    """The scrubber is only useful if it is both sensitive and specific.
+
+    It was neither at first: it matched `sk-` plus any eight characters, so the
+    phrase "task-execution" in a generated report tripped it. A scanner that
+    fires on ordinary prose is one that gets switched off, which leaves nothing
+    guarding the committed recordings.
+    """
+    from record_demo import SECRET
+
+    for real in [
+        "sk-ant-api03-" + "a1B2c3D4e5" * 4,
+        "sk-proj-" + "Xy9" * 12,
+        "sk-" + "a1B2c3D4e5" * 5,
+        "tvly-dev-" + "abc123XYZ" * 3,
+        "gsk_" + "Ab3" * 12,
+        "AIza" + "Bc4" * 12,
+    ]:
+        assert SECRET.search(real), f"a real-shaped key was not caught: {real[:14]}..."
+
+    for prose in [
+        "the narrative from advisory AI to autonomous task-execution AI",
+        "a risk-execution tradeoff",
+        "disk-encryption at rest",
+        "ask-me-anything sessions",
+        "gsk_short",
+        "sk-tooshort",
+    ]:
+        assert not SECRET.search(prose), f"false positive on ordinary prose: {prose!r}"
+
+
+def test_recorded_runs_are_well_formed_and_secret_free():
+    """Each replay is a real run's output committed as a static file.
+
+    That makes these the artifacts in this repo most able to publish a key by
+    accident, and the ones nobody would think to re-read before shipping. If
+    none are committed the replay tab says so, which is fine; any that are
+    present have to be clean.
     """
     import json
-    import re
 
-    run = Path(__file__).resolve().parents[2] / "frontend" / "public" / "demo" / "run.json"
-    if not run.is_file():
-        return  # no recording committed; the UI says so rather than faking one
+    from record_demo import SECRET
 
-    raw = run.read_text(encoding="utf-8")
-    secrets = re.findall(r"sk-[A-Za-z0-9_\-]{8,}|tvly-[A-Za-z0-9_\-]{8,}|gsk_[A-Za-z0-9_\-]{8,}", raw)
-    assert not secrets, f"key-shaped string in the committed recording: {secrets[:1]}"
+    for path in _recordings():
+        raw = path.read_text(encoding="utf-8")
+        found = SECRET.findall(raw)
+        assert not found, f"key-shaped string in {path.name}: {found[:1]}"
 
-    d = json.loads(raw)
-    for field in ("recorded_at", "company", "duration_seconds", "smart_model", "frames", "report"):
-        assert field in d, f"recording is missing {field}"
-    assert d["frames"], "a recording with no frames would replay as a blank panel"
-    assert d["report"].strip(), "a recording with no report has nothing to show at the end"
-    # Timestamps drive the playback delays; unsorted ones produce negative gaps.
-    times = [f["t"] for f in d["frames"]]
-    assert times == sorted(times), "frame timestamps are not monotonic"
+        d = json.loads(raw)
+        for field in ("recorded_at", "company", "duration_seconds", "smart_model", "frames", "report"):
+            assert field in d, f"{path.name} is missing {field}"
+        assert d["frames"], f"{path.name} has no frames and would replay as a blank panel"
+        assert d["report"].strip(), f"{path.name} has no report to show at the end"
+        # Timestamps drive the playback delays; unsorted ones produce negative gaps.
+        times = [f["t"] for f in d["frames"]]
+        assert times == sorted(times), f"{path.name} frame timestamps are not monotonic"
+
+
+def test_demo_index_matches_the_recordings_on_disk():
+    """The picker is built from index.json, so a stale index is a dead button.
+
+    index.json is generated (`record_demo.py --index-only`), which is exactly
+    why it can drift: deleting a recording without regenerating leaves an entry
+    pointing at a file that 404s.
+    """
+    import json
+
+    index = DEMO_DIR / "index.json"
+    recordings = _recordings()
+    if not recordings:
+        return
+
+    assert index.is_file(), "recordings exist but index.json does not; the picker would be empty"
+    listed = {r["slug"] for r in json.loads(index.read_text(encoding="utf-8"))["runs"]}
+    on_disk = {p.stem for p in recordings}
+    assert listed == on_disk, f"index.json lists {listed}, disk has {on_disk}"
 
 
 # --- report.py helpers ---

@@ -16,11 +16,23 @@ type Recording = {
   company: string;
   company_url: string;
   max_competitors: number;
+  competitors_profiled?: number;
   fast_model: string;
   smart_model: string;
   duration_seconds: number;
   frames: { t: number; line: string }[];
   report: string;
+};
+type RunSummary = {
+  slug: string;
+  company: string;
+  company_url: string;
+  recorded_at: string;
+  max_competitors: number;
+  competitors_profiled?: number;
+  duration_seconds: number;
+  smart_model: string;
+  report_chars: number;
 };
 type Provider = {
   id: string;
@@ -55,6 +67,11 @@ export default function Home() {
   const [replaying, setReplaying] = useState(false);
   const [replayLines, setReplayLines] = useState<string[]>([]);
   const logRef = useRef<HTMLPreElement | null>(null);
+  const [runs, setRuns] = useState<RunSummary[]>([]);
+  const [playing, setPlaying] = useState("");
+  // Recorded runs are the default view: they are the half a visitor can use
+  // without going and fetching two API keys first.
+  const [tab, setTab] = useState<"replay" | "live">("replay");
 
   const [companyUrl, setCompanyUrl] = useState("https://stripe.com");
   const [companyName, setCompanyName] = useState("Stripe");
@@ -89,6 +106,13 @@ export default function Home() {
         }
       })
       .catch(() => setError("Can't reach the engine. It may still be starting — reload in a moment."));
+
+    // The index is generated from whatever recordings are on disk, so an empty
+    // or missing one means there are none and the tab says so.
+    fetch("/demo/index.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => setRuns(d?.runs ?? []))
+      .catch(() => setRuns([]));
   }, []);
 
   // Replace the built-in catalogue with the provider's live list as soon as
@@ -145,6 +169,7 @@ export default function Home() {
     setReport("");
     setRecording(null);
     setReplayLines([]);
+    setPlaying("");
     if (!llmKey || !tavilyKey) {
       setError("Enter both your provider key and your Tavily key to run the analysis.");
       return;
@@ -178,19 +203,21 @@ export default function Home() {
   // plays back a recording of an actual run -- its real log stream at its real
   // pacing, compressed -- and then shows the report that run produced. It is
   // labelled as a replay throughout; nothing here pretends to be executing.
-  async function playRecording() {
+  async function playRecording(slug: string) {
     if (replaying) return;
     setError("");
     setReport("");
     setReplayLines([]);
+    setPlaying(slug);
     let run: Recording;
     try {
-      const res = await fetch("/demo/run.json");
+      const res = await fetch(`/demo/${slug}.json`);
       if (!res.ok) throw new Error();
       run = await res.json();
     } catch {
       // No recording committed. Say so rather than showing a fabricated one.
-      setError("No recorded run is committed in this build.");
+      setError("That recording is not in this build.");
+      setPlaying("");
       return;
     }
     setRecording(run);
@@ -207,6 +234,7 @@ export default function Home() {
     }
     setReport(run.report);
     setReplaying(false);
+    setPlaying("");
   }
 
   function download() {
@@ -263,7 +291,65 @@ export default function Home() {
       </section>
 
       <main className="console">
-        <form className="inputs" onSubmit={onSubmit}>
+        <div className="tabs" role="tablist">
+          <button
+            role="tab"
+            aria-selected={tab === "replay"}
+            onClick={() => setTab("replay")}
+            disabled={replaying}
+          >
+            Recorded runs <span className="tab-hint">no keys needed</span>
+          </button>
+          <button
+            role="tab"
+            aria-selected={tab === "live"}
+            onClick={() => setTab("live")}
+            disabled={replaying}
+          >
+            Run it live <span className="tab-hint">bring your own keys</span>
+          </button>
+        </div>
+
+        {tab === "replay" && (
+          <section className="panel choose">
+            <span className="panel-tab replay">Select a run</span>
+            <p className="choose-lede">
+              Each of these is a recording of the pipeline actually running — its real log
+              output at its real pacing, and the report that run produced. Pick one to watch.
+            </p>
+            {runs.length === 0 ? (
+              <p className="choose-empty">
+                No recordings are committed in this build.
+              </p>
+            ) : (
+              <div className="picker">
+                {runs.map((r) => (
+                  <button
+                    key={r.slug}
+                    type="button"
+                    aria-pressed={playing === r.slug}
+                    disabled={replaying}
+                    onClick={() => playRecording(r.slug)}
+                  >
+                    <span className="t">{r.company}</span>
+                    <span className="s">
+                      {r.competitors_profiled ?? r.max_competitors} competitors ·{" "}
+                      {Math.round(r.duration_seconds)}s · {(r.report_chars / 1000).toFixed(1)}k
+                      chars
+                    </span>
+                    <span className="u">{r.company_url.replace(/^https?:\/\//, "")}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+
+        <form
+          className="inputs"
+          onSubmit={onSubmit}
+          hidden={tab !== "live"}
+        >
           <section className="panel target">
             <span className="panel-tab">Target</span>
             <div className="field-row">
@@ -368,19 +454,9 @@ export default function Home() {
             </p>
           </section>
 
-          <div className="actions">
-            <button className="run" type="submit" disabled={loading || replaying}>
-              {loading ? "Scanning the market…" : "Generate report"}
-            </button>
-            <button
-              className="run ghost"
-              type="button"
-              onClick={playRecording}
-              disabled={loading || replaying}
-            >
-              {replaying ? "Replaying…" : "Watch a recorded run — no keys"}
-            </button>
-          </div>
+          <button className="run" type="submit" disabled={loading || replaying}>
+            {loading ? "Scanning the market…" : "Generate report"}
+          </button>
         </form>
 
         <section className="panel output result">
@@ -437,7 +513,9 @@ export default function Home() {
               <span className="panel-tab">Standing by</span>
               <p className="await-line">Awaiting parameters.</p>
               <p className="await-sub">
-                Set a target and your keys, then generate a report. The briefing lands here.
+                {tab === "replay"
+                  ? "Pick one of the recorded runs above and it will play here."
+                  : "Set a target and your keys, then generate a report. The briefing lands here."}
               </p>
             </div>
           )}
