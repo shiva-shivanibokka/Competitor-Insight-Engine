@@ -6,13 +6,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import analyzer
+import config
 import scraper
 from analyzer import _is_valid_competitor_url, extract_competitors_from_search
 from blocklist import is_blocked
 from report import _extract_field, _normalise_url
 from searcher import validate_url
 from security import BlockedURLError, fetch_validated, is_public_url
-
 
 # --- SSRF guard (finding #2) ---
 
@@ -79,6 +79,16 @@ def test_competitor_url_validation():
     assert not _is_valid_competitor_url("not-a-url", "Stripe")
 
 
+def test_competitor_url_matches_whole_labels_not_substrings():
+    # The company name used to be tested as a substring of the whole URL, so a
+    # short name threw away unrelated companies. Whole-label matching keeps the
+    # company's own subdomains rejected without that collateral damage.
+    assert _is_valid_competitor_url("https://adaptive.com", "Ada")
+    assert _is_valid_competitor_url("https://wisetech.com", "Wise")
+    assert not _is_valid_competitor_url("https://www.ada.com", "Ada")
+    assert not _is_valid_competitor_url("https://dashboard.stripe.com", "Stripe")
+
+
 # --- Competitor extraction: dedup + blocklist survive past the LLM ---
 
 def test_extract_competitors_dedups_and_filters(monkeypatch):
@@ -111,6 +121,131 @@ def test_scrape_key_pages_empty_when_no_text(monkeypatch):
     # F4: an all-empty scrape must return "" so the fail-fast guard can fire.
     monkeypatch.setattr(scraper, "scrape_page", lambda url: "")
     assert scraper.scrape_key_pages("https://example.com") == ""
+
+
+# --- temperature: newer models reject it outright ---
+
+class _FakeChoice:
+    def __init__(self, text):
+        self.message = type("M", (), {"content": text})()
+
+
+class _FakeCompletions:
+    """Stands in for a provider that 400s on `temperature`, as Claude 5 does."""
+
+    def __init__(self, rejects_temperature):
+        self.rejects = rejects_temperature
+        self.calls = []
+
+    def create(self, **kwargs):
+        self.calls.append(kwargs)
+        if self.rejects and "temperature" in kwargs:
+            raise BadRequestError_stub("`temperature` is deprecated for this model.")
+        return type("R", (), {"choices": [_FakeChoice("hello")]})()
+
+
+class BadRequestError_stub(analyzer.BadRequestError):
+    def __init__(self, message):
+        Exception.__init__(self, message)
+
+
+def _patch_client(monkeypatch, completions):
+    client = type("C", (), {"chat": type("Ch", (), {"completions": completions})()})()
+    monkeypatch.setattr(analyzer, "get_client", lambda *a, **k: client)
+
+
+def test_llm_call_retries_without_temperature_when_rejected(monkeypatch):
+    analyzer._REJECTS_TEMPERATURE.discard("claude-sonnet-5")
+    completions = _FakeCompletions(rejects_temperature=True)
+    _patch_client(monkeypatch, completions)
+    monkeypatch.setitem(analyzer.MODEL_TO_PROVIDER, "claude-sonnet-5", "anthropic")
+
+    assert analyzer.llm_call("sys", "user", model="claude-sonnet-5") == "hello"
+    assert "temperature" in completions.calls[0]
+    assert "temperature" not in completions.calls[1]
+    # The second call for the same model skips the doomed attempt entirely.
+    assert analyzer.llm_call("sys", "user", model="claude-sonnet-5") == "hello"
+    assert len(completions.calls) == 3
+    analyzer._REJECTS_TEMPERATURE.discard("claude-sonnet-5")
+
+
+def test_llm_call_keeps_temperature_when_accepted(monkeypatch):
+    completions = _FakeCompletions(rejects_temperature=False)
+    _patch_client(monkeypatch, completions)
+    assert analyzer.llm_call("sys", "user", model="claude-haiku-4-5", temperature=0.0) == "hello"
+    assert completions.calls == [
+        {
+            "model": "claude-haiku-4-5",
+            "messages": [
+                {"role": "system", "content": "sys"},
+                {"role": "user", "content": "user"},
+            ],
+            "temperature": 0.0,
+        }
+    ]
+
+
+def test_llm_call_does_not_swallow_unrelated_bad_requests(monkeypatch):
+    class Always400(_FakeCompletions):
+        def create(self, **kwargs):
+            raise BadRequestError_stub("context window exceeded")
+
+    _patch_client(monkeypatch, Always400(rejects_temperature=True))
+    try:
+        analyzer.llm_call("sys", "user", model="claude-haiku-4-5")
+        failed = False
+    except RuntimeError as e:
+        failed = "context window" in str(e)
+    assert failed, "a non-temperature 400 must not be retried away"
+
+
+# --- model catalogue: config.py is a fallback, the provider is the truth ---
+
+def test_config_models_have_no_duplicate_names():
+    # MODEL_TO_PROVIDER is a reverse map, so a name listed under two providers
+    # would silently route to whichever came last.
+    seen = [m for p in config.PROVIDERS.values() for m in p["models"]]
+    assert len(seen) == len(set(seen)), "a model name appears under two providers"
+
+
+def test_default_models_are_in_the_catalogue():
+    for model in (config.DEFAULT_MODEL, config.FAST_MODEL, config.SMART_MODEL):
+        assert model in config.MODEL_TO_PROVIDER
+
+
+def test_list_models_reads_from_the_provider(monkeypatch):
+    listed = type("L", (), {"data": [type("M", (), {"id": "b"})(), type("M", (), {"id": "a"})()]})()
+    client = type("C", (), {"models": type("Mo", (), {"list": lambda self: listed})()})()
+    monkeypatch.setattr(analyzer, "client_for", lambda *a, **k: client)
+    assert analyzer.list_models("anthropic", "sk-test") == ["a", "b"]
+
+
+# --- the API is reachable under both mount points ---
+
+def test_routes_are_served_with_and_without_the_api_prefix():
+    # Production routes /api/* to this service and forwards the path unchanged;
+    # uvicorn locally and the notebook call the bare paths. Both must work, or
+    # the deployment and the local workflow disagree about the same code.
+    from fastapi.testclient import TestClient
+
+    from app import app as fastapi_app
+
+    client = TestClient(fastapi_app)
+    for prefix in ("", "/api"):
+        assert client.get(f"{prefix}/health").json() == {"status": "ok"}
+        assert client.get(f"{prefix}/providers").status_code == 200
+        rejected = client.post(
+            f"{prefix}/report",
+            json={
+                "company_url": "https://x.com",
+                "company_name": "X",
+                "provider": "not-a-provider",
+                "model": "m",
+                "llm_key": "k",
+                "tavily_key": "t",
+            },
+        )
+        assert rejected.status_code == 400, prefix
 
 
 # --- report.py helpers ---

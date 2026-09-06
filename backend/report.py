@@ -1,9 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor
 
 import requests
-from scraper import scrape_key_pages
-from searcher import get_competitor_search_content, validate_url
-from security import is_public_url
+
 from analyzer import (
     ApiKeys,
     extract_company_profile,
@@ -12,6 +10,9 @@ from analyzer import (
     generate_intelligence_report,
 )
 from config import FAST_MODEL, SMART_MODEL
+from scraper import scrape_key_pages
+from searcher import get_competitor_search_content, validate_url
+from security import is_public_url
 
 MIN_CONTENT_LENGTH = 200  # minimum characters before we consider a scrape meaningful
 
@@ -28,7 +29,7 @@ def _check_url_reachable(url: str) -> bool:
             allow_redirects=True,
         )
         return r.status_code < 400
-    except Exception:
+    except Exception:  # noqa: BLE001 - any failure to reach it means "do not scrape it"
         return False
 
 
@@ -176,7 +177,7 @@ def run_competitor_intelligence(
 
     # Preserve the LLM's relevance ranking (pool.map keeps input order).
     competitor_profiles = [r for r in results if r is not None]
-    skipped = [c["name"] for c, r in zip(competitors, results) if r is None]
+    skipped = [c["name"] for c, r in zip(competitors, results, strict=True) if r is None]
 
     if skipped:
         print(f"\n  [!] Skipped: {', '.join(skipped)}")

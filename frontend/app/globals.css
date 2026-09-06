@@ -501,6 +501,10 @@ select:focus {
   text-transform: uppercase;
   color: var(--muted-2);
 }
+.foot .byline {
+  color: var(--text);
+  letter-spacing: 0.18em;
+}
 .foot a {
   color: var(--muted);
   text-decoration: none;

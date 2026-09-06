@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+
 from security import BlockedURLError, fetch_validated
 
 # Pretend to be a browser so sites don't block the request
@@ -31,7 +32,7 @@ def scrape_page(url: str) -> str:
     except BlockedURLError as e:
         print(f"  [scraper] Blocked '{url}': {e}")
         return ""
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 - one bad page must not end the run
         print(f"  [scraper] Could not fetch {url}: {e}")
         return ""
 

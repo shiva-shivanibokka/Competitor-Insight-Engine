@@ -1,0 +1,19 @@
+# Pinned rule set, so the lint result depends on what was committed and not on
+# which ruff version CI happened to install that day. The version itself is
+# pinned in .github/workflows/ci.yml; both halves are needed.
+target-version = "py311"
+line-length = 110
+
+[lint]
+select = [
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "I",    # import order
+    "UP",   # pyupgrade
+    "B",    # bugbear
+    "SIM",  # simplify
+    "S110", # try-except-pass      — a swallowed error is a silent failure
+    "S112", # try-except-continue  — same
+    "BLE",  # blind except         — allowed only with a stated reason
+    "RUF",
+]

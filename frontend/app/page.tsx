@@ -4,8 +4,11 @@ import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-const BACKEND_URL =
-  process.env.NEXT_PUBLIC_BACKEND_URL?.replace(/\/$/, "") || "http://localhost:7860";
+// Same-origin by default: the API is a service in this same Vercel project,
+// reachable at /api/*. NEXT_PUBLIC_BACKEND_URL only exists for running the
+// backend separately in local dev (uvicorn on :7860).
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL?.replace(/\/$/, "") ?? "";
+const API = `${BACKEND_URL}/api`;
 
 type Model = { name: string; tier: string };
 type Provider = {
@@ -36,6 +39,7 @@ export default function Home() {
   const [model, setModel] = useState("");
   const [llmKeys, setLlmKeys] = useState<Record<string, string>>({});
   const [tavilyKey, setTavilyKey] = useState("");
+  const [liveModels, setLiveModels] = useState<Record<string, string[]>>({});
 
   const [companyUrl, setCompanyUrl] = useState("https://stripe.com");
   const [companyName, setCompanyName] = useState("Stripe");
@@ -45,16 +49,21 @@ export default function Home() {
   const [error, setError] = useState("");
   const [report, setReport] = useState("");
 
+  const provider = providers.find((p) => p.id === providerId);
+  const llmKey = llmKeys[providerId] || "";
+  const live = liveModels[providerId];
+  const modelNames = live ?? provider?.models.map((m) => m.name) ?? [];
+
   useEffect(() => {
     const saved = loadKeys();
     setLlmKeys(saved.llm);
     setTavilyKey(saved.tavily);
 
-    fetch(`${BACKEND_URL}/health`)
+    fetch(`${API}/health`)
       .then((r) => setOnline(r.ok))
       .catch(() => setOnline(false));
 
-    fetch(`${BACKEND_URL}/providers`)
+    fetch(`${API}/providers`)
       .then((r) => r.json())
       .then((d) => {
         const provs: Provider[] = d.providers;
@@ -64,23 +73,42 @@ export default function Home() {
           setModel(provs[0].models[0].name);
         }
       })
-      .catch(() =>
-        setError(`Can't reach the engine at ${BACKEND_URL}. Check NEXT_PUBLIC_BACKEND_URL.`)
-      );
+      .catch(() => setError("Can't reach the engine. It may still be starting — reload in a moment."));
   }, []);
+
+  // Replace the built-in catalogue with the provider's live list as soon as
+  // there's a key to ask with. A hardcoded list is how a retired model ended
+  // up in this dropdown, 404-ing for anyone who picked it.
+  useEffect(() => {
+    if (!providerId || !llmKey) return;
+    const timer = setTimeout(() => {
+      const controller = new AbortController();
+      fetch(`${API}/models`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ provider: providerId, llm_key: llmKey }),
+        signal: controller.signal,
+      })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          if (d?.models?.length) setLiveModels((m) => ({ ...m, [providerId]: d.models }));
+        })
+        .catch(() => {
+          /* an unusable key just leaves the built-in list in place */
+        });
+    }, 700); // debounce: the key arrives one keystroke at a time
+    return () => clearTimeout(timer);
+  }, [providerId, llmKey]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     sessionStorage.setItem(KEYS_STORAGE, JSON.stringify({ llm: llmKeys, tavily: tavilyKey }));
   }, [llmKeys, tavilyKey]);
 
-  const provider = providers.find((p) => p.id === providerId);
-  const llmKey = llmKeys[providerId] || "";
-
   function onProviderChange(id: string) {
     setProviderId(id);
-    const p = providers.find((x) => x.id === id);
-    if (p) setModel(p.models[0].name);
+    const names = liveModels[id] ?? providers.find((x) => x.id === id)?.models.map((m) => m.name);
+    if (names?.length) setModel(names[0]);
   }
 
   async function onSubmit(e: React.FormEvent) {
@@ -93,7 +121,7 @@ export default function Home() {
     }
     setLoading(true);
     try {
-      const res = await fetch(`${BACKEND_URL}/report`, {
+      const res = await fetch(`${API}/report`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -118,10 +146,12 @@ export default function Home() {
 
   function download() {
     const blob = new Blob([report], { type: "text/markdown" });
+    const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
+    a.href = url;
     a.download = `${companyName.replace(/\W+/g, "_").toLowerCase()}_competitor_report.md`;
     a.click();
+    URL.revokeObjectURL(url); // otherwise every download leaks the blob for the tab's lifetime
   }
 
   return (
@@ -217,9 +247,9 @@ export default function Home() {
               <label>
                 <span className="fl">Model</span>
                 <select value={model} onChange={(e) => setModel(e.target.value)}>
-                  {provider?.models.map((m) => (
-                    <option key={m.name} value={m.name}>
-                      {m.name} · {m.tier}
+                  {modelNames.map((name) => (
+                    <option key={name} value={name}>
+                      {name} · {provider?.tier}
                     </option>
                   ))}
                 </select>
@@ -315,7 +345,7 @@ export default function Home() {
       </main>
 
       <footer className="foot">
-        <span>Competitor Intelligence Engine</span>
+        <span className="byline">Built by Shivani Bokka</span>
         <a href="https://github.com/shiva-shivanibokka/Competitor-Insight-Engine" target="_blank" rel="noreferrer">
           Source ↗
         </a>

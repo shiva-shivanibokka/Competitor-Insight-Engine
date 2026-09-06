@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
@@ -18,11 +19,15 @@ PROVIDERS = {
         "key_url": "https://console.anthropic.com/settings/keys",
         # Anthropic needs this header when called via the OpenAI-compatible wrapper
         "extra_headers": {"anthropic-version": "2023-06-01"},
+        # Verified against GET /v1/models on 6 Sept 2026. claude-3-haiku-20240307
+        # was in this list and had been retired — it 404'd for anyone who picked
+        # it. That is what /models on the live provider is for; see app.py.
         "models": [
+            "claude-sonnet-5",
             "claude-haiku-4-5",
-            "claude-sonnet-4-5",
+            "claude-opus-5",
             "claude-opus-4-5",
-            "claude-3-haiku-20240307",
+            "claude-sonnet-4-5",
         ],
     },
     "gemini": {
@@ -31,10 +36,13 @@ PROVIDERS = {
         "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
         "env_key": "GOOGLE_API_KEY",
         "key_url": "https://aistudio.google.com/apikey",
+        # Unverified — no key on hand to check these against the provider.
+        # The UI replaces this list with the live one as soon as a key is
+        # pasted, which is the only thing that keeps it from rotting again.
         "models": [
+            "gemini-2.5-flash",
+            "gemini-2.5-pro",
             "gemini-2.0-flash",
-            "gemini-1.5-flash",
-            "gemini-1.5-pro",
         ],
     },
     "groq": {
@@ -43,10 +51,11 @@ PROVIDERS = {
         "base_url": "https://api.groq.com/openai/v1",
         "env_key": "GROQ_API_KEY",
         "key_url": "https://console.groq.com/keys",
+        # Unverified, minus mixtral-8x7b-32768 which Groq decommissioned.
+        # Replaced by the live list once a key is pasted.
         "models": [
             "llama-3.3-70b-versatile",
             "llama-3.1-8b-instant",
-            "mixtral-8x7b-32768",
             "gemma2-9b-it",
         ],
     },
@@ -56,10 +65,10 @@ PROVIDERS = {
         "base_url": "https://api.openai.com/v1",
         "env_key": "OPENAI_API_KEY",
         "key_url": "https://platform.openai.com/api-keys",
+        # Unverified. Replaced by the live list once a key is pasted.
         "models": [
-            "gpt-4o",
             "gpt-4o-mini",
-            "gpt-3.5-turbo",
+            "gpt-4o",
         ],
     },
     "mistral": {
@@ -103,9 +112,9 @@ for provider_name, details in PROVIDERS.items():
 
 # Default models used across the pipeline.
 # Change these here, or override them per-run in the notebook (Cell 3).
-DEFAULT_MODEL = "claude-sonnet-4-5"  # used if no model is specified
+DEFAULT_MODEL = "claude-sonnet-5"  # used if no model is specified
 FAST_MODEL = "claude-haiku-4-5"  # extraction steps — pick anything fast
-SMART_MODEL = "claude-sonnet-4-5"  # report generation — pick anything capable
+SMART_MODEL = "claude-sonnet-5"  # report generation — pick anything capable
 
 # Catch typos in the default model names at import time — before any pipeline runs
 for _model in (DEFAULT_MODEL, FAST_MODEL, SMART_MODEL):

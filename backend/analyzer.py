@@ -1,9 +1,12 @@
-import os
 import json
+import os
 import re
-from openai import OpenAI
-from config import PROVIDERS, MODEL_TO_PROVIDER, FAST_MODEL, SMART_MODEL
+from urllib.parse import urlparse
+
+from openai import BadRequestError, OpenAI
+
 from blocklist import is_blocked
+from config import FAST_MODEL, MODEL_TO_PROVIDER, PROVIDERS, SMART_MODEL
 
 # BYOK: keys arrive per-request as {provider_name: key} and are used in-memory only.
 # They are NEVER written to disk, logged, or echoed back. Do not print this dict.
@@ -11,17 +14,22 @@ ApiKeys = dict[str, str]
 
 
 def get_client(model: str, api_keys: ApiKeys | None = None) -> OpenAI:
-    """Look up the provider for this model and return a configured client.
-
-    Key resolution order: per-request BYOK dict → environment variable (local/CLI).
-    """
-    api_keys = api_keys or {}
+    """Look up the provider for this model and return a configured client."""
     provider_name = MODEL_TO_PROVIDER.get(model)
     if not provider_name:
         raise ValueError(
             f"Model '{model}' not found. Available models:\n"
             + "\n".join(f"  {m} (via {p})" for m, p in MODEL_TO_PROVIDER.items())
         )
+    return client_for(provider_name, api_keys)
+
+
+def client_for(provider_name: str, api_keys: ApiKeys | None = None) -> OpenAI:
+    """Configured client for a provider.
+
+    Key resolution order: per-request BYOK dict → environment variable (local/CLI).
+    """
+    api_keys = api_keys or {}
     provider = PROVIDERS[provider_name]
     if provider["env_key"] is None:
         api_key = "ollama"  # local, no key needed
@@ -42,6 +50,30 @@ def get_client(model: str, api_keys: ApiKeys | None = None) -> OpenAI:
     )
 
 
+def list_models(provider_name: str, api_key: str) -> list[str]:
+    """The models this key can actually use, straight from the provider.
+
+    config.py's catalogue is a starting point, not the truth. A hardcoded list
+    goes stale in silence: this one shipped `claude-3-haiku-20240307` long after
+    it was retired, so the dropdown offered a model that 404'd on selection.
+    Every provider here speaks the OpenAI-compatible /v1/models, so one call
+    covers all of them.
+    """
+    client = client_for(provider_name, {provider_name: api_key})
+    return sorted(m.id for m in client.models.list().data)
+
+
+# Models that reject `temperature` outright. Newer Anthropic models return
+# 400 `temperature is deprecated for this model`, which turns a working app
+# into one that 500s the moment a current model is added to the catalogue.
+#
+# Learned at runtime instead of hardcoded on purpose: a hand-maintained list of
+# per-model quirks rots exactly the way the model catalogue itself rots, and
+# providers ship models faster than this file gets edited. One wasted call per
+# model per process buys a rule that stays true without anyone updating it.
+_REJECTS_TEMPERATURE: set[str] = set()
+
+
 def llm_call(
     system_prompt: str,
     user_prompt: str,
@@ -54,20 +86,31 @@ def llm_call(
     provider_name = MODEL_TO_PROVIDER[model]
     print(f"    [llm] {provider_name} | {model}")
 
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+    def create(**extra):
+        return client.chat.completions.create(model=model, messages=messages, **extra)
+
     try:
-        response = client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
-            temperature=temperature,
-        )
+        if model in _REJECTS_TEMPERATURE:
+            response = create()
+        else:
+            try:
+                response = create(temperature=temperature)
+            except BadRequestError as e:
+                if "temperature" not in str(e):
+                    raise
+                _REJECTS_TEMPERATURE.add(model)
+                print(f"    [llm] {model} rejects temperature — retrying without it")
+                response = create()
         return response.choices[0].message.content or ""
     except Exception as e:
         raise RuntimeError(
             f"LLM call failed ({provider_name} | {model}): {e}\n"
-            f"Check your API key in .env and make sure the model name is correct."
+            f"Check that your {provider_name} key is valid and the model name is current."
         ) from e
 
 
@@ -77,7 +120,8 @@ def llm_call(
 # competitor companies — filters out blogs, news, review sites, etc.
 # ------------------------------------------------------------------
 
-COMPETITOR_EXTRACTION_PROMPT = """You are a business intelligence analyst specialising in competitive research.
+COMPETITOR_EXTRACTION_PROMPT = """You are a business intelligence analyst
+specialising in competitive research.
 
 You will be given search result content about competitors of a specific company.
 Your job is to identify the ACTUAL direct competitor companies and rank them by relevance.
@@ -106,13 +150,17 @@ Output format:
 
 def _is_valid_competitor_url(url: str, company_name: str) -> bool:
     """Returns False if the URL is blocklisted or belongs to the main company."""
-    if not url or not url.startswith("http"):
+    if not url.startswith(("http://", "https://")):
         return False
     if is_blocked(url):  # shared blocklist — see blocklist.py
         return False
-    if company_name.lower().replace(" ", "") in url.lower().replace(" ", ""):
-        return False
-    return True
+    # Match the company name against whole host labels, not as a substring of
+    # the URL. Substring matching made short names reject unrelated companies:
+    # researching "Ada" threw away adaptive.com, "Wise" threw away wisetech.com.
+    # Labels rather than just the second level so a company's own subdomain
+    # (dashboard.stripe.com) is still recognised as the company.
+    host = (urlparse(url).hostname or "").lower()
+    return company_name.lower().replace(" ", "") not in host.split(".")[:-1]
 
 
 def extract_competitors_from_search(
@@ -142,7 +190,7 @@ def extract_competitors_from_search(
     try:
         cleaned = re.sub(r"```(?:json)?", "", raw).strip()  # type: ignore[arg-type]
         competitors = json.loads(cleaned)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 - LLM output is untrusted; degrade, never crash
         print(f"  [!] Could not parse response: {e}\n  Output was:\n{raw[:400]}")
         return []
 
@@ -237,7 +285,10 @@ def extract_competitor_profile(
     print(f"  [step] Extracting profile for: {competitor_name}")
     profile = llm_call(
         system_prompt=EXTRACTION_SYSTEM_PROMPT,
-        user_prompt=f"Extract the company profile for {competitor_name} from this website content:\n\n{scraped_text}",
+        user_prompt=(
+            f"Extract the company profile for {competitor_name} "
+            f"from this website content:\n\n{scraped_text}"
+        ),
         model=model,
         api_keys=api_keys,
     )
@@ -251,7 +302,8 @@ def extract_competitor_profile(
 # Change SMART_MODEL in config.py or pass a different model here.
 # ------------------------------------------------------------------
 
-REPORT_SYSTEM_PROMPT = """You are a senior business strategy consultant with deep expertise in competitive intelligence.
+REPORT_SYSTEM_PROMPT = """You are a senior business strategy consultant with
+deep expertise in competitive intelligence.
 
 You will be given structured profiles of one main company and several of its competitors.
 Your job is to produce a comprehensive, actionable Competitive Intelligence Report in Markdown.

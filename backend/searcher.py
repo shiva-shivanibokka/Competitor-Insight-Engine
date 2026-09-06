@@ -1,6 +1,8 @@
 import os
+
 import requests
 from tavily import TavilyClient
+
 from blocklist import is_blocked
 from security import is_public_url
 
@@ -30,7 +32,7 @@ def validate_url(url: str) -> bool:
             allow_redirects=True,
         )
         return response.status_code < 400
-    except Exception:
+    except Exception:  # noqa: BLE001 - unreachable for any reason means skip it
         return False
 
 
@@ -64,7 +66,8 @@ def get_competitor_search_content(
     results = response.get("results", [])
     if len(results) < 3:
         print(
-            f"  [!] Warning: only {len(results)} search result(s) returned — competitor identification may be limited."
+            f"  [!] Warning: only {len(results)} search result(s) returned. "
+            f"Competitor identification may be limited."
         )
 
     parts = []
