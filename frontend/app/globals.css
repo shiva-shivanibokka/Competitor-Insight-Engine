@@ -433,6 +433,16 @@ select:focus {
   border-color: var(--orange);
   color: var(--orange);
 }
+/* Clear discards what is on screen, so it reads as the destructive one. */
+.out-actions button.clear:hover {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+/* In the error panel it is the only control, so it sits left with the text. */
+.alert .out-actions {
+  justify-content: flex-start;
+  margin: 14px 0 0;
+}
 
 /* ---------- report markdown ---------- */
 .briefing {

@@ -237,6 +237,18 @@ export default function Home() {
     setPlaying("");
   }
 
+  // Puts the output panel back to standby. Clears what was produced -- report,
+  // replay log, which recording was playing, any error -- and nothing else:
+  // the target fields and the keys stay, because clearing a result should not
+  // make you retype the thing you want to run again.
+  function clearOutput() {
+    setReport("");
+    setError("");
+    setRecording(null);
+    setReplayLines([]);
+    setPlaying("");
+  }
+
   function download() {
     const blob = new Blob([report], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
@@ -464,6 +476,11 @@ export default function Home() {
             <div className="alert">
               <span className="panel-tab err">Signal lost</span>
               <p>{error}</p>
+              <div className="out-actions">
+                <button type="button" className="clear" onClick={clearOutput}>
+                  Clear
+                </button>
+              </div>
             </div>
           ) : replaying ? (
             <div className="await">
@@ -499,6 +516,9 @@ export default function Home() {
                 </button>
                 <button type="button" onClick={download}>
                   Download .md
+                </button>
+                <button type="button" className="clear" onClick={clearOutput}>
+                  Clear
                 </button>
               </div>
               <div className="briefing">
