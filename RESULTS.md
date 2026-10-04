@@ -16,7 +16,7 @@ Every number below is measured unless it says otherwise. Anything that did not r
 | Runs | One run at temperature 0, seed 0. Seeds 1–2 were not run because of the quota. |
 | Raw outputs | `raw/llm_cache.jsonl` holds all 188 LLM calls (hashed prompts, responses, token counts, timestamps). Also `raw/discovery.jsonl` and `raw/retrieval/*.json`. |
 | Replay (no API calls) | `python eval_sop/score.py && python eval_sop/sensitivity.py`. `tests/test_transport.py` checks that all 148 discovery records replay exactly from the cache. |
-| Fresh run | `EDGAR_UA="name email" python eval_sop/ground_truth/build_gt.py`, then `retrieve.py`, `run_discovery.py` and `score.py`. Set the key with `EVAL_KEY_ENV` / `EVAL_KEY_VAR`. |
+| Fresh run | `EDGAR_UA="Competitor-Insight-Engine noreply@users.noreply.github.com" python eval_sop/ground_truth/build_gt.py` (SEC asks for a contact in the User-Agent; use a no-reply address, not a personal one), then `retrieve.py`, `run_discovery.py` and `score.py`. Set the key with `EVAL_KEY_ENV` / `EVAL_KEY_VAR`. |
 
 ### 2. Ground truth (`eval_sop/ground_truth/`)
 - **Source.** Each company's latest 10-K on EDGAR; accession, URL and filing date are in `companies.json`.

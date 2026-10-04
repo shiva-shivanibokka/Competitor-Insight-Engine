@@ -1,6 +1,8 @@
 """Build companies.json from spec.py + SEC EDGAR.
 
-    set EDGAR_UA="Your Name your@email"     (SEC requires a contact User-Agent)
+    set EDGAR_UA="Competitor-Insight-Engine noreply@users.noreply.github.com"
+                                            (SEC requires a contact User-Agent; use a
+                                             no-reply address, never a personal one)
     python eval_sop/ground_truth/build_gt.py [--cache DIR]
 
 For each ticker: resolve CIK (sec.gov/files/company_tickers.json), take the most
