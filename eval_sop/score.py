@@ -74,6 +74,11 @@ def match(preds: list[str], gt: list[dict]) -> list[int | None]:
     return out
 
 
+def mentions(names: list[str], x: str) -> bool:
+    """Whole-word, case-insensitive mention of x in any predicted name."""
+    return any(re.search(r"\b" + re.escape(x) + r"\b", n, re.I) for n in names)
+
+
 def metrics(preds: list[str], gt: list[dict], k: int = 4) -> dict:
     m = match(preds, gt)
     top = m[:k]
@@ -147,7 +152,7 @@ def main():
         row = {k: r[k] for k in ("id", "tier", "cond", "temperature", "seed")}
         row.update(metrics(names, gt))
         def has(x, names=names):
-            return any(re.search(rf"{x}", n, re.I) for n in names)
+            return mentions(names, x)
         row["leak_orig_any"] = float(any(has(x) for x in LEAK_ORIG))
         row["leak_orig_n"] = sum(has(x) for x in LEAK_ORIG)
         row["leak_fixed_any"] = float(any(has(x) for x in LEAK_FIXED))
