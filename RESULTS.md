@@ -1,147 +1,169 @@
 # Competitor-Insight-Engine: SOP evaluation (branch `sop-eval`)
 
-Status: **partial run.** The free Groq quota for the one model allowed here
-(200,000 tokens per day) ran out before the run finished. Everything below is
-measured unless it is marked as an estimate. Conditions or seeds that did not
-run are listed as not run, not estimated.
+**Status: partial run (Groq, seed 0) plus a fix phase.** The free Groq quota (200,000 tokens a day for the one allowed model) ran out before every condition finished. After an adversarial review, the harness was fixed so a paid Haiku run can be done under a hard cost cap. That paid run has **not** been done.
+
+Every number below is measured unless it says otherwise. Anything that did not run is marked as not run; nothing missing has been estimated.
 
 ## 1. Setup
 
 | Item | Value |
 |---|---|
-| Code under test | `backend/` at commit `c3eac2d` (unchanged; see Change log) |
-| Pipeline steps exercised | 1 scrape homepage, 2 LLM profile (gives INDUSTRY), 3 web search, 4 LLM competitor extraction. Steps 5–7 (competitor scraping/profiles, report) were **not** run. |
-| LLM | `qwen/qwen3.8-27b` on the Groq free tier, `reasoning_effort="none"`, `max_tokens=700`. The product's own prompts and temperatures were used (0.0 for extraction, 0.2 for profiles). One model for every comparison. The product default (`claude-haiku-4-5`) was not used because it is paid. |
-| Search | **Substituted.** The product uses Tavily, but there was no Tavily key. I used the free `ddgs` 9.13.1 metasearch (`backend=auto`) with the product's exact query string `top direct competitors of {name} in {industry}`, plus up to 6 non-blocklisted result pages fetched with the product's `scrape_page()` (600 chars each, 6,000 chars in total). `sec.gov` results were dropped. |
-| Ground truth | 48 companies from SEC 10-K "Competition" sections (see §2) |
-| Seeds | Seed 0 only, at temperature 0. Seeds 1–2 did **not** run because of the quota. |
-| Raw outputs | `eval_sop/raw/llm_cache.jsonl` (all 188 LLM calls with prompts hashed, responses, token counts and timestamps), `raw/discovery.jsonl`, `raw/retrieval/*.json` (scraped text, profile, search text and sources) |
-| Reproduce (cache replay, no API calls) | `python eval_sop/score.py` |
-| Reproduce (fresh) | `EDGAR_UA="name email" python eval_sop/ground_truth/build_gt.py`, then `EVAL_GROQ_ENV=<.env> EVAL_GROQ_VAR=<var> python eval_sop/retrieve.py`, then `python eval_sop/run_discovery.py --temps 0 --seeds 0 1 2`, then `python eval_sop/score.py` |
+| Code under test | `backend/` at commit `c3eac2d`. Unchanged; see the Change log. |
+| Pipeline steps exercised | Step 1 scrapes the homepage. Step 2 builds an LLM profile, which supplies INDUSTRY. Step 3 runs a web search. Step 4 is LLM competitor extraction. Steps 5–7 (competitor profiles and the report) were **not run**. |
+| LLM (the only model in every reported comparison) | `qwen/qwen3.8-27b` on the Groq free tier, with `reasoning_effort="none"` and `max_tokens=700`. The product's own prompts and temperatures were used: 0.0 for extraction and 0.2 for the profile. |
+| Search | **Substituted, so this is not the shipped configuration.** No Tavily key was available. I used free `ddgs` 9.13.1 metasearch (`backend=auto`) with the product's exact query `top direct competitors of {name} in {industry}`. On top of the snippets, up to 6 non-blocklisted result pages were fetched with the product's `scrape_page()`, at 600 characters each and 6,000 characters in total. sec.gov results were dropped. All search text is cached in `raw/retrieval/`. |
+| Ground truth | 48 companies from SEC 10-K "Competition" sections (see §2). |
+| Runs | One run at temperature 0, seed 0. Seeds 1–2 were not run because of the quota. |
+| Raw outputs | `raw/llm_cache.jsonl` holds all 188 LLM calls (hashed prompts, responses, token counts, timestamps). Also `raw/discovery.jsonl` and `raw/retrieval/*.json`. |
+| Replay (no API calls) | `python eval_sop/score.py && python eval_sop/sensitivity.py`. `tests/test_transport.py` checks that all 148 discovery records replay exactly from the cache. |
+| Fresh run | `EDGAR_UA="name email" python eval_sop/ground_truth/build_gt.py`, then `retrieve.py`, `run_discovery.py` and `score.py`. Set the key with `EVAL_KEY_ENV` / `EVAL_KEY_VAR`. |
 
 ### 2. Ground truth (`eval_sop/ground_truth/`)
-- **Source.** The latest 10-K of each company on SEC EDGAR, with accession, URL and filing date in `companies.json`. Candidates came from EDGAR full-text search (phrases such as "our competitors include") plus a list of well-known tickers. All requests sent a contact User-Agent and stayed under 5 requests per second.
-- **Labels are LLM-created.** Claude transcribed the competitor names in each excerpt, and Claude also added the aliases (for example Alphabet/Google/Waymo). `build_gt.py` refuses to build unless every labelled name, or an alias, occurs verbatim in the stored 10-K excerpt. All 48 passed, so every label can be checked against the filing text.
-- **Fame tier.** Tiers use SEC public float (`dei:EntityPublicFloat`, XBRL frames API) as a proxy for fame: large ≥ $10B, mid $1–10B, small < $1B. There are 16 companies per tier, and the median number of ground-truth competitors is 10.5 / 6 / 6.
-- **Selection was not random.** I chose companies whose 10-K names at least 3 competitors, leaning toward software and consumer companies.
+- **Source.** Each company's latest 10-K on EDGAR; accession, URL and filing date are in `companies.json`.
+- **How the labels were made.** The labels are **LLM-assisted**: Claude transcribed the competitor names from each excerpt and added aliases. `build_gt.py` refuses to build unless every labelled entity has its name, or one of its aliases, appearing verbatim in the stored 10-K excerpt. All 48 companies pass. Labels have not been reviewed by a human.
+- **Coverage scope.** A label set covers the named competitors in one stored passage, which is not necessarily the whole filing. For example, NETGEAR's set covers its enterprise bullet only.
+- **Fame tier.** Public float from SEC XBRL `dei:EntityPublicFloat`, used as a proxy for fame: large ≥ $10B, mid $1–10B, small < $1B. There are 16 companies per tier.
+- **Selection.** Companies were selected for naming at least 3 competitors in the filing, so this is not a random sample.
 
 ### Metrics
-- **Matching.** A deterministic name matcher (normalised names, legal suffixes dropped, whole-token prefix, aliases).
-- **P@4.** Matched predictions among the top 4 the product would profile (`max_competitors=4`), divided by the number of predictions in the top 4. An empty output counts as 0.
-- **R@4 and R@all.** Matched predictions divided by the number of ground-truth competitors.
-- **Hit@4.** At least one match in the top 4.
-- **CIs.** 95% percentile bootstrap over companies (10,000 resamples, seed 0). Paired differences use a paired bootstrap.
+- **P@4.** Of the top 4 predictions the product would profile (`max_competitors=4`), the share that match a ground-truth entity. The denominator is the number of predictions in the top 4. An empty output counts as 0.
+- **R@4 and R@all.** Matched entities divided by the number of ground-truth entities, using the top 4 or the whole list.
+- **Hit@4.** Whether at least one ground-truth entity appears in the top 4.
+- **Matching.** Deterministic name matching with normalisation and whole-token prefix matching.
+- **Confidence intervals.** 95% percentile bootstrap over companies, 10,000 resamples, seed 0. Comparisons between conditions use a paired bootstrap.
 - **Simple baseline (no LLM).** The most frequent capitalised 1–3-word phrases in the same search text.
 
-## 3. Results
+## 3. Results (`qwen/qwen3.8-27b`, temperature 0, single run)
 
-### 3a. Competitor discovery, seed 0, T=0 (mean [95% CI])
+### 3a. Competitor discovery: mean [95% CI]
 
-| Condition | Tier | n | P@4 | R@4 | R@all | Hit@4 | Empty |
+| Condition | Tier | n | P@4 | P@4, verbatim-only labels | R@all | Hit@4 | Empty |
 |---|---|---|---|---|---|---|---|
-| (a) full pipeline | all | 48 | **0.52** [0.43, 0.62] | 0.30 [0.23, 0.39] | 0.40 [0.32, 0.49] | 0.77 [0.65, 0.90] | 0.04 |
-| (a) full pipeline | large | 16 | 0.63 [0.48, 0.77] | 0.30 [0.19, 0.43] | 0.41 [0.26, 0.56] | 0.94 | 0.00 |
-| (a) full pipeline | mid | 16 | 0.70 [0.56, 0.83] | 0.46 [0.32, 0.60] | 0.55 [0.40, 0.69] | 0.94 | 0.00 |
-| (a) full pipeline | small | 16 | **0.25** [0.11, 0.40] | 0.15 [0.06, 0.27] | 0.25 [0.13, 0.38] | 0.44 | 0.12 |
-| (b) no search, prompt as shipped ("no web search was run") | all | 48 | 0.00 | 0.00 | 0.00 | 0.00 | **1.00** |
-| (b2) no search, "answer from your own knowledge" | large | 16 | 0.58 [0.42, 0.72] | 0.27 [0.17, 0.40] | 0.32 [0.20, 0.45] | 0.88 | 0.00 |
-| (b2) | mid | 5 | 0.70 [0.55, 0.85] | 0.54 | 0.64 | 1.00 | 0.00 |
+| (a) full pipeline | all | 48 | **0.53** [0.43, 0.62] | 0.48 [0.39, 0.58] | 0.39 [0.31, 0.48] | 0.79 | 0.04 |
+| (a) | large | 16 | 0.63 [0.48, 0.77] | 0.53 [0.38, 0.69] | 0.40 | 0.94 | 0 |
+| (a) | mid | 16 | 0.70 [0.56, 0.83] | 0.66 [0.50, 0.78] | 0.53 | 0.94 | 0 |
+| (a) | small | 16 | **0.26** [0.12, 0.41] | 0.26 [0.13, 0.41] | 0.25 | 0.50 | 0.12 |
+| (b) no search, as-shipped wording ("no web search was run") | all | 48 | 0.00 | 0.00 | 0.00 | 0.00 | **1.00** |
+| (b2) no search, "answer from your own knowledge" (**post hoc**) | large | 16 | 0.59 [0.44, 0.73] | 0.50 [0.34, 0.64] | 0.32 | 0.88 | 0 |
+| (b2) | mid | 5 | 0.70 | 0.60 | 0.59 | 1.00 | 0 |
 | (b2) | small | 0 | not run (quota) | | | | |
-| (c) shuffled evidence | all | 31 | 0.03 [0.00, 0.08] | 0.01 | 0.01 | 0.06 | **0.84** |
-| (d) full pipeline + fictional few-shot | all | 0 | not run (quota) | | | | |
-| Simple baseline (capitalised phrases) | all | 48 | 0.10 [0.05, 0.15] | 0.06 [0.03, 0.09] | 0.13 [0.08, 0.19] | 0.29 | 0.00 |
-| Simple baseline | large / mid / small | 16 each | 0.19 / 0.08 / 0.03 | | | | |
+| (c) shuffled evidence (another company's search text) | large + mid | 31 | 0.03 [0.00, 0.08] | 0.02 | 0.01 | 0.06 | **0.84** |
+| (d) fixed few-shot prompt | all | 0 | not run (quota) | | | | |
+| Simple baseline | all | 48 | 0.10 [0.05, 0.15] | — | 0.13 | 0.29 | 0 |
+| Simple baseline | large / mid / small | 16 each | 0.19 / 0.08 / 0.03 | — | | | |
 
-Notes on the table:
-- (c) covers 16 large and 15 mid companies, and no small ones.
-- (b2) covers 21 companies: the 16 large and the first 5 mid in run order.
-- For (b2), the 5-company mid row is too small to interpret.
+**Paired differences:**
+- (a) − (b2), large companies: P@4 **+0.03 [−0.06, +0.13]**, not significantly different (n = 16). R@all +0.08 [+0.03, +0.14].
+- (a) − (c), n = 31: P@4 +0.63 [+0.52, +0.73].
+- (a) − baseline, n = 48: P@4 +0.43 [+0.33, +0.53].
 
-**Paired differences** (same companies, from `results/paired_diffs_T0.json`):
+### 3b. Sensitivities (`results/sensitivity.json`)
 
-| Comparison | n | P@4 diff | R@all diff |
+**Verbatim-only labels.** Each ground-truth entity keeps only the strings that appear verbatim in its excerpt, which drops the LLM-added aliases. The verbatim-only column in §3a shows the effect:
+- P@4 for (a) falls from 0.53 to 0.48.
+- For large companies it falls from 0.63 to 0.53.
+- For (b2), large companies, it falls from 0.59 to 0.50.
+- The small-company number is unchanged.
+
+**Retrieval coverage confound.** This is the share of a company's ground-truth entities that appear anywhere in the search text the pipeline saw:
+
+| Coverage definition | Large | Mid | Small |
 |---|---|---|---|
-| (a) − (b2), large | 16 | +0.05 [−0.05, +0.14] | +0.09 [+0.03, +0.16] |
-| (a) − (c) | 31 | +0.63 [+0.52, +0.73] | +0.46 [+0.34, +0.57] |
-| (a) − simple baseline | 48 | +0.43 [+0.33, +0.53] | +0.27 [+0.19, +0.36] |
+| Verbatim, case-sensitive | 0.38 [0.29, 0.49] | 0.42 [0.29, 0.57] | **0.19** [0.08, 0.32] |
+| Any alias, case-insensitive | 0.43 | 0.49 | 0.20 |
 
-### 3b. Few-shot leak (Adyen / Braintree / Square in the output)
-- **Not reproduced.** The original prompt produced 0 of 48 leaks in (a), 0 of 31 in (c) and 0 of 21 in (b2). A regex over all 188 raw responses found zero mentions of Adyen, Braintree or squareup.
-- The Stripe demo (claude-haiku-4-5, in `frontend/public/demo/stripe.json`) does return Adyen, PayPal, Square and Braintree with the prompt's exact URLs. But those are genuine Stripe competitors, so the demo cannot tell copying apart from correct answers.
-- Conclusion: with this model, the leak hypothesis is unsupported. It is untested for Haiku.
+- **The free search returned much less about small companies' real competitors.** The small-vs-large precision gap therefore mixes model knowledge with retrieval coverage, and this design cannot separate the two.
+- Splitting companies at the median coverage gives (a) P@4 of 0.47 at or below the median (n = 26, of which 13 are small) and 0.60 above it (n = 22, of which 3 are small).
 
-### 3c. Pipeline aborts
-- 8 of 48 homepages (17%) gave no text to the product's plain-HTTP scraper: Uber, Supermicro, Wayfair, Ubiquiti, Weatherford, NETGEAR, Aviat and Phunware. That is 2 large, 3 mid and 3 small.
-- `report.py` would raise `ValueError` and stop for all of them. I still scored discovery for them, using the product's fallback industry ("technology").
+**Thin-scrape claim support.**
+- The "0.20" figure rests on **3 companies, 30 claims**: ROKU 0/14, ARLO 0/7 and SNAP 6/9. Claims within one company are not independent.
+- The claim-level Wilson 95% CI is [0.10, 0.37], against 0.67 [0.62, 0.71] for scrapes of 1,000 characters or more (n = 469). This is descriptive only.
 
-### 3d. Claim support of step-2 profiles (NLI judge)
-- **Judge.** `cross-encoder/nli-deberta-v3-large`. A claim counts as supported if max over chunks of P(entail) ≥ 0.5. The threshold was fixed in advance and not tuned.
-- **Validation on RAGTruth, not on our data.** I used 300 sentences (balanced, seed 0, 100 per task) from a local RAGTruth test copy with human span labels:
+### 3c. Few-shot leak (Adyen / Braintree / Square)
+- **Not reproduced.** None of the 148 seed-0 discovery outputs from the original prompt (a, b, b2, c) contain these names, and none of the 188 raw responses do.
+- The scorer's own leak detector was broken until commit `8b3f5f0`; see the Change log. After the fix it also reports 0.
+- The Stripe demo (claude-haiku-4-5) returns Adyen, PayPal, Square and Braintree. Those are genuine Stripe competitors, so the demo is not evidence of copying.
+- The leak remains **untested for Haiku**.
+
+### 3d. Pipeline aborts
+- 8 of 48 homepages (17%) gave no text to the plain-HTTP scraper: Uber, Supermicro, Wayfair, Ubiquiti, Weatherford, NETGEAR, Aviat and Phunware.
+- `report.py` would stop on these. Discovery was still scored for them, using the product's fallback industry ("technology").
+
+### 3e. Claim support of step-2 profiles (NLI judge, `cross-encoder/nli-deberta-v3-large`, threshold 0.5)
+- **The judge is only moderately reliable.** I validated it on 300 sentences from a local RAGTruth test copy that carries human labels:
   - balanced accuracy 0.657 [0.603, 0.709]
-  - Cohen's κ 0.31 [0.21, 0.42]
+  - κ 0.31 [0.21, 0.42]
   - AUROC 0.71
-  - The judge is only moderately reliable. No human labels from us are involved.
-- **Profiles.** 40 profiles (8 aborted), 499 claims. Supported fraction, mean over companies: 0.64 [0.56, 0.71].
-  - By tier: large 0.63, mid 0.59, small 0.70. The CIs overlap.
-  - Claims from profiles built on < 1,000 scraped chars: 0.20 supported (n = 30 claims). From ≥ 1,000 chars: 0.67 (n = 469).
-- 100 claims are exported to `results/claims_sample.csv`, with an empty `human_label` column for optional checking. No result depends on it.
+- **Overall support.** Across 40 profiles and 499 claims, 0.64 [0.56, 0.71] of claims are supported, averaged over companies.
+- **By tier.** Large 0.63, mid 0.59, small 0.70. The CIs overlap.
+- **Human-labelling file.** `results/claims_sample.csv` holds 100 claims with an empty `human_label` column. No result depends on it.
 
 ## 4. What the numbers support, and what they don't
 
-**Supported:**
-- With this free model and free search, about half of the top-4 competitors the pipeline would profile are named in the company's own 10-K: P@4 0.52 [0.43, 0.62], n = 48.
-- That beats a non-LLM baseline that reads the same search text: +0.43 [+0.33, +0.53].
-- Quality drops sharply for small companies: P@4 0.25 vs 0.63 and 0.70.
-- The extraction step depends on the evidence it is given. With another company's search text, it returns nothing 84% of the time, and P@4 falls to 0.03.
-- For large-cap companies, the model's prior alone, with no retrieval, gets P@4 0.58. That is statistically indistinguishable from the full pipeline (diff +0.05 [−0.05, +0.14], n = 16). Retrieval adds recall: R@all +0.09 [+0.03, +0.16].
-- When the homepage scrape is thin, profile claims are mostly unsupported by the scraped text (20% vs 67%). This matches the Duolingo demo, which drew on "public knowledge".
+**Supported** (one model, one run, free search):
+- P@4 is 0.53 [0.43, 0.62], or 0.48 with verbatim-only labels. The non-LLM baseline scores 0.10.
+- Small companies score much lower (P@4 0.26) than large (0.63) or mid (0.70). **The search text contains far fewer of small companies' real competitors (coverage 0.19 vs 0.38), so this gap cannot be attributed to the model alone.**
+- The extraction step depends on its evidence. Given another company's search text, it returns nothing 84% of the time, and its P@4 drops to 0.03. This holds on 31 large- and mid-cap companies.
+- For large companies, the model's own knowledge ((b2), added post hoc) is **not significantly different** from the full pipeline in P@4: +0.03 [−0.06, +0.13], n = 16. Retrieval does add recall.
 
 **Not supported:**
-- The key long-tail test, prior vs retrieval for small and mid companies, **did not run** because of the quota. So "grounding matters more for the long tail" is **untested**.
-- Nothing here measures the shipped configuration (claude-haiku-4-5 / claude-sonnet-5 + Tavily) or report quality (steps 5–7).
-- There is no seed variance, because n_seeds = 1.
-- The few-shot leak was not shown. The candidate fix (d) did not run.
+- "Grounding matters more for the long tail." The small and mid (b2) runs did not happen.
+- Anything about the shipped Haiku + Tavily configuration, report quality, or seed variance.
+- That a few-shot leak exists.
 
 ## 5. Threats to validity
-- **Search substitution.** ddgs is not Tavily. Its result sets and snippets differ, and they change over time. The search text is cached in `raw/retrieval/`.
-- **Ground truth is incomplete and conservative.** 10-Ks list only some competitors, and some are written in legal terms. A prediction that is correct but missing from the 10-K counts as wrong, so precision is a lower bound.
-- **Labels are LLM-created.** They are checked for literal presence in the excerpt, not reviewed by a human.
-- **Possible ground-truth leakage into search.** Web pages can paraphrase 10-Ks. Only sec.gov was excluded.
-- **Fame proxy.** Public float is not the same as LLM familiarity. For example, Herbalife is "small" by float.
-- **Selection bias.** Companies were chosen because their 10-Ks name competitors.
-- **Single model.** Results come from one model (qwen3.8-27b), one temperature and one seed.
-- **Prior-only wording.** The outcome depends on the wording. The as-shipped wording (b) makes the model abstain every time. Only the explicit "use your own knowledge" wording (b2) measures the prior.
-- **Partial conditions.** Several conditions are partial, so comparisons are paired on the companies they share.
-- **NLI judge.** Its agreement with humans on RAGTruth is moderate (κ 0.31). Its support rates carry that error.
-- **Third-party text in the raw data.** `raw/retrieval/*.json` contains excerpts of public web pages. Review it before pushing anywhere public.
+- **ddgs is not Tavily.** Results and coverage differ, and they drift over time.
+- **10-K lists are incomplete.** A correct prediction missing from the 10-K counts as wrong, so P@4 is a lower bound.
+- **Labels are LLM-assisted.** They are checked for literal presence in the filing excerpt, but not reviewed by a human. Five label sets were incomplete before review and are now fixed (see the Change log).
+- **Fame proxy.** Public float is not the same as how familiar an LLM is with a company.
+- **Selection bias.** The 48 companies were chosen for naming competitors in their filings.
+- **(b2) is post hoc.** It was added after (b) produced empty output for every company.
+- **(c)'s n = 31 is a quota-truncated subset, not a random sample.** Runs went large first, then mid, and the quota ended before any small company ran.
+- **(b2)'s 21 companies are also truncated.** They are all 16 large companies plus the first 5 mid ones.
+- **Possible label leakage into search.** Web pages can paraphrase a 10-K. Only sec.gov itself was excluded.
+- **The NLI judge is moderately reliable** (κ 0.31).
+- **Third-party text.** `raw/retrieval/*.json` contains excerpts of third-party web pages. `strip_retrieval.py` is prepared but not run; the user decides.
+- **One run.** There is no seed variance.
 
 ## 6. Change log
 
-**Product code: no changes.** `backend/` is byte-identical to `c3eac2d`.
-- **Few-shot fictional-examples fix: researched, then not applied.**
-  - What it was: a prompt change plus a regression test. The test failed on the original prompt (`raw/test_before_fix.txt`), and the full suite of 26 passed with the patch (`raw/test_after_fix.txt`).
-  - Why it was not applied: the leak did not reproduce in the measurement (§3b). Per the "reproduce before fix" rule, the product was restored.
-  - What was preserved: the patch is in `eval_sop/proposed_fewshot_fix.patch`, and the candidate prompt is in `eval_sop/fixed_prompt.py`, where it is used only by condition (d).
-- **Eval-side transport shim** (`eval_sop/common.py`). It swaps only the network transport of `analyzer.llm_call` and keeps the prompts, temperatures, parsing, blocklist and dedup.
+**Product code (`backend/`): no changes.** It is byte-identical to `c3eac2d` and its suite still passes 25/25. There are 25 tests at `c3eac2d`. `raw/test_after_fix.txt` shows "26 passed" only because it was produced with the unapplied few-shot patch (+1 test) in place. The `eval_sop/tests` suite adds 17 tests (2 + 13 + 2).
+
+| Commit | Change | Why / evidence | Preserved |
+|---|---|---|---|
+| `0f658d7`, `3d9532c` | Harness, ground truth, seed-0 results | — | — |
+| (in `3d9532c`) | Few-shot fix researched, **not applied**; kept as `proposed_fewshot_fix.patch` | Leak not reproduced (§3c). The patch's comments wrongly said the leak was "measured"; now corrected to "not observed; precaution" (fix-phase commit). `git apply --check` still passes. | Product prompt |
+| `0cb395c` | Groq org ID redacted from `raw/discovery.log`. Added an opt-in `strip_retrieval.py`. | Privacy review. **The org ID is still present in commit `3d9532c`.** History was not rewritten; squash before any push. | Retrieval files untouched |
+| `bf6b8e1` | `build_gt.py` decodes HTML from `r.content` (charset from the header, or sniffed) instead of `r.text`. Dropped a reference to a non-existent PROVENANCE.md. | Reproduced: `raw/encoding_repro.txt` shows the old path turning "Nestlé" into "NestlÃ©". A scan of all 48 cached 10-K texts found no mojibake, so labels were unaffected. | Cache, labels |
+| `a8107fe` | Ground truth completed from the stored excerpts with a new `--offline` rebuild (no EDGAR calls). Added NTGR Synology, TP-Link, TRENDnet, Ubiquiti and WatchGuard (span now ends at the enterprise bullet); CNDT Leidos, TransCore, Thales, Cubic and INIT; WDAY NetSuite; BOX OpenText. Added the aliases Belden, Vistance and Resideo. | Review found truncated spans; I re-audited every excerpt for unlabelled capitalised names. P@4 for (a) went 0.524 → 0.529. | No labels removed |
+| `65cc8e0` | New `LLMShim` transport covering the items below. Tests use a fake client: usage, 429, 400/401/403/404, the cap, crash/resume, model pinning, and exact replay of the Groq run. | Paid-run readiness | Groq cache keys unchanged (replay test) |
+| `65cc8e0` (cont.) | Haiku provider pinned to `claude-haiku-4-5-20251001`. Uses the official SDK with `max_retries=0`, sends no `seed` or `reasoning_effort`, and records `model_reported`. | Paid-run readiness | |
+| `65cc8e0` (cont.) | Persisted cost ledger at $1/M input and $5/M output. A call is refused if the worst case would pass the cap (default $2.75). | Paid-run readiness | |
+| `65cc8e0` (cont.) | At most 3 attempts per call (was up to 400). Any 4xx except 429 fails fast. | Paid-run readiness | |
+| `65cc8e0` (cont.) | The shim now rejects any `model` argument other than its pinned model. | Paid-run readiness | |
+| `8b3f5f0` | Leak detector fixed. `score.py` contained literal backspace characters where `\b` was intended, so it could never match. | Reproduced: `tests/test_score.py` failed (`raw/leak_detector_before_fix.txt`) and passes after the fix. Leak rates stay 0, which agrees with the independent raw-response check. | |
+| `5116815` | No model mixing. Model added to the resume key. Haiku output goes to `discovery_haiku.jsonl`. Scoring groups by model and pairs only within a model. | Review item A3 | Groq numbers unchanged |
+| `5116815` (cont.) | Haiku design set to {a, b2, c, d} once at T=0, and `--dry-run` added. | Review item A4 | |
+| `53dcc63` | `sensitivity.py` added | §3b | |
 
 ## 7. Proposed, not done
-- **README test count.** The README says "22 offline unit tests" in three places (lines 207, 272 and 327). There are 25 at `c3eac2d`. Two of them need DNS, not one: `test_ssrf_allows_public` and `test_reachability_checks_do_not_follow_redirect_chains` both fail with DNS disabled (`eval_sop/check_tests_offline.py`, `raw/tests_offline.txt`). Suggested wording: "25 unit tests (23 fully offline; 2 resolve DNS)".
-- **Architecture wording (for SOPs, not the README).** The pipeline is a fixed 7-step sequence. The LLM never chooses or calls a tool (`report.py`), so describe it as an LLM pipeline, not an agent. The README itself does not use the word "agent".
-- **Few-shot fix.** Apply `proposed_fewshot_fix.patch` only if the leak is shown with the production model.
-- **Scrape aborts.** 17% of homepages, including Uber and Wayfair, are unreadable to plain HTTP. The product could fall back to search snippets instead of aborting.
+- **README test count.** Lines 207, 272 and 327 say "22 offline unit tests". There are 25, and 2 of them need DNS (`test_ssrf_allows_public` and `test_reachability_checks_do_not_follow_redirect_chains`; see `check_tests_offline.py` and `raw/tests_offline.txt`). Suggested wording: "25 unit tests (23 fully offline; 2 resolve DNS)".
+- **Few-shot patch.** Apply it only if the leak is shown with the production model.
+- **Scrape aborts.** Fall back to search snippets instead of aborting when the homepage can't be scraped (17% of companies).
+- **Wording.** Describe the system as a fixed LLM pipeline, not an agent. The LLM never calls tools. The README does not say "agent".
+- **History.** Squash the branch before pushing, because of the org ID in `3d9532c`.
 
-## 8. Remaining runs
-- **Free, same model, after the quota resets.** Run `python eval_sop/run_discovery.py --temps 0 --seeds 0 --conds b2_prior_knowledge c_shuffled d_fixed`, then the same with `--seeds 1 2 --conds a_full b2_prior_knowledge c_shuffled d_fixed`.
-  - Remaining work is about 27 b2 calls, 17 shuffled calls and 48 d calls for seed 0, plus about 384 calls for seeds 1–2.
-  - That is roughly 0.7M tokens, about 4 days of the 200k/day free quota.
-  - I did not move this onto local Ollama, because that would mix models within a comparison.
-- **Paid, the shipped configuration (estimate, not run).**
-  - Model: claude-haiku-4-5. Calls: 48 profiles + 48 × 5 conditions × 3 seeds = 768.
-  - Tokens: about 1.7k in and 0.2k out per call, so about 1.3M input and 0.15M output.
-  - Cost: about $2 at roughly $1/M input and $5/M output. Check current pricing before relying on this.
-  - Tavily for the same run would be 48 advanced searches, 96 credits, inside its free 1,000 per month. A key is needed.
+## 8. Paid run, prepared but not executed
+- **What it is: "Haiku on the fixed ddgs evidence."** It runs `claude-haiku-4-5-20251001` on exactly the cached `raw/retrieval/` search text, over 48 companies × {a_full, b2, c_shuffled, d_fixed}, once at T=0. That is 192 calls.
+- **What it is not.** It is **not** the shipped Haiku + Tavily configuration and must never be described as such.
+- **Dry run.** `EVAL_PROVIDER=anthropic python eval_sop/run_discovery.py --dry-run` gives a **worst-case total of $1.0175** (`results/haiku_dry_run.txt`). The worst case assumes 1 token per 3 characters plus 50 tokens of input, and the full 700 output tokens.
+- **Cap.** $2.75, inside this project's $3 share.
+- **What it allows.** A clean Haiku comparison of (a) vs (b2) by tier, including small companies, the leak test for Haiku, and (d).
+- **Command.** `EVAL_PROVIDER=anthropic EVAL_KEY_ENV=<.env> EVAL_KEY_VAR=ANTHROPIC_API_KEY python eval_sop/run_discovery.py`
+- **Model ID check.** The pinned ID `claude-haiku-4-5-20251001` was required by the review. The current Anthropic model list names `claude-haiku-4-5`. If the dated ID returns 404, the shim fails fast at $0. Switching IDs is then a one-line change in `common.py`.
+- **Free remainder (Groq, same model).** The leftover Groq conditions need about 0.7M tokens, roughly 4 days of free quota.
 
-## 9. SOP-ready sentences (true as of this run)
-1. "I built a 48-company ground-truth set from the Competition sections of SEC 10-K filings, stratified by public float. On it, my competitor-discovery pipeline (with an open 27B model and free web search) reached precision@4 of 0.52 (95% CI 0.43–0.62), against 0.10 for a non-LLM baseline."
-2. "Precision fell from 0.63 for large-cap to 0.25 for small-cap companies. For large caps, the model's parametric knowledge alone matched the retrieval pipeline's precision within error (0.58 vs 0.63). This motivates my interest in when retrieval actually grounds LLM outputs."
-3. "An evidence-shuffling ablation showed that the extraction step depends on its evidence: given another company's search results, it returned no competitors 84% of the time."
+## 9. SOP-ready sentences (true for this run)
+1. "I built a 48-company ground-truth set from the Competition sections of SEC 10-K filings. The labels are LLM-assisted and verified verbatim against each filing. On it, my competitor-discovery pipeline (open 27B model qwen3.8-27b, free web search, single run) reached precision@4 of 0.53 (95% CI 0.43–0.62; 0.48 counting only names exactly as written in the filing), against 0.10 for a non-LLM baseline."
+2. "For large-cap companies, the model's parametric knowledge alone (a condition I added after the first run) was not significantly different in precision from the retrieval pipeline (0.59 vs 0.63, n=16). Precision fell to 0.26 for small caps, but the search results also contained far fewer of their true competitors, so that gap mixes model knowledge with retrieval coverage."
+3. "An evidence-shuffling ablation on 31 large- and mid-cap companies showed that the extraction step depends on its evidence: given another company's search results, it returned no competitors 84% of the time."
