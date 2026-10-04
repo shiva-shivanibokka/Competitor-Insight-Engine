@@ -1,0 +1,283 @@
+{
+ "model": "qwen/qwen3.8-27b",
+ "verbatim_only_p@4": {
+  "a_full/all": {
+   "n": 48,
+   "with_aliases": 0.5295,
+   "verbatim_only": 0.4826,
+   "ci95": [
+    0.3872,
+    0.5781
+   ]
+  },
+  "a_full/large": {
+   "n": 16,
+   "with_aliases": 0.625,
+   "verbatim_only": 0.5312,
+   "ci95": [
+    0.375,
+    0.6875
+   ]
+  },
+  "a_full/mid": {
+   "n": 16,
+   "with_aliases": 0.7031,
+   "verbatim_only": 0.6562,
+   "ci95": [
+    0.5,
+    0.7812
+   ]
+  },
+  "a_full/small": {
+   "n": 16,
+   "with_aliases": 0.2604,
+   "verbatim_only": 0.2604,
+   "ci95": [
+    0.125,
+    0.4062
+   ]
+  },
+  "b2_prior_knowledge/all": {
+   "n": 21,
+   "with_aliases": 0.619,
+   "verbatim_only": 0.5238,
+   "ci95": [
+    0.4048,
+    0.631
+   ]
+  },
+  "b2_prior_knowledge/large": {
+   "n": 16,
+   "with_aliases": 0.5938,
+   "verbatim_only": 0.5,
+   "ci95": [
+    0.3438,
+    0.6406
+   ]
+  },
+  "b2_prior_knowledge/mid": {
+   "n": 5,
+   "with_aliases": 0.7,
+   "verbatim_only": 0.6,
+   "ci95": [
+    0.5,
+    0.7
+   ]
+  },
+  "b_prior/all": {
+   "n": 48,
+   "with_aliases": 0.0,
+   "verbatim_only": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "b_prior/large": {
+   "n": 16,
+   "with_aliases": 0.0,
+   "verbatim_only": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "b_prior/mid": {
+   "n": 16,
+   "with_aliases": 0.0,
+   "verbatim_only": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "b_prior/small": {
+   "n": 16,
+   "with_aliases": 0.0,
+   "verbatim_only": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "c_shuffled/all": {
+   "n": 31,
+   "with_aliases": 0.0323,
+   "verbatim_only": 0.0242,
+   "ci95": [
+    0.0,
+    0.0645
+   ]
+  },
+  "c_shuffled/large": {
+   "n": 16,
+   "with_aliases": 0.0312,
+   "verbatim_only": 0.0312,
+   "ci95": [
+    0.0,
+    0.0938
+   ]
+  },
+  "c_shuffled/mid": {
+   "n": 15,
+   "with_aliases": 0.0333,
+   "verbatim_only": 0.0167,
+   "ci95": [
+    0.0,
+    0.05
+   ]
+  }
+ },
+ "gt_in_search_coverage": {
+  "all": {
+   "n": 48,
+   "mean": 0.3313,
+   "ci95": [
+    0.2586,
+    0.4073
+   ]
+  },
+  "large": {
+   "n": 16,
+   "mean": 0.3828,
+   "ci95": [
+    0.2856,
+    0.4917
+   ]
+  },
+  "mid": {
+   "n": 16,
+   "mean": 0.4231,
+   "ci95": [
+    0.2927,
+    0.5658
+   ]
+  },
+  "small": {
+   "n": 16,
+   "mean": 0.188,
+   "ci95": [
+    0.0766,
+    0.3168
+   ]
+  }
+ },
+ "a_full_p@4_by_coverage": {
+  "coverage<=median": {
+   "median_coverage": 0.2857,
+   "n": 26,
+   "tiers": {
+    "large": 6,
+    "mid": 7,
+    "small": 13
+   },
+   "p@4": 0.4679
+  },
+  "coverage>median": {
+   "median_coverage": 0.2857,
+   "n": 22,
+   "tiers": {
+    "large": 10,
+    "mid": 9,
+    "small": 3
+   },
+   "p@4": 0.6023
+  }
+ },
+ "per_company_coverage": {
+  "UBER": 0.4211,
+  "DASH": 0.5,
+  "ZM": 0.3077,
+  "SNOW": 1.0,
+  "DDOG": 0.2,
+  "PINS": 0.5,
+  "SNAP": 0.4545,
+  "WDAY": 0.5,
+  "MDB": 0.4,
+  "CVNA": 0.2,
+  "ORCL": 0.2727,
+  "RBLX": 0.0833,
+  "FTNT": 0.4167,
+  "ABNB": 0.5,
+  "LYV": 0.0833,
+  "SMCI": 0.2857,
+  "DBX": 0.5,
+  "ROKU": 1.0,
+  "W": 0.1282,
+  "U": 0.3333,
+  "BOX": 0.75,
+  "S": 0.5,
+  "RNG": 0.125,
+  "TDC": 0.4,
+  "SAIL": 0.2857,
+  "ARLO": 0.2353,
+  "UI": 0.5455,
+  "TREX": 0.0,
+  "NSP": 0.8,
+  "BHE": 0.1667,
+  "CWAN": 0.25,
+  "WFRD": 0.75,
+  "NTGR": 0.087,
+  "HLF": 0.75,
+  "CNDT": 0.1765,
+  "AVNW": 0.2857,
+  "BLZE": 0.6,
+  "LAW": 0.0,
+  "DHX": 0.0,
+  "BRCC": 0.25,
+  "WYY": 0.0667,
+  "CXAI": 0.0,
+  "PHUN": 0.0,
+  "KORE": 0.625,
+  "XPON": 0.0,
+  "EFOI": 0.0,
+  "TLF": 0.1667,
+  "ZYXI": 0.0
+ },
+ "gt_in_search_coverage_loose": {
+  "all": 0.374,
+  "large": 0.4296,
+  "mid": 0.494,
+  "small": 0.1985
+ },
+ "thin_scrape": {
+  "companies": {
+   "SNAP": {
+    "scraped_chars": 452,
+    "n_claims": 9,
+    "support_rate": 0.6667
+   },
+   "ROKU": {
+    "scraped_chars": 212,
+    "n_claims": 14,
+    "support_rate": 0.0
+   },
+   "ARLO": {
+    "scraped_chars": 358,
+    "n_claims": 7,
+    "support_rate": 0.0
+   }
+  },
+  "claim_level": {
+   "lt_1000": {
+    "k": 6,
+    "n": 30,
+    "rate": 0.2,
+    "wilson95": [
+     0.095,
+     0.3731
+    ]
+   },
+   "ge_1000": {
+    "k": 313,
+    "n": 469,
+    "rate": 0.6674,
+    "wilson95": [
+     0.6235,
+     0.7085
+    ]
+   }
+  },
+  "note": "claims within a company are not independent; with 3 thin-scrape companies this is descriptive only"
+ }
+}
