@@ -39,6 +39,17 @@ def get(url, ua):
     return r
 
 
+def html_to_text(r) -> str:
+    """Decode from raw bytes. r.text would apply requests' ISO-8859-1 default
+    to text/html served without a charset, turning UTF-8 'Nestlé' into
+    'NestlÃ©'. A charset declared in the header wins; otherwise BeautifulSoup
+    sniffs the bytes (meta charset / BOM / UTF-8)."""
+    ctype = r.headers.get("Content-Type", "")
+    declared = ctype.split("charset=")[1].split(";")[0].strip() if "charset=" in ctype else None
+    soup = BeautifulSoup(r.content, "html.parser", from_encoding=declared)
+    return soup.get_text(" ")
+
+
 def tier(fl):
     return "large" if fl >= 10e9 else "mid" if fl >= 1e9 else "small"
 
@@ -73,7 +84,7 @@ def main():
             url = f"https://www.sec.gov/Archives/edgar/data/{int(cik)}/{adsh.replace('-', '')}/{rec['primaryDocument'][i]}"
         cp = cache / f"{cik}.txt"
         if not cp.exists():
-            txt = BeautifulSoup(get(url, ua).text, "html.parser").get_text(" ")
+            txt = html_to_text(get(url, ua))
             cp.write_text(re.sub(r"\s+", " ", html.unescape(txt)), encoding="utf-8")
         text = cp.read_text(encoding="utf-8")
         excerpt, missing = None, None

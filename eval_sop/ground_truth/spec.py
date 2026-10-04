@@ -1,4 +1,4 @@
-"""Ground-truth specification (hand-curated by Claude, an LLM — see PROVENANCE.md).
+"""Ground-truth specification (hand-curated by Claude, an LLM — provenance in RESULTS.md §2).
 
 For each company: the 10-K it comes from (resolved by build_gt.py through
 EDGAR), a verbatim ANCHOR string that locates the competition passage in the

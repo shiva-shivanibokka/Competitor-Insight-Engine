@@ -1,0 +1,1 @@
+old path (BeautifulSoup(r.text)): NestlÃ©, Deutsche BÃ¶rse
