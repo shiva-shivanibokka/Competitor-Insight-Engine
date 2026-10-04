@@ -44,7 +44,8 @@ SPEC = [
         ["Meta", "Facebook", "Instagram", "WhatsApp", "Threads"], ["Naver"], ["Pinterest"], ["Reddit"],
         ["Tencent", "WeChat"], ["X", "Twitter"]]),
     ("WDAY", "Workday", "https://www.workday.com", "These vendors include, without limitation", 160, [
-        ["Anaplan"], ["ADP"], ["Coupa"], ["Dayforce", "Ceridian"], ["Microsoft"], ["ServiceNow"], ["UKG"]]),
+        ["Anaplan"], ["ADP"], ["Coupa"], ["Dayforce", "Ceridian"], ["Microsoft"], ["NetSuite", "Oracle NetSuite"],
+        ["ServiceNow"], ["UKG"]]),
     ("MDB", "MongoDB", "https://www.mongodb.com", "We primarily compete with established legacy database software providers", 300, [
         ["IBM"], ["Microsoft", "SQL Server", "Azure"], ["Oracle"], ["Amazon Web Services", "AWS", "Amazon", "DynamoDB"],
         ["Google Cloud Platform", "GCP", "Google Cloud", "Google"]]),
@@ -95,7 +96,7 @@ SPEC = [
     ("U", "Unity", "https://unity.com", "Cocos2d-x (Chukong Technologies), Godot, and Unreal Engine", 60, [
         ["Cocos2d-x", "Cocos", "Chukong"], ["Godot"], ["Unreal Engine", "Epic Games", "Unreal"]]),
     ("BOX", "Box", "https://www.box.com", "file sync and share market, our primary competitors include", 180, [
-        ["Microsoft", "OneDrive", "SharePoint"], ["Google", "Google Drive"], ["Dropbox"]]),
+        ["Microsoft", "OneDrive", "SharePoint"], ["Google", "Google Drive"], ["Dropbox"], ["OpenText", "Documentum"]]),
     ("S", "SentinelOne", "https://www.sentinelone.com", "endpoint security providers, such as", 420, [
         ["CrowdStrike"], ["Carbon Black", "VMware Carbon Black"], ["Broadcom", "Symantec"], ["Trellix", "McAfee"],
         ["Microsoft", "Microsoft Defender"], ["Palo Alto Networks"]]),
@@ -116,7 +117,7 @@ SPEC = [
         ["Cambium Networks", "Cambium"], ["Ceragon Networks", "Ceragon"], ["MikroTik", "Mikro"], ["Trango"],
         ["Tarana Wireless", "Tarana"], ["TP-Link"], ["Cisco", "Meraki"], ["Fortinet"],
         ["HPE Aruba Networks", "Aruba", "HPE", "Hewlett Packard Enterprise"], ["Juniper Networks", "Juniper"],
-        ["Ruckus", "CommScope"]]),
+        ["Ruckus", "CommScope", "Belden"]]),
     ("TREX", "Trex", "https://www.trex.com", "Our principal competitors include Azek", 200, [
         ["Azek", "TimberTech", "James Hardie"], ["Deckorators", "UFP Industries"], ["Fiberon", "Fortune Brands"]]),
     ("NSP", "Insperity", "https://www.insperity.com", "Our largest national competitors include", 230, [
@@ -130,16 +131,18 @@ SPEC = [
     ("WFRD", "Weatherford", "https://www.weatherford.com", "Our principal competitors include SLB", 80, [
         ["SLB", "Schlumberger"], ["Halliburton"], ["Baker Hughes"], ["Expro", "Expro Group"]]),
     # ---------------------------------------------------------------- small
-    ("NTGR", "NETGEAR", "https://www.netgear.com", "within the enterprise markets, companies such as", 560, [
+    ("NTGR", "NETGEAR", "https://www.netgear.com", "within the enterprise markets, companies such as", 484, [
         ["Allied Telesis"], ["Arista"], ["Barracuda"], ["Buffalo"], ["Cisco"], ["Dell"], ["D-Link"],
         ["Extreme", "Extreme Networks"], ["Fortinet"], ["Huawei"], ["Hewlett-Packard Enterprise", "HPE", "Aruba", "Hewlett Packard Enterprise"],
         ["Juniper Networks", "Juniper", "Mist"], ["Mellanox", "Nvidia"], ["Palo Alto Networks"], ["QNAP"],
-        ["Ruckus", "CommScope"], ["SonicWall"], ["Snap One", "SnapAV"]]),
+        ["Ruckus", "CommScope", "Vistance"], ["SonicWall"], ["Snap One", "SnapAV", "Resideo"], ["Synology"],
+        ["TP-Link", "TP- Link"], ["TRENDnet"], ["Ubiquiti"], ["WatchGuard"]]),
     ("HLF", "Herbalife", "https://www.herbalife.com", "Our direct-selling competitors include companies such as", 160, [
         ["Medifast"], ["Nu Skin"], ["USANA"], ["Amway"]]),
-    ("CNDT", "Conduent", "https://www.conduent.com", "Large multinational service providers such as Accenture", 520, [
+    ("CNDT", "Conduent", "https://www.conduent.com", "Large multinational service providers such as Accenture", 542, [
         ["Accenture"], ["Cognizant"], ["TTEC"], ["Teleperformance"], ["Genpact"], ["Wipro"], ["EXL Services", "EXL", "ExlService"],
-        ["Alight"], ["Willis Towers Watson", "WTW"], ["Gainwell"], ["Optum"], ["Maximus"]]),
+        ["Alight"], ["Willis Towers Watson", "WTW"], ["Gainwell"], ["Optum"], ["Maximus"], ["Leidos"],
+        ["TransCore"], ["Thales"], ["Cubic"], ["INIT"]]),
     ("AVNW", "Aviat Networks", "https://aviatnetworks.com", "Our principal competitors include business units of large mobile", 420, [
         ["Ericsson"], ["Huawei"], ["ZTE"], ["Nokia"], ["GE Vernova", "GE"], ["Ceragon Networks", "Ceragon"],
         ["Cambium Networks", "Cambium"]]),

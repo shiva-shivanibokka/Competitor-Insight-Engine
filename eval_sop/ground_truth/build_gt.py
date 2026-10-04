@@ -57,18 +57,26 @@ def tier(fl):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cache", default=str(HERE.parent / "raw" / "edgar_cache"))
+    ap.add_argument("--offline", action="store_true",
+                    help="no network: reuse CIK, float and 10-K accession pinned in companies.json and the text cache")
     args = ap.parse_args()
-    ua = os.environ["EDGAR_UA"]
     cache = Path(args.cache)
     cache.mkdir(parents=True, exist_ok=True)
     pinned = {c["id"]: c for c in json.loads(OUT.read_text(encoding="utf-8"))} if OUT.exists() else {}
 
-    tk = get("https://www.sec.gov/files/company_tickers.json", ua).json()
-    t2c = {v["ticker"]: str(v["cik_str"]).zfill(10) for v in tk.values()}
-    floats = {}
-    for per in ["CY2024Q2I", "CY2024Q4I", "CY2025Q2I", "CY2025Q4I"]:  # later periods overwrite
-        for d in get(f"https://data.sec.gov/api/xbrl/frames/dei/EntityPublicFloat/USD/{per}.json", ua).json()["data"]:
-            floats[str(d["cik"]).zfill(10)] = {"usd": d["val"], "as_of": d["end"], "frame": per}
+    if args.offline:
+        ua = None
+        t2c = {k: v["cik"] for k, v in pinned.items()}
+        floats = {v["cik"]: {"usd": v["public_float_usd"], "as_of": v["public_float_as_of"]}
+                  for v in pinned.values() if v["public_float_usd"] is not None}
+    else:
+        ua = os.environ["EDGAR_UA"]
+        tk = get("https://www.sec.gov/files/company_tickers.json", ua).json()
+        t2c = {v["ticker"]: str(v["cik_str"]).zfill(10) for v in tk.values()}
+        floats = {}
+        for per in ["CY2024Q2I", "CY2024Q4I", "CY2025Q2I", "CY2025Q4I"]:  # later periods overwrite
+            for d in get(f"https://data.sec.gov/api/xbrl/frames/dei/EntityPublicFloat/USD/{per}.json", ua).json()["data"]:
+                floats[str(d["cik"]).zfill(10)] = {"usd": d["val"], "as_of": d["end"], "frame": per}
 
     out, bad = [], []
     for ticker, name, homepage, anchor, span, comps in SPEC:
@@ -84,6 +92,8 @@ def main():
             url = f"https://www.sec.gov/Archives/edgar/data/{int(cik)}/{adsh.replace('-', '')}/{rec['primaryDocument'][i]}"
         cp = cache / f"{cik}.txt"
         if not cp.exists():
+            if args.offline:
+                raise SystemExit(f"--offline but {cp} is not cached")
             txt = html_to_text(get(url, ua))
             cp.write_text(re.sub(r"\s+", " ", html.unescape(txt)), encoding="utf-8")
         text = cp.read_text(encoding="utf-8")

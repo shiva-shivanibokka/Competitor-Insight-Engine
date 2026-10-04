@@ -504,6 +504,12 @@
     "aliases": []
    },
    {
+    "name": "NetSuite",
+    "aliases": [
+     "Oracle NetSuite"
+    ]
+   },
+   {
     "name": "ServiceNow",
     "aliases": []
    },
@@ -1484,6 +1490,12 @@
    {
     "name": "Dropbox",
     "aliases": []
+   },
+   {
+    "name": "OpenText",
+    "aliases": [
+     "Documentum"
+    ]
    }
   ],
   "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
@@ -1854,7 +1866,8 @@
    {
     "name": "Ruckus",
     "aliases": [
-     "CommScope"
+     "CommScope",
+     "Belden"
     ]
    }
   ],
@@ -2099,7 +2112,7 @@
   "tenk_url": "https://www.sec.gov/Archives/edgar/data/1122904/000119312526051346/ntgr-20251231.htm",
   "accession": "0001193125-26-051346",
   "filing_date": "2026-02-13",
-  "excerpt": " service provider markets are intensely competitive and subject to rapid technological change. We expect competition to continue to intensify. Our principal competitors include: 7 Table of Contents • within the enterprise markets, companies such as Allied Telesis, Arista, Barracuda (owned by KKR), Buffalo, Cisco Systems, Dell, D-Link, Extreme, Fortinet, Huawei, Hewlett-Packard Enterprise (\"HPE\") Aruba, Juniper Networks Mist (part of HPE), Mellanox (owned by Nvidia), Palo Alto Networks, QNAP Systems, Ruckus Networks (formerly CommScope; Vistance Networks portfolio), SonicWall, Snap One (formerly SnapAV; owned by Resideo), Synology, TP- Link, TRENDnet, Ubiquiti, and WatchGuard; • within the consumer markets, companies such as Aracknis, ARRIS (owned by ",
+  "excerpt": " service provider markets are intensely competitive and subject to rapid technological change. We expect competition to continue to intensify. Our principal competitors include: 7 Table of Contents • within the enterprise markets, companies such as Allied Telesis, Arista, Barracuda (owned by KKR), Buffalo, Cisco Systems, Dell, D-Link, Extreme, Fortinet, Huawei, Hewlett-Packard Enterprise (\"HPE\") Aruba, Juniper Networks Mist (part of HPE), Mellanox (owned by Nvidia), Palo Alto Networks, QNAP Systems, Ruckus Networks (formerly CommScope; Vistance Networks portfolio), SonicWall, Snap One (formerly SnapAV; owned by Resideo), Synology, TP- Link, TRENDnet, Ubiquiti, and WatchGuard;",
   "competitors": [
    {
     "name": "Allied Telesis",
@@ -2175,7 +2188,8 @@
    {
     "name": "Ruckus",
     "aliases": [
-     "CommScope"
+     "CommScope",
+     "Vistance"
     ]
    },
    {
@@ -2185,8 +2199,31 @@
    {
     "name": "Snap One",
     "aliases": [
-     "SnapAV"
+     "SnapAV",
+     "Resideo"
     ]
+   },
+   {
+    "name": "Synology",
+    "aliases": []
+   },
+   {
+    "name": "TP-Link",
+    "aliases": [
+     "TP- Link"
+    ]
+   },
+   {
+    "name": "TRENDnet",
+    "aliases": []
+   },
+   {
+    "name": "Ubiquiti",
+    "aliases": []
+   },
+   {
+    "name": "WatchGuard",
+    "aliases": []
    }
   ],
   "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
@@ -2234,7 +2271,7 @@
   "tenk_url": "https://www.sec.gov/Archives/edgar/data/1677703/000167770326000024/cndt-20251231.htm",
   "accession": "0001677703-26-000024",
   "filing_date": "2026-02-19",
-  "excerpt": " specialize in certain areas but none compete across all the same segments in our total portfolio which enables us to serve our clients end-to-end across their enterprises. Our competitors include: • Large multinational service providers such as Accenture, Cognizant, TTEC and Teleperformance; • Traditional business process outsourcing companies such as Genpact, Wipro and EXL Services; • Human resource, payroll processing and human capital management providers such as Alight and Willis Towers Watson; • Healthcare-focused IT and service solutions providers such as Gainwell, Optum and Maximus; • U.S. Federal-focused government services providers such as Leidos; • Transportation multi-nationals such as TransCore, T",
+  "excerpt": " specialize in certain areas but none compete across all the same segments in our total portfolio which enables us to serve our clients end-to-end across their enterprises. Our competitors include: • Large multinational service providers such as Accenture, Cognizant, TTEC and Teleperformance; • Traditional business process outsourcing companies such as Genpact, Wipro and EXL Services; • Human resource, payroll processing and human capital management providers such as Alight and Willis Towers Watson; • Healthcare-focused IT and service solutions providers such as Gainwell, Optum and Maximus; • U.S. Federal-focused government services providers such as Leidos; • Transportation multi-nationals such as TransCore, Thales, Cubic and INIT;",
   "competitors": [
    {
     "name": "Accenture",
@@ -2287,6 +2324,26 @@
    },
    {
     "name": "Maximus",
+    "aliases": []
+   },
+   {
+    "name": "Leidos",
+    "aliases": []
+   },
+   {
+    "name": "TransCore",
+    "aliases": []
+   },
+   {
+    "name": "Thales",
+    "aliases": []
+   },
+   {
+    "name": "Cubic",
+    "aliases": []
+   },
+   {
+    "name": "INIT",
     "aliases": []
    }
   ],
