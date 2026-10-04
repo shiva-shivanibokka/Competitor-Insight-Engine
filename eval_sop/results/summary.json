@@ -8,6 +8,8 @@
   ],
   "tier": "all",
   "n_companies": 48,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.099,
    "ci95": [
@@ -74,6 +76,8 @@
   ],
   "tier": "large",
   "n_companies": 16,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.1875,
    "ci95": [
@@ -140,6 +144,8 @@
   ],
   "tier": "mid",
   "n_companies": 16,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.0781,
    "ci95": [
@@ -206,6 +212,8 @@
   ],
   "tier": "small",
   "n_companies": 16,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.0312,
    "ci95": [
@@ -272,6 +280,8 @@
   ],
   "tier": "all",
   "n_companies": 48,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.5295,
    "ci95": [
@@ -338,6 +348,8 @@
   ],
   "tier": "large",
   "n_companies": 16,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.625,
    "ci95": [
@@ -404,6 +416,8 @@
   ],
   "tier": "mid",
   "n_companies": 16,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.7031,
    "ci95": [
@@ -470,6 +484,8 @@
   ],
   "tier": "small",
   "n_companies": 16,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.2604,
    "ci95": [
@@ -536,6 +552,8 @@
   ],
   "tier": "all",
   "n_companies": 21,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.619,
    "ci95": [
@@ -602,6 +620,8 @@
   ],
   "tier": "large",
   "n_companies": 16,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.5938,
    "ci95": [
@@ -668,6 +688,8 @@
   ],
   "tier": "mid",
   "n_companies": 5,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.7,
    "ci95": [
@@ -734,6 +756,8 @@
   ],
   "tier": "all",
   "n_companies": 48,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.0,
    "ci95": [
@@ -800,6 +824,8 @@
   ],
   "tier": "large",
   "n_companies": 16,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.0,
    "ci95": [
@@ -866,6 +892,8 @@
   ],
   "tier": "mid",
   "n_companies": 16,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.0,
    "ci95": [
@@ -932,6 +960,8 @@
   ],
   "tier": "small",
   "n_companies": 16,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.0,
    "ci95": [
@@ -998,6 +1028,8 @@
   ],
   "tier": "all",
   "n_companies": 31,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.0323,
    "ci95": [
@@ -1064,6 +1096,8 @@
   ],
   "tier": "large",
   "n_companies": 16,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.0312,
    "ci95": [
@@ -1130,6 +1164,8 @@
   ],
   "tier": "mid",
   "n_companies": 15,
+  "n_truncated": 0,
+  "n_truncation_unknown": 0,
   "p@4": {
    "mean": 0.0333,
    "ci95": [

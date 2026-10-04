@@ -26,7 +26,8 @@
    "Cabify",
    "Free Now",
    "Yandex Go"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "DASH",
@@ -54,7 +55,8 @@
    "Gopuff",
    "Amazon",
    "Walmart"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "ZM",
@@ -79,7 +81,8 @@
    "RingCentral",
    "Skype",
    "Nextiva"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "SNOW",
@@ -107,7 +110,8 @@
    "Dremio",
    "StarRocks",
    "Apache Doris"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "DDOG",
@@ -136,7 +140,8 @@
    "AppDynamics",
    "LogicMonitor",
    "SigNoz"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "PINS",
@@ -163,7 +168,8 @@
    "Shutterstock",
    "Unsplash",
    "Flickr"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "SNAP",
@@ -186,7 +192,8 @@
    "Bluesky",
    "Pinterest",
    "Triller"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "WDAY",
@@ -214,7 +221,8 @@
    "Rippling",
    "Gusto",
    "BambooHR"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "MDB",
@@ -243,7 +251,8 @@
    "Elastic",
    "Oracle",
    "IBM"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "CVNA",
@@ -269,7 +278,8 @@
    "Lithia Motors",
    "Penske Automotive Group",
    "Shift"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "ORCL",
@@ -295,7 +305,8 @@
    "Salesforce",
    "Google Cloud",
    "Cisco"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "RBLX",
@@ -323,7 +334,8 @@
    "VRChat",
    "PlayStation",
    "Nintendo"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "FTNT",
@@ -349,7 +361,8 @@
    "CrowdStrike",
    "Forcepoint",
    "Oracle"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "ABNB",
@@ -378,7 +391,8 @@
    "GlampingHub",
    "Blueground",
    "Hello Landing"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "LYV",
@@ -399,7 +413,8 @@
   "pred_names": [
    "AXS",
    "AEG Presents"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "SMCI",
@@ -426,7 +441,8 @@
    "Inspur",
    "Gigabyte",
    "ASUS"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "DBX",
@@ -455,7 +471,8 @@
    "Egnyte",
    "Tresorit",
    "Icedrive"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "ROKU",
@@ -480,7 +497,8 @@
    "Nvidia Shield TV",
    "TiVo",
    "Samsung Smart TV"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "W",
@@ -509,7 +527,8 @@
    "Made.com",
    "MadeiraMadeira",
    "QVC"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "U",
@@ -533,7 +552,8 @@
    "Autodesk",
    "GameSalad",
    "MathWorks"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "BOX",
@@ -556,7 +576,8 @@
    "Google Drive",
    "Microsoft OneDrive",
    "Air"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "S",
@@ -585,7 +606,8 @@
    "Malwarebytes",
    "Comodo",
    "ReliaQuest"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "RNG",
@@ -614,7 +636,8 @@
    "NICE",
    "Avaya",
    "Asterisk"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "TDC",
@@ -639,7 +662,8 @@
    "Quantum",
    "Informatica",
    "Veeam"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "SAIL",
@@ -666,7 +690,8 @@
    "CyberArk",
    "Lumos",
    "Infisign"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "ARLO",
@@ -695,7 +720,8 @@
    "Hikvision",
    "Dahua",
    "Axis Communications"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "UI",
@@ -724,7 +750,8 @@
    "Arlo",
    "Hikvision",
    "Dahua Technology"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "TREX",
@@ -749,7 +776,8 @@
    "Fiberon",
    "Mosaic",
    "Cape Cod Composites"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "NSP",
@@ -778,7 +806,8 @@
    "CoAdvantage",
    "XcelHR",
    "Rippling"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "BHE",
@@ -806,7 +835,8 @@
    "AVX",
    "Cohu",
    "Advanced Energy Industries"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "CWAN",
@@ -835,7 +865,8 @@
    "Charles Schwab",
    "Fidelity Investments",
    "State Street"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "WFRD",
@@ -863,7 +894,8 @@
    "Nabors Group",
    "Oceaneering International",
    "Carbo Ceramics"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "NTGR",
@@ -890,7 +922,8 @@
    "Western Digital",
    "D-Link",
    "Cisco Systems"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "HLF",
@@ -917,7 +950,8 @@
    "Young Living",
    "GNC",
    "Pharmavite"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "CNDT",
@@ -943,7 +977,8 @@
    "IBM",
    "Wipro",
    "Infosys"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "AVNW",
@@ -970,7 +1005,8 @@
    "Airspan Networks",
    "Casa Systems",
    "Lanbowan"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "BLZE",
@@ -1000,7 +1036,8 @@
    "Amazon Web Services",
    "Microsoft Azure",
    "Google Cloud"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "LAW",
@@ -1029,7 +1066,8 @@
    "Integreon",
    "Consilio",
    "Epiq"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "DHX",
@@ -1047,7 +1085,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "BRCC",
@@ -1072,7 +1111,8 @@
    "Orinoco Coffee & Tea",
    "Dilmah",
    "The Republic of Tea"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "WYY",
@@ -1097,7 +1137,8 @@
    "iC Consult",
    "IN Groupe",
    "Intersections"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "CXAI",
@@ -1122,7 +1163,8 @@
    "Cubix",
    "Spacewell",
    "Workplace Intelligence"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "PHUN",
@@ -1146,7 +1188,8 @@
    "MobileFuse",
    "ThirdPresence",
    "Terragon Group"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "KORE",
@@ -1179,7 +1222,8 @@
    "Cubic Telecom",
    "IoTM Solutions",
    "Greenwave Systems"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "XPON",
@@ -1204,7 +1248,8 @@
    "LiTime",
    "Wellspring Solar",
    "DASGen"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "EFOI",
@@ -1222,7 +1267,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "TLF",
@@ -1244,7 +1290,8 @@
    "Leathercraft Tools",
    "Springfield Leather",
    "Weaver Leather Supply"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "ZYXI",
@@ -1270,7 +1317,8 @@
    "GAIA",
    "Tao Technologies",
    "AdaptHealth"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "UBER",
@@ -1288,7 +1336,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "DASH",
@@ -1306,7 +1355,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "ZM",
@@ -1324,7 +1374,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "SNOW",
@@ -1342,7 +1393,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "DDOG",
@@ -1360,7 +1412,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "PINS",
@@ -1378,7 +1431,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "SNAP",
@@ -1396,7 +1450,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "WDAY",
@@ -1414,7 +1469,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "MDB",
@@ -1432,7 +1488,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "CVNA",
@@ -1450,7 +1507,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "ORCL",
@@ -1468,7 +1526,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "RBLX",
@@ -1486,7 +1545,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "FTNT",
@@ -1504,7 +1564,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "ABNB",
@@ -1522,7 +1583,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "LYV",
@@ -1540,7 +1602,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "SMCI",
@@ -1558,7 +1621,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "DBX",
@@ -1576,7 +1640,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "ROKU",
@@ -1594,7 +1659,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "W",
@@ -1612,7 +1678,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "U",
@@ -1630,7 +1697,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "BOX",
@@ -1648,7 +1716,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "S",
@@ -1666,7 +1735,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "RNG",
@@ -1684,7 +1754,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "TDC",
@@ -1702,7 +1773,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "SAIL",
@@ -1720,7 +1792,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "ARLO",
@@ -1738,7 +1811,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "UI",
@@ -1756,7 +1830,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "TREX",
@@ -1774,7 +1849,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "NSP",
@@ -1792,7 +1868,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "BHE",
@@ -1810,7 +1887,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "CWAN",
@@ -1828,7 +1906,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "WFRD",
@@ -1846,7 +1925,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "NTGR",
@@ -1864,7 +1944,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "HLF",
@@ -1882,7 +1963,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "CNDT",
@@ -1900,7 +1982,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "AVNW",
@@ -1918,7 +2001,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "BLZE",
@@ -1936,7 +2020,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "LAW",
@@ -1954,7 +2039,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "DHX",
@@ -1972,7 +2058,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "BRCC",
@@ -1990,7 +2077,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "WYY",
@@ -2008,7 +2096,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "CXAI",
@@ -2026,7 +2115,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "PHUN",
@@ -2044,7 +2134,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "KORE",
@@ -2062,7 +2153,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "XPON",
@@ -2080,7 +2172,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "EFOI",
@@ -2098,7 +2191,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "TLF",
@@ -2116,7 +2210,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "ZYXI",
@@ -2134,7 +2229,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "UBER",
@@ -2161,7 +2257,8 @@
    "Gopuff",
    "Rappi",
    "ChowNow"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "DASH",
@@ -2179,7 +2276,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "ZM",
@@ -2205,7 +2303,8 @@
    "Wireless Logic",
    "Soracom",
    "Cubic Telecom"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "SNOW",
@@ -2223,7 +2322,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "DDOG",
@@ -2241,7 +2341,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "PINS",
@@ -2259,7 +2360,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "SNAP",
@@ -2277,7 +2379,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "WDAY",
@@ -2295,7 +2398,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "MDB",
@@ -2313,7 +2417,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "CVNA",
@@ -2331,7 +2436,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "ORCL",
@@ -2349,7 +2455,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "RBLX",
@@ -2367,7 +2474,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "FTNT",
@@ -2385,7 +2493,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "ABNB",
@@ -2403,7 +2512,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "LYV",
@@ -2421,7 +2531,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "SMCI",
@@ -2439,7 +2550,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "DBX",
@@ -2457,7 +2569,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "ROKU",
@@ -2475,7 +2588,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "W",
@@ -2493,7 +2607,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "U",
@@ -2511,7 +2626,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "BOX",
@@ -2529,7 +2645,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "S",
@@ -2547,7 +2664,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "RNG",
@@ -2565,7 +2683,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "TDC",
@@ -2583,7 +2702,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "SAIL",
@@ -2601,7 +2721,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "ARLO",
@@ -2627,7 +2748,8 @@
    "Auto1 Group",
    "Lithia Motors",
    "Penske Automotive Group"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "UI",
@@ -2652,7 +2774,8 @@
    "Nokia",
    "Casa Systems",
    "BK Technologies"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "TREX",
@@ -2680,7 +2803,8 @@
    "1stdibs",
    "QVC",
    "Macy's"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "NSP",
@@ -2698,7 +2822,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "BHE",
@@ -2716,7 +2841,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "CWAN",
@@ -2734,7 +2860,8 @@
   "leak_orig_any": 0.0,
   "leak_orig_n": 0,
   "leak_fixed_any": 0.0,
-  "pred_names": []
+  "pred_names": [],
+  "truncated": false
  },
  {
   "id": "UBER",
@@ -2763,7 +2890,8 @@
    "Free Now",
    "Yandex Go",
    "Ola"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "DASH",
@@ -2792,7 +2920,8 @@
    "Rappi",
    "Just Eat",
    "Deliverect"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "ZM",
@@ -2820,7 +2949,8 @@
    "BlueJeans",
    "Jitsi",
    "Whereby"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "SNOW",
@@ -2848,7 +2978,8 @@
    "Oracle",
    "IBM",
    "SAP"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "DDOG",
@@ -2876,7 +3007,8 @@
    "AppDynamics",
    "Sumo Logic",
    "Datadog"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "PINS",
@@ -2903,7 +3035,8 @@
    "Weebly",
    "Wix",
    "Squarespace"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "SNAP",
@@ -2924,7 +3057,8 @@
   "pred_names": [
    "Meta",
    "BeReal"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "WDAY",
@@ -2953,7 +3087,8 @@
    "Rippling",
    "BambooHR",
    "UKG"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "MDB",
@@ -2982,7 +3117,8 @@
    "Neo4j",
    "InfluxData",
    "Timescale"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "CVNA",
@@ -3005,7 +3141,8 @@
    "AutoTrader",
    "CarGurus",
    "Vroom"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "ORCL",
@@ -3034,7 +3171,8 @@
    "Databricks",
    "NetSuite",
    "Infor"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "RBLX",
@@ -3059,7 +3197,8 @@
    "Zepeto",
    "Rec Room",
    "Genshin Impact"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "FTNT",
@@ -3088,7 +3227,8 @@
    "MikroTik",
    "Sophos",
    "Trend Micro"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "ABNB",
@@ -3117,7 +3257,8 @@
    "Orbitz",
    "Priceline",
    "Kayak"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "LYV",
@@ -3141,7 +3282,8 @@
    "C3 Presents",
    "PROMOTIC",
    "Live Nation Events"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "SMCI",
@@ -3167,7 +3309,8 @@
    "Foxconn",
    "Gigabyte",
    "ASUS"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "DBX",
@@ -3196,7 +3339,8 @@
    "iCloud",
    "Proton Drive",
    "Tresorit"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "ROKU",
@@ -3224,7 +3368,8 @@
    "Sony",
    "Nvidia",
    "Google"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "W",
@@ -3252,7 +3397,8 @@
    "Crate & Barrel",
    "Home Depot",
    "Lowe's"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "U",
@@ -3281,7 +3427,8 @@
    "Construct",
    "LayaAir",
    "Stride"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "BOX",
@@ -3310,7 +3457,8 @@
    "Aspera",
    "Citrix ShareFile",
    "Egnyte"
-  ]
+  ],
+  "truncated": false
  },
  {
   "id": "UBER",

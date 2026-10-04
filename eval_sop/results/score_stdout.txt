@@ -1,21 +1,21 @@
-none (no LLM)    z_baseline_capitalised   T=None seeds=[0] all   n=48 P@4 0.099 [0.05,0.15]  R@4 0.056 [0.03,0.09]  R@all 0.129 [0.08,0.19]  empty 0.00  leak 0.00
-none (no LLM)    z_baseline_capitalised   T=None seeds=[0] large n=16 P@4 0.188 [0.08,0.30]  R@4 0.080 [0.03,0.13]  R@all 0.151 [0.09,0.23]  empty 0.00  leak 0.00
-none (no LLM)    z_baseline_capitalised   T=None seeds=[0] mid   n=16 P@4 0.078 [0.03,0.14]  R@4 0.056 [0.01,0.11]  R@all 0.144 [0.04,0.27]  empty 0.00  leak 0.00
-none (no LLM)    z_baseline_capitalised   T=None seeds=[0] small n=16 P@4 0.031 [0.00,0.09]  R@4 0.031 [0.00,0.09]  R@all 0.093 [0.00,0.22]  empty 0.00  leak 0.00
-qwen/qwen3.8-27b a_full                   T=0.0  seeds=[0] all   n=48 P@4 0.529 [0.43,0.62]  R@4 0.297 [0.22,0.38]  R@all 0.394 [0.31,0.48]  empty 0.04  leak 0.00
-qwen/qwen3.8-27b a_full                   T=0.0  seeds=[0] large n=16 P@4 0.625 [0.48,0.77]  R@4 0.299 [0.19,0.43]  R@all 0.404 [0.26,0.56]  empty 0.00  leak 0.00
-qwen/qwen3.8-27b a_full                   T=0.0  seeds=[0] mid   n=16 P@4 0.703 [0.56,0.83]  R@4 0.442 [0.32,0.57]  R@all 0.530 [0.39,0.67]  empty 0.00  leak 0.00
-qwen/qwen3.8-27b a_full                   T=0.0  seeds=[0] small n=16 P@4 0.260 [0.12,0.41]  R@4 0.150 [0.06,0.27]  R@all 0.249 [0.13,0.38]  empty 0.12  leak 0.00
-qwen/qwen3.8-27b b2_prior_knowledge       T=0.0  seeds=[0] all   n=21 P@4 0.619 [0.50,0.73]  R@4 0.329 [0.23,0.45]  R@all 0.385 [0.27,0.51]  empty 0.00  leak 0.00
-qwen/qwen3.8-27b b2_prior_knowledge       T=0.0  seeds=[0] large n=16 P@4 0.594 [0.44,0.73]  R@4 0.280 [0.18,0.41]  R@all 0.323 [0.21,0.45]  empty 0.00  leak 0.00
-qwen/qwen3.8-27b b2_prior_knowledge       T=0.0  seeds=[0] mid   n= 5 P@4 0.700 [0.55,0.85]  R@4 0.487 [0.24,0.70]  R@all 0.586 [0.32,0.83]  empty 0.00  leak 0.00
-qwen/qwen3.8-27b b_prior                  T=0.0  seeds=[0] all   n=48 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00
-qwen/qwen3.8-27b b_prior                  T=0.0  seeds=[0] large n=16 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00
-qwen/qwen3.8-27b b_prior                  T=0.0  seeds=[0] mid   n=16 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00
-qwen/qwen3.8-27b b_prior                  T=0.0  seeds=[0] small n=16 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00
-qwen/qwen3.8-27b c_shuffled               T=0.0  seeds=[0] all   n=31 P@4 0.032 [0.00,0.08]  R@4 0.009 [0.00,0.02]  R@all 0.013 [0.00,0.03]  empty 0.84  leak 0.00
-qwen/qwen3.8-27b c_shuffled               T=0.0  seeds=[0] large n=16 P@4 0.031 [0.00,0.09]  R@4 0.007 [0.00,0.02]  R@all 0.013 [0.00,0.04]  empty 0.88  leak 0.00
-qwen/qwen3.8-27b c_shuffled               T=0.0  seeds=[0] mid   n=15 P@4 0.033 [0.00,0.10]  R@4 0.012 [0.00,0.04]  R@all 0.012 [0.00,0.04]  empty 0.80  leak 0.00
+none (no LLM)    z_baseline_capitalised   T=None seeds=[0] all   n=48 P@4 0.099 [0.05,0.15]  R@4 0.056 [0.03,0.09]  R@all 0.129 [0.08,0.19]  empty 0.00  leak 0.00  max_tokens-truncated 0
+none (no LLM)    z_baseline_capitalised   T=None seeds=[0] large n=16 P@4 0.188 [0.08,0.30]  R@4 0.080 [0.03,0.13]  R@all 0.151 [0.09,0.23]  empty 0.00  leak 0.00  max_tokens-truncated 0
+none (no LLM)    z_baseline_capitalised   T=None seeds=[0] mid   n=16 P@4 0.078 [0.03,0.14]  R@4 0.056 [0.01,0.11]  R@all 0.144 [0.04,0.27]  empty 0.00  leak 0.00  max_tokens-truncated 0
+none (no LLM)    z_baseline_capitalised   T=None seeds=[0] small n=16 P@4 0.031 [0.00,0.09]  R@4 0.031 [0.00,0.09]  R@all 0.093 [0.00,0.22]  empty 0.00  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b a_full                   T=0.0  seeds=[0] all   n=48 P@4 0.529 [0.43,0.62]  R@4 0.297 [0.22,0.38]  R@all 0.394 [0.31,0.48]  empty 0.04  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b a_full                   T=0.0  seeds=[0] large n=16 P@4 0.625 [0.48,0.77]  R@4 0.299 [0.19,0.43]  R@all 0.404 [0.26,0.56]  empty 0.00  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b a_full                   T=0.0  seeds=[0] mid   n=16 P@4 0.703 [0.56,0.83]  R@4 0.442 [0.32,0.57]  R@all 0.530 [0.39,0.67]  empty 0.00  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b a_full                   T=0.0  seeds=[0] small n=16 P@4 0.260 [0.12,0.41]  R@4 0.150 [0.06,0.27]  R@all 0.249 [0.13,0.38]  empty 0.12  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b b2_prior_knowledge       T=0.0  seeds=[0] all   n=21 P@4 0.619 [0.50,0.73]  R@4 0.329 [0.23,0.45]  R@all 0.385 [0.27,0.51]  empty 0.00  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b b2_prior_knowledge       T=0.0  seeds=[0] large n=16 P@4 0.594 [0.44,0.73]  R@4 0.280 [0.18,0.41]  R@all 0.323 [0.21,0.45]  empty 0.00  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b b2_prior_knowledge       T=0.0  seeds=[0] mid   n= 5 P@4 0.700 [0.55,0.85]  R@4 0.487 [0.24,0.70]  R@all 0.586 [0.32,0.83]  empty 0.00  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b b_prior                  T=0.0  seeds=[0] all   n=48 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b b_prior                  T=0.0  seeds=[0] large n=16 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b b_prior                  T=0.0  seeds=[0] mid   n=16 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b b_prior                  T=0.0  seeds=[0] small n=16 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b c_shuffled               T=0.0  seeds=[0] all   n=31 P@4 0.032 [0.00,0.08]  R@4 0.009 [0.00,0.02]  R@all 0.013 [0.00,0.03]  empty 0.84  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b c_shuffled               T=0.0  seeds=[0] large n=16 P@4 0.031 [0.00,0.09]  R@4 0.007 [0.00,0.02]  R@all 0.013 [0.00,0.04]  empty 0.88  leak 0.00  max_tokens-truncated 0
+qwen/qwen3.8-27b c_shuffled               T=0.0  seeds=[0] mid   n=15 P@4 0.033 [0.00,0.10]  R@4 0.012 [0.00,0.04]  R@all 0.012 [0.00,0.04]  empty 0.80  leak 0.00  max_tokens-truncated 0
 
 qwen/qwen3.8-27b         a_full - b2_prior_knowledge       all   p@4            n=21 +0.036 [-0.048,+0.119]
 qwen/qwen3.8-27b         a_full - b2_prior_knowledge       all   r@all          n=21 +0.048 [-0.012,+0.107]
