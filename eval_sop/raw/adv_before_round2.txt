@@ -1,0 +1,8 @@
+    [anthropic] attempt 2/3: connection error APITimeoutError
+1 timeouts: calls 3 billed $0.0135 ledger $0.0045
+2 529 -> CallFailed 529 OverloadedError: e calls 1
+3 concurrent cap $0.05: billed $0.0990 ledger-file $0.0990
+4 underestimate cap $0.02: billed $0.0235
+    [anthropic] attempt 1/3: 500 server error
+    [anthropic] attempt 2/3: 500 server error
+5 500x3 -> CallFailed calls 3

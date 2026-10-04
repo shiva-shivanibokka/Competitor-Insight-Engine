@@ -20,12 +20,14 @@ The API key is read in-process from the .env file named by EVAL_KEY_ENV
 (variable EVAL_KEY_VAR). It is never printed or written.
 """
 
+import atexit
 import collections
 import hashlib
 import json
 import os
 import sys
 import time
+import uuid
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -64,12 +66,33 @@ class CapReached(RuntimeError):
 
 
 class CallFailed(RuntimeError):
-    """Non-retryable error (any 4xx other than 429), or retries exhausted."""
+    """Non-retryable error (a 4xx other than 429), or retries exhausted."""
+
+
+class LedgerLocked(RuntimeError):
+    """Another process (or a crashed one) holds the ledger lock file."""
 
 
 def est_input_tokens(*texts: str) -> int:
-    """Deliberately high upper bound: 1 token per 3 chars plus overhead (English is ~4)."""
-    return sum(len(t) for t in texts) // 3 + 50
+    """Deliberately high estimate: max(chars/3, UTF-8 bytes/3) plus overhead (English is ~4 chars/token).
+    Checked against real token counts in tests/test_transport.py."""
+    chars = sum(len(t) for t in texts)
+    nbytes = sum(len(t.encode("utf-8")) for t in texts)
+    return max(chars, nbytes) // 3 + 50
+
+
+def ledger_total(path: Path) -> float:
+    """Spend implied by a ledger file. Rows are append-only events: a 'reserve' row
+    charges the worst case before a request is sent; a 'settle' row with the same
+    rid replaces it with the actual cost (0 for requests the API refused). A
+    reservation that is never settled (timeout, crash, Ctrl-C) stays charged."""
+    cost: dict[str, float] = {}
+    for r in _read_jsonl(path):
+        if r["type"] == "reserve":
+            cost.setdefault(r["rid"], r["cost_usd"])
+        elif r["type"] == "settle":
+            cost[r["rid"]] = r["cost_usd"]
+    return sum(cost.values())
 
 
 def _read_jsonl(p: Path) -> list[dict]:
@@ -104,12 +127,57 @@ class LLMShim:
         self._client = client          # injected fake in tests
         self._sleep = sleep
         self._recent: collections.deque = collections.deque()
+        self._lock_path = None
+        if provider.ledger is not None:
+            self._acquire_lock(provider.ledger.with_suffix(provider.ledger.suffix + ".lock"))
         self.cache = {r["key"]: r for r in _read_jsonl(provider.cache)}
-        self.ledger = _read_jsonl(provider.ledger) if provider.ledger else []
+        self._spent = ledger_total(provider.ledger) if provider.ledger else 0.0
+
+    # ------------------------------------------------------------------ lock
+    def _acquire_lock(self, path: Path) -> None:
+        try:
+            fd = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except FileExistsError:
+            raise LedgerLocked(
+                f"{path} exists: another process is using this ledger, or one crashed. "
+                f"Check no eval process is running, then delete the lock file.") from None
+        os.write(fd, f"pid {os.getpid()} {time.strftime('%Y-%m-%d %H:%M:%S')}\n".encode())
+        os.close(fd)
+        self._lock_path = path
+        atexit.register(self.close)
+
+    def close(self) -> None:
+        if self._lock_path is not None:
+            try:
+                self._lock_path.unlink()
+            except FileNotFoundError:
+                pass
+            self._lock_path = None
 
     # ------------------------------------------------------------- accounting
     def spent(self) -> float:
-        return sum(r["cost_usd"] for r in self.ledger)
+        return self._spent
+
+    def _ledger_write(self, row: dict) -> None:
+        with self.p.ledger.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(row) + "\n")
+            f.flush()
+            os.fsync(f.fileno())
+
+    def _reserve(self, worst: float) -> str:
+        if self._spent + worst > self.cap:
+            raise CapReached(f"spent ${self._spent:.4f}; worst case after this attempt "
+                             f"${self._spent + worst:.4f} > cap ${self.cap:.2f}")
+        rid = uuid.uuid4().hex
+        self._ledger_write({"rid": rid, "type": "reserve", "key": self._cur_key, "tag": self.tag,
+                            "cost_usd": round(worst, 8), "at": time.strftime("%Y-%m-%d %H:%M:%S")})
+        self._spent += worst
+        return rid
+
+    def _settle(self, rid: str, reserved: float, actual: float, **info) -> None:
+        self._ledger_write({"rid": rid, "type": "settle", "cost_usd": round(actual, 8), **info,
+                            "at": time.strftime("%Y-%m-%d %H:%M:%S")})
+        self._spent += actual - reserved
 
     def worst_case(self, system: str, user: str) -> float:
         return est_input_tokens(system, user) * self.p.price_in + self.p.max_tokens * self.p.price_out
@@ -134,23 +202,11 @@ class LLMShim:
         k = self.key(system_prompt, user_prompt, temperature)
         if k in self.cache:
             return self.cache[k]["response"]
-        if self.p.ledger is not None:
-            projected = self.spent() + self.worst_case(system_prompt, user_prompt)
-            if projected > self.cap:
-                raise CapReached(f"spent ${self.spent():.4f}; worst case after this call ${projected:.4f} > cap ${self.cap:.2f}")
+        self._cur_key = k
         send = self._send_anthropic if self.p.name == "anthropic" else self._send_groq
         rec = send(system_prompt, user_prompt, temperature)
         rec.update({"key": k, "tag": self.tag, "model": self.p.model, "temperature": temperature,
                     "max_tokens": self.p.max_tokens, "called_at": time.strftime("%Y-%m-%d %H:%M:%S")})
-        if self.p.ledger is not None:
-            cost = rec["prompt_tokens"] * self.p.price_in + rec["output_tokens"] * self.p.price_out
-            entry = {"key": k, "tag": self.tag, "model_reported": rec["model_reported"],
-                     "input_tokens": rec["prompt_tokens"], "output_tokens": rec["output_tokens"],
-                     "cost_usd": round(cost, 8), "at": rec["called_at"]}
-            self.ledger.append(entry)
-            with self.p.ledger.open("a", encoding="utf-8") as f:   # ledger first: never under-count
-                f.write(json.dumps(entry) + "\n")
-            rec["cost_usd"] = entry["cost_usd"]
         self.cache[k] = rec
         with self.p.cache.open("a", encoding="utf-8") as f:
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
@@ -162,36 +218,50 @@ class LLMShim:
         if self._client is None:
             import anthropic
 
-            self._client = anthropic.Anthropic(api_key=_api_key(), max_retries=0, timeout=120.0)
+            # base_url pinned so an ANTHROPIC_BASE_URL in the environment cannot redirect the key
+            self._client = anthropic.Anthropic(api_key=_api_key(), base_url="https://api.anthropic.com",
+                                               max_retries=0, timeout=120.0)
         return self._client
 
     def _send_anthropic(self, system, user, temperature):
+        """Every attempt reserves its worst case in the ledger BEFORE the request (cap
+        re-checked each time). Only a response with usage, or an explicit refusal
+        that is not billed (429 / other 4xx), settles the row; timeouts, connection
+        errors, 5xx and interrupts leave it charged at the worst case."""
         import anthropic
 
         client = self._client_anthropic()
+        worst = self.worst_case(system, user)
         for attempt in range(1, MAX_ATTEMPTS + 1):
+            rid = self._reserve(worst)
             t = time.time()
             try:
                 resp = client.messages.create(
                     model=self.p.model, max_tokens=self.p.max_tokens, temperature=temperature,
                     system=system, messages=[{"role": "user", "content": user}],
                 )
-            except anthropic.RateLimitError as e:
+            except anthropic.RateLimitError as e:  # rejected before processing: not billed
+                self._settle(rid, worst, 0.0, outcome="429")
                 wait = float(e.response.headers.get("retry-after", "20") or 20)
                 self._retry_or_fail(attempt, f"429 rate limited; retry-after {wait}s", wait)
                 continue
-            except anthropic.InternalServerError as e:
-                self._retry_or_fail(attempt, f"{e.status_code} server error", 10)
+            except anthropic.InternalServerError as e:  # retry; stays charged at the worst case
+                self._retry_or_fail(attempt, f"{e.status_code} {type(e).__name__}", 10)
                 continue
-            except anthropic.APIStatusError as e:  # every other 4xx: fail fast, no retry
+            except anthropic.APIStatusError as e:
+                self._settle(rid, worst, 0.0, outcome=str(e.status_code))  # other statuses: fail fast
                 raise CallFailed(f"{e.status_code} {type(e).__name__}: {str(e)[:200]}") from e
-            except anthropic.APIConnectionError as e:
+            except anthropic.APIConnectionError as e:  # includes timeouts: may have been billed
                 self._retry_or_fail(attempt, f"connection error {type(e).__name__}", 10)
                 continue
+            actual = resp.usage.input_tokens * self.p.price_in + resp.usage.output_tokens * self.p.price_out
+            self._settle(rid, worst, actual, outcome="ok", model_reported=resp.model,
+                         input_tokens=resp.usage.input_tokens, output_tokens=resp.usage.output_tokens,
+                         stop_reason=resp.stop_reason)
             text = "".join(getattr(b, "text", "") for b in resp.content if getattr(b, "type", "") == "text")
             return {"model_reported": resp.model, "stop_reason": resp.stop_reason,
                     "prompt_tokens": resp.usage.input_tokens, "output_tokens": resp.usage.output_tokens,
-                    "wall_s": round(time.time() - t, 2), "response": text}
+                    "cost_usd": round(actual, 8), "wall_s": round(time.time() - t, 2), "response": text}
         raise CallFailed("unreachable")
 
     # ------------------------------------------------------------------ groq

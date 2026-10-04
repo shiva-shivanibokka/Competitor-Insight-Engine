@@ -40,7 +40,7 @@ class FakeClient:
     def create(self, **kw):
         self.calls.append(kw)
         item = self.script.pop(0)
-        if isinstance(item, Exception):
+        if isinstance(item, BaseException):
             raise item
         return item
 
@@ -55,8 +55,11 @@ def test_records_usage_cost_and_model(prov):
     s = LLMShim(prov, cap=1.0, client=fake, sleep=lambda x: None)
     assert s(SYS, USER, model=prov.model, temperature=0.0) == "[]"
     led = [json.loads(x) for x in prov.ledger.read_text().splitlines()]
-    assert led[0]["cost_usd"] == pytest.approx(1000 * 1e-6 + 200 * 5e-6)
-    assert led[0]["model_reported"] == "claude-haiku-4-5-20251001"
+    assert [r["type"] for r in led] == ["reserve", "settle"]          # reserved before, settled after
+    assert led[0]["cost_usd"] == pytest.approx(s.worst_case(SYS, USER))
+    assert led[1]["cost_usd"] == pytest.approx(1000 * 1e-6 + 200 * 5e-6)
+    assert led[1]["model_reported"] == "claude-haiku-4-5-20251001"
+    assert s.spent() == pytest.approx(1000 * 1e-6 + 200 * 5e-6)
     kw = fake.calls[0]
     assert kw["model"] == "claude-haiku-4-5-20251001"
     assert "seed" not in kw and "reasoning_effort" not in kw
@@ -85,7 +88,7 @@ def test_429_gives_up_after_three_attempts(prov):
     with pytest.raises(CallFailed):
         s(SYS, USER, temperature=0.0)
     assert len(fake.calls) == 3
-    assert not prov.ledger.exists()
+    assert s.spent() == 0  # 429s are refusals, settled at $0
 
 
 @pytest.mark.parametrize("cls,status", [(anthropic.BadRequestError, 400), (anthropic.AuthenticationError, 401),
@@ -120,7 +123,11 @@ def test_worst_case_bounds_actual_cost(prov):
 def test_crash_and_resume_keeps_ledger_and_cache(prov):
     s1 = LLMShim(prov, cap=1.0, client=FakeClient([_resp(500, 100)]), sleep=lambda x: None)
     s1(SYS, USER, temperature=0.0)
-    del s1  # "crash"
+    # "crash": s1 never closes, so its lock file is left behind and blocks a second process
+    with pytest.raises(common.LedgerLocked):
+        LLMShim(prov, cap=1.0, client=FakeClient([]), sleep=lambda x: None)
+    s1._lock_path.unlink()  # what the operator does after confirming nothing is running
+    s1._lock_path = None
     fake = FakeClient([_resp(500, 100)])
     s2 = LLMShim(prov, cap=1.0, client=fake, sleep=lambda x: None)
     assert s2.spent() == pytest.approx(500e-6 + 100 * 5e-6)
@@ -155,3 +162,66 @@ def test_committed_groq_run_replays_exactly_from_cache():
             shim.force_temperature = None
         assert preds == r["predictions"], r["id"]
     assert shim.calls_made == calls_before
+
+
+# ---------------------------------------------------------------- round-2 review: spend safety
+def _timeout():
+    return anthropic.APITimeoutError(request=httpx.Request("POST", "https://api.anthropic.com/v1/messages"))
+
+
+def test_timed_out_attempts_stay_charged_at_worst_case(prov):
+    # the server may have billed a request whose response the client never saw
+    fake = FakeClient([_timeout(), _timeout(), _resp(1000, 200)])
+    s = LLMShim(prov, cap=1.0, client=fake, sleep=lambda x: None)
+    s(SYS, USER, temperature=0.0)
+    worst = s.worst_case(SYS, USER)
+    assert s.spent() == pytest.approx(2 * worst + 1000e-6 + 200 * 5e-6)
+    s.close()  # a resumed process re-reads the same total from disk
+    assert common.ledger_total(prov.ledger) == pytest.approx(s.spent())
+
+
+def test_cap_is_rechecked_before_every_attempt(prov):
+    fake = FakeClient([_timeout()] * 3)
+    s = LLMShim(prov, cap=1.0, client=fake, sleep=lambda x: None)
+    s.cap = s.worst_case(SYS, USER) * 1.5  # room for one attempt, not two
+    with pytest.raises(CapReached):
+        s(SYS, USER, temperature=0.0)
+    assert len(fake.calls) == 1
+    assert s.spent() <= s.cap
+
+
+def test_interrupt_mid_request_stays_charged(prov):
+    fake = FakeClient([KeyboardInterrupt()])
+    s = LLMShim(prov, cap=1.0, client=fake, sleep=lambda x: None)
+    with pytest.raises(KeyboardInterrupt):
+        s(SYS, USER, temperature=0.0)
+    assert s.spent() == pytest.approx(s.worst_case(SYS, USER))
+
+
+def test_second_process_cannot_open_the_same_ledger(prov):
+    s = LLMShim(prov, cap=1.0, client=FakeClient([]), sleep=lambda x: None)
+    with pytest.raises(common.LedgerLocked):
+        LLMShim(prov, cap=1.0, client=FakeClient([]), sleep=lambda x: None)
+    s.close()
+    LLMShim(prov, cap=1.0, client=FakeClient([]), sleep=lambda x: None).close()  # free again after close
+
+
+def test_estimate_counts_utf8_bytes():
+    text = "日本語" * 300  # 900 chars, 2700 UTF-8 bytes
+    assert common.est_input_tokens(text) >= len(text.encode("utf-8")) // 3
+
+
+def test_rejected_requests_are_settled_at_zero(prov):
+    fake = FakeClient([_err(anthropic.RateLimitError, 429), _err(anthropic.BadRequestError, 400)])
+    s = LLMShim(prov, cap=1.0, client=fake, sleep=lambda x: None)
+    with pytest.raises(CallFailed):
+        s(SYS, USER, temperature=0.0)
+    assert s.spent() == 0
+
+
+def test_client_base_url_is_pinned(prov, monkeypatch):
+    monkeypatch.setattr(common, "_api_key", lambda: "sk-ant-test-not-a-key")
+    monkeypatch.setenv("ANTHROPIC_BASE_URL", "https://evil.example")
+    s = LLMShim(prov, cap=1.0, sleep=lambda x: None)
+    assert str(s._client_anthropic().base_url).rstrip("/") == "https://api.anthropic.com"
+    s.close()
