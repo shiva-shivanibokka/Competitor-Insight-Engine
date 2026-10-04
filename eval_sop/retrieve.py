@@ -19,7 +19,7 @@ searcher.get_competitor_search_content ("SOURCE: title\\ncontent" blocks).
 import json
 import time
 
-from common import ROOT, load_companies, shim  # noqa: F401  (installs the LLM shim)
+from common import MODEL, ROOT, load_companies, shim  # noqa: F401  (installs the LLM shim)
 
 import analyzer  # noqa: E402
 from blocklist import is_blocked  # noqa: E402
@@ -55,7 +55,7 @@ def build(c: dict) -> dict:
     # The product aborts here when the homepage yields no text (report.py raises
     # ValueError). Record that, but keep going with the product's own fallback
     # industry so discovery can still be scored conditional on proceeding.
-    profile = analyzer.extract_company_profile(scraped, model="eval") if scraped.strip() else ""
+    profile = analyzer.extract_company_profile(scraped, model=MODEL) if scraped.strip() else ""
     industry = _extract_field(profile, "INDUSTRY") if profile else "technology"
     query = f"top direct competitors of {c['name']} in {industry}"
     hits = search(query)

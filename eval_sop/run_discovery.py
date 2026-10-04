@@ -54,6 +54,21 @@ FIXED = FIXED_COMPETITOR_EXTRACTION_PROMPT  # candidate fix, kept in eval_sop/, 
 NO_SEARCH = "(none — no web search was run for this request)"
 OWN_KNOWLEDGE = ("(No search results are available for this request. "
                  "Answer from your own knowledge of the company and its market.)")
+ORIGINAL_PROMPT_CONDS = ("a_full", "b_prior", "c_shuffled", "b2_prior_knowledge")
+
+
+def prompt_for(cond: str) -> str:
+    return ORIGINAL if cond in ORIGINAL_PROMPT_CONDS else FIXED
+
+
+def content_for(cond: str, cid: str, ret: dict, donor_id: str | None) -> str:
+    if cond in ("a_full", "d_fixed"):
+        return ret[cid]["search_content"]
+    if cond == "c_shuffled":
+        return ret[donor_id]["search_content"]
+    if cond in ("b2_prior_knowledge", "e2_fixed_prior_knowledge"):
+        return OWN_KNOWLEDGE
+    return NO_SEARCH
 
 
 def main():
@@ -90,21 +105,14 @@ def main():
         key = (c["id"], cond, temp, seed)
         if key in done:
             continue
-        prompt = ORIGINAL if cond in ("a_full", "b_prior", "c_shuffled", "b2_prior_knowledge") else FIXED
-        if cond in ("a_full", "d_fixed"):
-            content, src = ret[c["id"]]["search_content"], c["id"]
-        elif cond == "c_shuffled":
-            content, src = ret[donor[c["id"]]]["search_content"], donor[c["id"]]
-        elif cond in ("b2_prior_knowledge", "e2_fixed_prior_knowledge"):
-            content, src = OWN_KNOWLEDGE, None
-        else:
-            content, src = NO_SEARCH, None
+        src = c["id"] if cond in ("a_full", "d_fixed") else donor[c["id"]] if cond == "c_shuffled" else None
+        content, prompt = content_for(cond, c["id"], ret, src), prompt_for(cond)
         analyzer.COMPETITOR_EXTRACTION_PROMPT = prompt
         shim.seed, shim.tag = seed, f"{cond}:{c['id']}"
         # the product hardcodes temperature=0.0 for this step
         shim.force_temperature = temp
         try:
-            preds = analyzer.extract_competitors_from_search(c["name"], content, model="eval")
+            preds = analyzer.extract_competitors_from_search(c["name"], content, model=MODEL)
         finally:
             shim.force_temperature = None
         rec = {"id": c["id"], "name": c["name"], "tier": c["tier"], "cond": cond,
