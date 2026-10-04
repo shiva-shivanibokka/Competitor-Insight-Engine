@@ -20,7 +20,7 @@ Every number below is measured unless it says otherwise. Anything that did not r
 
 ### 2. Ground truth (`eval_sop/ground_truth/`)
 - **Source.** Each company's latest 10-K on EDGAR; accession, URL and filing date are in `companies.json`.
-- **How the labels were made.** The labels are **LLM-assisted**: Claude transcribed the competitor names from each excerpt and added aliases. `build_gt.py` refuses to build unless every labelled entity has its name, or one of its aliases, appearing verbatim in the stored 10-K excerpt. All 48 companies pass. Labels have not been reviewed by a human.
+- **How the labels were made.** The labels are **LLM-assisted**: Claude transcribed the competitor names from each excerpt and added aliases. `build_gt.py` refuses to write `companies.json` (SystemExit) unless every labelled entity has its name, or one of its aliases, appearing verbatim in the stored 10-K excerpt. That refusal was added in `cc9d581`; before it, problems were only printed. All 48 companies pass. Labels have not been reviewed by a human.
 - **Coverage scope.** A label set covers the named competitors in one stored passage, which is not necessarily the whole filing. For example, NETGEAR's set covers its enterprise bullet only.
 - **Fame tier.** Public float from SEC XBRL `dei:EntityPublicFloat`, used as a proxy for fame: large ≥ $10B, mid $1–10B, small < $1B. There are 16 companies per tier.
 - **Selection.** Companies were selected for naming at least 3 competitors in the filing, so this is not a random sample.
@@ -127,7 +127,7 @@ Every number below is measured unless it says otherwise. Anything that did not r
 
 ## 6. Change log
 
-**Product code (`backend/`): no changes.** It is byte-identical to `c3eac2d` and its suite still passes 25/25. There are 25 tests at `c3eac2d`. `raw/test_after_fix.txt` shows "26 passed" only because it was produced with the unapplied few-shot patch (+1 test) in place. The `eval_sop/tests` suite adds 17 tests (2 + 13 + 2).
+**Product code (`backend/`): no changes.** It is byte-identical to `c3eac2d` and its suite still passes 25/25. There are 25 tests at `c3eac2d`. `raw/test_after_fix.txt` shows "26 passed" only because it was produced with the unapplied few-shot patch (+1 test) in place. The `eval_sop/tests` suite has 30 tests (`test_build_gt` 3, `test_transport` 23, `test_score` 4).
 
 | Commit | Change | Why / evidence | Preserved |
 |---|---|---|---|
@@ -139,12 +139,21 @@ Every number below is measured unless it says otherwise. Anything that did not r
 | `65cc8e0` | New `LLMShim` transport covering the items below. Tests use a fake client: usage, 429, 400/401/403/404, the cap, crash/resume, model pinning, and exact replay of the Groq run. | Paid-run readiness | Groq cache keys unchanged (replay test) |
 | `65cc8e0` (cont.) | Haiku provider pinned to `claude-haiku-4-5-20251001`. Uses the official SDK with `max_retries=0`, sends no `seed` or `reasoning_effort`, and records `model_reported`. | Paid-run readiness | |
 | `65cc8e0` (cont.) | Persisted cost ledger at $1/M input and $5/M output. A call is refused if the worst case would pass the cap (default $2.75). | Paid-run readiness | |
-| `65cc8e0` (cont.) | At most 3 attempts per call (was up to 400). Any 4xx except 429 fails fast. | Paid-run readiness | |
+| `65cc8e0` (cont.) | At most 3 attempts per call (was up to 400). As committed, any non-429 status that was not an `InternalServerError` failed fast, which wrongly included 529/503. Corrected in `fc943ac`: 429 and all 5xx retry; other 4xx fail fast. | Paid-run readiness | |
 | `65cc8e0` (cont.) | The shim now rejects any `model` argument other than its pinned model. | Paid-run readiness | |
 | `8b3f5f0` | Leak detector fixed. `score.py` contained literal backspace characters where `\b` was intended, so it could never match. | Reproduced: `tests/test_score.py` failed (`raw/leak_detector_before_fix.txt`) and passes after the fix. Leak rates stay 0, which agrees with the independent raw-response check. | |
 | `5116815` | No model mixing. Model added to the resume key. Haiku output goes to `discovery_haiku.jsonl`. Scoring groups by model and pairs only within a model. | Review item A3 | Groq numbers unchanged |
 | `5116815` (cont.) | Haiku design set to {a, b2, c, d} once at T=0, and `--dry-run` added. | Review item A4 | |
 | `53dcc63` | `sensitivity.py` added | §3b | |
+| `15099b5` | Round 2: spend safety | See below | |
+| `15099b5` (cont.) | An exclusive lock file is taken next to the ledger; a second process gets `LedgerLocked`. | Reviewer script `raw/adv_before_round2.txt`: two processes on one ledger billed $0.099 against a $0.05 cap. | |
+| `15099b5` (cont.) | Reserve-then-settle ledger rows: the worst case is reserved before every attempt and the cap re-checked each time. Timeouts, connection errors, 5xx and interrupts stay charged at the worst case; 429/4xx settle at $0. Rows are fsynced. | Billed timeouts went unrecorded: ledger $0.0045 vs billed $0.0135. Failing tests in `raw/spend_safety_before_fix.txt`. | |
+| `15099b5` (cont.) | The estimate counts UTF-8 bytes, and `base_url` is pinned to api.anthropic.com. | Review item | |
+| `fc943ac` | 529 `OverloadedError` and 503 retried and charged at the worst case | Both subclass `APIStatusError` directly in SDK 0.93 (`raw/529_before_fix.txt`) | |
+| `cc9d581` | `build_gt.py` refuses to write on any problem | Failing test: `raw/build_gt_refuse_before_fix.txt`. The real rebuild is unchanged. | Labels |
+| `86e4370` | The tautological estimate test is replaced by a check against the 188 real Groq prompt_token counts. The estimate divisor goes from 3 to 2 (`max(chars, bytes)/2 + 50`). | At /3, 1 of 188 prompts was under-estimated (ratio 0.84, `raw/estimate_before_fix.txt`); /2 gives a minimum ratio of 1.25. The Groq tokenizer stands in for Claude's. | |
+| `86e4370` (cont.) | The replay test now fails if it tries to make any API call, even with keys set. | Review item | |
+| `e42b3c1` | The scorer flags responses that hit max_tokens (`truncated`, `n_truncated`) instead of silently counting them as empty | Groq run: 0 truncated in every group; metrics unchanged. Failing tests: `raw/truncation_before_fix.txt`. | |
 
 ## 7. Proposed, not done
 - **README test count.** Lines 207, 272 and 327 say "22 offline unit tests". There are 25, and 2 of them need DNS (`test_ssrf_allows_public` and `test_reachability_checks_do_not_follow_redirect_chains`; see `check_tests_offline.py` and `raw/tests_offline.txt`). Suggested wording: "25 unit tests (23 fully offline; 2 resolve DNS)".
@@ -156,7 +165,9 @@ Every number below is measured unless it says otherwise. Anything that did not r
 ## 8. Paid run, prepared but not executed
 - **What it is: "Haiku on the fixed ddgs evidence."** It runs `claude-haiku-4-5-20251001` on exactly the cached `raw/retrieval/` search text, over 48 companies × {a_full, b2, c_shuffled, d_fixed}, once at T=0. That is 192 calls.
 - **What it is not.** It is **not** the shipped Haiku + Tavily configuration and must never be described as such.
-- **Dry run.** `EVAL_PROVIDER=anthropic python eval_sop/run_discovery.py --dry-run` gives a **worst-case total of $1.0175** (`results/haiku_dry_run.txt`). The worst case assumes 1 token per 3 characters plus 50 tokens of input, and the full 700 output tokens.
+- **Dry run.** `EVAL_PROVIDER=anthropic python eval_sop/run_discovery.py --dry-run` gives a **worst-case total of $1.1884** (`results/haiku_dry_run.txt`). It was $1.0175 before the estimate change in `86e4370`. The worst case assumes max(chars, UTF-8 bytes)/2 + 50 input tokens and the full 700 output tokens.
+- **Run safety.** Only one process may use the ledger, enforced by the lock file; a crash leaves the lock behind for a human to clear. Each attempt is reserved at the worst case before it is sent. The cap can only be passed if a single response's real input exceeds the estimate; the estimate checked out above all 188 real counts, with a minimum ratio of 1.25.
+- **Scoring the Haiku run.** Score it with `EVAL_PROVIDER=anthropic` so the truncation check can see the Haiku cache. Otherwise those rows report `n_truncation_unknown`.
 - **Cap.** $2.75, inside this project's $3 share.
 - **What it allows.** A clean Haiku comparison of (a) vs (b2) by tier, including small companies, the leak test for Haiku, and (d).
 - **Command.** `EVAL_PROVIDER=anthropic EVAL_KEY_ENV=<.env> EVAL_KEY_VAR=ANTHROPIC_API_KEY python eval_sop/run_discovery.py`
@@ -164,6 +175,6 @@ Every number below is measured unless it says otherwise. Anything that did not r
 - **Free remainder (Groq, same model).** The leftover Groq conditions need about 0.7M tokens, roughly 4 days of free quota.
 
 ## 9. SOP-ready sentences (true for this run)
-1. "I built a 48-company ground-truth set from the Competition sections of SEC 10-K filings. The labels are LLM-assisted and verified verbatim against each filing. On it, my competitor-discovery pipeline (open 27B model qwen3.8-27b, free web search, single run) reached precision@4 of 0.53 (95% CI 0.43–0.62; 0.48 counting only names exactly as written in the filing), against 0.10 for a non-LLM baseline."
+1. "I built a 48-company ground-truth set from the Competition sections of SEC 10-K filings. The labels are LLM-assisted, and each labelled competitor appears verbatim in the filing's Competition passage. On it, my competitor-discovery pipeline (the qwen3.8-27b model served on Groq, free web search, single run) reached precision@4 of 0.53 (95% CI 0.43–0.62; 0.48 counting only names exactly as written in the filing), against 0.10 for a non-LLM baseline."
 2. "For large-cap companies, the model's parametric knowledge alone (a condition I added after the first run) was not significantly different in precision from the retrieval pipeline (0.59 vs 0.63, n=16). Precision fell to 0.26 for small caps, but the search results also contained far fewer of their true competitors, so that gap mixes model knowledge with retrieval coverage."
 3. "An evidence-shuffling ablation on 31 large- and mid-cap companies showed that the extraction step depends on its evidence: given another company's search results, it returned no competitors 84% of the time."
