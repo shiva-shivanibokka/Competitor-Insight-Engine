@@ -1,0 +1,3 @@
+=========================== short test summary info ===========================
+FAILED tests/test_transport.py::test_estimate_is_above_real_token_counts - As...
+1 failed, 27 passed in 6.30s

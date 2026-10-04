@@ -111,13 +111,37 @@ def test_cap_refuses_before_calling(prov):
     assert s.spent() <= 0.006
 
 
-def test_worst_case_bounds_actual_cost(prov):
-    # the projection must never be below what a call can actually cost
-    s = LLMShim(prov, cap=1.0, client=FakeClient([]), sleep=lambda x: None)
-    text = "word " * 2000
-    worst = s.worst_case(SYS, text)
-    max_real = (len(SYS + text) // 3) * prov.price_in + prov.max_tokens * prov.price_out
-    assert worst >= max_real
+def _committed_prompts():
+    """(system, user, real prompt_tokens) for all 188 cached Groq calls of the committed run."""
+    import analyzer
+    import run_discovery as rd
+
+    shim = common.shim
+    ret = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in (HERE / "raw" / "retrieval").glob("*.json")}
+    out = []
+    for r in (json.loads(x) for x in (HERE / "raw" / "discovery.jsonl").read_text(encoding="utf-8").splitlines()):
+        system = rd.prompt_for(r["cond"])
+        user = (f"The company being researched is: {r['name']}\n\n"
+                f"Search results:\n\n{rd.content_for(r['cond'], r['id'], ret, r.get('evidence_from'))}")
+        shim.seed = r["seed"]
+        out.append((system, user, shim.cache[shim.key(system, user, r["temperature"])]["prompt_tokens"]))
+    for rr in ret.values():
+        if rr["profile"]:
+            user = f"Extract the company profile from this website content:\n\n{rr['scraped']}"
+            shim.seed = 0
+            out.append((analyzer.EXTRACTION_SYSTEM_PROMPT, user,
+                        shim.cache[shim.key(analyzer.EXTRACTION_SYSTEM_PROMPT, user, 0.2)]["prompt_tokens"]))
+    shim.seed = 0
+    return out
+
+
+def test_estimate_is_above_real_token_counts():
+    """Checked against the 188 real prompt_token counts Groq reported for this run's
+    exact prompts (Qwen tokenizer; a proxy for Claude's, which these files cannot measure)."""
+    rows = _committed_prompts()
+    assert len(rows) == 188
+    ratios = sorted(common.est_input_tokens(sy, us) / real for sy, us, real in rows)
+    assert ratios[0] >= 1.0, f"estimate below the real count for {sum(r < 1 for r in ratios)} prompts, min {ratios[0]:.3f}"
 
 
 def test_crash_and_resume_keeps_ledger_and_cache(prov):
@@ -148,7 +172,12 @@ def test_committed_groq_run_replays_exactly_from_cache():
 
     shim = common.shim
     assert shim.p.name == "groq"
-    shim._client = object()  # any network attempt would fail loudly
+
+    def no_network(*a, **k):
+        raise AssertionError("replay test tried to call an API")
+
+    # even if EVAL_KEY_* / EVAL_GROQ_* are set in the environment, nothing can be sent
+    shim._send_groq = shim._send_anthropic = no_network
     ret = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in (HERE / "raw" / "retrieval").glob("*.json")}
     recs = [json.loads(x) for x in (HERE / "raw" / "discovery.jsonl").read_text(encoding="utf-8").splitlines()]
     calls_before = shim.calls_made
@@ -208,7 +237,7 @@ def test_second_process_cannot_open_the_same_ledger(prov):
 
 def test_estimate_counts_utf8_bytes():
     text = "日本語" * 300  # 900 chars, 2700 UTF-8 bytes
-    assert common.est_input_tokens(text) >= len(text.encode("utf-8")) // 3
+    assert common.est_input_tokens(text) >= len(text.encode("utf-8")) // 2
 
 
 def test_rejected_requests_are_settled_at_zero(prov):

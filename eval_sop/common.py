@@ -74,11 +74,12 @@ class LedgerLocked(RuntimeError):
 
 
 def est_input_tokens(*texts: str) -> int:
-    """Deliberately high estimate: max(chars/3, UTF-8 bytes/3) plus overhead (English is ~4 chars/token).
-    Checked against real token counts in tests/test_transport.py."""
+    """Deliberately high estimate: max(chars, UTF-8 bytes)/2 plus 50 (English is ~4 chars/token).
+    /3 under-estimated 1 of the 188 real prompts of this run (ratio 0.84); /2 clears all (min 1.25).
+    Checked against those real token counts in tests/test_transport.py."""
     chars = sum(len(t) for t in texts)
     nbytes = sum(len(t.encode("utf-8")) for t in texts)
-    return max(chars, nbytes) // 3 + 50
+    return max(chars, nbytes) // 2 + 50
 
 
 def ledger_total(path: Path) -> float:
