@@ -123,8 +123,10 @@ def main():
         })
         print(f"{ticker:5s} {out[-1]['tier']:6s} float={fl and round(fl['usd'] / 1e9, 2)}B "
               f"n_gt={len(comps)} missing={missing}")
-    OUT.write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
     print("problems:", bad)
+    if bad:  # never write a ground truth with a label that is not in its excerpt
+        raise SystemExit(f"refusing to write {OUT.name}: {len(bad)} problem(s)")
+    OUT.write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
 
 
 if __name__ == "__main__":
