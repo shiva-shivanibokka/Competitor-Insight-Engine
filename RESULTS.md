@@ -20,7 +20,7 @@ Every number below is measured unless it says otherwise. Anything that did not r
 
 ### 2. Ground truth (`eval_sop/ground_truth/`)
 - **Source.** Each company's latest 10-K on EDGAR; accession, URL and filing date are in `companies.json`.
-- **How the labels were made.** The labels are **LLM-assisted**: Claude transcribed the competitor names from each excerpt and added aliases. `build_gt.py` refuses to write `companies.json` (SystemExit) unless every labelled entity has its name, or one of its aliases, appearing verbatim in the stored 10-K excerpt. That refusal was added in `cc9d581`; before it, problems were only printed. All 48 companies pass. Labels have not been reviewed by a human.
+- **How the labels were made.** The labels are **LLM-assisted**: Claude transcribed the competitor names from each excerpt and added aliases. `build_gt.py` refuses to write `companies.json` (SystemExit) unless every labelled entity has its name, or one of its aliases, appearing verbatim in the stored 10-K excerpt. That refusal was added in `da5ad63`; before it, problems were only printed. All 48 companies pass. Labels have not been reviewed by a human.
 - **Coverage scope.** A label set covers the named competitors in one stored passage, which is not necessarily the whole filing. For example, NETGEAR's set covers its enterprise bullet only.
 - **Fame tier.** Public float from SEC XBRL `dei:EntityPublicFloat`, used as a proxy for fame: large ≥ $10B, mid $1–10B, small < $1B. There are 16 companies per tier.
 - **Selection.** Companies were selected for naming at least 3 competitors in the filing, so this is not a random sample.
@@ -81,7 +81,7 @@ Every number below is measured unless it says otherwise. Anything that did not r
 
 ### 3c. Few-shot leak (Adyen / Braintree / Square)
 - **Not reproduced.** None of the 148 seed-0 discovery outputs from the original prompt (a, b, b2, c) contain these names, and none of the 188 raw responses do.
-- The scorer's own leak detector was broken until commit `8b3f5f0`; see the Change log. After the fix it also reports 0.
+- The scorer's own leak detector was broken until commit `cf15d45`; see the Change log. After the fix it also reports 0.
 - The Stripe demo (claude-haiku-4-5) returns Adyen, PayPal, Square and Braintree. Those are genuine Stripe competitors, so the demo is not evidence of copying.
 - The leak remains **untested for Haiku**.
 
@@ -131,42 +131,88 @@ Every number below is measured unless it says otherwise. Anything that did not r
 
 | Commit | Change | Why / evidence | Preserved |
 |---|---|---|---|
-| `0f658d7`, `3d9532c` | Harness, ground truth, seed-0 results | — | — |
-| (in `3d9532c`) | Few-shot fix researched, **not applied**; kept as `proposed_fewshot_fix.patch` | Leak not reproduced (§3c). The patch's comments wrongly said the leak was "measured"; now corrected to "not observed; precaution" (fix-phase commit). `git apply --check` still passes. | Product prompt |
-| `0cb395c` | Groq org ID redacted from `raw/discovery.log`. Added an opt-in `strip_retrieval.py`. | Privacy review. **The org ID is still present in commit `3d9532c`.** History was not rewritten; squash before any push. | Retrieval files untouched |
-| `bf6b8e1` | `build_gt.py` decodes HTML from `r.content` (charset from the header, or sniffed) instead of `r.text`. Dropped a reference to a non-existent PROVENANCE.md. | Reproduced: `raw/encoding_repro.txt` shows the old path turning "Nestlé" into "NestlÃ©". A scan of all 48 cached 10-K texts found no mojibake, so labels were unaffected. | Cache, labels |
-| `a8107fe` | Ground truth completed from the stored excerpts with a new `--offline` rebuild (no EDGAR calls). Added NTGR Synology, TP-Link, TRENDnet, Ubiquiti and WatchGuard (span now ends at the enterprise bullet); CNDT Leidos, TransCore, Thales, Cubic and INIT; WDAY NetSuite; BOX OpenText. Added the aliases Belden, Vistance and Resideo. | Review found truncated spans; I re-audited every excerpt for unlabelled capitalised names. P@4 for (a) went 0.524 → 0.529. | No labels removed |
-| `65cc8e0` | New `LLMShim` transport covering the items below. Tests use a fake client: usage, 429, 400/401/403/404, the cap, crash/resume, model pinning, and exact replay of the Groq run. | Paid-run readiness | Groq cache keys unchanged (replay test) |
-| `65cc8e0` (cont.) | Haiku provider pinned to `claude-haiku-4-5-20251001`. Uses the official SDK with `max_retries=0`, sends no `seed` or `reasoning_effort`, and records `model_reported`. | Paid-run readiness | |
-| `65cc8e0` (cont.) | Persisted cost ledger at $1/M input and $5/M output. A call is refused if the worst case would pass the cap (default $2.75). | Paid-run readiness | |
-| `65cc8e0` (cont.) | At most 3 attempts per call (was up to 400). As committed, any non-429 status that was not an `InternalServerError` failed fast, which wrongly included 529/503. Corrected in `fc943ac`: 429 and all 5xx retry; other 4xx fail fast. | Paid-run readiness | |
-| `65cc8e0` (cont.) | The shim now rejects any `model` argument other than its pinned model. | Paid-run readiness | |
-| `8b3f5f0` | Leak detector fixed. `score.py` contained literal backspace characters where `\b` was intended, so it could never match. | Reproduced: `tests/test_score.py` failed (`raw/leak_detector_before_fix.txt`) and passes after the fix. Leak rates stay 0, which agrees with the independent raw-response check. | |
-| `5116815` | No model mixing. Model added to the resume key. Haiku output goes to `discovery_haiku.jsonl`. Scoring groups by model and pairs only within a model. | Review item A3 | Groq numbers unchanged |
-| `5116815` (cont.) | Haiku design set to {a, b2, c, d} once at T=0, and `--dry-run` added. | Review item A4 | |
-| `53dcc63` | `sensitivity.py` added | §3b | |
-| `15099b5` | Round 2: spend safety | See below | |
-| `15099b5` (cont.) | An exclusive lock file is taken next to the ledger; a second process gets `LedgerLocked`. | Reviewer script `raw/adv_before_round2.txt`: two processes on one ledger billed $0.099 against a $0.05 cap. | |
-| `15099b5` (cont.) | Reserve-then-settle ledger rows: the worst case is reserved before every attempt and the cap re-checked each time. Timeouts, connection errors, 5xx and interrupts stay charged at the worst case; 429/4xx settle at $0. Rows are fsynced. | Billed timeouts went unrecorded: ledger $0.0045 vs billed $0.0135. Failing tests in `raw/spend_safety_before_fix.txt`. | |
-| `15099b5` (cont.) | The estimate counts UTF-8 bytes, and `base_url` is pinned to api.anthropic.com. | Review item | |
-| `fc943ac` | 529 `OverloadedError` and 503 retried and charged at the worst case | Both subclass `APIStatusError` directly in SDK 0.93 (`raw/529_before_fix.txt`) | |
-| `cc9d581` | `build_gt.py` refuses to write on any problem | Failing test: `raw/build_gt_refuse_before_fix.txt`. The real rebuild is unchanged. | Labels |
-| `86e4370` | The tautological estimate test is replaced by a check against the 188 real Groq prompt_token counts. The estimate divisor goes from 3 to 2 (`max(chars, bytes)/2 + 50`). | At /3, 1 of 188 prompts was under-estimated (ratio 0.84, `raw/estimate_before_fix.txt`); /2 gives a minimum ratio of 1.25. The Groq tokenizer stands in for Claude's. | |
-| `86e4370` (cont.) | The replay test now fails if it tries to make any API call, even with keys set. | Review item | |
+| `0f658d7`, `37fb65f` | Harness, ground truth, seed-0 results | — | — |
+| (in `37fb65f`) | Few-shot fix researched, **not applied**; kept as `proposed_fewshot_fix.patch` | Leak not reproduced (§3c). The patch's comments wrongly said the leak was "measured"; now corrected to "not observed; precaution" (fix-phase commit). `git apply --check` still passes. | Product prompt |
+| `37fb65f` | Groq org ID redacted from `raw/discovery.log`. Added an opt-in `strip_retrieval.py`. | Privacy review. The redaction and the results commit are now one commit, so no commit on this branch contains the unredacted log (see §6a). | Retrieval files untouched |
+| `aa90862` | `build_gt.py` decodes HTML from `r.content` (charset from the header, or sniffed) instead of `r.text`. Dropped a reference to a non-existent PROVENANCE.md. | Reproduced: `raw/encoding_repro.txt` shows the old path turning "Nestlé" into "NestlÃ©". A scan of all 48 cached 10-K texts found no mojibake, so labels were unaffected. | Cache, labels |
+| `9f92ca7` | Ground truth completed from the stored excerpts with a new `--offline` rebuild (no EDGAR calls). Added NTGR Synology, TP-Link, TRENDnet, Ubiquiti and WatchGuard (span now ends at the enterprise bullet); CNDT Leidos, TransCore, Thales, Cubic and INIT; WDAY NetSuite; BOX OpenText. Added the aliases Belden, Vistance and Resideo. | Review found truncated spans; I re-audited every excerpt for unlabelled capitalised names. P@4 for (a) went 0.524 → 0.529. | No labels removed |
+| `9a683a5` | New `LLMShim` transport covering the items below. Tests use a fake client: usage, 429, 400/401/403/404, the cap, crash/resume, model pinning, and exact replay of the Groq run. | Paid-run readiness | Groq cache keys unchanged (replay test) |
+| `9a683a5` (cont.) | Haiku provider pinned to `claude-haiku-4-5-20251001`. Uses the official SDK with `max_retries=0`, sends no `seed` or `reasoning_effort`, and records `model_reported`. | Paid-run readiness | |
+| `9a683a5` (cont.) | Persisted cost ledger at $1/M input and $5/M output. A call is refused if the worst case would pass the cap (default $2.75). | Paid-run readiness | |
+| `9a683a5` (cont.) | At most 3 attempts per call (was up to 400). As committed, any non-429 status that was not an `InternalServerError` failed fast, which wrongly included 529/503. Corrected in `369f294`: 429 and all 5xx retry; other 4xx fail fast. | Paid-run readiness | |
+| `9a683a5` (cont.) | The shim now rejects any `model` argument other than its pinned model. | Paid-run readiness | |
+| `cf15d45` | Leak detector fixed. `score.py` contained literal backspace characters where `\b` was intended, so it could never match. | Reproduced: `tests/test_score.py` failed (`raw/leak_detector_before_fix.txt`) and passes after the fix. Leak rates stay 0, which agrees with the independent raw-response check. | |
+| `fe10699` | No model mixing. Model added to the resume key. Haiku output goes to `discovery_haiku.jsonl`. Scoring groups by model and pairs only within a model. | Review item A3 | Groq numbers unchanged |
+| `fe10699` (cont.) | Haiku design set to {a, b2, c, d} once at T=0, and `--dry-run` added. | Review item A4 | |
+| `49f7870` | `sensitivity.py` added | §3b | |
+| `cfffc09` | Round 2: spend safety | See below | |
+| `cfffc09` (cont.) | An exclusive lock file is taken next to the ledger; a second process gets `LedgerLocked`. | Reviewer script `raw/adv_before_round2.txt`: two processes on one ledger billed $0.099 against a $0.05 cap. | |
+| `cfffc09` (cont.) | Reserve-then-settle ledger rows: the worst case is reserved before every attempt and the cap re-checked each time. Timeouts, connection errors, 5xx and interrupts stay charged at the worst case; 429/4xx settle at $0. Rows are fsynced. | Billed timeouts went unrecorded: ledger $0.0045 vs billed $0.0135. Failing tests in `raw/spend_safety_before_fix.txt`. | |
+| `cfffc09` (cont.) | The estimate counts UTF-8 bytes, and `base_url` is pinned to api.anthropic.com. | Review item | |
+| `369f294` | 529 `OverloadedError` and 503 retried and charged at the worst case | Both subclass `APIStatusError` directly in SDK 0.93 (`raw/529_before_fix.txt`) | |
+| `da5ad63` | `build_gt.py` refuses to write on any problem | Failing test: `raw/build_gt_refuse_before_fix.txt`. The real rebuild is unchanged. | Labels |
+| `3c9a167` | The tautological estimate test is replaced by a check against the 188 real Groq prompt_token counts. The estimate divisor goes from 3 to 2 (`max(chars, bytes)/2 + 50`). | At /3, 1 of 188 prompts was under-estimated (ratio 0.84, `raw/estimate_before_fix.txt`); /2 gives a minimum ratio of 1.25. The Groq tokenizer stands in for Claude's. | |
+| `3c9a167` (cont.) | The replay test now fails if it tries to make any API call, even with keys set. | Review item | |
 | (round 3, this commit) | Ledger, lock and Haiku cache moved from `eval_sop/raw/` to `%LOCALAPPDATA%\sop_eval\competitor_insight\`, with no env override. Lock errors now report whether the PID in the lock file is running (psutil) and leave recovery manual. | Shared spend record across worktree and main checkout. Failing tests first: `raw/state_dir_before_fix.txt`. | Groq cache stays in the repo |
-| `e42b3c1` | The scorer flags responses that hit max_tokens (`truncated`, `n_truncated`) instead of silently counting them as empty | Groq run: 0 truncated in every group; metrics unchanged. Failing tests: `raw/truncation_before_fix.txt`. | |
+| `240fbb1` | The scorer flags responses that hit max_tokens (`truncated`, `n_truncated`) instead of silently counting them as empty | Groq run: 0 truncated in every group; metrics unchanged. Failing tests: `raw/truncation_before_fix.txt`. | |
+| (round 4, this commit) | Documentation only. Every stale commit hash this file cited was remapped to the rewritten commit with the same subject (13 hashes; `0f658d7` and `c3eac2d` were already valid). The superseded privacy claim was replaced by §6a, which states only what was verified commit by commit. | The rewrite described in §6a changed the hashes. Staleness was tested with `git merge-base --is-ancestor`, not `git cat-file -e`. | No code, data or results touched |
+
+### 6a. History rewrite, and what is actually in it now
+
+`sop-eval` was rewritten after the change log above was first written. The two
+commits that recorded the seed-0 results and then redacted the Groq
+organisation ID were **squashed into the single commit `37fb65f`**, and every
+later commit was replayed onto it, so the hashes changed. This was a squash and
+replay, not a `--tree-filter`: for every commit that survived the rewrite, the
+tree is byte-identical to its pre-rewrite counterpart (`git diff <old> <new>`
+is empty for all fifteen pairs), and the branch tip's tree is byte-identical to
+the pre-rewrite tip. The hashes cited in this document were remapped by
+matching commit subjects.
+
+Verified in this repository, commit by commit over `c3eac2d..HEAD`:
+
+- **The Groq organisation ID survives in no commit.** `git grep` for the
+  literal ID over every commit on `sop-eval` returns nothing. The same scan
+  over `backup/pre-squash-competitor` returns exactly one commit (`3d9532c`),
+  which is the positive control that the scan works.
+- **No machine path survives in any commit's tracked content.** `git grep -I -i`
+  for `<user>` and for `C:\Users` / `C:/Users` over every commit returns nothing.
+  The only matches for `AppData` and `OneDrive` are benign and deliberate: the
+  `%LOCALAPPDATA%` / `Path.home()/"AppData"/"Local"` state directory in
+  `eval_sop/common.py`, `eval_sop/tests/test_transport.py` and this file, and
+  Microsoft **OneDrive** as a labelled competitor in the 10-K ground truth and
+  the retrieval cache.
+- **Commit messages are clean.** The only match across `c3eac2d..HEAD` is the
+  literal `%LOCALAPPDATA%` in one subject line.
+- **A backup of the pre-rewrite history exists locally** on the branch
+  `backup/pre-squash-competitor`. It is local only; it must not be pushed,
+  because `3d9532c` on it still carries the unredacted log.
+
+The superseded claim, kept for the record: the change log previously said the
+org ID was "still present in commit `3d9532c`", that history "was not
+rewritten", and that the branch had to be squashed before any push. That was
+true when written. It no longer describes this branch.
+
+A note on how to check this, because the obvious check is wrong: `git cat-file
+-e <sha>` **succeeds for pre-rewrite SHAs** here, because
+`backup/pre-squash-competitor` keeps the old objects reachable. Existence is
+therefore not a staleness test. The valid test is reachability from the branch
+tip: `git merge-base --is-ancestor <sha> HEAD`.
 
 ## 7. Proposed, not done
 - **README test count.** Lines 207, 272 and 327 say "22 offline unit tests". There are 25, and 2 of them need DNS (`test_ssrf_allows_public` and `test_reachability_checks_do_not_follow_redirect_chains`; see `check_tests_offline.py` and `raw/tests_offline.txt`). Suggested wording: "25 unit tests (23 fully offline; 2 resolve DNS)".
 - **Few-shot patch.** Apply it only if the leak is shown with the production model.
 - **Scrape aborts.** Fall back to search snippets instead of aborting when the homepage can't be scraped (17% of companies).
 - **Wording.** Describe the system as a fixed LLM pipeline, not an agent. The LLM never calls tools. The README does not say "agent".
-- **History.** Squash the branch before pushing, because of the org ID in `3d9532c`.
+- **History.** Done, not pending. The squash described in §6a has happened: the
+  unredacted log exists in no commit on `sop-eval`, so this branch no longer
+  needs squashing before a push. What remains is housekeeping: do not push
+  `backup/pre-squash-competitor`, which still carries `3d9532c`.
 
 ## 8. Paid run, prepared but not executed
 - **What it is: "Haiku on the fixed ddgs evidence."** It runs `claude-haiku-4-5-20251001` on exactly the cached `raw/retrieval/` search text, over 48 companies × {a_full, b2, c_shuffled, d_fixed}, once at T=0. That is 192 calls.
 - **What it is not.** It is **not** the shipped Haiku + Tavily configuration and must never be described as such.
-- **Dry run.** `EVAL_PROVIDER=anthropic python eval_sop/run_discovery.py --dry-run` gives a **worst-case total of $1.1884** (`results/haiku_dry_run.txt`). It was $1.0175 before the estimate change in `86e4370`. The worst case assumes max(chars, UTF-8 bytes)/2 + 50 input tokens and the full 700 output tokens.
+- **Dry run.** `EVAL_PROVIDER=anthropic python eval_sop/run_discovery.py --dry-run` gives a **worst-case total of $1.1884** (`results/haiku_dry_run.txt`). It was $1.0175 before the estimate change in `3c9a167`. The worst case assumes max(chars, UTF-8 bytes)/2 + 50 input tokens and the full 700 output tokens.
 - **Where the spend record lives.** The cost ledger, its lock and the Haiku response cache are in one fixed user-level directory outside the repo, `%LOCALAPPDATA%\sop_eval\competitor_insight\` (`common.STATE_DIR`). A run from this worktree and a run from the main checkout therefore share a single spend record. There is no env override. Haiku discovery outputs still go to `eval_sop/raw/discovery_haiku.jsonl`; copy the cache into the repo after the run if it should be committed.
 - **Run safety.** Only one process may use the ledger, enforced by the lock file. If the lock exists, the error says whether the PID inside it is still running or the lock is stale; recovery is always manual: confirm nothing is running, then delete the lock. Each attempt is reserved at the worst case before it is sent. The cap can only be passed if a single response's real input exceeds the estimate; the estimate checked out above all 188 real counts, with a minimum ratio of 1.25.
 - **Scoring the Haiku run.** Score it with `EVAL_PROVIDER=anthropic` so the truncation check can see the Haiku cache. Otherwise those rows report `n_truncation_unknown`.
