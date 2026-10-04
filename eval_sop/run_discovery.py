@@ -16,10 +16,17 @@ b_/e_ were the first operationalisation of "prior only"; the model answered []
 for all 48 companies (it abstains when told no search ran), so b2_/e2_ add an
 explicit invitation to answer from parametric knowledge. Both are reported.
 
-    python eval_sop/run_discovery.py --temps 0 --seeds 0 1 2
+Groq run (committed, seed 0):
+    python eval_sop/run_discovery.py --temps 0 --seeds 0
 
-Seeds are passed to the provider (Groq `seed`); the temperature is the
-product's own 0.0 unless --temps overrides it.
+Haiku run ("Haiku on the fixed ddgs evidence": the same cached search text
+as the Groq run, NOT the shipped Tavily configuration). Always dry-run first:
+    EVAL_PROVIDER=anthropic python eval_sop/run_discovery.py --dry-run
+    EVAL_PROVIDER=anthropic EVAL_KEY_ENV=<.env> EVAL_KEY_VAR=ANTHROPIC_API_KEY         python eval_sop/run_discovery.py
+For Anthropic the defaults are conds {a_full, b2_prior_knowledge, c_shuffled,
+d_fixed}, temperature 0, one pass (no seed is sent: the Messages API has none).
+Outputs go to raw/discovery.jsonl (Groq) or raw/discovery_haiku.jsonl, and the
+skip key includes the model, so models are never mixed.
 """
 
 import argparse
@@ -27,7 +34,7 @@ import json
 import random
 import subprocess
 
-from common import MODEL, ROOT, load_companies, shim
+from common import DEFAULT_CAP, MODEL, PROVIDER, ROOT, load_companies, shim
 from fixed_prompt import FIXED_COMPETITOR_EXTRACTION_PROMPT
 
 import analyzer  # noqa: E402
@@ -73,12 +80,18 @@ def content_for(cond: str, cid: str, ret: dict, donor_id: str | None) -> str:
 
 def main():
     ap = argparse.ArgumentParser()
+    haiku = PROVIDER.name == "anthropic"
     ap.add_argument("--temps", type=float, nargs="+", default=[0.0])
     ap.add_argument("--seeds", type=int, nargs="+", default=[0])
     ap.add_argument("--conds", nargs="+",
-                    default=["a_full", "b_prior", "c_shuffled", "d_fixed", "e_fixed_prior",
-                             "b2_prior_knowledge", "e2_fixed_prior_knowledge"])
+                    default=["a_full", "b2_prior_knowledge", "c_shuffled", "d_fixed"] if haiku else
+                    ["a_full", "b_prior", "c_shuffled", "d_fixed", "e_fixed_prior",
+                     "b2_prior_knowledge", "e2_fixed_prior_knowledge"])
+    ap.add_argument("--dry-run", action="store_true",
+                    help="print the worst-case cost of all uncached calls and exit; refuse if above the cap")
     args = ap.parse_args()
+    if haiku and args.seeds != [0]:
+        raise SystemExit("Anthropic has no seed parameter; extra seeds would only repeat T=0 calls")
     assert FIXED != ORIGINAL
 
     comps = [c for c in load_companies() if (RET / f"{c['id']}.json").exists()]
@@ -92,17 +105,39 @@ def main():
             break
     donor = dict(zip(ids, perm, strict=True))
 
-    out = OUT_DIR / "discovery.jsonl"
+    out = OUT_DIR / ("discovery_haiku.jsonl" if haiku else "discovery.jsonl")
     done = set()
     for f in [out] if out.exists() else []:
         for line in f.read_text(encoding="utf-8").splitlines():
             r = json.loads(line)
-            done.add((r["id"], r["cond"], r["temperature"], r["seed"]))
+            done.add((r["id"], r["cond"], r["temperature"], r["seed"], r["model"]))
 
     tasks = [(temp, seed, cond, c) for temp in args.temps for seed in args.seeds
              for cond in args.conds for c in comps]
+    if args.dry_run:
+        worst, n_uncached = 0.0, 0
+        for temp, seed, cond, c in tasks:
+            if (c["id"], cond, temp, seed, MODEL) in done:
+                continue
+            src = c["id"] if cond in ("a_full", "d_fixed") else donor[c["id"]] if cond == "c_shuffled" else None
+            user = (f"The company being researched is: {c['name']}\n\n"   # analyzer.py builds exactly this
+                    f"Search results:\n\n{content_for(cond, c['id'], ret, src)}")
+            shim.seed = seed
+            if shim.key(prompt_for(cond), user, temp) in shim.cache:
+                continue
+            n_uncached += 1
+            worst += shim.worst_case(prompt_for(cond), user)
+        total = shim.spent() + worst
+        print(f"model={MODEL} provider={PROVIDER.name} tasks={len(tasks)} uncached={n_uncached}")
+        print(f"already spent ${shim.spent():.4f}; worst case for uncached calls ${worst:.4f}; "
+              f"worst-case total ${total:.4f}; cap ${DEFAULT_CAP:.2f}")
+        if PROVIDER.ledger is not None and total > DEFAULT_CAP:
+            raise SystemExit("REFUSED: worst case exceeds the cap")
+        print("OK: within cap")
+        return
+
     for temp, seed, cond, c in tasks:
-        key = (c["id"], cond, temp, seed)
+        key = (c["id"], cond, temp, seed, MODEL)
         if key in done:
             continue
         src = c["id"] if cond in ("a_full", "d_fixed") else donor[c["id"]] if cond == "c_shuffled" else None

@@ -132,7 +132,9 @@ def baseline_capitalised(search_content: str, company: str, k: int = 10) -> list
 
 def main():
     comps = {c["id"]: c for c in load_companies()}
-    runs = [json.loads(line) for line in (ROOT / "raw" / "discovery.jsonl").read_text(encoding="utf-8").splitlines()]
+    runs = []
+    for f in sorted((ROOT / "raw").glob("discovery*.jsonl")):  # one file per model; grouped by model below
+        runs += [json.loads(line) for line in f.read_text(encoding="utf-8").splitlines() if line.strip()]
     ret = {}
     for cid in comps:
         p = ROOT / "raw" / "retrieval" / f"{cid}.json"
@@ -142,14 +144,14 @@ def main():
     # add the non-LLM baseline as a pseudo-condition
     for cid, r in ret.items():
         runs.append({"id": cid, "tier": comps[cid]["tier"], "cond": "z_baseline_capitalised",
-                     "temperature": None, "seed": 0,
+                     "temperature": None, "seed": 0, "model": "none (no LLM)",
                      "predictions": [{"name": n} for n in baseline_capitalised(r["search_content"], comps[cid]["name"])]})
 
     per = []  # one row per (run)
     for r in runs:
         gt = comps[r["id"]]["competitors"]
         names = [p["name"] for p in r["predictions"]]
-        row = {k: r[k] for k in ("id", "tier", "cond", "temperature", "seed")}
+        row = {k: r[k] for k in ("id", "tier", "cond", "temperature", "seed", "model")}
         row.update(metrics(names, gt))
         def has(x, names=names):
             return mentions(names, x)
@@ -160,12 +162,12 @@ def main():
         per.append(row)
     (OUTD / "per_run.json").write_text(json.dumps(per, indent=1, ensure_ascii=False), encoding="utf-8")
 
-    # aggregate: per (cond, temperature) -> average over seeds per company -> bootstrap over companies
+    # aggregate: per (model, cond, temperature) -> average over seeds per company -> bootstrap over companies
     groups = defaultdict(list)
     for row in per:
-        groups[(row["cond"], row["temperature"])].append(row)
+        groups[(row["model"], row["cond"], row["temperature"])].append(row)
     summary = []
-    for (cond, temp), rows in sorted(groups.items(), key=lambda kv: (kv[0][0], str(kv[0][1]))):
+    for (model, cond, temp), rows in sorted(groups.items(), key=lambda kv: (kv[0][0], kv[0][1], str(kv[0][2]))):
         seeds = sorted({r["seed"] for r in rows})
         for tier in ("all", "large", "mid", "small"):
             sel = [r for r in rows if tier == "all" or r["tier"] == tier]
@@ -174,7 +176,7 @@ def main():
                 byc[r["id"]].append(r)
             if not byc:
                 continue
-            rec = {"cond": cond, "temperature": temp, "seeds": seeds, "tier": tier, "n_companies": len(byc)}
+            rec = {"model": model, "cond": cond, "temperature": temp, "seeds": seeds, "tier": tier, "n_companies": len(byc)}
             for mname in ("p@4", "r@4", "hit@4", "r@all", "empty", "leak_orig_any", "leak_fixed_any"):
                 vals = [statistics.fmean(x[mname] for x in v) for v in byc.values()]
                 mean, lo, hi = bootstrap(vals)
@@ -192,34 +194,39 @@ def main():
     acc = defaultdict(list)
     for r in per:
         if r["temperature"] in (0.0, None):
-            acc[(r["id"], r["cond"])].append(r)
+            acc[(r["id"], r["model"], r["cond"])].append(r)
     t0 = {k: {m: statistics.fmean(x[m] for x in v) for m in ("p@4", "r@4", "r@all", "leak_orig_any")}
           for k, v in acc.items()}
     pairs = [("a_full", "b2_prior_knowledge"), ("a_full", "c_shuffled"), ("d_fixed", "e2_fixed_prior_knowledge"),
              ("d_fixed", "a_full"), ("a_full", "z_baseline_capitalised"), ("d_fixed", "z_baseline_capitalised"),
              ("b2_prior_knowledge", "c_shuffled"), ("a_full", "b_prior")]
     diffs = []
-    for x, y in pairs:
-        for tier in ("all", "large", "mid", "small"):
-            for mname in ("p@4", "r@4", "r@all", "leak_orig_any"):
-                ids = [i for i in comps if (i, x) in t0 and (i, y) in t0 and (tier == "all" or comps[i]["tier"] == tier)]
-                if not ids:
-                    continue
-                d = [t0[(i, x)][mname] - t0[(i, y)][mname] for i in ids]
-                mean, lo, hi = bootstrap(d)
-                diffs.append({"a": x, "b": y, "tier": tier, "metric": mname, "n": len(ids),
-                              "mean_diff": round(mean, 4), "ci95": [round(lo, 4), round(hi, 4)]})
+    models = sorted({m for (_, m, _) in t0 if m != "none (no LLM)"})
+    for model in models:  # never compare across models (the baseline uses no model)
+        for x, y in pairs:
+            my = "none (no LLM)" if y == "z_baseline_capitalised" else model
+            for tier in ("all", "large", "mid", "small"):
+                for mname in ("p@4", "r@4", "r@all", "leak_orig_any"):
+                    ids = [i for i in comps if (i, model, x) in t0 and (i, my, y) in t0
+                           and (tier == "all" or comps[i]["tier"] == tier)]
+                    if not ids:
+                        continue
+                    d = [t0[(i, model, x)][mname] - t0[(i, my, y)][mname] for i in ids]
+                    mean, lo, hi = bootstrap(d)
+                    diffs.append({"model": model, "a": x, "b": y, "tier": tier, "metric": mname, "n": len(ids),
+                                  "mean_diff": round(mean, 4), "ci95": [round(lo, 4), round(hi, 4)]})
     (OUTD / "paired_diffs_T0.json").write_text(json.dumps(diffs, indent=1), encoding="utf-8")
 
     for rec in summary:
         f = lambda m: f"{rec[m]['mean']:.3f} [{rec[m]['ci95'][0]:.2f},{rec[m]['ci95'][1]:.2f}]"  # noqa: E731
-        print(f"{rec['cond']:24s} T={rec['temperature']!s:4s} seeds={rec['seeds']} {rec['tier']:5s} n={rec['n_companies']:2d} "
+        print(f"{rec['model'][:16]:16s} {rec['cond']:24s} T={rec['temperature']!s:4s} seeds={rec['seeds']} "
+              f"{rec['tier']:5s} n={rec['n_companies']:2d} "
               f"P@4 {f('p@4')}  R@4 {f('r@4')}  R@all {f('r@all')}  empty {rec['empty']['mean']:.2f}  "
               f"leak {rec['leak_orig_any']['mean']:.2f}")
     print()
     for d in diffs:
         if d["metric"] in ("p@4", "r@all", "leak_orig_any"):
-            print(f"{d['a']:>14s} - {d['b']:<24s} {d['tier']:5s} {d['metric']:14s} n={d['n']:2d} "
+            print(f"{d['model'][:16]:16s} {d['a']:>14s} - {d['b']:<24s} {d['tier']:5s} {d['metric']:14s} n={d['n']:2d} "
                   f"{d['mean_diff']:+.3f} [{d['ci95'][0]:+.3f},{d['ci95'][1]:+.3f}]")
 
 

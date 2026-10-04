@@ -1,0 +1,3 @@
+model=claude-haiku-4-5-20251001 provider=anthropic tasks=192 uncached=192
+already spent $0.0000; worst case for uncached calls $1.0175; worst-case total $1.0175; cap $2.75
+OK: within cap
