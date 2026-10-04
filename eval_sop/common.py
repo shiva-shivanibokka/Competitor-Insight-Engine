@@ -66,7 +66,7 @@ class CapReached(RuntimeError):
 
 
 class CallFailed(RuntimeError):
-    """Non-retryable error (a 4xx other than 429), or retries exhausted."""
+    """Non-retryable error (a 4xx other than 429), or 3 attempts exhausted (429 / 5xx incl. 529 / network)."""
 
 
 class LedgerLocked(RuntimeError):
@@ -245,11 +245,14 @@ class LLMShim:
                 wait = float(e.response.headers.get("retry-after", "20") or 20)
                 self._retry_or_fail(attempt, f"429 rate limited; retry-after {wait}s", wait)
                 continue
-            except anthropic.InternalServerError as e:  # retry; stays charged at the worst case
-                self._retry_or_fail(attempt, f"{e.status_code} {type(e).__name__}", 10)
-                continue
             except anthropic.APIStatusError as e:
-                self._settle(rid, worst, 0.0, outcome=str(e.status_code))  # other statuses: fail fast
+                # 5xx: 500 InternalServerError, 503, and 529 OverloadedError (a direct
+                # APIStatusError subclass in SDK 0.93, NOT an InternalServerError):
+                # retry, and the attempt stays charged at the worst case.
+                if e.status_code >= 500:
+                    self._retry_or_fail(attempt, f"{e.status_code} {type(e).__name__}", 10)
+                    continue
+                self._settle(rid, worst, 0.0, outcome=str(e.status_code))  # other 4xx: fail fast
                 raise CallFailed(f"{e.status_code} {type(e).__name__}: {str(e)[:200]}") from e
             except anthropic.APIConnectionError as e:  # includes timeouts: may have been billed
                 self._retry_or_fail(attempt, f"connection error {type(e).__name__}", 10)

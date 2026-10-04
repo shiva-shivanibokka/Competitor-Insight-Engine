@@ -225,3 +225,14 @@ def test_client_base_url_is_pinned(prov, monkeypatch):
     s = LLMShim(prov, cap=1.0, sleep=lambda x: None)
     assert str(s._client_anthropic().base_url).rstrip("/") == "https://api.anthropic.com"
     s.close()
+
+
+@pytest.mark.parametrize("cls,status", [(anthropic._exceptions.OverloadedError, 529),
+                                        (anthropic._exceptions.ServiceUnavailableError, 503),
+                                        (anthropic.InternalServerError, 500)])
+def test_5xx_including_529_retries_and_stays_charged(prov, cls, status):
+    fake = FakeClient([_err(cls, status), _resp(1000, 200)])
+    s = LLMShim(prov, cap=1.0, client=fake, sleep=lambda x: None)
+    s(SYS, USER, temperature=0.0)
+    assert len(fake.calls) == 2
+    assert s.spent() == pytest.approx(s.worst_case(SYS, USER) + 1000e-6 + 200 * 5e-6)

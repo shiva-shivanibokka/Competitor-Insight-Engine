@@ -1,0 +1,4 @@
+=========================== short test summary info ===========================
+FAILED tests/test_transport.py::test_5xx_including_529_retries_and_stays_charged[OverloadedError-529]
+FAILED tests/test_transport.py::test_5xx_including_529_retries_and_stays_charged[ServiceUnavailableError-503]
+2 failed, 1 passed, 20 deselected in 5.01s
