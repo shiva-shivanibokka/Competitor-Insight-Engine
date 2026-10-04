@@ -25,8 +25,8 @@ index 5df2b3a..8523cad 100644
  """
 +# The format example above deliberately uses fictional companies on the
 +# reserved .example TLD. It used to show Adyen / Braintree / Square with their
-+# real URLs, and a local model copied those into answers for companies that
-+# have nothing to do with payments (measured in eval_sop/, see RESULTS.md).
++# real URLs, which a model could echo. Precaution only: the copying was NOT
++# observed in eval_sop/ (0 of 188 responses; see RESULTS.md).
  
  def _is_valid_competitor_url(url: str, company_name: str) -> bool:
      """Returns False if the URL is blocklisted or belongs to the main company."""
@@ -40,8 +40,8 @@ index 3171926..c89a8fe 100644
  
 +def test_competitor_prompt_examples_are_fictional():
 +    # The format example used to be Adyen / Braintree / Square with their real
-+    # URLs. A small local model copied them into answers for unrelated
-+    # companies (measured in eval_sop/, see RESULTS.md). Example URLs must use
++    # URLs, which a model could echo. The copying was not observed in eval_sop/
++    # (0 of 188 responses; see RESULTS.md); this is a precaution. Example URLs must use
 +    # the reserved .example TLD (RFC 2606) so nothing in the prompt is a real
 +    # company the model can echo.
 +    import re
