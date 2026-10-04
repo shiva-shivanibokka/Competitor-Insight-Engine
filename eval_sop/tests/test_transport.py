@@ -265,3 +265,39 @@ def test_5xx_including_529_retries_and_stays_charged(prov, cls, status):
     s(SYS, USER, temperature=0.0)
     assert len(fake.calls) == 2
     assert s.spent() == pytest.approx(s.worst_case(SYS, USER) + 1000e-6 + 200 * 5e-6)
+
+
+# ---------------------------------------------------------------- round-3: shared user-level spend state
+def test_paid_state_lives_in_one_user_level_dir_outside_the_repo():
+    import os
+
+    expected = Path(os.environ["LOCALAPPDATA"]) / "sop_eval" / "competitor_insight"
+    p = PROVIDERS["anthropic"]
+    assert common.STATE_DIR == expected
+    assert p.ledger.parent == expected and p.cache.parent == expected
+    assert HERE.parent not in p.ledger.parents  # a worktree and the main checkout share one record
+
+
+def _write_lock(prov, pid):
+    lock = prov.ledger.with_suffix(prov.ledger.suffix + ".lock")
+    lock.parent.mkdir(parents=True, exist_ok=True)
+    lock.write_text(f"pid {pid} 2026-01-01 00:00:00\n")
+    return lock
+
+
+def test_stale_lock_is_reported_as_stale_and_left_for_manual_recovery(prov):
+    import psutil
+
+    dead = max(psutil.pids()) + 100_000
+    lock = _write_lock(prov, dead)
+    with pytest.raises(common.LedgerLocked, match=r"pid \d+ is not running"):
+        LLMShim(prov, cap=1.0, client=FakeClient([]), sleep=lambda x: None)
+    assert lock.exists()  # recovery stays manual
+
+
+def test_live_lock_is_reported_as_live(prov):
+    import os
+
+    _write_lock(prov, os.getpid())
+    with pytest.raises(common.LedgerLocked, match=r"pid \d+ is running"):
+        LLMShim(prov, cap=1.0, client=FakeClient([]), sleep=lambda x: None)

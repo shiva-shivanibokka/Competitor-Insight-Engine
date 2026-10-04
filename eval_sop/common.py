@@ -11,8 +11,9 @@ Provider is chosen with EVAL_PROVIDER (one model per provider, never mixed):
   groq       qwen/qwen3.8-27b, Groq free tier, reasoning_effort="none", seed sent.
              Cache raw/llm_cache.jsonl (the committed seed-0 run).
   anthropic  claude-haiku-4-5-20251001 (pinned), official `anthropic` SDK,
-             no seed / reasoning params. Cache raw/llm_cache_haiku.jsonl,
-             cost ledger raw/cost_ledger_haiku.jsonl, hard cap EVAL_COST_CAP
+             no seed / reasoning params. Cache, cost ledger and lock live in
+             %LOCALAPPDATA%/sop_eval/competitor_insight/ (STATE_DIR, outside the repo):
+             llm_cache_haiku.jsonl, cost_ledger_haiku.jsonl (+ .lock); hard cap EVAL_COST_CAP
              (default $2.75) at $1/M input and $5/M output tokens.
 
 Every response is cached; re-running replays the cache with zero API calls.
@@ -49,10 +50,15 @@ class Provider:
     max_tokens: int = 700
 
 
+# Paid-run state (cost ledger, its lock, response cache) lives in ONE fixed user-level
+# directory outside the repo, so a run from a worktree and a run from the main checkout
+# share a single spend record. Deliberately no env override; tests monkeypatch paths.
+STATE_DIR = Path(os.environ.get("LOCALAPPDATA") or (Path.home() / "AppData" / "Local")) / "sop_eval" / "competitor_insight"
+
 PROVIDERS = {
     "groq": Provider("groq", "qwen/qwen3.8-27b", ROOT / "raw" / "llm_cache.jsonl", None),
-    "anthropic": Provider("anthropic", "claude-haiku-4-5-20251001", ROOT / "raw" / "llm_cache_haiku.jsonl",
-                          ROOT / "raw" / "cost_ledger_haiku.jsonl", price_in=1.0e-6, price_out=5.0e-6),
+    "anthropic": Provider("anthropic", "claude-haiku-4-5-20251001", STATE_DIR / "llm_cache_haiku.jsonl",
+                          STATE_DIR / "cost_ledger_haiku.jsonl", price_in=1.0e-6, price_out=5.0e-6),
 }
 PROVIDER = PROVIDERS[os.environ.get("EVAL_PROVIDER", "groq")]
 MODEL = PROVIDER.model
@@ -80,6 +86,21 @@ def est_input_tokens(*texts: str) -> int:
     chars = sum(len(t) for t in texts)
     nbytes = sum(len(t.encode("utf-8")) for t in texts)
     return max(chars, nbytes) // 2 + 50
+
+
+def _lock_holder_status(lock: Path) -> str:
+    """Describe the process named in a lock file. Never deletes anything."""
+    try:
+        pid = int(lock.read_text(encoding="utf-8").split()[1])
+    except (OSError, IndexError, ValueError):
+        return "the lock file is unreadable, so its owner is unknown."
+    try:
+        import psutil
+    except ImportError:
+        return f"pid {pid} holds it (liveness unknown: psutil not installed)."
+    if psutil.pid_exists(pid):
+        return f"pid {pid} is running (another eval process is probably using this ledger)."
+    return f"pid {pid} is not running: the lock is stale (a previous run crashed or was killed)."
 
 
 def ledger_total(path: Path) -> float:
@@ -136,12 +157,13 @@ class LLMShim:
 
     # ------------------------------------------------------------------ lock
     def _acquire_lock(self, path: Path) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
         try:
             fd = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
         except FileExistsError:
-            raise LedgerLocked(
-                f"{path} exists: another process is using this ledger, or one crashed. "
-                f"Check no eval process is running, then delete the lock file.") from None
+            raise LedgerLocked(f"{path} exists: {_lock_holder_status(path)} "
+                               f"Recovery is manual: confirm no eval run is in progress, "
+                               f"then delete the lock file yourself.") from None
         os.write(fd, f"pid {os.getpid()} {time.strftime('%Y-%m-%d %H:%M:%S')}\n".encode())
         os.close(fd)
         self._lock_path = path
