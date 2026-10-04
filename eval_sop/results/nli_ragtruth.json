@@ -1,0 +1,2138 @@
+{
+ "benchmark": "RAGTruth test (local parquet sha256 2fc4fb703ea4...), sentence-level, balanced 300",
+ "judge": "cross-encoder/nli-deberta-v3-large",
+ "threshold": 0.5,
+ "n": 300,
+ "n_supported": 150,
+ "accuracy": 0.6567,
+ "balanced_accuracy": 0.6567,
+ "balanced_accuracy_ci95": [
+  0.6033,
+  0.7087
+ ],
+ "macro_f1": 0.6534,
+ "cohen_kappa": 0.3133,
+ "cohen_kappa_ci95": [
+  0.2066,
+  0.4183
+ ],
+ "auroc": 0.707,
+ "precision_unsupported": 0.6313,
+ "by_task": {
+  "Summary": {
+   "n": 100,
+   "balanced_accuracy": 0.63
+  },
+  "QA": {
+   "n": 100,
+   "balanced_accuracy": 0.68
+  },
+  "Data2txt": {
+   "n": 100,
+   "balanced_accuracy": 0.66
+  }
+ },
+ "per_item": [
+  {
+   "ragtruth_id": "10804",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The ambiance is described as casual and the menu includes sandwiches, salads, and drinks.",
+   "p_entail": 0.0661
+  },
+  {
+   "ragtruth_id": "7233",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "According to reviews, the deli is known for its high-quality meats and cheeses, as well as its convenient location within an RV park.",
+   "p_entail": 0.9459
+  },
+  {
+   "ragtruth_id": "9837",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant has a cozy atmosphere and offers outdoor seating, making it a great spot for both casual and intimate dining experiences.",
+   "p_entail": 0.0065
+  },
+  {
+   "ragtruth_id": "11446",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant's ambiance is classy and casual, with a cozy and intimate atmosphere.",
+   "p_entail": 0.605
+  },
+  {
+   "ragtruth_id": "7280",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant does offer reservations, but they are not required.",
+   "p_entail": 0.0022
+  },
+  {
+   "ragtruth_id": "5822",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant has a 4.5-star rating on Google and has received positive reviews from customers.",
+   "p_entail": 0.0517
+  },
+  {
+   "ragtruth_id": "7004",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "According to reviews, the restaurant's sandwiches are great and the staff is generally friendly.",
+   "p_entail": 0.0126
+  },
+  {
+   "ragtruth_id": "8078",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Customers can order online or through the restaurant's mobile app, and the business offers a wide range of discounts and promotions.",
+   "p_entail": 0.0019
+  },
+  {
+   "ragtruth_id": "7916",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Outdoor seating is not available, and Wi-Fi is not offered.",
+   "p_entail": 0.8237
+  },
+  {
+   "ragtruth_id": "7255",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant's hours of operation are from 11:00 AM to 8:00 PM on Tuesdays through Sundays, with Monday being closed.",
+   "p_entail": 0.0135
+  },
+  {
+   "ragtruth_id": "9938",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant offers a variety of Italian, Mediterranean, and Middle Eastern cuisine.",
+   "p_entail": 0.0014
+  },
+  {
+   "ragtruth_id": "10544",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "They have an outdoor seating area, which is not specified whether it's available or not.",
+   "p_entail": 0.005
+  },
+  {
+   "ragtruth_id": "7055",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant's ambiance is casual and does not have outdoor seating or Wi-Fi available.",
+   "p_entail": 0.9139
+  },
+  {
+   "ragtruth_id": "7782",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "It operates daily from 11:0 to 21:0 and provides amenities like free WiFi, outdoor seating, and ample lot parking.",
+   "p_entail": 0.9496
+  },
+  {
+   "ragtruth_id": "7159",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Overall, Santa Barbara Wine Therapy offers a wine-focused experience with a variety of drink options.",
+   "p_entail": 0.0187
+  },
+  {
+   "ragtruth_id": "8572",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The Domino's Pizza location in Santa Barbara has received mixed reviews from customers.",
+   "p_entail": 0.9785
+  },
+  {
+   "ragtruth_id": "11446",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "It may be worth visiting if you're in the area and looking for a cozy, intimate dining experience with Tuscan-inspired cuisine.",
+   "p_entail": 0.0086
+  },
+  {
+   "ragtruth_id": "11489",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant has a casual atmosphere and provides outdoor seating, Wi-Fi, and takeout services.",
+   "p_entail": 0.9853
+  },
+  {
+   "ragtruth_id": "6916",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant offers lunch and dinner services from Monday to Friday, and brunch on Saturday and Sunday.",
+   "p_entail": 0.0018
+  },
+  {
+   "ragtruth_id": "8054",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Additionally, the restaurant may have difficulty retaining staff due to low pay and challenging working conditions.",
+   "p_entail": 0.0017
+  },
+  {
+   "ragtruth_id": "6677",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Guests can enjoy the beautifully landscaped gardens and take advantage of the resort's private beach.",
+   "p_entail": 0.1085
+  },
+  {
+   "ragtruth_id": "7025",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant offers outdoor seating, takeout, and validated parking, and is considered a good spot for groups and casual dining.",
+   "p_entail": 0.9887
+  },
+  {
+   "ragtruth_id": "6677",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "One reviewer noted that the resort's location is not within walking distance of downtown Santa Barbara, but the resort's shuttle service makes it easy to get around.",
+   "p_entail": 0.012
+  },
+  {
+   "ragtruth_id": "9835",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "It is advisable to check the restaurant's website or contact them directly for the most accurate and up-to-date information.",
+   "p_entail": 0.0016
+  },
+  {
+   "ragtruth_id": "6280",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The menu offers a variety of options, including vegetarian and vegan choices.",
+   "p_entail": 0.0003
+  },
+  {
+   "ragtruth_id": "8734",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The menu also includes soups, salads, and other options, and the shop is open from 10:30 am to 3 pm, Monday through Friday.",
+   "p_entail": 0.0003
+  },
+  {
+   "ragtruth_id": "10019",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant has outdoor seating, takes reservations, and is good for groups, making it an ideal spot for a casual gathering or date night.",
+   "p_entail": 0.5781
+  },
+  {
+   "ragtruth_id": "6983",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "While some have noted minor issues such as a leaky toilet or cold toast, overall, Domingo's Cafe is a local favorite that serves tasty food at reasonable prices.",
+   "p_entail": 0.0014
+  },
+  {
+   "ragtruth_id": "11522",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The hours of operation are Monday through Sunday from 10 am to 7 pm.",
+   "p_entail": 0.0096
+  },
+  {
+   "ragtruth_id": "8219",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Subway is open seven days a week, from 7 am to 10 pm, making it a convenient option for those in the area.",
+   "p_entail": 0.0898
+  },
+  {
+   "ragtruth_id": "9554",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Overall, Old Town Tavern appears to be a popular spot for those looking for a casual and fun evening out.",
+   "p_entail": 0.0074
+  },
+  {
+   "ragtruth_id": "10209",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The ambiance is casual and the business is open during regular supermarket hours.",
+   "p_entail": 0.0001
+  },
+  {
+   "ragtruth_id": "8673",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "With a rating of 5.0 stars, the business has received positive reviews from customers for its delicious food and friendly service.",
+   "p_entail": 0.0104
+  },
+  {
+   "ragtruth_id": "11458",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Overall, The Lark appears to be a trendy and upscale dining spot with delicious food and a cozy atmosphere.",
+   "p_entail": 0.9812
+  },
+  {
+   "ragtruth_id": "6716",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant has parking available, with valet, garage, street, and lot options.",
+   "p_entail": 0.9888
+  },
+  {
+   "ragtruth_id": "7066",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Panda Express is a Chinese fast-food restaurant located in Goleta, California, with a rating of 2.5 stars out of 5 based on 3 customer reviews.",
+   "p_entail": 0.9574
+  },
+  {
+   "ragtruth_id": "6284",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The business has attributes such as free WiFi, outdoor seating, restaurants takeout, and good for groups.",
+   "p_entail": 0.9925
+  },
+  {
+   "ragtruth_id": "9728",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant has a 3.5-star rating on Google, and some customers have shared their experiences with the restaurant.",
+   "p_entail": 0.0032
+  },
+  {
+   "ragtruth_id": "6237",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Overall, Backyard Bowls appears to offer healthy and nutritious options in a cozy and casual setting, although some customers may find the menu items to be less impressive than expected.",
+   "p_entail": 0.9861
+  },
+  {
+   "ragtruth_id": "11457",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Their hours of operation are Monday through Sunday from 17:00 to 22:00, with validated parking available off-street and street parking nearby.",
+   "p_entail": 0.0859
+  },
+  {
+   "ragtruth_id": "10822",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant does not offer reservations or validated parking, but takeout and delivery are available.",
+   "p_entail": 0.0039
+  },
+  {
+   "ragtruth_id": "9160",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The ambiance is described as trendy and intimate with a casual atmosphere.",
+   "p_entail": 0.9731
+  },
+  {
+   "ragtruth_id": "7094",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant does not offer reservations and does not have outdoor seating.",
+   "p_entail": 0.0119
+  },
+  {
+   "ragtruth_id": "7778",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "They are open from Monday to Sunday from 10:30 am to midnight.",
+   "p_entail": 0.0383
+  },
+  {
+   "ragtruth_id": "8474",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The restaurant is open from Monday to Sunday, with hours ranging from 11:30 AM to 9:30 PM on weekdays and until 10:30 PM on weekends.",
+   "p_entail": 0.1724
+  },
+  {
+   "ragtruth_id": "6287",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "With a focus on holistic health and wellness, the spa features a team of experienced practitioners who deliver personalized care and attention to each client.",
+   "p_entail": 0.0175
+  },
+  {
+   "ragtruth_id": "7154",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "In addition to wine tastings, Vino Divino also offers outdoor seating and free Wi-Fi.",
+   "p_entail": 0.0083
+  },
+  {
+   "ragtruth_id": "7295",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "The exterior of the building boasts a modern and sleek design, while the interior is adorned with elegant touches and comfortable seating.",
+   "p_entail": 0.0067
+  },
+  {
+   "ragtruth_id": "7067",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "They also mentioned that the service was slow and the staff was rude.",
+   "p_entail": 0.0015
+  },
+  {
+   "ragtruth_id": "8728",
+   "task": "Data2txt",
+   "human_supported": 0,
+   "claim": "Tiburon Tavern is a local favorite in Santa Barbara, offering karaoke, nightlife, and dive bar experiences since 2019.",
+   "p_entail": 0.0072
+  },
+  {
+   "ragtruth_id": "9577",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Night Lizard Brewing Company also hosts trivia nights, which customers have described as \"cool\" and enjoyable.",
+   "p_entail": 0.0006
+  },
+  {
+   "ragtruth_id": "6918",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "It does not take reservations and has no special ambiance.",
+   "p_entail": 0.6946
+  },
+  {
+   "ragtruth_id": "8768",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "The business has received positive reviews, especially for their exceptional performance at weddings.",
+   "p_entail": 0.98
+  },
+  {
+   "ragtruth_id": "8422",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Here's an objective overview of Las Aves Cafe based on the provided structured data in JSON format:",
+   "p_entail": 0.0297
+  },
+  {
+   "ragtruth_id": "8080",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Here is an objective overview of Bogo SB based on the provided structured data:",
+   "p_entail": 0.2369
+  },
+  {
+   "ragtruth_id": "11520",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "The restaurant operates from 10:00 am every day, with closing hours varying between 4:00 pm and 8:00 pm depending on the day.",
+   "p_entail": 0.006
+  },
+  {
+   "ragtruth_id": "8663",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Luna Grill is a Mediterranean restaurant located in Santa Barbara, CA, offering a variety of dishes including salads, gyros, and pita bread.",
+   "p_entail": 0.0081
+  },
+  {
+   "ragtruth_id": "7023",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "With a 3.0-star rating and positive reviews, the restaurant is known for its outdoor seating, takeout options, and casual atmosphere.",
+   "p_entail": 0.2011
+  },
+  {
+   "ragtruth_id": "6049",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "It offers a variety of cuisines including seafood, American (New), steakhouses, and American (Traditional).",
+   "p_entail": 0.9894
+  },
+  {
+   "ragtruth_id": "10823",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "The business has a 3.5-star rating and mixed reviews from customers.",
+   "p_entail": 0.9436
+  },
+  {
+   "ragtruth_id": "8757",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Despite these minor drawbacks, Your Choice has gained a loyal customer base and is highly recommended for those looking for a taste of authentic Thai cuisine in Santa Barbara.",
+   "p_entail": 0.0009
+  },
+  {
+   "ragtruth_id": "5689",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "The business is closed on Mondays.",
+   "p_entail": 0.0063
+  },
+  {
+   "ragtruth_id": "6251",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Overall, Lure Fish House appears to be a great option for seafood lovers looking for a casual, yet high-quality dining experience in Santa Barbara.",
+   "p_entail": 0.9679
+  },
+  {
+   "ragtruth_id": "10003",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Reservations are not accepted.",
+   "p_entail": 0.0022
+  },
+  {
+   "ragtruth_id": "11443",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "It is also known for its nightlife and bar services.",
+   "p_entail": 0.0006
+  },
+  {
+   "ragtruth_id": "7581",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "The establishment has a rating of 4.0 out of 5 stars and offers both indoor and outdoor seating options.",
+   "p_entail": 0.9874
+  },
+  {
+   "ragtruth_id": "9922",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Another client highlighted Joe's excellent communication, personability, and ability to guide them through every step of the process, making the experience stress-free and enjoyable.",
+   "p_entail": 0.9883
+  },
+  {
+   "ragtruth_id": "11194",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "With an overall rating of 4.0 stars out of 5.0, the restaurant has received positive reviews from customers for its delicious food, friendly service, and welcoming ambiance.",
+   "p_entail": 0.9899
+  },
+  {
+   "ragtruth_id": "10735",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "However, there is also a negative review mentioning that the pizza, specifically the \"soppressata\" flavor, was disappointing.",
+   "p_entail": 0.0014
+  },
+  {
+   "ragtruth_id": "9769",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "A third customer had a more balanced opinion, mentioning that they have returned to the restaurant multiple times.",
+   "p_entail": 0.995
+  },
+  {
+   "ragtruth_id": "9525",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "With a rating of 4.5 stars, the business offers a cozy atmosphere and quick service.",
+   "p_entail": 0.1229
+  },
+  {
+   "ragtruth_id": "5671",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Finch & Fork is a local business located at 31 W Carrillo St in Santa Barbara, CA.",
+   "p_entail": 0.9188
+  },
+  {
+   "ragtruth_id": "9200",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Overall, Pro Karaoke System Rentals seems like a reliable and enjoyable option for those looking for party entertainment or event planning services.",
+   "p_entail": 0.9324
+  },
+  {
+   "ragtruth_id": "8509",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "They also noted duct tape and graffiti on the walls.",
+   "p_entail": 0.9829
+  },
+  {
+   "ragtruth_id": "11287",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Crocodile Restaurant & Bar is located at 2819 State St in Santa Barbara, CA.",
+   "p_entail": 0.9875
+  },
+  {
+   "ragtruth_id": "11522",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "They do offer takeout and catering options.",
+   "p_entail": 0.0356
+  },
+  {
+   "ragtruth_id": "7214",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "The restaurant also offers a variety of options for groups and individuals alike.",
+   "p_entail": 0.0047
+  },
+  {
+   "ragtruth_id": "7007",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "However, some customers may want to be aware of the potential for errors with pick-up orders and the possibility of unfriendly customer service.",
+   "p_entail": 0.0044
+  },
+  {
+   "ragtruth_id": "10068",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "It has an average rating of 4.0 stars.",
+   "p_entail": 0.0053
+  },
+  {
+   "ragtruth_id": "7201",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Valentino's Take N Bake Pizza is a local business located at 4421 Hollister Ave in Santa Barbara, CA.",
+   "p_entail": 0.9842
+  },
+  {
+   "ragtruth_id": "9916",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "The restaurant has a rating of 4.0 stars based on reviews from customers.",
+   "p_entail": 0.984
+  },
+  {
+   "ragtruth_id": "11525",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "The Spot has a casual atmosphere and offers outdoor seating, making it a great spot for a quick bite or a relaxed meal.",
+   "p_entail": 0.9385
+  },
+  {
+   "ragtruth_id": "6049",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "They mentioned that the server was inattentive and did not check on them or ask about the food.",
+   "p_entail": 0.9957
+  },
+  {
+   "ragtruth_id": "6860",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "It belongs to the categories of Restaurants and Delis.",
+   "p_entail": 0.9768
+  },
+  {
+   "ragtruth_id": "8789",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Based on the structured data provided, here are some key points about Verdé:",
+   "p_entail": 0.9456
+  },
+  {
+   "ragtruth_id": "6972",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Their amenities include outdoor seating, free WiFi, take-out services, and are great for groups.",
+   "p_entail": 0.9802
+  },
+  {
+   "ragtruth_id": "7001",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "While there may be some drawbacks, such as high prices and a perceived sense of exclusivity, the business offers a unique and enjoyable experience for those looking to enjoy the beauty of Santa Barbara's coastline.",
+   "p_entail": 0.0035
+  },
+  {
+   "ragtruth_id": "10821",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "One customer even reported finding their forgotten purse at the location after leaving it behind.",
+   "p_entail": 0.9333
+  },
+  {
+   "ragtruth_id": "6684",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "It offers a variety of categories including food, cafes, coffee & tea, bakeries, and restaurants.",
+   "p_entail": 0.9791
+  },
+  {
+   "ragtruth_id": "10821",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "According to customer reviews, the restaurant's atmosphere is casual and has outdoor seating, but the Wi-Fi is unavailable.",
+   "p_entail": 0.8227
+  },
+  {
+   "ragtruth_id": "8733",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "The business offers a variety of sandwiches, including a popular signature sandwich called The Goucho, which has received rave reviews for its hot, messy, cheesy roast beef creation.",
+   "p_entail": 0.9708
+  },
+  {
+   "ragtruth_id": "8151",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "The business has a rating of 4.5 stars and has received positive reviews from customers.",
+   "p_entail": 0.4488
+  },
+  {
+   "ragtruth_id": "6249",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Reviewers praise the quality of the fish, friendly servers, and good drinks.",
+   "p_entail": 0.9838
+  },
+  {
+   "ragtruth_id": "6173",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "One reviewer praised the staff's efficiency and the quality of the food, specifically mentioning that the classic quesadilla comes with guac and sour cream.",
+   "p_entail": 0.9949
+  },
+  {
+   "ragtruth_id": "7159",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Santa Barbara Wine Therapy is a local business located at 12 W Haley St in Santa Barbara, CA.",
+   "p_entail": 0.9608
+  },
+  {
+   "ragtruth_id": "8570",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "The business offers takeout and good options for groups, making it suitable for various occasions.",
+   "p_entail": 0.976
+  },
+  {
+   "ragtruth_id": "8475",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "Despite some mixed reviews, Your Place Thai Restaurant seems to be a solid choice for those looking for authentic Thai cuisine in the area.",
+   "p_entail": 0.0366
+  },
+  {
+   "ragtruth_id": "6285",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "However, one customer had a negative experience with a massage therapist named Lizzie, who they felt was inexperienced and failed to provide the desired level of pressure during the massage.",
+   "p_entail": 0.9978
+  },
+  {
+   "ragtruth_id": "7102",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "La Casa De Maria is a local business located in Santa Barbara, CA, offering health retreats, event spaces, hotels, restaurants, and event planning services.",
+   "p_entail": 0.9466
+  },
+  {
+   "ragtruth_id": "8767",
+   "task": "Data2txt",
+   "human_supported": 1,
+   "claim": "They provide free WiFi for guests and have outdoor seating available.",
+   "p_entail": 0.9777
+  },
+  {
+   "ragtruth_id": "14297",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Therefore, the effect of carbon footprint is the direct contribution to climate change and its associated impacts, such as rising sea levels, more frequent natural disasters, and air pollution.",
+   "p_entail": 0.0012
+  },
+  {
+   "ragtruth_id": "12902",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Once the eggs are cooked, transfer them to a bowl of ice water to cool and make them easier to peel.",
+   "p_entail": 0.0024
+  },
+  {
+   "ragtruth_id": "16420",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Draw a circle with a diameter of 2 inches as the base of the truncated cone.",
+   "p_entail": 0.4477
+  },
+  {
+   "ragtruth_id": "14717",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Other foods that may contain gluten include sauces, gravies, and processed meats.",
+   "p_entail": 0.0002
+  },
+  {
+   "ragtruth_id": "16419",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Draw the circle at the base of the truncated cone using the \"Circle\" command, and then use the \"ConicalSurface\" command to create the surface of the truncated cone.",
+   "p_entail": 0.0346
+  },
+  {
+   "ragtruth_id": "13162",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "If the roast is larger, the cooking time may need to be adjusted accordingly.",
+   "p_entail": 0.0067
+  },
+  {
+   "ragtruth_id": "16509",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Insufficient intensity or duration of workouts: To build muscle and burn fat, your workouts need to be intense enough to challenge your muscles and raise your heart rate.",
+   "p_entail": 0.027
+  },
+  {
+   "ragtruth_id": "16421",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "To do this, follow these steps:",
+   "p_entail": 0.0009
+  },
+  {
+   "ragtruth_id": "14293",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "A higher carbon footprint contributes to climate change and global warming.",
+   "p_entail": 0.0012
+  },
+  {
+   "ragtruth_id": "15688",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "High humidity: The climate in the tropical rainforest is very humid due to the high levels of rainfall, with an average humidity level of 70% to 90%.",
+   "p_entail": 0.0007
+  },
+  {
+   "ragtruth_id": "12471",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "* Connect your iPhone to your computer using a USB cable.",
+   "p_entail": 0.941
+  },
+  {
+   "ragtruth_id": "16467",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "* Passage 3 notes that indoor cycling provides a low-impact workout compared to other indoor exercises like treadmills and rowing machines, which may be more stressful on the body.",
+   "p_entail": 0.0873
+  },
+  {
+   "ragtruth_id": "15178",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Provide a mechanism for the tree to regenerate and grow rapidly after a fire (Passage 1).",
+   "p_entail": 0.0103
+  },
+  {
+   "ragtruth_id": "14692",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "This will give your wood piece a vintage, worn look.",
+   "p_entail": 0.0926
+  },
+  {
+   "ragtruth_id": "16421",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Draw a vertical line from the point where the line intersects the first circle to the center of the second circle.",
+   "p_entail": 0.0027
+  },
+  {
+   "ragtruth_id": "13469",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Additionally, it has 256 sunny days per year, which is higher than the national average of 205 sunny days.",
+   "p_entail": 0.0001
+  },
+  {
+   "ragtruth_id": "14295",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Therefore, the effect of carbon footprint is that it measures the environmental impact of one's lifestyle and can be reduced by making changes to daily activities such as using alternative energy sources, conserving energy, and reducing meat consumption.",
+   "p_entail": 0.0018
+  },
+  {
+   "ragtruth_id": "13156",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Improves mood and well-being: Hugs can boost feelings of happiness and social connection, leading to improved overall mood and well-being (Passage 1).",
+   "p_entail": 0.2703
+  },
+  {
+   "ragtruth_id": "13156",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Therefore, hugging has several positive psychological effects, including reducing stress and anxiety, improving mood and well-being, enhancing empathy and listening skills, and soothing existential fears.",
+   "p_entail": 0.0228
+  },
+  {
+   "ragtruth_id": "13156",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Soothes existential fears: Hugging can help alleviate fears of mortality and provide a sense of comfort and security (Passage 3).",
+   "p_entail": 0.0126
+  },
+  {
+   "ragtruth_id": "12261",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Passage 1 provides the general steps to set the default web browser in Windows 7:",
+   "p_entail": 0.9835
+  },
+  {
+   "ragtruth_id": "16511",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Lack of proper nutrition: Exercise alone is not enough to achieve a toned body.",
+   "p_entail": 0.0012
+  },
+  {
+   "ragtruth_id": "16895",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Generally, a pale yellow color is considered normal, while a darker yellow or amber color can indicate dehydration.",
+   "p_entail": 0.001
+  },
+  {
+   "ragtruth_id": "14098",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Apply the fertilizer in a perpendicular pattern to ensure even coverage.",
+   "p_entail": 0.0013
+  },
+  {
+   "ragtruth_id": "15929",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "This decision was made to provide a smooth transition and ensure the company's continued growth and success.",
+   "p_entail": 0.0008
+  },
+  {
+   "ragtruth_id": "12459",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "The average temperature ranges from 22°F to 85°F throughout the year, with an average annual snowfall of 15.3 inches.",
+   "p_entail": 0.9809
+  },
+  {
+   "ragtruth_id": "12461",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "* Snowfall: Averages around 20-30 inches per year, with a record high of 74.5 inches in 1979.",
+   "p_entail": 0.988
+  },
+  {
+   "ragtruth_id": "17199",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "In conclusion, the answer to the question \"Does watching Snapchat stories increase score?\" is yes, based on the information provided in the passages.",
+   "p_entail": 0.0024
+  },
+  {
+   "ragtruth_id": "12903",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Place the hard-boiled eggs in a single layer in a baking dish.",
+   "p_entail": 0.0035
+  },
+  {
+   "ragtruth_id": "13105",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Use different colors or patterns to distinguish between different categories or groups.",
+   "p_entail": 0.0161
+  },
+  {
+   "ragtruth_id": "12261",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Select the default web browser you want to use.",
+   "p_entail": 0.0665
+  },
+  {
+   "ragtruth_id": "12460",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "The summer months are hot and humid, with temperatures ranging from 70°F to 90°F (21°C to 32°C).",
+   "p_entail": 0.9864
+  },
+  {
+   "ragtruth_id": "17255",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "* Collaboration: Water play often involves group activities, fostering teamwork, communication, and social skills.",
+   "p_entail": 0.9691
+  },
+  {
+   "ragtruth_id": "15201",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Size: Calderas are typically larger than craters, with a diameter of at least 1 kilometer or more, while craters can range in size from very small to several hundred kilometers across.",
+   "p_entail": 0.0141
+  },
+  {
+   "ragtruth_id": "16419",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Based on the provided passages, here is how you can draw a truncated cone in GeoGebra:",
+   "p_entail": 0.0369
+  },
+  {
+   "ragtruth_id": "14135",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "* Elastic potential energy: energy stored in an object due to its stretching or compressing (not explicitly mentioned in the passages)",
+   "p_entail": 0.0056
+  },
+  {
+   "ragtruth_id": "16418",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "This line represents the height of the truncated cone.",
+   "p_entail": 0.0019
+  },
+  {
+   "ragtruth_id": "13376",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Repeat steps 4-6 for all the potatoes.",
+   "p_entail": 0.0003
+  },
+  {
+   "ragtruth_id": "13263",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "* The lease agreement is a contract between the lessor and the lessee that outlines the terms of the lease, including the duration of the lease, the payment amount, and any other conditions or restrictions.",
+   "p_entail": 0.5925
+  },
+  {
+   "ragtruth_id": "16421",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Open GeoGebra and click on the 3D menu.",
+   "p_entail": 0.0005
+  },
+  {
+   "ragtruth_id": "15555",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Stay safe: Be aware of local laws and regulations, and take necessary precautions to stay safe during your trip (Passage 2).",
+   "p_entail": 0.0022
+  },
+  {
+   "ragtruth_id": "16421",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Use the Arc Tool to create an arc between the two circles, using the height of the truncated cone as the radius.",
+   "p_entail": 0.002
+  },
+  {
+   "ragtruth_id": "14134",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "* A stretched rubber band has elastic potential energy (Passage 2).",
+   "p_entail": 0.0146
+  },
+  {
+   "ragtruth_id": "15716",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "The first known reference to the Gemini constellation was in Aristotle's Meteorologica, around 300 years ago.",
+   "p_entail": 0.9656
+  },
+  {
+   "ragtruth_id": "16359",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Therefore, 1099-PATR goes on Line 21 of Schedule F.",
+   "p_entail": 0.0039
+  },
+  {
+   "ragtruth_id": "16898",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Rinse your hair thoroughly with water until there are no more suds coming out.",
+   "p_entail": 0.0055
+  },
+  {
+   "ragtruth_id": "16798",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Antioxidants: Jalapenos contain antioxidants, which can help protect the body from damage caused by free radicals (Passage 2).",
+   "p_entail": 0.0052
+  },
+  {
+   "ragtruth_id": "14846",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "Additionally, you can use any type of bread or mix in other ingredients like cheese or herbs for extra flavor.",
+   "p_entail": 0.0005
+  },
+  {
+   "ragtruth_id": "12460",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "The winter months are chilly and windy, with temperatures ranging from 15°F to 35°F (-9°C to 1°C).",
+   "p_entail": 0.9704
+  },
+  {
+   "ragtruth_id": "14715",
+   "task": "QA",
+   "human_supported": 0,
+   "claim": "+ Whole wheat flour",
+   "p_entail": 0.0037
+  },
+  {
+   "ragtruth_id": "17519",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Bring a large pot of water to a boil.",
+   "p_entail": 0.9949
+  },
+  {
+   "ragtruth_id": "12605",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Based on the given passages, the meaning of the name Teresa is:",
+   "p_entail": 0.0043
+  },
+  {
+   "ragtruth_id": "15904",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "In summary, a transistor works by using a small input current to control a larger output current between the collector and the emitter, through the use of a depletion region created by the base and the type of material it is made of.",
+   "p_entail": 0.9777
+  },
+  {
+   "ragtruth_id": "17105",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "The cost for this service has been lowered, but the exact pricing is not specified in the passage.",
+   "p_entail": 0.0903
+  },
+  {
+   "ragtruth_id": "14469",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Unable to answer based on given passages.",
+   "p_entail": 0.089
+  },
+  {
+   "ragtruth_id": "13163",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "It's important to note that the temperature and cooking time may vary depending on the size and thickness of the roast, as well as personal preference for doneness.",
+   "p_entail": 0.0483
+  },
+  {
+   "ragtruth_id": "13467",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "* Air Quality Index: The air quality index in Sausalito is 13% better than the national average, but the pollution index is 61% worse than the national average.",
+   "p_entail": 0.1475
+  },
+  {
+   "ragtruth_id": "12069",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "According to passage 1, Magellan is approved to offer CE clock hours/credits by the American Psychological Association (APA) and the Association of Social Work Boards (ASWB).",
+   "p_entail": 0.8497
+  },
+  {
+   "ragtruth_id": "13917",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "* Bloating (mentioned in passage 2)",
+   "p_entail": 0.0008
+  },
+  {
+   "ragtruth_id": "12619",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Based on the given passages, the process of building a lean-to shed involves preparing the site with compacted gravel, cutting and setting the 4 x 4 skids, cutting and assembling the floor with 2 x 6 rim joists and joists, anchoring the frame to the skids, attaching tongue-and-groove plywood flooring, constructing the walls separately, and raising them onto the frame.",
+   "p_entail": 0.9956
+  },
+  {
+   "ragtruth_id": "13366",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "To start, use hot water and mild detergent to clean the wine glasses.",
+   "p_entail": 0.9589
+  },
+  {
+   "ragtruth_id": "14777",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "When we truly know God, our natural response is a desire to love and serve Him in return, and serving others is a way to do so.",
+   "p_entail": 0.0077
+  },
+  {
+   "ragtruth_id": "13131",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "To keep brown sugar soft, pack it into the smallest container possible to minimize air exposure.",
+   "p_entail": 0.9804
+  },
+  {
+   "ragtruth_id": "14399",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Instead, weight loss occurs through a calorie deficit, which forces the body to burn stored fat for energy.",
+   "p_entail": 0.8985
+  },
+  {
+   "ragtruth_id": "15345",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Unable to answer based on given passages.",
+   "p_entail": 0.0129
+  },
+  {
+   "ragtruth_id": "12334",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Eye contact: If your coworker is consistently staring at you, it may be a sign that they are interested in you (Passage 2).",
+   "p_entail": 0.9833
+  },
+  {
+   "ragtruth_id": "12472",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "If you have not done so, you will need to do so before attempting to sync your audiobooks.",
+   "p_entail": 0.0845
+  },
+  {
+   "ragtruth_id": "12904",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "As soon as the water comes to a boil, turn the heat off, cover the pan, and remove it from the heat.",
+   "p_entail": 0.9927
+  },
+  {
+   "ragtruth_id": "13363",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Dry the wine glasses with a smooth lint-free cloth, such as a microfiber or flour sack towel.",
+   "p_entail": 0.005
+  },
+  {
+   "ragtruth_id": "12228",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "It is especially useful in cleaning around the teeth and gums, removing food from areas that brushing cannot reach.",
+   "p_entail": 0.0006
+  },
+  {
+   "ragtruth_id": "16936",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "So, in summary, when you breathe in, the diaphragm and intercostal muscles contract to bring air into the lungs, and when you breathe out, the diaphragm and intercostal muscles relax to force air out of the lungs.",
+   "p_entail": 0.0168
+  },
+  {
+   "ragtruth_id": "16691",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Based on the given passages, here's a brief answer to the question \"How to guard a tall person in basketball\":",
+   "p_entail": 0.9771
+  },
+  {
+   "ragtruth_id": "17255",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "* Math: Measuring water and comparing quantities helps children understand mathematical concepts such as volume, capacity, and fractions.",
+   "p_entail": 0.0039
+  },
+  {
+   "ragtruth_id": "12435",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "It is important to note that the exact cause of IBS is still unknown and may involve multiple factors.",
+   "p_entail": 0.9967
+  },
+  {
+   "ragtruth_id": "12133",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Bake in the preheated oven for about 15 minutes, or until the fish is cooked and flakes easily.",
+   "p_entail": 0.7667
+  },
+  {
+   "ragtruth_id": "12702",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Peel and discard the papery outer layers of the whole garlic bulb, but keep the skins of the individual cloves intact.",
+   "p_entail": 0.712
+  },
+  {
+   "ragtruth_id": "13162",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Rub the roast with House Seasoning and place it on a rack in the pan with the rib side down and the fatty side up.",
+   "p_entail": 0.8878
+  },
+  {
+   "ragtruth_id": "17396",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "The specific exercise involves extending your arms out to form a cross and then slowly curling your hands together until the dumbbells meet above the center of your chest before returning your arms back to your sides.",
+   "p_entail": 0.9984
+  },
+  {
+   "ragtruth_id": "17053",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "The weighted average method of inventory costing assigns an average cost to each piece of inventory when it is sold.",
+   "p_entail": 0.9965
+  },
+  {
+   "ragtruth_id": "12622",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Then, cut pressure-treated 2x4s to a length of 6 feet for the rim joists and toenail the floor joists to the skids.",
+   "p_entail": 0.9812
+  },
+  {
+   "ragtruth_id": "14995",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "A UPC description refers to the Universal Product Code, which is a barcode symbology used for tracking trade items in stores.",
+   "p_entail": 0.9529
+  },
+  {
+   "ragtruth_id": "12460",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Passage 3 provides information on the wettest and driest years in Indiana.",
+   "p_entail": 0.9942
+  },
+  {
+   "ragtruth_id": "14775",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "* To show love and kindness to everyone, regardless of their treatment towards us.",
+   "p_entail": 0.0085
+  },
+  {
+   "ragtruth_id": "12618",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "To build a lean-to shed, start by preparing the site with a 4\" layer of compacted gravel.",
+   "p_entail": 0.9928
+  },
+  {
+   "ragtruth_id": "12184",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "However, if the plastic cannot be removed completely, it may be necessary to replace the drum or the entire dryer.",
+   "p_entail": 0.2484
+  },
+  {
+   "ragtruth_id": "17285",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "* Blue: Patriotism of the people of Tennessee",
+   "p_entail": 0.2205
+  },
+  {
+   "ragtruth_id": "12105",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Based on the provided passages, here is how to fix a door that won't lock:",
+   "p_entail": 0.0716
+  },
+  {
+   "ragtruth_id": "13230",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "If you're hanging multiple pictures together, it may be helpful to test ideas by laying the group of pictures out on the floor first.",
+   "p_entail": 0.9963
+  },
+  {
+   "ragtruth_id": "13159",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Roast for 1 hour.",
+   "p_entail": 0.6426
+  },
+  {
+   "ragtruth_id": "12695",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Education system: While India's education system has been more focused on increasing access to education and improving infrastructure, Vietnam's education system has been relatively equitable, providing the same opportunities for all students regardless of their background.",
+   "p_entail": 0.5986
+  },
+  {
+   "ragtruth_id": "15788",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Some famous people born in October include Charlton Heston, Jackie Collins, Anne Rice, Susan Sarandon, Alicia Silverstone, and Rachael Leigh Cook.",
+   "p_entail": 0.8189
+  },
+  {
+   "ragtruth_id": "13313",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "It has a stronger, more assertive flavor than spinach and can be used raw in salads or cooked like in pizzoccheri.",
+   "p_entail": 0.9847
+  },
+  {
+   "ragtruth_id": "12332",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Unable to answer based on given passages.",
+   "p_entail": 0.8034
+  },
+  {
+   "ragtruth_id": "12105",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "If the problem persists after trying these methods, it may be best to consult a professional locksmith or carpenter.",
+   "p_entail": 0.0014
+  },
+  {
+   "ragtruth_id": "16850",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Based on the given passages, we can see that the primary difference between red and white blood cells is their respective functions within the body.",
+   "p_entail": 0.0412
+  },
+  {
+   "ragtruth_id": "15345",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Promotes mental health: Hiking is a form of outdoor recreation that promotes mental well-being by exposing individuals to nature and allowing them to disconnect from their daily routines (Passage 1).",
+   "p_entail": 0.0035
+  },
+  {
+   "ragtruth_id": "17573",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "When the diaphragm contracts, it moves down from the bottom of your rib cage towards your abdominal region, increasing the volume of the thoracic cavity and dragging the lungs along with it.",
+   "p_entail": 0.2904
+  },
+  {
+   "ragtruth_id": "12473",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Click \"Apply\" at the bottom of the screen to finish the syncing process.",
+   "p_entail": 0.9615
+  },
+  {
+   "ragtruth_id": "13719",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Locate the dryer vent cover on the outside of your house (passage 1) and remove it by sliding it out if it isn't fastened or sealed to the exterior (step 2).",
+   "p_entail": 0.3021
+  },
+  {
+   "ragtruth_id": "12346",
+   "task": "QA",
+   "human_supported": 1,
+   "claim": "Also, cooked bratwurst can be stored in the fridge for up to 5 days or frozen for up to 3 months.",
+   "p_entail": 0.0183
+  },
+  {
+   "ragtruth_id": "1340",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "For example, many migrants leave their countries due to social stigma and discrimination they face in their own communities.",
+   "p_entail": 0.0014
+  },
+  {
+   "ragtruth_id": "485",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The crash occurred around 12:30 AM local time, and the cause is currently unknown.",
+   "p_entail": 0.0005
+  },
+  {
+   "ragtruth_id": "2240",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The article discusses the history of race riots in the United States, starting with the Montgomery Bus Boycott in 1955 and continuing through the Detroit Riots of 1967 and the Los Angeles Riots of 1992.",
+   "p_entail": 0.9681
+  },
+  {
+   "ragtruth_id": "2672",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The conflict between Yemen and Saudi Arabia has been ongoing since 2015 and has resulted in the deaths of thousands of civilians.",
+   "p_entail": 0.0003
+  },
+  {
+   "ragtruth_id": "4119",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "With only two weeks left in the game, the stakes are high as the houseguests fight to win the $750,000 prize.",
+   "p_entail": 0.0011
+  },
+  {
+   "ragtruth_id": "962",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Since August 2014, more than 25,000 people have fought Ebola infections, with over 10,000 fatalities.",
+   "p_entail": 0.0014
+  },
+  {
+   "ragtruth_id": "437",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Prosecutors presented evidence that Tsarnaev showed no remorse for his actions and referred to the people he killed as \"the enemy.\" The defense argues that Tsarnaev's brother, who was also involved in the bombing, was the mastermind behind the attack and that Tsarnaev should not receive the death penalty.",
+   "p_entail": 0.0105
+  },
+  {
+   "ragtruth_id": "4574",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The U.S. should continue to provide diplomatic and military support to Israel to help them defend themselves and protect their rights.",
+   "p_entail": 0.0024
+  },
+  {
+   "ragtruth_id": "124",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "They plan to teach again and lift Mary Kay's status as a registered sex offender.",
+   "p_entail": 0.837
+  },
+  {
+   "ragtruth_id": "2138",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Olivia Munn will play Psylocke in next year's \"X-Men: Apocalypse\", reprising her role as the telepathic mutant from the \"Captain Britain\" series.",
+   "p_entail": 0.0007
+  },
+  {
+   "ragtruth_id": "348",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Pope Francis is the first Pope to publicly use the word \"genocide\" in connection with the Armenian massacre.",
+   "p_entail": 0.0024
+  },
+  {
+   "ragtruth_id": "5480",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "With Blue's eviction looking imminent, BB25 spoilers suggest that a double eviction may soon occur, putting Matt Klotz at risk.",
+   "p_entail": 0.985
+  },
+  {
+   "ragtruth_id": "1109",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "They eventually made it to the Shariya refugee camp, where they were reunited with Mahmoud, Ahlam's husband.",
+   "p_entail": 0.0065
+  },
+  {
+   "ragtruth_id": "658",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "He was rescued by a passing container ship after signaling for help with a flashlight.",
+   "p_entail": 0.0298
+  },
+  {
+   "ragtruth_id": "906",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Along with the O'Melveny & Myers investigation, the U.S.",
+   "p_entail": 0.1917
+  },
+  {
+   "ragtruth_id": "927",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Additionally, Jiang shares insights on the impact of sleep deprivation on IQ, the benefits of doing nothing, and the habits of highly ineffective people.",
+   "p_entail": 0.5999
+  },
+  {
+   "ragtruth_id": "4347",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Despite the controversy, the legislation passed the General Assembly and is now being considered by Governor J.B.",
+   "p_entail": 0.997
+  },
+  {
+   "ragtruth_id": "3081",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Despite the defense's attempt to shift the blame onto Tsarnaev's older brother, Tamerlan, the prosecution presented a compelling case that Tsarnaev was the mastermind behind the bombing.",
+   "p_entail": 0.0593
+  },
+  {
+   "ragtruth_id": "1520",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The debate comes as tensions with North Korea continue to rise and the country launches missile tests.",
+   "p_entail": 0.0005
+  },
+  {
+   "ragtruth_id": "4030",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The new rule aims to simplify the game and prevent one person from dominating the challenges.",
+   "p_entail": 0.0048
+  },
+  {
+   "ragtruth_id": "4341",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "It is likely that the judge will favor the Biden administration's argument that the wire was cut to provide medical aid to migrants, but the outcome remains uncertain.",
+   "p_entail": 0.0003
+  },
+  {
+   "ragtruth_id": "4472",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "A Dollar General worker in Georgia was sued by the US Equal Employment Opportunity Commission (EEOC) for being fired after revealing her pregnancy.",
+   "p_entail": 0.4341
+  },
+  {
+   "ragtruth_id": "1990",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "A mother was filmed publicly shaming and physically hitting her son, believed to be involved in the Baltimore riots, while praising him in front of the media.",
+   "p_entail": 0.9946
+  },
+  {
+   "ragtruth_id": "602",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Dahou's only child, Houda, now owns her own business and has two children.",
+   "p_entail": 0.4431
+  },
+  {
+   "ragtruth_id": "2669",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Freshman Justise Winslow led Duke with 19 points, while national freshman of the year Jahlil Okafor had 18 points and 10 rebounds.",
+   "p_entail": 0.8865
+  },
+  {
+   "ragtruth_id": "2656",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The brew will hit shelves in the fall, with proceeds supporting social and environmental causes.",
+   "p_entail": 0.0079
+  },
+  {
+   "ragtruth_id": "692",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The German government has stated that it will provide compensation to the families of the victims of the crash.",
+   "p_entail": 0.0201
+  },
+  {
+   "ragtruth_id": "3560",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "While the Obama administration has not provided significant support for the operation, it has offered assistance with intelligence and coordination.",
+   "p_entail": 0.0002
+  },
+  {
+   "ragtruth_id": "184",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The stabbing occurred after a dispute between Copeland and a 22-year-old man, who stabbed Copland and two other women before fleeing the scene.",
+   "p_entail": 0.0064
+  },
+  {
+   "ragtruth_id": "3639",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The mayor of New York City, Bill de Blasio, has also issued an apology to the driver and passengers involved.",
+   "p_entail": 0.897
+  },
+  {
+   "ragtruth_id": "2666",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "This win will be Duke's fifth NCAA championship, tying them with Indiana and North Carolina for third place.",
+   "p_entail": 0.0263
+  },
+  {
+   "ragtruth_id": "584",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Loeb is seeking to prevent Vergara from destroying the embryos, while Vergara wants to use them to have children.",
+   "p_entail": 0.9818
+  },
+  {
+   "ragtruth_id": "4052",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The first clinical trial focusing on recurrent ovarian cancer is currently underway.",
+   "p_entail": 0.9914
+  },
+  {
+   "ragtruth_id": "585",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "This case is similar to the Planned Parenthood of Central Missouri vs.",
+   "p_entail": 0.0101
+  },
+  {
+   "ragtruth_id": "911",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The Columbia Journalism School has criticized Rolling Stone's reporting, stating that the mistake could have been avoided with further fact-checking.",
+   "p_entail": 0.9965
+  },
+  {
+   "ragtruth_id": "1826",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Danielle Busby delivers her fifth daughter at Woman's Hospital of Texas via C-section.",
+   "p_entail": 0.0452
+  },
+  {
+   "ragtruth_id": "906",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Following the Rolling Stone article, UVA admitted to never having expelled a student for sexual assault and instituted a zero-tolerance policy on sexual assault going forward.",
+   "p_entail": 0.9173
+  },
+  {
+   "ragtruth_id": "434",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The defense attorney argued that Tsarnaev's actions were driven by mental illness and that he did not intend to harm anyone.",
+   "p_entail": 0.005
+  },
+  {
+   "ragtruth_id": "5276",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Luna knows that Eric has been diagnosed with Alzheimer's disease, which is much more severe than previously stated.",
+   "p_entail": 0.0002
+  },
+  {
+   "ragtruth_id": "5564",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Clarkson's \"Love Story\" concert series is returning to the Bakkt Theater at Planet Hollywood Resort & Casino, while Richie's \"King of Hearts\" residency will continue at the Encore Theater at Wynn Las Vegas.",
+   "p_entail": 0.003
+  },
+  {
+   "ragtruth_id": "2654",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "This is the first known partnership between a beer company and an ice cream brand.",
+   "p_entail": 0.0002
+  },
+  {
+   "ragtruth_id": "603",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Despite facing discrimination and criticism, Dahou remained determined to support her daughter and eventually earned respect as a successful entrepreneur.",
+   "p_entail": 0.0363
+  },
+  {
+   "ragtruth_id": "44",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Blue Bell Ice Cream Recalls Products Amid Listeria Outbreak; No Blue Bell Ice Cream Is Linked to Infections in Patients",
+   "p_entail": 0.006
+  },
+  {
+   "ragtruth_id": "4796",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Chelsea's arrival will bring her into contact with Billy, who could use her advice, and Tucker, who is dealing with his own problems.",
+   "p_entail": 0.006
+  },
+  {
+   "ragtruth_id": "2667",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The Badgers, led by national player of the year finalist Frank Kaminsky, overcame a 60-56 deficit with 6:39 remaining in the game and went on to win their first championship since 1941.",
+   "p_entail": 0.9887
+  },
+  {
+   "ragtruth_id": "1172",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The APhA has previously opposed the use of the term \"drug\" for chemicals used in lethal injection and has urged laws prohibiting pharmacists from participating in such cases.",
+   "p_entail": 0.0007
+  },
+  {
+   "ragtruth_id": "4588",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The test is scheduled to take place at 2:20 PM EDT, and will be followed by a second test on October 11th, should there be severe weather or other significant events.",
+   "p_entail": 0.0005
+  },
+  {
+   "ragtruth_id": "1700",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Nepal has issued 347 permits for climbing Mount Everest this season, with 125 of them from the shortened season of 2015.",
+   "p_entail": 0.0014
+  },
+  {
+   "ragtruth_id": "909",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "The retraction has raised concerns about whether survivors will come forward, fearing they will be accused of lying.",
+   "p_entail": 0.3752
+  },
+  {
+   "ragtruth_id": "2468",
+   "task": "Summary",
+   "human_supported": 0,
+   "claim": "Waze is the leading cause of felonious deaths of law enforcement officers in the line of duty for the past five years.",
+   "p_entail": 0.0032
+  },
+  {
+   "ragtruth_id": "2874",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "This is a stark change from the previous generation of jihadis, when Osama bin Laden headed al Qaeda.",
+   "p_entail": 0.9366
+  },
+  {
+   "ragtruth_id": "3636",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The NYPD's Internal Affairs Bureau is investigating the incident.",
+   "p_entail": 0.9711
+  },
+  {
+   "ragtruth_id": "1681",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "She points out that only a small number of women report harassment to officials, likely due to fear, shame, and a lack of confidence in the justice system.",
+   "p_entail": 0.0004
+  },
+  {
+   "ragtruth_id": "924",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "On his third day of the project, Jiang famously requested a Krispy Kreme manager to make him five interlinked donuts to mimic the Olympic symbol.",
+   "p_entail": 0.9948
+  },
+  {
+   "ragtruth_id": "5527",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Brooke is shocked and confronts Deacon about his relationship with Sheila.",
+   "p_entail": 0.9886
+  },
+  {
+   "ragtruth_id": "57",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "However, the fraternity's ability to sue may be limited due to the fact that it is not a public figure and cannot demonstrate actual financial harm as a result of the article.",
+   "p_entail": 0.0109
+  },
+  {
+   "ragtruth_id": "4117",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Everyone will also be playing for the Power of Veto this week, which holds significant power in the game.",
+   "p_entail": 0.0037
+  },
+  {
+   "ragtruth_id": "484",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Seven people, including Illinois State University associate men's basketball coach Torrey Ward and deputy athletic director Aaron Leetch, died in a plane crash while returning from the NCAA tournament final.",
+   "p_entail": 0.9876
+  },
+  {
+   "ragtruth_id": "2654",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The collaboration aims to raise awareness about social issues and will be announced later this year.",
+   "p_entail": 0.9706
+  },
+  {
+   "ragtruth_id": "275",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "They hope to use their music to inspire others and make a positive impact, breaking away from the traditional expectation that creative pursuits are not respected in their culture.",
+   "p_entail": 0.0156
+  },
+  {
+   "ragtruth_id": "5087",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "20-21, 2023, causing a surprise display of Northern Lights in several Midwest and Northern Plains states, including Minnesota, Michigan, Wisconsin, North Dakota, and Nebraska.",
+   "p_entail": 0.1063
+  },
+  {
+   "ragtruth_id": "1966",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Some defend Lindsey, saying she's a good vet but made a poor decision by posting the photo.",
+   "p_entail": 0.863
+  },
+  {
+   "ragtruth_id": "776",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Most of the amount will be used for improving pipeline safety.",
+   "p_entail": 0.0242
+  },
+  {
+   "ragtruth_id": "1625",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "A woman pretended to be waiting for a bus, then left her explosives-laden handbag behind and disappeared.",
+   "p_entail": 0.8867
+  },
+  {
+   "ragtruth_id": "4339",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The decision comes after Texas Attorney General Ken Paxton sued the Biden administration over the issue.",
+   "p_entail": 0.0058
+  },
+  {
+   "ragtruth_id": "2796",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The pay cut would symbolise the 23% less that American women earn on average than their male counterparts.",
+   "p_entail": 0.9905
+  },
+  {
+   "ragtruth_id": "2069",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The community of Ravi Opi is off the main highway and has been severely affected by the quake.",
+   "p_entail": 0.025
+  },
+  {
+   "ragtruth_id": "2876",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The article provides examples of the experiences of Yazidi girls who were captured by ISIS and the 276 schoolgirls kidnapped by Boko Haram in Nigeria.",
+   "p_entail": 0.194
+  },
+  {
+   "ragtruth_id": "726",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The blaze started during welding work and ignited the rubber insulation between the submarine's light and pressure hull.",
+   "p_entail": 0.9777
+  },
+  {
+   "ragtruth_id": "2373",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "While Morris' petition states Mitchell remains unconscious, her website claims she is alert and expected to make a full recovery.",
+   "p_entail": 0.9932
+  },
+  {
+   "ragtruth_id": "3611",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Yemen has been embroiled in chaos since Houthi rebels forced President Abdu Rabu Mansour Hadi from power in January, leading to a Saudi-led coalition launching airstrikes against the rebels.",
+   "p_entail": 0.9307
+  },
+  {
+   "ragtruth_id": "3884",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Additionally, there was no time for rest and the group was not able to get any sleep.",
+   "p_entail": 0.0074
+  },
+  {
+   "ragtruth_id": "540",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "His parents, who are opposed to the death penalty, did not participate in this phase of the trial.",
+   "p_entail": 0.0381
+  },
+  {
+   "ragtruth_id": "26",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Meanwhile, two New York women were also arrested this week on terror charges.",
+   "p_entail": 0.0017
+  },
+  {
+   "ragtruth_id": "1237",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "With his bike now back, Wang can continue his journey to Hainan Island, adding it to his already impressive route.",
+   "p_entail": 0.0029
+  },
+  {
+   "ragtruth_id": "2609",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The school was placed on lockdown, and the suspect, a former student and employee of the victim, is still at large.",
+   "p_entail": 0.9895
+  },
+  {
+   "ragtruth_id": "961",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Liberia and Sierra Leone have seen a significant decline in cases, but Guinea still faces challenges with unknown transmission chains and unsafe burials.",
+   "p_entail": 0.9942
+  },
+  {
+   "ragtruth_id": "1624",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Here is a summary of the article in 89 words:",
+   "p_entail": 0.1898
+  },
+  {
+   "ragtruth_id": "1566",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Despite her illness, Hill managed to raise $1.4 million for pediatric cancer research with the non-profit group The Cure Starts Now.",
+   "p_entail": 0.0034
+  },
+  {
+   "ragtruth_id": "4051",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The first clinical trial will focus on recurrent ovarian cancer, with human trials expected to start in five years.",
+   "p_entail": 0.5521
+  },
+  {
+   "ragtruth_id": "3558",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "However, the fear remains as the forces found vehicles laden with explosives and potentially booby-trapped buildings.",
+   "p_entail": 0.0014
+  },
+  {
+   "ragtruth_id": "205",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Selena, the Tejano star who died 20 years ago, is being brought back through a hologram-like figure.",
+   "p_entail": 0.97
+  },
+  {
+   "ragtruth_id": "3861",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Social Security beneficiaries will receive a 3.2% cost-of-living adjustment (COLA) in 2024, resulting in an average increase of over $50 per month.",
+   "p_entail": 0.9937
+  },
+  {
+   "ragtruth_id": "3916",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "U.S. troops from Fort Cavazos in Killeen and Fort Bliss in El Paso are being deployed to the Middle East to protect against drone and rocket attacks.",
+   "p_entail": 0.0479
+  },
+  {
+   "ragtruth_id": "314",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The Senate has passed a Medicare reform bill that includes a permanent solution to the \"doc fix\" and a two-year extension of the Children's Health Insurance Program (CHIP).",
+   "p_entail": 0.9946
+  },
+  {
+   "ragtruth_id": "1001",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The video of the incident shows Slager shooting Scott eight times as he fled, with his back turned to the officer.",
+   "p_entail": 0.9973
+  },
+  {
+   "ragtruth_id": "4035",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Here is a summary of the article in 89 words:",
+   "p_entail": 0.0484
+  },
+  {
+   "ragtruth_id": "434",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Now, the trial has moved on to the victim impact phase, where survivors and families of the victims have testified about the emotional toll the attacks took on their lives.",
+   "p_entail": 0.9759
+  },
+  {
+   "ragtruth_id": "1702",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Here's the summary within 200 words:",
+   "p_entail": 0.5279
+  },
+  {
+   "ragtruth_id": "929",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Jia Jiang, a Chinese-born entrepreneur, launched a project called \"100 Days of Rejection\" where he intentionally sought rejection for 100 days to overcome his fear of it.",
+   "p_entail": 0.0032
+  },
+  {
+   "ragtruth_id": "4036",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Sally is torn between the two brothers, but ultimately makes a decision that will shock viewers.",
+   "p_entail": 0.0031
+  },
+  {
+   "ragtruth_id": "4845",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The race will take place on a newly created temporary street circuit along the Las Vegas Strip, featuring 17 corners and 3 DRS zones.",
+   "p_entail": 0.2528
+  },
+  {
+   "ragtruth_id": "4348",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Despite the controversy, the nursing home industry is seeking legislative support for an override of the veto.",
+   "p_entail": 0.9969
+  },
+  {
+   "ragtruth_id": "5528",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "It appears that Deacon Sharpe has found love outside of the family, as he is reportedly in love with Sheila Carter.",
+   "p_entail": 0.9826
+  },
+  {
+   "ragtruth_id": "24",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "The FBI has charged a Philadelphia woman, Keonna Thomas, with trying to travel overseas to fight for ISIS.",
+   "p_entail": 0.9941
+  },
+  {
+   "ragtruth_id": "247",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Circuit, and a decision is expected soon.",
+   "p_entail": 0.0081
+  },
+  {
+   "ragtruth_id": "4474",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Here's the summary within 87 words:",
+   "p_entail": 0.0031
+  },
+  {
+   "ragtruth_id": "2486",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "Four rainbows appeared in the sky in the New York area after a large amount of rainfall.",
+   "p_entail": 0.9215
+  },
+  {
+   "ragtruth_id": "2424",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "In addition to this, the Clinton Global Initiative, a sister operation to the Clinton Foundation, has also faced similar criticism over its donors.",
+   "p_entail": 0.0003
+  },
+  {
+   "ragtruth_id": "4219",
+   "task": "Summary",
+   "human_supported": 1,
+   "claim": "China has launched its first nuclear-powered guided missile submarines, which will enhance its power projection capabilities.",
+   "p_entail": 0.969
+  }
+ ],
+ "recall_unsupported": 0.7533
+}

@@ -1,0 +1,68 @@
+{
+ "id": "CWAN",
+ "homepage": "https://clearwateranalytics.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Clearwater\nINDUSTRY: Financial Technology / Investment Management Software\nPRODUCT OR SERVICE: A unified, front-to-back investment management platform that consolidates data, operations, risk analytics, and execution across the entire investment lifecycle.\nTARGET CUSTOMERS: Institutional investors including asset managers, asset owners (pension funds, endowments, corporations), insurers, and hedge funds.\nPRICING MODEL: Enterprise\nKEY FEATURES:\n- Unified operational backbone automating complex, multi-step workflows across reconciliation, reporting, accounting, and compliance.\n- Beacon by Clearwater: AI-powered risk analytics and modeling tools for real-time scenario analysis and portfolio insights.\n- Enfusion by Clearwater: Integrated environment for portfolio construction, trading, and order management execution.\n- AI-driven workflow layer with 1,000+ AI agents actively executing investment tasks.\n- Single data foundation processing daily investment activity for over $10 trillion in assets.\nUNIQUE SELLING POINTS:\n- \"One dataset, total clarity\" approach eliminating siloed systems and fragmented data.\n- Embedded, purpose-driven AI capabilities rather than bolt-on solutions.\n- Proven scale and reliability, evidenced by a 60+ \"excellent\" NPS score and 95% reduction in reporting time.\n- Comprehensive visibility across all asset classes (public and private) through a single pane of glass.\nTONE & POSITIONING: Enterprise / Premium / Institutional",
+ "industry": "Financial Technology / Investment Management Software",
+ "query": "top direct competitors of Clearwater Analytics in Financial Technology / Investment Management Software",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Clearwater_Analytics",
+   "used": false
+  },
+  {
+   "url": "https://portersfiveforce.com/blogs/competitors/clearwateranalytics",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.marketbeat.com/stocks/nyse/cwan/competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.cbinsights.com/company/clearwater-analytics",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://multiples.vc/public-comps/clearwater-analytics-valuation-multiples",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.leadnear.com/company/us/clearwater-analytics",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.fool.com/coverage/filings/2026/02/27/starboard-value-lp-opens-major-stake-in-clearwater-analytics-investment-accounting-platform/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://6sense.com/tech/revenue-analytics/clearwater-analytics-market-share",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://colitco.com/warburg-pincus-permira-clearwater-analytics-deal/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.businesswire.com/news/home/20260930278943/en/PREPAR-VIE-Selects-Clearwater-Analytics-to-Modernize-and-Replace-Its-Investment-Management-System",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:28:12",
+ "scraped_sha256": "45f1c203fdf1f4be8b94fa3704b55f7df8679e36710c48890f56da49916d716b",
+ "search_content_sha256": "7fb6c387e6cc778b118b048a52c2371ac2f8d7973ce542f84f6a44f638dcaa4b",
+ "search_content_chars": 5695,
+ "stripped": true
+}

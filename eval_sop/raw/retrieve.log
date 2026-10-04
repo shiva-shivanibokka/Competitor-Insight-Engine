@@ -1,0 +1,351 @@
+== Uber
+  [scraper] Scraping: https://www.uber.com
+  [scraper] Could not fetch https://www.uber.com: 406 Client Error: Not Acceptable for url: https://www.uber.com/
+  [scraper] Could not fetch https://www.uber.com/about: 406 Client Error: Not Acceptable for url: https://www.uber.com/about
+  [scraper] Could not fetch https://www.uber.com/product: 406 Client Error: Not Acceptable for url: https://www.uber.com/product
+  [scraper] Could not fetch https://www.uber.com/pricing: 406 Client Error: Not Acceptable for url: https://www.uber.com/pricing
+  [scraper] Could not fetch https://craft.co/uber/competitors: 403 Client Error: Forbidden for url: https://craft.co/uber/competitors
+  UBER: scraped=0 search=5806 industry='technology'
+== DoorDash
+  [scraper] Scraping: https://www.doordash.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://fourweekmba.com/doordash-competitors/: 403 Client Error: Forbidden for url: https://fourweekmba.com/doordash-competitors/
+  DASH: scraped=6000 search=6000 industry='On-demand delivery / Marketplace'
+== Zoom
+  [scraper] Scraping: https://www.zoom.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.gartner.com/reviews/market/meeting-solutions/vendor/zoom/alternatives: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/market/meeting-solutions/vendor/zoom/alternatives
+  [scraper] Could not fetch https://fourweekmba.com/zoom-competitors/: 403 Client Error: Forbidden for url: https://fourweekmba.com/zoom-competitors/
+  ZM: scraped=5999 search=4810 industry='Communication & Collaboration / Enterprise Softwar'
+== Snowflake
+  [scraper] Scraping: https://www.snowflake.com
+  [step] Extracting company profile...
+  SNOW: scraped=6000 search=6000 industry='Data Cloud / Enterprise Data & AI Platform'
+== Datadog
+  [scraper] Scraping: https://www.datadoghq.com
+  [scraper] Could not fetch https://www.datadoghq.com/about: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://www.datadoghq.com/product: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://www.datadoghq.com/pricing: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [step] Extracting company profile...
+  DDOG: scraped=3044 search=6000 industry='Cloud Monitoring / Observability / DevOps'
+== Pinterest
+  [scraper] Scraping: https://www.pinterest.com
+  [step] Extracting company profile...
+  PINS: scraped=4377 search=6000 industry='Social Media / Visual Discovery / E-commerce'
+== Snap
+  [scraper] Scraping: https://www.snap.com
+  [scraper] Could not fetch https://www.snap.com/about: 404 Client Error: Not Found for url: https://www.snap.com/404
+  [scraper] Could not fetch https://www.snap.com/product: 404 Client Error: Not Found for url: https://www.snap.com/404
+  [scraper] Could not fetch https://www.snap.com/pricing: 404 Client Error: Not Found for url: https://www.snap.com/404
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.owler.com/company/snapinc: 403 Client Error: Forbidden for url: https://www.owler.com/company/snapinc
+  SNAP: scraped=452 search=5429 industry='Social Media / Mobile Technology'
+== Workday
+  [scraper] Scraping: https://www.workday.com
+  [scraper] Could not fetch https://www.workday.com/about: 404 Client Error: Not Found for url: https://www.workday.com/about
+  [scraper] Could not fetch https://www.workday.com/product: 404 Client Error: Not Found for url: https://www.workday.com/product
+  [scraper] Could not fetch https://www.workday.com/pricing: 404 Client Error: Not Found for url: https://www.workday.com/pricing
+  [step] Extracting company profile...
+  WDAY: scraped=3042 search=6000 industry='Enterprise Software / Human Resources & Financial '
+== MongoDB
+  [scraper] Scraping: https://www.mongodb.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.geeksforgeeks.org/blogs/top-mongodb-alternatives/: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  MDB: scraped=6000 search=5958 industry='Database Management Systems / Data Platform'
+== Carvana
+  [scraper] Scraping: https://www.carvana.com
+  [scraper] Could not fetch https://www.carvana.com/about: 404 Client Error: Not Found for url: https://www.carvana.com/about
+  [scraper] Could not fetch https://www.carvana.com/product: 404 Client Error: Not Found for url: https://www.carvana.com/product
+  [scraper] Could not fetch https://www.carvana.com/pricing: 410 Client Error: Gone for url: https://www.carvana.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://craft.co/carvana/competitors: 403 Client Error: Forbidden for url: https://craft.co/carvana/competitors
+  [scraper] Could not fetch https://fourweekmba.com/carvana-competitors/: 403 Client Error: Forbidden for url: https://fourweekmba.com/carvana-competitors/
+  CVNA: scraped=3041 search=5030 industry='Automotive Retail / E-commerce'
+== Oracle
+  [scraper] Scraping: https://www.oracle.com
+  [scraper] Could not fetch https://www.oracle.com: 403 Client Error: Forbidden for url: https://www.oracle.com/
+  [scraper] Could not fetch https://www.oracle.com/product: 404 Client Error: Not Found for url: https://www.oracle.com/product/
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://fourweekmba.com/oracle-competitors/: 403 Client Error: Forbidden for url: https://fourweekmba.com/oracle-competitors/
+  ORCL: scraped=6000 search=5643 industry='Enterprise Software, Cloud Computing, and Database'
+== Roblox
+  [scraper] Scraping: https://www.roblox.com
+  [scraper] Could not fetch https://www.roblox.com/product: 404 Client Error: Not Found for url: https://www.roblox.com/product
+  [scraper] Could not fetch https://www.roblox.com/pricing: 404 Client Error: Not Found for url: https://www.roblox.com/pricing
+  [step] Extracting company profile...
+  RBLX: scraped=2106 search=6000 industry='Online Gaming / User-Generated Content Platform'
+== Fortinet
+  [scraper] Scraping: https://www.fortinet.com
+  [scraper] Could not fetch https://www.fortinet.com/about: 404 Client Error: Not Found for url: https://www.fortinet.com/about
+  [scraper] Could not fetch https://www.fortinet.com/product: 404 Client Error: Not Found for url: https://www.fortinet.com/product
+  [scraper] Could not fetch https://www.fortinet.com/pricing: 404 Client Error: Not Found for url: https://www.fortinet.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.gartner.com/reviews/market/endpoint-protection-platforms/vendor/fortinet/alternatives: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/market/endpoint-protection-platforms/vendor/fortinet/alternatives
+  [scraper] Could not fetch https://www.gartner.com/reviews/market/hybrid-mesh-firewall/vendor/fortinet/alternatives: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/market/hybrid-mesh-firewall/vendor/fortinet/alternatives
+  [scraper] Could not fetch https://thenetworkinstallers.com/blog/fortinet-competitors/: 403 Client Error: Forbidden for url: https://thenetworkinstallers.com/blog/fortinet-competitors/
+  FTNT: scraped=3043 search=6000 industry='Cybersecurity'
+== Airbnb
+  [scraper] Scraping: https://www.airbnb.com
+  [scraper] Could not fetch https://www.airbnb.com/product: 404 Client Error: Not Found for url: https://www.airbnb.com/404
+  [scraper] Could not fetch https://www.airbnb.com/pricing: 404 Client Error: Not Found for url: https://www.airbnb.com/404
+  [step] Extracting company profile...
+  ABNB: scraped=3456 search=6000 industry='Travel & Hospitality / Short-term Rentals'
+== Live Nation
+  [scraper] Scraping: https://www.livenation.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.axs.com/: 403 Client Error: Forbidden for url: https://www.axs.com/
+  LYV: scraped=3331 search=4197 industry='Live Entertainment / Ticketing'
+== Supermicro
+  [scraper] Scraping: https://www.supermicro.com
+  [scraper] Could not fetch https://www.supermicro.com: 403 Client Error: Forbidden for url: https://www.supermicro.com/
+  [scraper] Could not fetch https://www.supermicro.com/about: 403 Client Error: Forbidden for url: https://www.supermicro.com/about
+  [scraper] Could not fetch https://www.supermicro.com/product: 403 Client Error: Forbidden for url: https://www.supermicro.com/product
+  [scraper] Could not fetch https://www.supermicro.com/pricing: 403 Client Error: Forbidden for url: https://www.supermicro.com/pricing
+  [scraper] Could not fetch https://www.gartner.com/reviews/market/integrated-systems/vendor/supermicro/alternatives: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/market/integrated-systems/vendor/supermicro/alternatives
+  [scraper] Could not fetch https://craft.co/super-micro-computer/competitors: 403 Client Error: Forbidden for url: https://craft.co/super-micro-computer/competitors
+  SMCI: scraped=0 search=5467 industry='technology'
+== Dropbox
+  [scraper] Scraping: https://www.dropbox.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://craft.co/dropbox/competitors: 403 Client Error: Forbidden for url: https://craft.co/dropbox/competitors
+  DBX: scraped=5999 search=5480 industry='Cloud Storage & Collaboration Software'
+== Roku
+  [scraper] Scraping: https://www.roku.com
+  [scraper] Could not fetch https://www.roku.com/product: 404 Client Error: Not Found for url: https://www.roku.com/product
+  [scraper] Could not fetch https://www.roku.com/pricing: 404 Client Error: Not Found for url: https://www.roku.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.comparably.com/companies/roku/competitors: 403 Client Error: Forbidden for url: https://www.comparably.com/companies/roku/competitors
+  [scraper] Could not fetch https://www.similarweb.com/website/roku.com/: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  ROKU: scraped=212 search=4321 industry='Consumer Electronics / Streaming Media'
+== Wayfair
+  [scraper] Scraping: https://www.wayfair.com
+  [scraper] Could not fetch https://www.wayfair.com: 429 Client Error: Too Many Requests for url: https://www.wayfair.com/
+  [scraper] Could not fetch https://www.wayfair.com/about: 429 Client Error: Too Many Requests for url: https://www.wayfair.com/about
+  [scraper] Could not fetch https://www.wayfair.com/product: 429 Client Error: Too Many Requests for url: https://www.wayfair.com/product
+  [scraper] Could not fetch https://www.wayfair.com/pricing: 429 Client Error: Too Many Requests for url: https://www.wayfair.com/pricing
+  [scraper] Could not fetch https://www.comparably.com/companies/wayfair/competitors: 403 Client Error: Forbidden for url: https://www.comparably.com/companies/wayfair/competitors
+  W: scraped=0 search=5784 industry='technology'
+== Unity
+  [scraper] Scraping: https://unity.com
+  [scraper] Could not fetch https://unity.com/about: 404 Client Error: Not Found for url: https://unity.com/about
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://6sense.com/tech/game-development/unity-market-share: 403 Client Error: Forbidden for url: https://6sense.com/tech/game-development/unity-market-share
+  U: scraped=6000 search=5403 industry='Game Development / Interactive Software'
+== Box
+  [scraper] Scraping: https://www.box.com
+  [scraper] Could not fetch https://www.box.com/about: 403 Client Error: Forbidden for url: https://www.box.com/about
+  [scraper] Could not fetch https://www.box.com/product: 403 Client Error: Forbidden for url: https://www.box.com/product
+  [scraper] Could not fetch https://www.box.com/pricing: 403 Client Error: Forbidden for url: https://www.box.com/pricing
+  [step] Extracting company profile...
+  BOX: scraped=3038 search=5530 industry='Enterprise Software / Content Management'
+== SentinelOne
+  [scraper] Scraping: https://www.sentinelone.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://craft.co/sentinelone/competitors: 403 Client Error: Forbidden for url: https://craft.co/sentinelone/competitors
+  [scraper] Could not fetch https://www.sangfor.com/blog/cybersecurity/sentinelone-competitors-15-alternatives-endpoint-security-2025: 403 Client Error: Forbidden for url: https://www.sangfor.com/blog/cybersecurity/sentinelone-competitors-15-alternatives-endpoint-security-2025
+  S: scraped=5999 search=5240 industry='Cybersecurity / Enterprise Security'
+== RingCentral
+  [scraper] Scraping: https://www.ringcentral.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.trustradius.com/categories/unified-communications-as-a-service-ucaas: 403 Client Error: Forbidden for url: https://www.trustradius.com/categories/unified-communications-as-a-service-ucaas
+  RNG: scraped=6000 search=6000 industry='Cloud Communications / Unified Communications as a'
+== Teradata
+  [scraper] Scraping: https://www.teradata.com
+  [scraper] Could not fetch https://www.teradata.com/about: HTTPSConnectionPool(host='www.teradata.com', port=443): Read timed out. (read timeout=10)
+  [scraper] Could not fetch https://www.teradata.com/product: HTTPSConnectionPool(host='www.teradata.com', port=443): Read timed out. (read timeout=10)
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.gartner.com/reviews/market/cloud-database-management-systems/vendor/teradata/alternatives: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/market/cloud-database-management-systems/vendor/teradata/alternatives
+  [scraper] Could not fetch https://6sense.com/tech/data-science-and-machine-learning/teradata-vantage-market-share: 403 Client Error: Forbidden for url: https://6sense.com/tech/data-science-and-machine-learning/teradata-vantage-market-share
+  TDC: scraped=5686 search=4737 industry='Data Analytics & Artificial Intelligence'
+== SailPoint
+  [scraper] Scraping: https://www.sailpoint.com
+  [scraper] Could not fetch https://www.sailpoint.com/about: 404 Client Error: Not Found for url: https://www.sailpoint.com/about
+  [scraper] Could not fetch https://www.sailpoint.com/product: 404 Client Error: Not Found for url: https://www.sailpoint.com/product
+  [scraper] Could not fetch https://www.sailpoint.com/pricing: 404 Client Error: Not Found for url: https://www.sailpoint.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://sourceforge.net/software/product/SailPoint/alternatives: 403 Client Error: Forbidden for url: https://sourceforge.net/software/product/SailPoint/alternatives
+  [scraper] Could not fetch https://6sense.com/tech/identity-and-access-management/sailpoint-identityiq-market-share: 403 Client Error: Forbidden for url: https://6sense.com/tech/identity-and-access-management/sailpoint-identityiq-market-share
+  SAIL: scraped=3043 search=4251 industry='Identity and Access Management (IAM) / Cybersecuri'
+== Arlo
+  [scraper] Scraping: https://www.arlo.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://portersfiveforce.com/blogs/competitors/arlo: 404 Client Error: Not Found for url: https://portersfiveforce.com/blogs/competitors/arlo
+  ARLO: scraped=358 search=5005 industry='Smart Home Security'
+== Ubiquiti
+  [scraper] Scraping: https://www.ui.com
+  [scraper] Could not fetch https://www.ui.com: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://www.ui.com/about: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://www.ui.com/product: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://www.ui.com/pricing: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://www.gartner.com/reviews/market/enterprise-wired-wireless-lan/vendor/ubiquiti/alternatives: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/market/enterprise-wired-wireless-lan/vendor/ubiquiti/alternatives
+  [scraper] Could not fetch https://www.owler.com/company/ubiquitinetworks/competitors: 403 Client Error: Forbidden for url: https://www.owler.com/company/ubiquitinetworks/competitors
+  UI: scraped=0 search=5115 industry='technology'
+== Trex
+  [scraper] Scraping: https://www.trex.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://umbrex.com/resources/company-profiles/trex-company/: 403 Client Error: Forbidden for url: https://umbrex.com/resources/company-profiles/trex-company/
+  TREX: scraped=6000 search=5283 industry='Building Materials / Outdoor Living / Composite De'
+== Insperity
+  [scraper] Scraping: https://www.insperity.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.gartner.com/reviews/product/insperity/alternatives: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/product/insperity/alternatives
+  [scraper] Could not fetch https://peoplemanagingpeople.com/tools/best-insperity-competitors-2/: 403 Client Error: Forbidden for url: https://peoplemanagingpeople.com/tools/best-insperity-competitors-2/
+  [scraper] Could not fetch https://gusto.com/resources/guides/best-insperity-alternatives: 403 Client Error: Forbidden for url: https://gusto.com/resources/guides/best-insperity-alternatives
+  NSP: scraped=6000 search=4589 industry='Human Resources (HR) Services & Technology / Profe'
+== Benchmark Electronics
+  [scraper] Scraping: https://www.bench.com
+  [scraper] Could not fetch https://www.bench.com/about: 404 Client Error: Not Found for url: https://www.bench.com/about
+  [scraper] Could not fetch https://www.bench.com/product: 404 Client Error: Not Found for url: https://www.bench.com/product
+  [scraper] Could not fetch https://www.bench.com/pricing: 404 Client Error: Not Found for url: https://www.bench.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://pitchbook.com/profiles/company/41136-49: 403 Client Error: Forbidden for url: https://pitchbook.com/profiles/company/41136-49
+  [scraper] Could not fetch https://www.raypcb.com/largest-ems-companies/: HTTPSConnectionPool(host='www.raypcb.com', port=443): Max retries exceeded with url: /largest-ems-companies/ (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)')))
+  BHE: scraped=3040 search=4984 industry='Electronics Engineering & Manufacturing Services ('
+== Clearwater Analytics
+  [scraper] Scraping: https://clearwateranalytics.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://portersfiveforce.com/blogs/competitors/clearwateranalytics: 404 Client Error: Not Found for url: https://portersfiveforce.com/blogs/competitors/clearwateranalytics
+  CWAN: scraped=6000 search=5695 industry='Financial Technology / Investment Management Softw'
+== Weatherford
+  [scraper] Scraping: https://www.weatherford.com
+  [scraper] Could not fetch https://www.weatherford.com: 403 Client Error: Forbidden for url: https://www.weatherford.com/
+  [scraper] Could not fetch https://www.weatherford.com/about: 403 Client Error: Forbidden for url: https://www.weatherford.com/about
+  [scraper] Could not fetch https://www.weatherford.com/product: 403 Client Error: Forbidden for url: https://www.weatherford.com/product
+  [scraper] Could not fetch https://www.weatherford.com/pricing: 403 Client Error: Forbidden for url: https://www.weatherford.com/pricing
+  [scraper] Could not fetch https://www.comparably.com/companies/weatherford-international/competitors: 403 Client Error: Forbidden for url: https://www.comparably.com/companies/weatherford-international/competitors
+  [scraper] Could not fetch https://www.owler.com/company/weatherford/competitors: 403 Client Error: Forbidden for url: https://www.owler.com/company/weatherford/competitors
+  [scraper] Could not fetch https://markets.apistemic.com/companies/weatherford-yp6d9: 403 Client Error: Forbidden for url: https://markets.apistemic.com/companies/weatherford-yp6d9
+  WFRD: scraped=0 search=4541 industry='technology'
+== NETGEAR
+  [scraper] Scraping: https://www.netgear.com
+  [scraper] Could not fetch https://www.netgear.com: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://www.netgear.com/about: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://www.netgear.com/product: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://www.netgear.com/pricing: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://www.gartner.com/reviews/market/data-center-and-cloud-networking/vendor/netgear/alternatives: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/market/data-center-and-cloud-networking/vendor/netgear/alternatives
+  [scraper] Could not fetch https://www.owler.com/company/netgear/competitors: 403 Client Error: Forbidden for url: https://www.owler.com/company/netgear/competitors
+  [scraper] Could not fetch https://www.similarweb.com/website/netgear.com/: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  NTGR: scraped=0 search=4506 industry='technology'
+== Herbalife
+  [scraper] Scraping: https://www.herbalife.com
+  [scraper] Could not fetch https://www.herbalife.com/about: 503 Server Error: Service Unavailable for url: https://www.herbalife.com/about
+  [scraper] Could not fetch https://www.herbalife.com/product: 503 Server Error: Service Unavailable for url: https://www.herbalife.com/product
+  [scraper] Could not fetch https://www.herbalife.com/pricing: 503 Server Error: Service Unavailable for url: https://www.herbalife.com/pricing
+  [step] Extracting company profile...
+  HLF: scraped=3044 search=6000 industry='Health & Wellness / Nutrition'
+== Conduent
+  [scraper] Scraping: https://www.conduent.com
+  [scraper] Could not fetch https://www.conduent.com/about: 404 Client Error: Not Found for url: https://www.conduent.com/about
+  [scraper] Could not fetch https://www.conduent.com/product: 404 Client Error: Not Found for url: https://www.conduent.com/product
+  [scraper] Could not fetch https://www.conduent.com/pricing: 404 Client Error: Not Found for url: https://www.conduent.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://portersfiveforce.com/blogs/competitors/conduent: 404 Client Error: Not Found for url: https://portersfiveforce.com/blogs/competitors/conduent
+  [scraper] Could not fetch https://www.gartner.com/reviews/market/customer-management-bpo-service-providers: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/market/customer-management-bpo-service-providers
+  CNDT: scraped=3043 search=5503 industry='Business Process Outsourcing (BPO) / Enterprise Te'
+== Aviat Networks
+  [scraper] Scraping: https://aviatnetworks.com
+  [scraper] Could not fetch https://aviatnetworks.com: 403 Client Error: Forbidden for url: https://aviatnetworks.com/
+  [scraper] Could not fetch https://aviatnetworks.com/about: 403 Client Error: Forbidden for url: https://aviatnetworks.com/about
+  [scraper] Could not fetch https://aviatnetworks.com/product: 403 Client Error: Forbidden for url: https://aviatnetworks.com/product
+  [scraper] Could not fetch https://aviatnetworks.com/pricing: 403 Client Error: Forbidden for url: https://aviatnetworks.com/pricing
+  [scraper] Could not fetch https://tracxn.com/d/companies/aviat-networks/__ZW8M2S_fHBzyT5TZwsDab616M_VxpfONRRZjFhUxhX0: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://aviatnetworks.com/: 403 Client Error: Forbidden for url: https://aviatnetworks.com/
+  [scraper] Could not fetch https://craft.co/aviat-networks/competitors: 403 Client Error: Forbidden for url: https://craft.co/aviat-networks/competitors
+  AVNW: scraped=0 search=4510 industry='technology'
+== Backblaze
+  [scraper] Scraping: https://www.backblaze.com
+  [scraper] Could not fetch https://www.backblaze.com/about: 404 Client Error: Not Found for url: https://www.backblaze.com/about
+  [scraper] Could not fetch https://www.backblaze.com/product: 404 Client Error: Not Found for url: https://www.backblaze.com/product
+  [scraper] Could not fetch https://www.backblaze.com/pricing: 404 Client Error: Not Found for url: https://www.backblaze.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.gartner.com/reviews/market/file-and-object-storage-platforms/vendor/backblaze/alternatives: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/market/file-and-object-storage-platforms/vendor/backblaze/alternatives
+  [scraper] Could not fetch https://thectoclub.com/tools/best-backblaze-alternative/: 403 Client Error: Forbidden for url: https://thectoclub.com/tools/best-backblaze-alternative/
+  BLZE: scraped=3044 search=5057 industry='Cloud Storage / Data Infrastructure'
+== DISCO
+  [scraper] Scraping: https://csdisco.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.gartner.com/reviews/product/disco/alternatives: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/product/disco/alternatives
+  LAW: scraped=6000 search=6000 industry='Legal Technology (LegalTech) / E-Discovery'
+== DHI Group
+  [scraper] Scraping: https://www.dhigroupinc.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://t.me/SaluteTalents_bot: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  DHX: scraped=6000 search=5357 industry='Tech Talent Recruitment / Human Resources Technolo'
+== Black Rifle Coffee
+  [scraper] Scraping: https://www.blackriflecoffee.com
+  [scraper] Could not fetch https://www.blackriflecoffee.com/about: 404 Client Error: Not Found for url: https://www.blackriflecoffee.com/about
+  [scraper] Could not fetch https://www.blackriflecoffee.com/product: 404 Client Error: Not Found for url: https://www.blackriflecoffee.com/product
+  [scraper] Could not fetch https://www.blackriflecoffee.com/pricing: 404 Client Error: Not Found for url: https://www.blackriflecoffee.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://compworth.com/company/black-rifle-coffee-company/alternatives: 403 Client Error: Forbidden for url: https://compworth.com/company/black-rifle-coffee-company/alternatives
+  [scraper] Could not fetch https://rocketreach.co/black-rifle-coffee-company-competitors_b5ac64d7f9c7823a: 403 Client Error: Forbidden for url: https://rocketreach.co/black-rifle-coffee-company-competitors_b5ac64d7f9c7823a
+  [scraper] Could not fetch https://www.owler.com/company/blackriflecoffee: 403 Client Error: Forbidden for url: https://www.owler.com/company/blackriflecoffee
+  [scraper] Could not fetch https://www.owler.com/company/blackriflecoffee/competitors: 403 Client Error: Forbidden for url: https://www.owler.com/company/blackriflecoffee/competitors
+  BRCC: scraped=3051 search=2956 industry='Food & Beverage / Specialty Coffee'
+== WidePoint
+  [scraper] Scraping: https://www.widepoint.com
+  [scraper] Could not fetch https://www.widepoint.com/product: 404 Client Error: Not Found for url: https://www.widepoint.com/product
+  [scraper] Could not fetch https://www.widepoint.com/pricing: 404 Client Error: Not Found for url: https://www.widepoint.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.owler.com/company/widepoint: 403 Client Error: Forbidden for url: https://www.owler.com/company/widepoint
+  WYY: scraped=4033 search=5321 industry='IT Services / Cybersecurity / Managed Services'
+== CXApp
+  [scraper] Scraping: https://www.cxapp.com
+  [scraper] Could not fetch https://www.cxapp.com/about: 404 Client Error: Not Found for url: https://cxapp.com/about
+  [scraper] Could not fetch https://www.cxapp.com/product: 404 Client Error: Not Found for url: https://cxapp.com/product
+  [scraper] Could not fetch https://www.cxapp.com/pricing: 404 Client Error: Not Found for url: https://cxapp.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://pitchbook.com/profiles/company/465744-97: 403 Client Error: Forbidden for url: https://pitchbook.com/profiles/company/465744-97
+  [scraper] Could not fetch https://www.stocktitan.net/overview/CXAI/: 403 Client Error: Forbidden for url: https://www.stocktitan.net/overview/CXAI/
+  [scraper] Could not fetch https://www.marketreportanalytics.com/companies/CXAI: 403 Client Error: Forbidden for url: https://www.marketreportanalytics.com/companies/CXAI
+  CXAI: scraped=3040 search=4746 industry='Workplace Technology / Employee Experience (EX) / '
+== Phunware
+  [scraper] Scraping: https://www.phunware.com
+  [scraper] Could not fetch https://www.phunware.com: 403 Client Error: Forbidden for url: https://www.phunware.com/
+  [scraper] Could not fetch https://www.phunware.com/about: 403 Client Error: Forbidden for url: https://www.phunware.com/about
+  [scraper] Could not fetch https://www.phunware.com/product: 403 Client Error: Forbidden for url: https://www.phunware.com/product
+  [scraper] Could not fetch https://www.phunware.com/pricing: 403 Client Error: Forbidden for url: https://www.phunware.com/pricing
+  [scraper] Could not fetch https://topbusinesssoftware.com/products/Phunware/alternatives: 403 Client Error: Forbidden for url: https://topbusinesssoftware.com/products/Phunware/alternatives
+  [scraper] Could not fetch https://koalagains.com/stocks/NASDAQ/PHUN/competition: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://compworth.com/company/phunware/alternatives: 403 Client Error: Forbidden for url: https://compworth.com/company/phunware/alternatives
+  PHUN: scraped=0 search=3374 industry='technology'
+== KORE Wireless
+  [scraper] Scraping: https://www.korewireless.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.gartner.com/reviews/product/kore-wireless-managed-iot-connectivity-services/alternatives: 403 Client Error: Forbidden for url: https://www.gartner.com/reviews/product/kore-wireless-managed-iot-connectivity-services/alternatives
+  KORE: scraped=6000 search=5941 industry='IoT Connectivity & Managed Services'
+== Expion360
+  [scraper] Scraping: https://expion360.com
+  [scraper] Could not fetch https://expion360.com/about: 404 Client Error: Not Found for url: https://expion360.com/about
+  [scraper] Could not fetch https://expion360.com/product: 404 Client Error: Not Found for url: https://expion360.com/product
+  [scraper] Could not fetch https://expion360.com/pricing: 404 Client Error: Not Found for url: https://expion360.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.investing.com/equities/expion360: 403 Client Error: Forbidden for url: https://www.investing.com/equities/expion360
+  [scraper] Could not fetch https://lifestyle.cleanweb.co/story/501461/expion360-and-dealer-accessory-supply-announce-strategic-partnership-for-launch-of-dasgen-hybrid-energy-storage-system/: 403 Client Error: Forbidden for url: https://lifestyle.cleanweb.co/story/501461/expion360-and-dealer-accessory-supply-announce-strategic-partnership-for-launch-of-dasgen-hybrid-energy-storage-system/
+  XPON: scraped=3040 search=5341 industry='Energy Storage / Automotive & Marine Batteries'
+== Energy Focus
+  [scraper] Scraping: https://energyfocus.com
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.sciencedirect.com/journal/renewable-energy-focus: 403 Client Error: Forbidden for url: https://www.sciencedirect.com/journal/renewable-energy-focus
+  [scraper] Could not fetch https://www.un.org/en/climatechange/raising-ambition/renewable-energy: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://www.irena.org/publications/2020/Nov/Innovation-outlook-Thermal-energy-storage: 403 Client Error: Forbidden for url: https://www.irena.org/publications/2020/Nov/Innovation-outlook-Thermal-energy-storage
+  [scraper] Could not fetch https://www.siemens-energy.com/: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  EFOI: scraped=5999 search=3614 industry='Renewable Energy & LED Lighting Technology'
+== Tandy Leather
+  [scraper] Scraping: https://www.tandyleather.com
+  [scraper] Could not fetch https://www.tandyleather.com/about: 404 Client Error: Not Found for url: https://tandyleather.com/about
+  [scraper] Could not fetch https://www.tandyleather.com/product: 404 Client Error: Not Found for url: https://tandyleather.com/product
+  [scraper] Could not fetch https://www.tandyleather.com/pricing: 404 Client Error: Not Found for url: https://tandyleather.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://www.similarweb.com/website/leathercraft.com/competitors/: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  TLF: scraped=3047 search=5677 industry='Leathercraft Supplies & Education'
+== Zynex Medical
+  [scraper] Scraping: https://www.zynex.com
+  [scraper] Could not fetch https://www.zynex.com/about: 404 Client Error: Not Found for url: https://altiveramedical.com/about
+  [scraper] Could not fetch https://www.zynex.com/product: 404 Client Error: Not Found for url: https://altiveramedical.com/product
+  [scraper] Could not fetch https://www.zynex.com/pricing: 404 Client Error: Not Found for url: https://altiveramedical.com/pricing
+  [step] Extracting company profile...
+  [scraper] Could not fetch https://craft.co/zynex/competitors: 403 Client Error: Forbidden for url: https://craft.co/zynex/competitors
+  [scraper] Could not fetch https://tracxn.com/d/companies/zynex/__NqVh9liqwBoCzDfXJXMUyQah0sJLL9HVpwG97Vt4-SM: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  [scraper] Could not fetch https://leadiq.com/c/zynex-medical/5a1d8a9f2400002400647362: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+  ZYXI: scraped=3040 search=4621 industry='Medical Technology / Rehabilitation & Orthopedic D'

@@ -1,0 +1,68 @@
+{
+ "id": "MDB",
+ "homepage": "https://www.mongodb.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: MongoDB\nINDUSTRY: Database Management Systems / Data Platform\nPRODUCT OR SERVICE: An intelligent, multi-cloud data platform (MongoDB Atlas) that combines operational, analytical, and vector search capabilities in a single document-based database system designed for the AI era.\nTARGET CUSTOMERS: Software developers, data engineers, and enterprises building modern, real-time, hybrid, or multi-cloud applications, including those developing AI agents and generative AI apps.\nPRICING MODEL: Freemium / Enterprise / Usage-based (implied by \"Get Started\" and cloud platform nature)\nKEY FEATURES:\n- Unified platform for operational data, vector search, and stream processing\n- Multi-cloud and on-premise deployment flexibility\n- Document data model with rich query capabilities and ACID transactions\n- Atlas Agent Engine for running AI agents at scale\n- Integrated search, analytics, and geospatial capabilities\nUNIQUE SELLING POINTS:\n- Combines real-time operational data, vectors, and elastic scale in one platform\n- Built specifically for unpredictable AI demand and the AI era\n- Eliminates the need for multiple systems (database, search engine, sync) by unifying them\n- Proven scalability from origins in high-volume ad serving (400,000 ads/second)\nTONE & POSITIONING: Enterprise / Developer-focused / Premium",
+ "industry": "Database Management Systems / Data Platform",
+ "query": "top direct competitors of MongoDB in Database Management Systems / Data Platform",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.g2.com/products/ibm-mongodb/competitors/alternatives",
+   "used": false
+  },
+  {
+   "url": "https://www.geeksforgeeks.org/blogs/top-mongodb-alternatives/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.datastackhub.com/alternatives-to/mongodb-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.softwarereviews.com/categories/119/products/3354/alternatives",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.distillintelligence.com/competitors/mongodb",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.softwaresuggest.com/mongodb/alternatives",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.scaler.com/topics/mongodb-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.metacto.com/blogs/mongodb-competitors-a-deep-dive-into-the-top-12-alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.techjockey.com/alternatives/mongodb",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://panoply.io/top-5-alternatives-to-mongodb/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:22:09",
+ "scraped_sha256": "e292390166a3023ef5daef4016c4448410aae67d042bde472cf90c9200d7b0a7",
+ "search_content_sha256": "1f9a50a2b3b626031d63c425b06ccba3193080a855a70c205c04cd01d2beef99",
+ "search_content_chars": 5958,
+ "stripped": true
+}

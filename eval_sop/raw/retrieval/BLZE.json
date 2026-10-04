@@ -1,0 +1,68 @@
+{
+ "id": "BLZE",
+ "homepage": "https://www.backblaze.com",
+ "scraped_chars": 3046,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Backblaze\nINDUSTRY: Cloud Storage / Data Infrastructure\nPRODUCT OR SERVICE: High-performance cloud storage solutions, including S3-compatible object storage (B2), premium high-throughput storage (B2 Overdrive), and specialized storage for AI workloads and neoclouds.\nTARGET CUSTOMERS: AI developers, neoclouds, enterprise organizations, content creators, and businesses requiring backup, archive, or high-throughput data storage.\nPRICING MODEL: Freemium / Usage-based (Offers \"Start Free\" and \"Contact Sales\" for enterprise; emphasizes predictable economics and free egress)\nKEY FEATURES:\n- S3-compatible object storage with no S3 limits\n- High-throughput capabilities (up to 1Tbps) for AI and data-heavy workloads\n- Free egress fees to eliminate unpredictable costs\n- Multi-exabyte scale support with reliable HDD-based infrastructure\n- Integration flexibility across clouds and tech stacks without vendor lock-in\nUNIQUE SELLING POINTS:\n- Eliminates hyperscaler egress fees\n- Delivers high performance (terabit speeds) without compromising on cost\n- Predictable pricing and economics\n- Specialized solutions for AI workloads and neocloud platform expansion\nTONE & POSITIONING: Enterprise / Developer-focused / Performance-oriented",
+ "industry": "Cloud Storage / Data Infrastructure",
+ "query": "top direct competitors of Backblaze in Cloud Storage / Data Infrastructure",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.g2.com/products/backblaze-b2-cloud-storage/competitors/alternatives",
+   "used": false
+  },
+  {
+   "url": "https://www.cbinsights.com/company/backblaze/alternatives-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.gartner.com/reviews/market/file-and-object-storage-platforms/vendor/backblaze/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.cloudwards.net/best-backblaze-alternative/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://thectoclub.com/tools/best-backblaze-alternative/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.distillintelligence.com/competitors/backblaze",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://controlmonkey.io/resource/cloud-backup-services/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.techjockey.com/alternatives/backblaze",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://craft.co/backblaze/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.cloudwards.net/idrive-vs-backblaze/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:29:35",
+ "scraped_sha256": "2321f931c3df2e69f64a4937dffd08ef263c23d86f5e8e189c67f423f78244d2",
+ "search_content_sha256": "4bac99b62dc1ebeaa70db2bdf17c373f53748198927995dd8cb10139b6d1d140",
+ "search_content_chars": 5057,
+ "stripped": true
+}

@@ -1,0 +1,69 @@
+{
+ "id": "DASH",
+ "homepage": "https://www.doordash.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: DoorDash\nINDUSTRY: On-demand delivery / Marketplace\nPRODUCT OR SERVICE: A digital platform that connects consumers with local restaurants, grocery stores, and retailers for same-day delivery and pickup of food, groceries, alcohol, and general merchandise.\nTARGET CUSTOMERS: Consumers seeking convenient food and grocery delivery; local merchants and restaurants looking to expand reach; independent delivery drivers (Dashers) seeking flexible income.\nPRICING MODEL: Freemium (DashPass subscription for reduced fees) / Transaction-based (delivery and service fees)\nKEY FEATURES:\n- Multi-category marketplace including food, grocery, convenience, alcohol, flowers, and pet supplies.\n- DashPass subscription offering $0 delivery fees and exclusive savings.\n- DashMart, a proprietary virtual store for fresh groceries and essentials.\n- Package Pickup service for prepaid carrier packages (UPS, FedEx, USPS).\n- Flexible scheduling for independent delivery drivers.\nUNIQUE SELLING POINTS:\n- \"Everything you crave, delivered\" in one app, consolidating multiple errands.\n- Empowers local economies by connecting local merchants with new customers.\n- Offers 0% commission for up to 30 days for new merchants.\n- Claims to be the #1 Food and Drink App in the U.S.\nTONE & POSITIONING: Consumer-friendly / Convenience-focused / Community-oriented",
+ "industry": "On-demand delivery / Marketplace",
+ "query": "top direct competitors of DoorDash in On-demand delivery / Marketplace",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://businessmodelanalyst.com/doordash-competitors-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://champsignal.com/competitors/doordash.com",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://fourweekmba.com/doordash-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.growthnavigate.com/doordash-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.hudson-labs.com/research/doordash-competitors-dash-top-peers-in-2026",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://enatega.com/doordash-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.cheddarflow.com/blog/the-best-doordash-competitors-for-convenient-food-delivery/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://calgaryappdeveloper.ca/blog/doordash-alternatives-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.restolabs.com/blog/doordash-alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://bestreferraldriver.com/doordash-competitors.html",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:20:10",
+ "scraped_sha256": "3a694f3542b386b656dfd68ee5e140c055eb235d362a01f1c87d727f59a722f4",
+ "search_content_sha256": "b25dd7c1c22101456402a15c97c01a49d280a67cece3a31efa6a9411d704168f",
+ "search_content_chars": 6000,
+ "stripped": true
+}

@@ -1,0 +1,68 @@
+{
+ "id": "NSP",
+ "homepage": "https://www.insperity.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Insperity\nINDUSTRY: Human Resources (HR) Services & Technology / Professional Employer Organization (PEO)\nPRODUCT OR SERVICE: Insperity provides a combination of HR technology platforms and consultative or full-service PEO solutions, including payroll, benefits administration, compliance, and talent acquisition.\nTARGET CUSTOMERS: Small, midsize, and large businesses (ranging from under 50 to 5,000 employees) across various industries such as manufacturing, IT/technology, professional services, and financial services.\nPRICING MODEL: Enterprise / Subscription (Custom pricing based on company size and selected service tier)\nKEY FEATURES:\n- Tiered product offerings: Insperity HR Core (tech + service), Insperity HR 360 (full-service PEO), and Insperity HR Scale (Workday-based PEO for complex needs).\n- Comprehensive HR administration including payroll, compliance, and benefits management.\n- Talent acquisition and contractor management services.\n- Integration with Workday technology for larger enterprises.\n- Retirement and insurance services.\nUNIQUE SELLING POINTS:\n- \"Award-winning\" HR service and technology with 40 years of innovation.\n- Flexible tiers allowing businesses to choose between technology-only support or full-service PEO co-employment.\n- Specific solution (HR Scale) leveraging Workday for businesses with complex HR technology requirements.\n- Focus on \"HR Cost Clarity\" and competitive employee benefits.\nTONE & POSITIONING: Enterprise / Professional / Trustworthy",
+ "industry": "Human Resources (HR) Services & Technology / Professional Employer Organization (PEO)",
+ "query": "top direct competitors of Insperity in Human Resources (HR) Services & Technology / Professional Employer Organization (PEO)",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.rippling.com/blog/insperity-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.gartner.com/reviews/product/insperity/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://peoplemanagingpeople.com/tools/best-insperity-competitors-2/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.g2.com/products/insperity/competitors/alternatives",
+   "used": false
+  },
+  {
+   "url": "https://www.latterly.org/insperity-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.rippling.com/blog/peo-companies",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://gusto.com/resources/guides/best-insperity-alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.insperity.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://peospectrum.com/blog/insperity-competitors-2/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.businessnewsdaily.com/8126-best-peo-for-small-businesses.html",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:27:30",
+ "scraped_sha256": "3d442b61aa9424fda5d8d1bf3488335b275294824a0132d3cb6b7faa9796c209",
+ "search_content_sha256": "3a0d46b10e0c7b2b0447ea3f241cfbcc7b62805352002349ae59e902a704647f",
+ "search_content_chars": 4589,
+ "stripped": true
+}

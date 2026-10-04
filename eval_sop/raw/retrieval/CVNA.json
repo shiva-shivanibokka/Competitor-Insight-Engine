@@ -1,0 +1,69 @@
+{
+ "id": "CVNA",
+ "homepage": "https://www.carvana.com",
+ "scraped_chars": 3044,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Carvana\nINDUSTRY: Automotive Retail / E-commerce\nPRODUCT OR SERVICE: Online marketplace for buying and selling used, certified pre-owned, and new vehicles, including financing, insurance, and home delivery services.\nTARGET CUSTOMERS: Individual consumers looking to purchase or sell vehicles online, ranging from budget-conscious buyers to those seeking premium or electric vehicles.\nPRICING MODEL: Transaction-based (Vehicle sales, financing interest, insurance premiums)\nKEY FEATURES:\n- 100% online car buying experience with home delivery or pickup from \"Carvana Vending Machines\"\n- Instant financing pre-qualification with no credit impact\n- Quick car selling process with offers generated in under 2 minutes\n- Integrated insurance services (powered by Root) with a \"3-click\" setup\n- Carvana Value Tracker for monitoring vehicle value over time\nUNIQUE SELLING POINTS:\n- \"Shaq's kind of car-buying\" branding emphasizing a fun, frictionless, and transparent process\n- Zero shipping costs for vehicles with local inventory\n- Real-time repricing of inventory to ensure competitive market pricing\n- Convenience of buying, financing, and insuring a car entirely online without visiting a dealership\nTONE & POSITIONING: Consumer-friendly, modern, transparent, and convenience-focused",
+ "industry": "Automotive Retail / E-commerce",
+ "query": "top direct competitors of Carvana in Automotive Retail / E-commerce",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://craft.co/carvana/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.hudson-labs.com/research/carvana-competitors-cvna-peer-comparison-2026",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://tracxn.com/d/companies/carvana/__J2MerpapKC8QpqX8hy2OIY7jDRBDz6Gseyrn6qVI9G8",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://fourweekmba.com/carvana-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.carvana.com/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.marketbeat.com/stocks/NYSE/CVNA/competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.cbinsights.com/company/carvana",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://visuwire.com/companies/carvana/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.growthnavigate.com/carvana-competitors-compared-which-online-car-seller-should-you-trust",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://bstrategyhub.com/carvana-competitors-alternatives/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:22:20",
+ "scraped_sha256": "f91b60a533aa8f69749e451666fbca484a3aa7e0d1796213ddbbb58bbf19ecac",
+ "search_content_sha256": "e385b7dc4901e238369d99c25cafc26eb4bb13dc80192708d8147d525077b7e7",
+ "search_content_chars": 5030,
+ "stripped": true
+}

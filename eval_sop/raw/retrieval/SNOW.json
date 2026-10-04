@@ -1,0 +1,68 @@
+{
+ "id": "SNOW",
+ "homepage": "https://www.snowflake.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Snowflake\nINDUSTRY: Data Cloud / Enterprise Data & AI Platform\nPRODUCT OR SERVICE: A fully managed, cross-cloud data platform that unifies data engineering, analytics, AI, and application development. It enables organizations to ingest, process, analyze, and share data securely while supporting diverse workloads including transactional, analytical, and AI models.\nTARGET CUSTOMERS: Large enterprises and global organizations (e.g., Under Armour, Novo Nordisk, Booking.com) seeking to modernize data infrastructure, eliminate data silos, and scale AI initiatives.\nPRICING MODEL: Enterprise / Usage-based (implied by \"optimal pricing\" and enterprise focus; specific model not detailed in text but standard for the category)\nKEY FEATURES:\n- Fully managed service with near-zero maintenance for data pipelines and analytics\n- Unified security, governance, observability, and disaster recovery across clouds\n- Integrated AI capabilities for creating and deploying LLMs and ML models (Snowflake CoCo and CoWork)\n- Cross-cloud ecosystem with interoperability with open table formats\n- Snowflake Marketplace with 3,400+ ready-to-use data and application listings\nUNIQUE SELLING POINTS:\n- \"One-stop shop\" for enterprise data and AI, combining infrastructure, analytics, and AI agents\n- Ability to unify transactional, analytical, and AI workloads on a single platform\n- Focus on \"universal business continuity\" with always-on security and disaster recovery\n- Agentic AI integration (CoWork and CoCo) to bring AI to all data within the enterprise perimeter\nTONE & POSITIONING: Enterprise / Premium / Developer-focused",
+ "industry": "Data Cloud / Enterprise Data & AI Platform",
+ "query": "top direct competitors of Snowflake in Data Cloud / Enterprise Data & AI Platform",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.hudson-labs.com/research/snowflake-competitors-snow-key-peers-in-2026",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.datacamp.com/blog/snowflake-competitor",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://julius.ai/articles/snowflake-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.g2.com/products/snowflake/competitors/alternatives",
+   "used": false
+  },
+  {
+   "url": "https://www.doit.com/blog/snowflake-competitors-compared",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://data.folio3.com/blog/snowflake-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.dremio.com/blog/snowflake-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.flexera.com/blog/finops/snowflake-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://businessmodelanalyst.com/snowflake-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://ithy.com/article/snowflake-competitors-analysis-xrdheu6v",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:20:37",
+ "scraped_sha256": "6c6d256bb6531c0949369d435e22ab4240554dc601453bcbb95e4e1021363c1e",
+ "search_content_sha256": "ec0a641d5e9752e3ec1e7759d0c72c7913616459c76974b15d5ca4a19508ffff",
+ "search_content_chars": 6000,
+ "stripped": true
+}

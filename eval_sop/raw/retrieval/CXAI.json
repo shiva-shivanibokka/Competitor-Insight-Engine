@@ -1,0 +1,69 @@
+{
+ "id": "CXAI",
+ "homepage": "https://www.cxapp.com",
+ "scraped_chars": 3042,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: CXAI\nINDUSTRY: Workplace Technology / Employee Experience (EX) / SaaS\nPRODUCT OR SERVICE: An enterprise Employee Experience Platform (mobile app) that integrates desk and room booking, office mapping, internal communications, and IoT resource management to streamline daily workplace workflows.\nTARGET CUSTOMERS: Large enterprises, specifically Fortune 500 companies, and organizations with hybrid or digital workplaces.\nPRICING MODEL: Enterprise\nKEY FEATURES:\n- Desk and room booking with spatial mapping\n- Internal communications and proximity messaging\n- Office mapping and \"Find a Colleague\" functionality\n- Amenities, reservations, and event management\n- Manager dashboards for workplace analytics and utilization\nUNIQUE SELLING POINTS:\n- Built on customer experience (CX) principles and powered by AI\n- Acts as a \"concierge\" app to reduce digital friction and save employee time\n- Proven to boost employee engagement and optimize office space utilization\n- Recognized with Gold GLOBEE® awards for best user experience and smart solutions\nTONE & POSITIONING: Enterprise / Premium",
+ "industry": "Workplace Technology / Employee Experience (EX) / SaaS",
+ "query": "top direct competitors of CXApp in Workplace Technology / Employee Experience (EX) / SaaS",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://cxapp.com/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://pitchbook.com/profiles/company/465744-97",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.stocktitan.net/overview/CXAI/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://growjo.com/company/The_CXApp",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.datainsightsmarket.com/companies/CXAI",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.marketreportanalytics.com/companies/CXAI",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://finance.yahoo.com/news/cxapp-inc-nasdaq-cxai-business-130000037.html",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://coinunited.io/learn/en/getting-started/the-fundamentals-of-cxapp-inc-cxai-what-every-trader-needs-to-know",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.syfe.com/stocks/us/cxaiw",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.tradingview.com/symbols/NASDAQ-CXAI/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:30:58",
+ "scraped_sha256": "2fd7b891a5b94bdc98e6f365d116e3683675f0059b45149dabe1918d1baa7733",
+ "search_content_sha256": "fd335695226c6790b11647137df6261e50a3c46933c8bf85dbf699b24512b4fd",
+ "search_content_chars": 4746,
+ "stripped": true
+}

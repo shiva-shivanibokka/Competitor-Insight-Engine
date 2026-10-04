@@ -1,0 +1,54 @@
+{
+ "id": "PHUN",
+ "homepage": "https://www.phunware.com",
+ "scraped_chars": 0,
+ "product_would_abort": true,
+ "scraped": null,
+ "profile": "",
+ "industry": "technology",
+ "query": "top direct competitors of Phunware in technology",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.marketbeat.com/stocks/NASDAQ/PHUN/competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://topbusinesssoftware.com/products/Phunware/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://craft.co/phunware/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://koalagains.com/stocks/NASDAQ/PHUN/competition",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.advfn.com/stock-market/NASDAQ/PHUN/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://compworth.com/company/phunware/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.softwaresuggest.com/phunware/alternatives",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:31:11",
+ "scraped_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+ "search_content_sha256": "dd4c740186188b72a761586db2a11d890ca03fbea928f06f22d6b473cd6d3135",
+ "search_content_chars": 3374,
+ "stripped": true
+}

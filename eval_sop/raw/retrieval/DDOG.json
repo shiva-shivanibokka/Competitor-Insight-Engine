@@ -1,0 +1,68 @@
+{
+ "id": "DDOG",
+ "homepage": "https://www.datadoghq.com",
+ "scraped_chars": 3046,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Datadog\nINDUSTRY: Cloud Monitoring / Observability / DevOps\nPRODUCT OR SERVICE: A unified cloud monitoring and observability platform that provides infrastructure, application, and security insights through a single SaaS solution.\nTARGET CUSTOMERS: Enterprise IT teams, DevOps engineers, SREs, security teams, and digital experience teams across various industries (Financial Services, Healthcare, Retail, Technology, etc.).\nPRICING MODEL: Usage-based / Subscription\nKEY FEATURES:\n- Infrastructure and Application Performance Monitoring (APM)\n- Log Management and Data Observability\n- Cloud Security Posture Management (CSPM) and Code Security\n- Digital Experience Monitoring (RUM, Session Replay)\n- AI-powered investigation and agent capabilities (Bits AI)\nUNIQUE SELLING POINTS:\n- Named a Leader in the Gartner Magic Quadrant for Observability Platforms\n- Unified platform consolidating monitoring, security, and digital experience\n- Extensive integration ecosystem (OpenTelemetry, IDE plugins, cloud providers)\n- AI-driven features for automated investigation and security analysis\nTONE & POSITIONING: Enterprise / Premium / Developer-focused",
+ "industry": "Cloud Monitoring / Observability / DevOps",
+ "query": "top direct competitors of Datadog in Cloud Monitoring / Observability / DevOps",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://openobserve.ai/blog/datadog-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.g2.com/products/datadog/competitors/alternatives",
+   "used": false
+  },
+  {
+   "url": "https://signoz.io/blog/datadog-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.atatus.com/blog/datadog-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://uptimerobot.com/knowledge-hub/comparisons-and-alternatives/best-datadog-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.vendr.com/blog/datadog-competitors-alternatives",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://bugbug.io/blog/test-automation-tools/datadog-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://livesession.io/blog/9-best-datadog-alternatives-and-competitors-in-2025",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://checkthat.ai/brands/datadog/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://uptrace.dev/blog/datadog-competitors",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:21:11",
+ "scraped_sha256": "a94690ef87602775aefc7ab6815d4d12f6a243ad25efc733a3ad138d64595dcf",
+ "search_content_sha256": "85e1473ceeff43e58ee34ab32abb1f35944966fc00076af222ff1dda0ce6ec99",
+ "search_content_chars": 6000,
+ "stripped": true
+}

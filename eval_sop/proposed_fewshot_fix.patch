@@ -1,0 +1,58 @@
+diff --git a/backend/analyzer.py b/backend/analyzer.py
+index 5df2b3a..8523cad 100644
+--- a/backend/analyzer.py
++++ b/backend/analyzer.py
+@@ -138,18 +138,22 @@ STRICT RULES — violation means the entire output is wrong:
+ 1. Only include COMPANIES — not websites, forums, publications, or platforms
+ 2. NEVER include: Reddit, Quora, Wikipedia, LinkedIn, YouTube, Medium, Forbes, TechCrunch,
+    G2, Capterra, Trustpilot, Glassdoor, Crunchbase, ProductHunt, or any review/news/social site
+-3. Each URL must be the company's official homepage (e.g. https://www.adyen.com)
++3. Each URL must be the company's official homepage (e.g. https://www.northwind.example)
+ 4. Do NOT include the company being researched itself
+ 5. Rank competitors from most relevant (most similar product + market) to least relevant
+ 6. Return ONLY a valid JSON array — no explanation, no markdown, no extra text
+ 
+-Output format:
++Output format (placeholder names — replace them with the real competitors):
+ [
+-  {"name": "Adyen", "url": "https://www.adyen.com"},
+-  {"name": "Braintree", "url": "https://www.braintreepayments.com"},
+-  {"name": "Square", "url": "https://www.squareup.com"}
++  {"name": "Northwind", "url": "https://www.northwind.example"},
++  {"name": "Contoso", "url": "https://www.contoso.example"},
++  {"name": "Fabrikam", "url": "https://www.fabrikam.example"}
+ ]
+ """
++# The format example above deliberately uses fictional companies on the
++# reserved .example TLD. It used to show Adyen / Braintree / Square with their
++# real URLs, and a local model copied those into answers for companies that
++# have nothing to do with payments (measured in eval_sop/, see RESULTS.md).
+ 
+ def _is_valid_competitor_url(url: str, company_name: str) -> bool:
+     """Returns False if the URL is blocklisted or belongs to the main company."""
+diff --git a/backend/tests/test_backend.py b/backend/tests/test_backend.py
+index 3171926..c89a8fe 100644
+--- a/backend/tests/test_backend.py
++++ b/backend/tests/test_backend.py
+@@ -137,6 +137,21 @@ def test_extract_competitors_dedups_and_filters(monkeypatch):
+     assert len(out) == 2  # adyen deduped by domain
+ 
+ 
++def test_competitor_prompt_examples_are_fictional():
++    # The format example used to be Adyen / Braintree / Square with their real
++    # URLs. A small local model copied them into answers for unrelated
++    # companies (measured in eval_sop/, see RESULTS.md). Example URLs must use
++    # the reserved .example TLD (RFC 2606) so nothing in the prompt is a real
++    # company the model can echo.
++    import re
++
++    urls = re.findall(r"https?://[^\s\"')]+", analyzer.COMPETITOR_EXTRACTION_PROMPT)
++    assert urls, "prompt should still show the expected output format"
++    assert all(re.match(r"https?://[^/]+\.example(/|$)", u) for u in urls), urls
++    for real in ("Adyen", "Braintree", "Square"):
++        assert real not in analyzer.COMPETITOR_EXTRACTION_PROMPT
++
++
+ def test_extract_competitors_handles_bad_json(monkeypatch):
+     monkeypatch.setattr(analyzer, "llm_call", lambda *a, **k: "not json at all")
+     assert extract_competitors_from_search("X", "y", model="claude-haiku-4-5") == []

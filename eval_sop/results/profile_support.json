@@ -1,0 +1,4543 @@
+{
+ "summary": {
+  "all": {
+   "n_companies": 40,
+   "n_claims": 499,
+   "support_rate_mean_over_companies": 0.6376,
+   "ci95": [
+    0.5597,
+    0.7099
+   ]
+  },
+  "large": {
+   "n_companies": 14,
+   "n_claims": 179,
+   "support_rate_mean_over_companies": 0.6279,
+   "ci95": [
+    0.5496,
+    0.7087
+   ]
+  },
+  "mid": {
+   "n_companies": 13,
+   "n_claims": 166,
+   "support_rate_mean_over_companies": 0.5884,
+   "ci95": [
+    0.4256,
+    0.7283
+   ]
+  },
+  "small": {
+   "n_companies": 13,
+   "n_claims": 154,
+   "support_rate_mean_over_companies": 0.6973,
+   "ci95": [
+    0.5395,
+    0.8307
+   ]
+  },
+  "by_scrape_length_claim_level": {
+   "lt_1000_chars": {
+    "n_claims": 30,
+    "support_rate": 0.2
+   },
+   "ge_1000_chars": {
+    "n_claims": 469,
+    "support_rate": 0.6674
+   }
+  }
+ },
+ "claims": [
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "DoorDash industry: On-demand delivery / Marketplace",
+   "p_entail": 0.3564,
+   "supported": 0
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "DoorDash product or service: A digital platform that connects consumers with local restaurants, grocery stores, and retailers for same-day delivery and pickup of food, groceries, alcohol, and general merchandise.",
+   "p_entail": 0.499,
+   "supported": 0
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "DoorDash target customers: Consumers seeking convenient food and grocery delivery; local merchants and restaurants looking to expand reach; independent delivery drivers (Dashers) seeking flexible income.",
+   "p_entail": 0.0238,
+   "supported": 0
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "DoorDash pricing model: Freemium (DashPass subscription for reduced fees) / Transaction-based (delivery and service fees)",
+   "p_entail": 0.0378,
+   "supported": 0
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DoorDash key features: Multi-category marketplace including food, grocery, convenience, alcohol, flowers, and pet supplies.",
+   "p_entail": 0.9891,
+   "supported": 1
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DoorDash key features: DashPass subscription offering $0 delivery fees and exclusive savings.",
+   "p_entail": 0.9423,
+   "supported": 1
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DoorDash key features: DashMart, a proprietary virtual store for fresh groceries and essentials.",
+   "p_entail": 0.0631,
+   "supported": 0
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DoorDash key features: Package Pickup service for prepaid carrier packages (UPS, FedEx, USPS).",
+   "p_entail": 0.1475,
+   "supported": 0
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DoorDash key features: Flexible scheduling for independent delivery drivers.",
+   "p_entail": 0.0314,
+   "supported": 0
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "DoorDash unique selling points: \"Everything you crave, delivered\" in one app, consolidating multiple errands.",
+   "p_entail": 0.9504,
+   "supported": 1
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "DoorDash unique selling points: Empowers local economies by connecting local merchants with new customers.",
+   "p_entail": 0.9756,
+   "supported": 1
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "DoorDash unique selling points: Offers 0% commission for up to 30 days for new merchants.",
+   "p_entail": 0.7258,
+   "supported": 1
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "DoorDash unique selling points: Claims to be the #1 Food and Drink App in the U.S.",
+   "p_entail": 0.0172,
+   "supported": 0
+  },
+  {
+   "id": "DASH",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "DoorDash tone & positioning: Consumer-friendly / Convenience-focused / Community-oriented",
+   "p_entail": 0.0463,
+   "supported": 0
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "INDUSTRY",
+   "claim": "Zoom industry: Communication & Collaboration / Enterprise Software",
+   "p_entail": 0.9702,
+   "supported": 1
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Zoom product or service: An AI-first work platform offering a suite of tools including video conferencing, chat, phone, mail, calendar, and customer experience solutions.",
+   "p_entail": 0.9774,
+   "supported": 1
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Zoom target customers: Small and midsize businesses, enterprises, developers, and specific industries such as education, healthcare, financial services, and government.",
+   "p_entail": 0.9906,
+   "supported": 1
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "PRICING MODEL",
+   "claim": "Zoom pricing model: Freemium / Enterprise",
+   "p_entail": 0.0177,
+   "supported": 0
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Zoom key features: AI-first collaboration tools (Meetings, Chat, Phone, Mail & Calendar)",
+   "p_entail": 0.9836,
+   "supported": 1
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Zoom key features: Customer Experience (CX) suite including Contact Center and Workforce Management",
+   "p_entail": 0.9718,
+   "supported": 1
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Zoom key features: Developer tools including Video SDK, Co-Browse, and APIs",
+   "p_entail": 0.9913,
+   "supported": 1
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Zoom key features: AI Productivity Suite for turning discussions into deliverables",
+   "p_entail": 0.9702,
+   "supported": 1
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Zoom key features: Extensive marketplace with thousands of integrations and apps",
+   "p_entail": 0.9326,
+   "supported": 1
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Zoom unique selling points: \"AI that turns conversations into action\"",
+   "p_entail": 0.9618,
+   "supported": 1
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Zoom unique selling points: Unified platform connecting communication, productivity, and employee engagement",
+   "p_entail": 0.97,
+   "supported": 1
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Zoom unique selling points: Comprehensive business services for sales, marketing, and HR",
+   "p_entail": 0.1731,
+   "supported": 0
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Zoom unique selling points: Robust developer ecosystem for embedding and integrating Zoom technology",
+   "p_entail": 0.0343,
+   "supported": 0
+  },
+  {
+   "id": "ZM",
+   "tier": "large",
+   "scraped_chars": 5999,
+   "field": "TONE & POSITIONING",
+   "claim": "Zoom tone & positioning: Enterprise / Professional / Developer-focused",
+   "p_entail": 0.0923,
+   "supported": 0
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "Snowflake industry: Data Cloud / Enterprise Data & AI Platform",
+   "p_entail": 0.0995,
+   "supported": 0
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Snowflake product or service: A fully managed, cross-cloud data platform that unifies data engineering, analytics, AI, and application development. It enables organizations to ingest, process, analyze, and share data securely while supporting diverse workloads including transactional, analytical, and AI models.",
+   "p_entail": 0.985,
+   "supported": 1
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Snowflake target customers: Large enterprises and global organizations (e.g., Under Armour, Novo Nordisk, Booking.com) seeking to modernize data infrastructure, eliminate data silos, and scale AI initiatives.",
+   "p_entail": 0.0123,
+   "supported": 0
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "Snowflake pricing model: Enterprise / Usage-based (implied by \"optimal pricing\" and enterprise focus; specific model not detailed in text but standard for the category)",
+   "p_entail": 0.0373,
+   "supported": 0
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Snowflake key features: Fully managed service with near-zero maintenance for data pipelines and analytics",
+   "p_entail": 0.6722,
+   "supported": 1
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Snowflake key features: Unified security, governance, observability, and disaster recovery across clouds",
+   "p_entail": 0.9787,
+   "supported": 1
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Snowflake key features: Integrated AI capabilities for creating and deploying LLMs and ML models (Snowflake CoCo and CoWork)",
+   "p_entail": 0.8482,
+   "supported": 1
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Snowflake key features: Cross-cloud ecosystem with interoperability with open table formats",
+   "p_entail": 0.9831,
+   "supported": 1
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Snowflake key features: Snowflake Marketplace with 3,400+ ready-to-use data and application listings",
+   "p_entail": 0.0749,
+   "supported": 0
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Snowflake unique selling points: \"One-stop shop\" for enterprise data and AI, combining infrastructure, analytics, and AI agents",
+   "p_entail": 0.9791,
+   "supported": 1
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Snowflake unique selling points: Ability to unify transactional, analytical, and AI workloads on a single platform",
+   "p_entail": 0.9577,
+   "supported": 1
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Snowflake unique selling points: Focus on \"universal business continuity\" with always-on security and disaster recovery",
+   "p_entail": 0.9769,
+   "supported": 1
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Snowflake unique selling points: Agentic AI integration (CoWork and CoCo) to bring AI to all data within the enterprise perimeter",
+   "p_entail": 0.9101,
+   "supported": 1
+  },
+  {
+   "id": "SNOW",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "Snowflake tone & positioning: Enterprise / Premium / Developer-focused",
+   "p_entail": 0.0394,
+   "supported": 0
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "INDUSTRY",
+   "claim": "Datadog industry: Cloud Monitoring / Observability / DevOps",
+   "p_entail": 0.5055,
+   "supported": 1
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Datadog product or service: A unified cloud monitoring and observability platform that provides infrastructure, application, and security insights through a single SaaS solution.",
+   "p_entail": 0.8536,
+   "supported": 1
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Datadog target customers: Enterprise IT teams, DevOps engineers, SREs, security teams, and digital experience teams across various industries (Financial Services, Healthcare, Retail, Technology, etc.).",
+   "p_entail": 0.1,
+   "supported": 0
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "PRICING MODEL",
+   "claim": "Datadog pricing model: Usage-based / Subscription",
+   "p_entail": 0.1426,
+   "supported": 0
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Datadog key features: Infrastructure and Application Performance Monitoring (APM)",
+   "p_entail": 0.954,
+   "supported": 1
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Datadog key features: Log Management and Data Observability",
+   "p_entail": 0.954,
+   "supported": 1
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Datadog key features: Cloud Security Posture Management (CSPM) and Code Security",
+   "p_entail": 0.937,
+   "supported": 1
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Datadog key features: Digital Experience Monitoring (RUM, Session Replay)",
+   "p_entail": 0.669,
+   "supported": 1
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Datadog key features: AI-powered investigation and agent capabilities (Bits AI)",
+   "p_entail": 0.9846,
+   "supported": 1
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Datadog unique selling points: Named a Leader in the Gartner Magic Quadrant for Observability Platforms",
+   "p_entail": 0.0388,
+   "supported": 0
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Datadog unique selling points: Unified platform consolidating monitoring, security, and digital experience",
+   "p_entail": 0.1554,
+   "supported": 0
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Datadog unique selling points: Extensive integration ecosystem (OpenTelemetry, IDE plugins, cloud providers)",
+   "p_entail": 0.027,
+   "supported": 0
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Datadog unique selling points: AI-driven features for automated investigation and security analysis",
+   "p_entail": 0.0208,
+   "supported": 0
+  },
+  {
+   "id": "DDOG",
+   "tier": "large",
+   "scraped_chars": 3044,
+   "field": "TONE & POSITIONING",
+   "claim": "Datadog tone & positioning: Enterprise / Premium / Developer-focused",
+   "p_entail": 0.1056,
+   "supported": 0
+  },
+  {
+   "id": "PINS",
+   "tier": "large",
+   "scraped_chars": 4377,
+   "field": "INDUSTRY",
+   "claim": "Pinterest industry: Social Media / Visual Discovery / E-commerce",
+   "p_entail": 0.7852,
+   "supported": 1
+  },
+  {
+   "id": "PINS",
+   "tier": "large",
+   "scraped_chars": 4377,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Pinterest product or service: A visual discovery engine that allows users to find, save, and organize ideas (Pins) into collections (Boards), with integrated shopping features to purchase products directly from the platform.",
+   "p_entail": 0.6227,
+   "supported": 1
+  },
+  {
+   "id": "PINS",
+   "tier": "large",
+   "scraped_chars": 4377,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Pinterest target customers: General consumers seeking inspiration for lifestyle, home, fashion, and food; businesses and marketers looking to reach audiences through visual advertising.",
+   "p_entail": 0.0058,
+   "supported": 0
+  },
+  {
+   "id": "PINS",
+   "tier": "large",
+   "scraped_chars": 4377,
+   "field": "PRICING MODEL",
+   "claim": "Pinterest pricing model: Freemium (Free for individual users; paid advertising models for businesses)",
+   "p_entail": 0.1949,
+   "supported": 0
+  },
+  {
+   "id": "PINS",
+   "tier": "large",
+   "scraped_chars": 4377,
+   "field": "KEY FEATURES",
+   "claim": "Pinterest key features: Visual search and AI-powered recommendations tailored to user taste",
+   "p_entail": 0.9043,
+   "supported": 1
+  },
+  {
+   "id": "PINS",
+   "tier": "large",
+   "scraped_chars": 4377,
+   "field": "KEY FEATURES",
+   "claim": "Pinterest key features: Integrated shopping capabilities to buy products directly from Pins",
+   "p_entail": 0.0171,
+   "supported": 0
+  },
+  {
+   "id": "PINS",
+   "tier": "large",
+   "scraped_chars": 4377,
+   "field": "KEY FEATURES",
+   "claim": "Pinterest key features: Customizable search filters (e.g., skin tone, hair type, body type)",
+   "p_entail": 0.9796,
+   "supported": 1
+  },
+  {
+   "id": "PINS",
+   "tier": "large",
+   "scraped_chars": 4377,
+   "field": "KEY FEATURES",
+   "claim": "Pinterest key features: Safety and wellbeing tools including age verification and parental controls",
+   "p_entail": 0.9809,
+   "supported": 1
+  },
+  {
+   "id": "PINS",
+   "tier": "large",
+   "scraped_chars": 4377,
+   "field": "KEY FEATURES",
+   "claim": "Pinterest key features: Business tools for creating ads and tracking performance",
+   "p_entail": 0.0507,
+   "supported": 0
+  },
+  {
+   "id": "PINS",
+   "tier": "large",
+   "scraped_chars": 4377,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Pinterest unique selling points: Positions itself as a \"more positive place online\" focused on inspiration rather than social validation; emphasizes inclusivity through diverse representation filters; strong focus on user wellbeing and safety.",
+   "p_entail": 0.9624,
+   "supported": 1
+  },
+  {
+   "id": "PINS",
+   "tier": "large",
+   "scraped_chars": 4377,
+   "field": "TONE & POSITIONING",
+   "claim": "Pinterest tone & positioning: Consumer-focused, positive, inspirational, and inclusive; emphasizes emotional wellbeing and a safer internet experience.",
+   "p_entail": 0.9779,
+   "supported": 1
+  },
+  {
+   "id": "SNAP",
+   "tier": "large",
+   "scraped_chars": 452,
+   "field": "INDUSTRY",
+   "claim": "Snap industry: Social Media / Mobile Technology",
+   "p_entail": 0.0176,
+   "supported": 0
+  },
+  {
+   "id": "SNAP",
+   "tier": "large",
+   "scraped_chars": 452,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Snap product or service: Snapchat, a visual messaging service for communication, and Lens Studio, a creative tool for building AR & AI experiences.",
+   "p_entail": 0.9972,
+   "supported": 1
+  },
+  {
+   "id": "SNAP",
+   "tier": "large",
+   "scraped_chars": 452,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Snap target customers: General consumers (for Snapchat) and developers/creators (for Lens Studio).",
+   "p_entail": 0.0019,
+   "supported": 0
+  },
+  {
+   "id": "SNAP",
+   "tier": "large",
+   "scraped_chars": 452,
+   "field": "KEY FEATURES",
+   "claim": "Snap key features: Visual messaging for friends, family, and the world",
+   "p_entail": 0.9963,
+   "supported": 1
+  },
+  {
+   "id": "SNAP",
+   "tier": "large",
+   "scraped_chars": 452,
+   "field": "KEY FEATURES",
+   "claim": "Snap key features: AR & AI experience creation tools",
+   "p_entail": 0.9906,
+   "supported": 1
+  },
+  {
+   "id": "SNAP",
+   "tier": "large",
+   "scraped_chars": 452,
+   "field": "KEY FEATURES",
+   "claim": "Snap key features: Human-centric computing via Specs",
+   "p_entail": 0.9967,
+   "supported": 1
+  },
+  {
+   "id": "SNAP",
+   "tier": "large",
+   "scraped_chars": 452,
+   "field": "KEY FEATURES",
+   "claim": "Snap key features: Real-time expression and moment capture",
+   "p_entail": 0.9946,
+   "supported": 1
+  },
+  {
+   "id": "SNAP",
+   "tier": "large",
+   "scraped_chars": 452,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Snap unique selling points: Empowers human progress by enabling self-expression, learning, and fun; makes computing more human.",
+   "p_entail": 0.9975,
+   "supported": 1
+  },
+  {
+   "id": "SNAP",
+   "tier": "large",
+   "scraped_chars": 452,
+   "field": "TONE & POSITIONING",
+   "claim": "Snap tone & positioning: Consumer-focused / Developer-focused / Human-centric",
+   "p_entail": 0.0124,
+   "supported": 0
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "INDUSTRY",
+   "claim": "Workday industry: Enterprise Software / Human Resources & Financial Management",
+   "p_entail": 0.9045,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Workday product or service: An integrated cloud platform for HR, finance, and IT operations that utilizes AI agents to automate processes and provide data-driven insights.",
+   "p_entail": 0.9842,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Workday target customers: Large enterprises, midsize businesses, and global organizations requiring unified management of human capital, financials, and IT infrastructure.",
+   "p_entail": 0.0065,
+   "supported": 0
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "PRICING MODEL",
+   "claim": "Workday pricing model: Enterprise",
+   "p_entail": 0.763,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "KEY FEATURES",
+   "claim": "Workday key features: AI Agents for automated HR, finance, and IT processes",
+   "p_entail": 0.8865,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "KEY FEATURES",
+   "claim": "Workday key features: Integrated Human Capital Management (HCM) and Payroll",
+   "p_entail": 0.9517,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "KEY FEATURES",
+   "claim": "Workday key features: Financial Management, Spend Management, and Planning",
+   "p_entail": 0.9702,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "KEY FEATURES",
+   "claim": "Workday key features: Contract Lifecycle Management (CLM) and Legal Intelligence",
+   "p_entail": 0.9562,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "KEY FEATURES",
+   "claim": "Workday key features: Frontline Operations and Workforce Management tools",
+   "p_entail": 0.9757,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Workday unique selling points: Unified AI platform designed to serve the entire organization",
+   "p_entail": 0.9603,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Workday unique selling points: Conversational AI capabilities that significantly reduce manual workload (e.g., 7-Eleven case study)",
+   "p_entail": 0.9748,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Workday unique selling points: Recognized as a Leader in Gartner Magic Quadrants for Cloud ERP and Cloud HCM",
+   "p_entail": 0.9737,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Workday unique selling points: \"Sana\" interface positioned as the last software teams need to learn",
+   "p_entail": 0.958,
+   "supported": 1
+  },
+  {
+   "id": "WDAY",
+   "tier": "large",
+   "scraped_chars": 3042,
+   "field": "TONE & POSITIONING",
+   "claim": "Workday tone & positioning: Enterprise / Premium / AI-Forward",
+   "p_entail": 0.471,
+   "supported": 0
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "MongoDB industry: Database Management Systems / Data Platform",
+   "p_entail": 0.8426,
+   "supported": 1
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "MongoDB product or service: An intelligent, multi-cloud data platform (MongoDB Atlas) that combines operational, analytical, and vector search capabilities in a single document-based database system designed for the AI era.",
+   "p_entail": 0.9797,
+   "supported": 1
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "MongoDB target customers: Software developers, data engineers, and enterprises building modern, real-time, hybrid, or multi-cloud applications, including those developing AI agents and generative AI apps.",
+   "p_entail": 0.0274,
+   "supported": 0
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "MongoDB pricing model: Freemium / Enterprise / Usage-based (implied by \"Get Started\" and cloud platform nature)",
+   "p_entail": 0.6503,
+   "supported": 1
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "MongoDB key features: Unified platform for operational data, vector search, and stream processing",
+   "p_entail": 0.9825,
+   "supported": 1
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "MongoDB key features: Multi-cloud and on-premise deployment flexibility",
+   "p_entail": 0.1569,
+   "supported": 0
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "MongoDB key features: Document data model with rich query capabilities and ACID transactions",
+   "p_entail": 0.9682,
+   "supported": 1
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "MongoDB key features: Atlas Agent Engine for running AI agents at scale",
+   "p_entail": 0.975,
+   "supported": 1
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "MongoDB key features: Integrated search, analytics, and geospatial capabilities",
+   "p_entail": 0.9783,
+   "supported": 1
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "MongoDB unique selling points: Combines real-time operational data, vectors, and elastic scale in one platform",
+   "p_entail": 0.6336,
+   "supported": 1
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "MongoDB unique selling points: Built specifically for unpredictable AI demand and the AI era",
+   "p_entail": 0.0538,
+   "supported": 0
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "MongoDB unique selling points: Eliminates the need for multiple systems (database, search engine, sync) by unifying them",
+   "p_entail": 0.018,
+   "supported": 0
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "MongoDB unique selling points: Proven scalability from origins in high-volume ad serving (400,000 ads/second)",
+   "p_entail": 0.1603,
+   "supported": 0
+  },
+  {
+   "id": "MDB",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "MongoDB tone & positioning: Enterprise / Developer-focused / Premium",
+   "p_entail": 0.0538,
+   "supported": 0
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "INDUSTRY",
+   "claim": "Carvana industry: Automotive Retail / E-commerce",
+   "p_entail": 0.6036,
+   "supported": 1
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Carvana product or service: Online marketplace for buying and selling used, certified pre-owned, and new vehicles, including financing, insurance, and home delivery services.",
+   "p_entail": 0.8749,
+   "supported": 1
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Carvana target customers: Individual consumers looking to purchase or sell vehicles online, ranging from budget-conscious buyers to those seeking premium or electric vehicles.",
+   "p_entail": 0.0161,
+   "supported": 0
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "PRICING MODEL",
+   "claim": "Carvana pricing model: Transaction-based (Vehicle sales, financing interest, insurance premiums)",
+   "p_entail": 0.3498,
+   "supported": 0
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "KEY FEATURES",
+   "claim": "Carvana key features: 100% online car buying experience with home delivery or pickup from \"Carvana Vending Machines\"",
+   "p_entail": 0.9177,
+   "supported": 1
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "KEY FEATURES",
+   "claim": "Carvana key features: Instant financing pre-qualification with no credit impact",
+   "p_entail": 0.0689,
+   "supported": 0
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "KEY FEATURES",
+   "claim": "Carvana key features: Quick car selling process with offers generated in under 2 minutes",
+   "p_entail": 0.9668,
+   "supported": 1
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "KEY FEATURES",
+   "claim": "Carvana key features: Integrated insurance services (powered by Root) with a \"3-click\" setup",
+   "p_entail": 0.9775,
+   "supported": 1
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "KEY FEATURES",
+   "claim": "Carvana key features: Carvana Value Tracker for monitoring vehicle value over time",
+   "p_entail": 0.9861,
+   "supported": 1
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Carvana unique selling points: \"Shaq's kind of car-buying\" branding emphasizing a fun, frictionless, and transparent process",
+   "p_entail": 0.1077,
+   "supported": 0
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Carvana unique selling points: Zero shipping costs for vehicles with local inventory",
+   "p_entail": 0.0808,
+   "supported": 0
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Carvana unique selling points: Real-time repricing of inventory to ensure competitive market pricing",
+   "p_entail": 0.7721,
+   "supported": 1
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Carvana unique selling points: Convenience of buying, financing, and insuring a car entirely online without visiting a dealership",
+   "p_entail": 0.0333,
+   "supported": 0
+  },
+  {
+   "id": "CVNA",
+   "tier": "large",
+   "scraped_chars": 3041,
+   "field": "TONE & POSITIONING",
+   "claim": "Carvana tone & positioning: Consumer-friendly, modern, transparent, and convenience-focused",
+   "p_entail": 0.2136,
+   "supported": 0
+  },
+  {
+   "id": "ORCL",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "Oracle industry: Enterprise Software, Cloud Computing, and Database Management",
+   "p_entail": 0.9677,
+   "supported": 1
+  },
+  {
+   "id": "ORCL",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Oracle product or service: Oracle provides a comprehensive suite of cloud infrastructure, platform, and software services, including the world's first autonomous database, AI-powered cloud applications, and enterprise resource planning (ERP) solutions.",
+   "p_entail": 0.9356,
+   "supported": 1
+  },
+  {
+   "id": "ORCL",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Oracle target customers: Large enterprises, government agencies, and organizations of all sizes across various industries, including healthcare, finance, and technology.",
+   "p_entail": 0.0517,
+   "supported": 0
+  },
+  {
+   "id": "ORCL",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "Oracle pricing model: Enterprise / Subscription / Usage-based (Cloud)",
+   "p_entail": 0.9469,
+   "supported": 1
+  },
+  {
+   "id": "ORCL",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Oracle key features: World’s first autonomous database",
+   "p_entail": 0.989,
+   "supported": 1
+  },
+  {
+   "id": "ORCL",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Oracle key features: Broadest and deepest suite of AI-powered cloud applications",
+   "p_entail": 0.9874,
+   "supported": 1
+  },
+  {
+   "id": "ORCL",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Oracle key features: Extensive portfolio of enterprise applications (ERP, HCM, SCM)",
+   "p_entail": 0.9576,
+   "supported": 1
+  },
+  {
+   "id": "ORCL",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Oracle key features: Large-scale EHR implementation serving millions of beneficiaries",
+   "p_entail": 0.9876,
+   "supported": 1
+  },
+  {
+   "id": "ORCL",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Oracle key features: Robust developer and customer community support",
+   "p_entail": 0.9812,
+   "supported": 1
+  },
+  {
+   "id": "ORCL",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Oracle unique selling points: Decades of innovation history, massive scale with $57B revenue, extensive R&D investment, and a proven track record of building entire industries through data and AI solutions.",
+   "p_entail": 0.9852,
+   "supported": 1
+  },
+  {
+   "id": "ORCL",
+   "tier": "large",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "Oracle tone & positioning: Enterprise / Premium / Industry Leader",
+   "p_entail": 0.7755,
+   "supported": 1
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "INDUSTRY",
+   "claim": "Roblox industry: Online Gaming / User-Generated Content Platform",
+   "p_entail": 0.146,
+   "supported": 0
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Roblox product or service: A global online platform where users can play, create, and share user-generated games and experiences. It provides a suite of tools for developers to build interactive 3D worlds and a marketplace for players to discover and engage with content.",
+   "p_entail": 0.0144,
+   "supported": 0
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Roblox target customers: Gamers of all ages (with a strong focus on younger demographics and families) and game developers/creators ranging from hobbyists to professional studios.",
+   "p_entail": 0.0033,
+   "supported": 0
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "PRICING MODEL",
+   "claim": "Roblox pricing model: Freemium (Free to play and create; revenue generated through virtual currency \"Robux\" for in-game purchases and creator monetization)",
+   "p_entail": 0.0155,
+   "supported": 0
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "KEY FEATURES",
+   "claim": "Roblox key features: Massive library of user-generated games and experiences",
+   "p_entail": 0.9537,
+   "supported": 1
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "KEY FEATURES",
+   "claim": "Roblox key features: Roblox Studio: Tools for creating and publishing 3D games",
+   "p_entail": 0.0495,
+   "supported": 0
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "KEY FEATURES",
+   "claim": "Roblox key features: Generative AI tools to assist creators in building faster",
+   "p_entail": 0.9887,
+   "supported": 1
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "KEY FEATURES",
+   "claim": "Roblox key features: Age-appropriate content filtering and safety features",
+   "p_entail": 0.0035,
+   "supported": 0
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "KEY FEATURES",
+   "claim": "Roblox key features: Global infrastructure supporting millions of concurrent users",
+   "p_entail": 0.9727,
+   "supported": 1
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Roblox unique selling points: \"One-of-a-kind\" destination combining gaming and creation",
+   "p_entail": 0.9656,
+   "supported": 1
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Roblox unique selling points: Thriving community of creators and players",
+   "p_entail": 0.803,
+   "supported": 1
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Roblox unique selling points: Pioneering use of AI generation for both creators and users",
+   "p_entail": 0.81,
+   "supported": 1
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Roblox unique selling points: Commitment to safety and digital independence for users of all ages",
+   "p_entail": 0.8309,
+   "supported": 1
+  },
+  {
+   "id": "RBLX",
+   "tier": "large",
+   "scraped_chars": 2106,
+   "field": "TONE & POSITIONING",
+   "claim": "Roblox tone & positioning: Community-focused, innovative, family-friendly, and developer-empowering",
+   "p_entail": 0.0172,
+   "supported": 0
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "INDUSTRY",
+   "claim": "Fortinet industry: Cybersecurity",
+   "p_entail": 0.8767,
+   "supported": 1
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Fortinet product or service: Fortinet provides a comprehensive suite of cybersecurity solutions, including Next-Generation Firewalls (NGFW), Secure Access Service Edge (SASE), Endpoint Detection and Response (EDR), and Security Orchestration, Automation, and Response (SOAR) platforms.",
+   "p_entail": 0.9724,
+   "supported": 1
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Fortinet target customers: Enterprises, hybrid workforces, and organizations requiring protection for networks, endpoints, and AI infrastructure.",
+   "p_entail": 0.0029,
+   "supported": 0
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "PRICING MODEL",
+   "claim": "Fortinet pricing model: Enterprise",
+   "p_entail": 0.0159,
+   "supported": 0
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "Fortinet key features: AI-powered, cloud-centric Unified SASE for securing hybrid workforces.",
+   "p_entail": 0.9836,
+   "supported": 1
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "Fortinet key features: FortiEndpoint EDR with certified leader status for stopping APT-grade attacks.",
+   "p_entail": 0.9883,
+   "supported": 1
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "Fortinet key features: FortiSOAR 8 featuring agentic AI and automation for security operations.",
+   "p_entail": 0.9833,
+   "supported": 1
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "Fortinet key features: Convergence of networking and security across edges, users, and devices (NGFW, Switching, WLAN).",
+   "p_entail": 0.9945,
+   "supported": 1
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "Fortinet key features: Continuous AI protection and runtime validation via the acquisition of Virtue AI.",
+   "p_entail": 0.9914,
+   "supported": 1
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Fortinet unique selling points: Named a Leader in the 2026 Gartner Magic Quadrant for Hybrid Mesh Firewall.",
+   "p_entail": 0.8925,
+   "supported": 1
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Fortinet unique selling points: Purpose-built security fabric designed specifically for the AI era and hybrid enterprise environments.",
+   "p_entail": 0.2602,
+   "supported": 0
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Fortinet unique selling points: ASIC-powered local enforcement combined with cloud-delivered security for enhanced performance.",
+   "p_entail": 0.026,
+   "supported": 0
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Fortinet unique selling points: Integrated approach that unites networking and security to simplify management and enhance data protection.",
+   "p_entail": 0.041,
+   "supported": 0
+  },
+  {
+   "id": "FTNT",
+   "tier": "large",
+   "scraped_chars": 3043,
+   "field": "TONE & POSITIONING",
+   "claim": "Fortinet tone & positioning: Enterprise / Premium",
+   "p_entail": 0.0426,
+   "supported": 0
+  },
+  {
+   "id": "ABNB",
+   "tier": "large",
+   "scraped_chars": 3456,
+   "field": "INDUSTRY",
+   "claim": "Airbnb industry: Travel & Hospitality / Short-term Rentals",
+   "p_entail": 0.3611,
+   "supported": 0
+  },
+  {
+   "id": "ABNB",
+   "tier": "large",
+   "scraped_chars": 3456,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Airbnb product or service: A global marketplace connecting travelers with hosts for vacation rentals, unique homes, and local experiences.",
+   "p_entail": 0.9787,
+   "supported": 1
+  },
+  {
+   "id": "ABNB",
+   "tier": "large",
+   "scraped_chars": 3456,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Airbnb target customers: Travelers seeking alternative accommodations and authentic local experiences; property owners and hosts looking to monetize their spaces.",
+   "p_entail": 0.0037,
+   "supported": 0
+  },
+  {
+   "id": "ABNB",
+   "tier": "large",
+   "scraped_chars": 3456,
+   "field": "PRICING MODEL",
+   "claim": "Airbnb pricing model: Transaction-based (marketplace commission)",
+   "p_entail": 0.0625,
+   "supported": 0
+  },
+  {
+   "id": "ABNB",
+   "tier": "large",
+   "scraped_chars": 3456,
+   "field": "KEY FEATURES",
+   "claim": "Airbnb key features: AI-powered search for homes, experiences, and services",
+   "p_entail": 0.9482,
+   "supported": 1
+  },
+  {
+   "id": "ABNB",
+   "tier": "large",
+   "scraped_chars": 3456,
+   "field": "KEY FEATURES",
+   "claim": "Airbnb key features: Global inventory of 9M+ active listings across 220+ countries",
+   "p_entail": 0.9708,
+   "supported": 1
+  },
+  {
+   "id": "ABNB",
+   "tier": "large",
+   "scraped_chars": 3456,
+   "field": "KEY FEATURES",
+   "claim": "Airbnb key features: Curated \"Experiences\" for local immersion",
+   "p_entail": 0.9662,
+   "supported": 1
+  },
+  {
+   "id": "ABNB",
+   "tier": "large",
+   "scraped_chars": 3456,
+   "field": "KEY FEATURES",
+   "claim": "Airbnb key features: Instant Book and bespoke payments platform",
+   "p_entail": 0.1427,
+   "supported": 0
+  },
+  {
+   "id": "ABNB",
+   "tier": "large",
+   "scraped_chars": 3456,
+   "field": "KEY FEATURES",
+   "claim": "Airbnb key features: Host Guarantee and disaster relief tools",
+   "p_entail": 0.5165,
+   "supported": 1
+  },
+  {
+   "id": "ABNB",
+   "tier": "large",
+   "scraped_chars": 3456,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Airbnb unique selling points: Authentic community connection, massive global scale (2.5B+ guest arrivals), and a diverse range of unique stays beyond traditional hotels.",
+   "p_entail": 0.9852,
+   "supported": 1
+  },
+  {
+   "id": "ABNB",
+   "tier": "large",
+   "scraped_chars": 3456,
+   "field": "TONE & POSITIONING",
+   "claim": "Airbnb tone & positioning: Consumer-focused, community-oriented, and authentic",
+   "p_entail": 0.0304,
+   "supported": 0
+  },
+  {
+   "id": "LYV",
+   "tier": "large",
+   "scraped_chars": 3331,
+   "field": "INDUSTRY",
+   "claim": "Live Nation industry: Live Entertainment / Ticketing",
+   "p_entail": 0.9861,
+   "supported": 1
+  },
+  {
+   "id": "LYV",
+   "tier": "large",
+   "scraped_chars": 3331,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Live Nation product or service: A comprehensive platform for purchasing tickets to live events, including concerts, festivals, and comedy shows, along with VIP packages, merchandise, and livestreams.",
+   "p_entail": 0.9883,
+   "supported": 1
+  },
+  {
+   "id": "LYV",
+   "tier": "large",
+   "scraped_chars": 3331,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Live Nation target customers: General consumers and fans of live music, sports, and entertainment seeking tickets, premium experiences, and artist merchandise.",
+   "p_entail": 0.0087,
+   "supported": 0
+  },
+  {
+   "id": "LYV",
+   "tier": "large",
+   "scraped_chars": 3331,
+   "field": "PRICING MODEL",
+   "claim": "Live Nation pricing model: Transaction-based (ticket sales, merchandise sales, and premium package fees)",
+   "p_entail": 0.1433,
+   "supported": 0
+  },
+  {
+   "id": "LYV",
+   "tier": "large",
+   "scraped_chars": 3331,
+   "field": "KEY FEATURES",
+   "claim": "Live Nation key features: Ticket sales for concerts, festivals, and comedy",
+   "p_entail": 0.9933,
+   "supported": 1
+  },
+  {
+   "id": "LYV",
+   "tier": "large",
+   "scraped_chars": 3331,
+   "field": "KEY FEATURES",
+   "claim": "Live Nation key features: VIP packages including meet & greets, exclusive lounges, and special merchandise",
+   "p_entail": 0.9875,
+   "supported": 1
+  },
+  {
+   "id": "LYV",
+   "tier": "large",
+   "scraped_chars": 3331,
+   "field": "KEY FEATURES",
+   "claim": "Live Nation key features: Artist presale access and sign-ups",
+   "p_entail": 0.9627,
+   "supported": 1
+  },
+  {
+   "id": "LYV",
+   "tier": "large",
+   "scraped_chars": 3331,
+   "field": "KEY FEATURES",
+   "claim": "Live Nation key features: Merchandise store for tour-specific apparel",
+   "p_entail": 0.8957,
+   "supported": 1
+  },
+  {
+   "id": "LYV",
+   "tier": "large",
+   "scraped_chars": 3331,
+   "field": "KEY FEATURES",
+   "claim": "Live Nation key features: Livestreams of live performances and premieres",
+   "p_entail": 0.9961,
+   "supported": 1
+  },
+  {
+   "id": "LYV",
+   "tier": "large",
+   "scraped_chars": 3331,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Live Nation unique selling points: Exclusive access to VIP experiences and presales; wide variety of event types (music, comedy, festivals); integrated merchandise and livestream offerings.",
+   "p_entail": 0.9765,
+   "supported": 1
+  },
+  {
+   "id": "LYV",
+   "tier": "large",
+   "scraped_chars": 3331,
+   "field": "TONE & POSITIONING",
+   "claim": "Live Nation tone & positioning: Consumer-focused / Premium (via VIP offerings) / Entertainment",
+   "p_entail": 0.9556,
+   "supported": 1
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "INDUSTRY",
+   "claim": "Dropbox industry: Cloud Storage & Collaboration Software",
+   "p_entail": 0.718,
+   "supported": 1
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Dropbox product or service: Secure cloud storage, file sharing, and collaboration platform that integrates with AI tools to streamline workflows, document management, and team communication.",
+   "p_entail": 0.9835,
+   "supported": 1
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Dropbox target customers: Individuals, small businesses, and enterprise teams across industries including construction, media, technology, professional services, and manufacturing.",
+   "p_entail": 0.0047,
+   "supported": 0
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "PRICING MODEL",
+   "claim": "Dropbox pricing model: Freemium",
+   "p_entail": 0.0834,
+   "supported": 0
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Dropbox key features: AI integrations with OpenAI, Anthropic, Google Gemini, and others for content summarization and analysis",
+   "p_entail": 0.9837,
+   "supported": 1
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Dropbox key features: Large file transfers up to 250GB with real-time syncing",
+   "p_entail": 0.9042,
+   "supported": 1
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Dropbox key features: Support for 175+ file types with built-in previews and version history",
+   "p_entail": 0.9695,
+   "supported": 1
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Dropbox key features: Enterprise-grade security features including encryption and tamper-proof documents",
+   "p_entail": 0.9863,
+   "supported": 1
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Dropbox key features: Cross-platform access and organization tools for team folders",
+   "p_entail": 0.9795,
+   "supported": 1
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Dropbox unique selling points: \"Enlightened way of working\" philosophy focused on reducing busywork and app-switching",
+   "p_entail": 0.0727,
+   "supported": 0
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Dropbox unique selling points: Seamless AI integration that keeps users within their existing workflow",
+   "p_entail": 0.2019,
+   "supported": 0
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Dropbox unique selling points: Strong emphasis on security and privacy, explicitly stating they never sell user data",
+   "p_entail": 0.0043,
+   "supported": 0
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Dropbox unique selling points: Scalable solution serving over 700 million registered users from individuals to large enterprises",
+   "p_entail": 0.0106,
+   "supported": 0
+  },
+  {
+   "id": "DBX",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "TONE & POSITIONING",
+   "claim": "Dropbox tone & positioning: Professional, user-centric, and modern; positions itself as a reliable, secure, and intelligent productivity partner for both SMBs and enterprises.",
+   "p_entail": 0.1101,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "INDUSTRY",
+   "claim": "Roku industry: Consumer Electronics / Streaming Media",
+   "p_entail": 0.001,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Roku product or service: Roku offers streaming media players, sticks, and smart TV operating systems that allow users to access a wide variety of streaming services and live TV channels.",
+   "p_entail": 0.0038,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Roku target customers: Consumers and households looking to add streaming capabilities to their televisions or replace traditional cable/satellite TV services.",
+   "p_entail": 0.0003,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "PRICING MODEL",
+   "claim": "Roku pricing model: Hardware sales (one-time purchase) and optional subscription services for premium channels.",
+   "p_entail": 0.0003,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "KEY FEATURES",
+   "claim": "Roku key features: Access to thousands of streaming apps and channels",
+   "p_entail": 0.0001,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "KEY FEATURES",
+   "claim": "Roku key features: Live TV streaming options",
+   "p_entail": 0.0002,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "KEY FEATURES",
+   "claim": "Roku key features: User-friendly interface and remote control",
+   "p_entail": 0.0001,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "KEY FEATURES",
+   "claim": "Roku key features: Integration with major streaming platforms (Netflix, Hulu, Disney+, etc.)",
+   "p_entail": 0.0002,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "KEY FEATURES",
+   "claim": "Roku key features: Support for multiple screen sizes and resolutions",
+   "p_entail": 0.0002,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Roku unique selling points: Aggregates content from multiple providers into a single interface",
+   "p_entail": 0.0003,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Roku unique selling points: Affordable hardware options",
+   "p_entail": 0.0001,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Roku unique selling points: Wide compatibility with various TV brands",
+   "p_entail": 0.0001,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Roku unique selling points: Regular software updates and new feature releases",
+   "p_entail": 0.0001,
+   "supported": 0
+  },
+  {
+   "id": "ROKU",
+   "tier": "mid",
+   "scraped_chars": 212,
+   "field": "TONE & POSITIONING",
+   "claim": "Roku tone & positioning: Consumer-friendly, accessible, and focused on simplifying the streaming experience for a broad audience.",
+   "p_entail": 0.0002,
+   "supported": 0
+  },
+  {
+   "id": "U",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "Unity industry: Game Development / Interactive Software",
+   "p_entail": 0.9526,
+   "supported": 1
+  },
+  {
+   "id": "U",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Unity product or service: A leading cross-platform game engine and development suite for creating 2D and 3D games, XR experiences, and interactive applications, supported by tools for deployment, live operations, and monetization.",
+   "p_entail": 0.9859,
+   "supported": 1
+  },
+  {
+   "id": "U",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Unity target customers: Game developers (indie to AAA), studios, educational institutions, and enterprises in industries such as manufacturing, retail, automotive, and simulation.",
+   "p_entail": 0.0207,
+   "supported": 0
+  },
+  {
+   "id": "U",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "Unity pricing model: Freemium / Tiered Subscription",
+   "p_entail": 0.0731,
+   "supported": 0
+  },
+  {
+   "id": "U",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Unity key features: Cross-platform support for 25+ devices including mobile, desktop, console, and XR",
+   "p_entail": 0.9753,
+   "supported": 1
+  },
+  {
+   "id": "U",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Unity key features: Integrated LiveOps tools for post-launch insights and game operations",
+   "p_entail": 0.9809,
+   "supported": 1
+  },
+  {
+   "id": "U",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Unity key features: Monetization and user acquisition services including in-app purchase management and advertising",
+   "p_entail": 0.9839,
+   "supported": 1
+  },
+  {
+   "id": "U",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Unity key features: Real-time 3D collaboration and immersive training capabilities",
+   "p_entail": 0.9857,
+   "supported": 1
+  },
+  {
+   "id": "U",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Unity key features: Extensive ecosystem including Unity Cloud, AI tools, and a global developer community",
+   "p_entail": 0.9759,
+   "supported": 1
+  },
+  {
+   "id": "U",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Unity unique selling points: The world's leading game engine with the most successful game development community in history; data-informed decision making based on player preferences; comprehensive end-to-end solution from development to deployment and growth.",
+   "p_entail": 0.7697,
+   "supported": 1
+  },
+  {
+   "id": "U",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "Unity tone & positioning: Enterprise / Developer-focused / Industry Leader",
+   "p_entail": 0.0349,
+   "supported": 0
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "INDUSTRY",
+   "claim": "Box industry: Enterprise Software / Content Management",
+   "p_entail": 0.0138,
+   "supported": 0
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Box product or service: An AI-powered content management, workflow, and collaboration platform that enables secure file storage, intelligent data extraction, and automated business processes.",
+   "p_entail": 0.934,
+   "supported": 1
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Box target customers: Large enterprises and organizations requiring enterprise-grade security, compliance (GDPR, HIPAA, FINRA), and scalable content management solutions.",
+   "p_entail": 0.0052,
+   "supported": 0
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "PRICING MODEL",
+   "claim": "Box pricing model: Enterprise / Subscription",
+   "p_entail": 0.0084,
+   "supported": 0
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "KEY FEATURES",
+   "claim": "Box key features: AI-powered content management and secure collaboration tools",
+   "p_entail": 0.9758,
+   "supported": 1
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "KEY FEATURES",
+   "claim": "Box key features: Intelligent data extraction from unstructured documents (contracts, financials)",
+   "p_entail": 0.9847,
+   "supported": 1
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "KEY FEATURES",
+   "claim": "Box key features: Automated workflow design and deployment using AI agents",
+   "p_entail": 0.905,
+   "supported": 1
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "KEY FEATURES",
+   "claim": "Box key features: AI-driven security with real-time threat detection and compliance tools",
+   "p_entail": 0.9491,
+   "supported": 1
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "KEY FEATURES",
+   "claim": "Box key features: Developer-focused APIs and Box AI Studio for custom integrations",
+   "p_entail": 0.2498,
+   "supported": 0
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Box unique selling points: Integration with leading AI models (OpenAI, Anthropic, Google) for real-time insights",
+   "p_entail": 0.0604,
+   "supported": 0
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Box unique selling points: \"Agentic workflow\" capabilities allowing users to deploy AI agents for complex tasks",
+   "p_entail": 0.0305,
+   "supported": 0
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Box unique selling points: Enterprise-grade security and compliance built directly into the content management layer",
+   "p_entail": 0.0397,
+   "supported": 0
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Box unique selling points: Ability to extract structured data from diverse content types, including handwritten documents",
+   "p_entail": 0.0322,
+   "supported": 0
+  },
+  {
+   "id": "BOX",
+   "tier": "mid",
+   "scraped_chars": 3038,
+   "field": "TONE & POSITIONING",
+   "claim": "Box tone & positioning: Enterprise / Premium / AI-Forward",
+   "p_entail": 0.0088,
+   "supported": 0
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "INDUSTRY",
+   "claim": "SentinelOne industry: Cybersecurity / Enterprise Security",
+   "p_entail": 0.2772,
+   "supported": 0
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "SentinelOne product or service: An AI-native cybersecurity platform providing unified protection across endpoint, identity, AI, and cloud environments. It features autonomous security intelligence to detect, contain, and respond to threats at machine speed.",
+   "p_entail": 0.9936,
+   "supported": 1
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "TARGET CUSTOMERS",
+   "claim": "SentinelOne target customers: Enterprise organizations, security operations centers (SOCs), and defenders managing complex IT environments including SaaS, on-premises, hybrid, and air-gapped systems.",
+   "p_entail": 0.0346,
+   "supported": 0
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "PRICING MODEL",
+   "claim": "SentinelOne pricing model: Enterprise",
+   "p_entail": 0.1286,
+   "supported": 0
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "SentinelOne key features: Unified endpoint and identity security in a single lightweight agent",
+   "p_entail": 0.9783,
+   "supported": 1
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "SentinelOne key features: Autonomous SOC capabilities with AI-automated response and remediation",
+   "p_entail": 0.9809,
+   "supported": 1
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "SentinelOne key features: Real-time detection and disruption of identity-based attacks and ransomware",
+   "p_entail": 0.9864,
+   "supported": 1
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "SentinelOne key features: Cloud security and protection for AI systems",
+   "p_entail": 0.9784,
+   "supported": 1
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "SentinelOne key features: Support for diverse deployment models (SaaS, on-premises, hybrid, air-gapped)",
+   "p_entail": 0.9698,
+   "supported": 1
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "SentinelOne unique selling points: AI-native architecture designed to operate at machine speed to counter AI-driven threats",
+   "p_entail": 0.985,
+   "supported": 1
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "SentinelOne unique selling points: \"Human Amplification\" approach where AI handles triage and routine tasks, allowing analysts to focus on high-value decisions",
+   "p_entail": 0.9925,
+   "supported": 1
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "SentinelOne unique selling points: Recognized as a Leader in the Gartner Magic Quadrant for Endpoint Protection Platforms for six consecutive years",
+   "p_entail": 0.9831,
+   "supported": 1
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "SentinelOne unique selling points: Unified console for visibility, investigation, and action to reduce operational friction",
+   "p_entail": 0.9929,
+   "supported": 1
+  },
+  {
+   "id": "S",
+   "tier": "mid",
+   "scraped_chars": 5999,
+   "field": "TONE & POSITIONING",
+   "claim": "SentinelOne tone & positioning: Enterprise / Premium / Developer-focused",
+   "p_entail": 0.0678,
+   "supported": 0
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "RingCentral industry: Cloud Communications / Unified Communications as a Service (UCaaS) / Contact Center as a Service (CCaaS)",
+   "p_entail": 0.2132,
+   "supported": 0
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "RingCentral product or service: An Agentic Voice AI platform that provides cloud-based business phone, video meetings, and contact center solutions. It integrates AI agents to automate, assist, and analyze customer interactions across voice, SMS, and chat.",
+   "p_entail": 0.9896,
+   "supported": 1
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "RingCentral target customers: Businesses of all sizes, ranging from SMBs to large enterprises (including global brands like T-Mobile, Vodafone, and Restoration Hardware).",
+   "p_entail": 0.01,
+   "supported": 0
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "RingCentral pricing model: Subscription / Enterprise",
+   "p_entail": 0.093,
+   "supported": 0
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "RingCentral key features: Agentic Voice AI (AI Receptionist, AI Representative, AI Virtual Assistant) for 24/7 call handling and intent-based automation.",
+   "p_entail": 0.9825,
+   "supported": 1
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "RingCentral key features: Unified Communications (RingEX) including business phone, SMS, team chat, and AI-powered video meetings.",
+   "p_entail": 0.9767,
+   "supported": 1
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "RingCentral key features: AI Contact Center (RingCX) with omnichannel management, AI workforce engagement, and quality management.",
+   "p_entail": 0.9828,
+   "supported": 1
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "RingCentral key features: AIR Pro: A no-code platform for building custom conversational AI agents across multiple channels.",
+   "p_entail": 0.9902,
+   "supported": 1
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "RingCentral key features: AI Conversation Expert (ACE) for analyzing interactions to uncover insights and improve performance.",
+   "p_entail": 0.9575,
+   "supported": 1
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "RingCentral unique selling points: Named a Gartner Magic Quadrant Leader for 12 consecutive years.",
+   "p_entail": 0.7948,
+   "supported": 1
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "RingCentral unique selling points: \"Agentic Voice AI\" approach that creates a self-learning flywheel to automate outcomes and assist agents.",
+   "p_entail": 0.9746,
+   "supported": 1
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "RingCentral unique selling points: Scalable and reliable infrastructure trusted by over 600,000 businesses worldwide.",
+   "p_entail": 0.9676,
+   "supported": 1
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "RingCentral unique selling points: No-code capability to build custom AI agents using natural language prompts.",
+   "p_entail": 0.0132,
+   "supported": 0
+  },
+  {
+   "id": "RNG",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "RingCentral tone & positioning: Enterprise / Premium / Innovation-focused",
+   "p_entail": 0.0605,
+   "supported": 0
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "INDUSTRY",
+   "claim": "Teradata industry: Data Analytics & Artificial Intelligence",
+   "p_entail": 0.9617,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Teradata product or service: An Autonomous Knowledge Platform that integrates data, AI, and analytics to automate business decisions and actions in real-time. It offers a full-stack solution including cloud, on-premises, and hybrid deployment options for building, activating, and managing AI agents and workflows.",
+   "p_entail": 0.9835,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Teradata target customers: Large enterprises in highly regulated industries, specifically banking, airlines, telecommunications, logistics, healthcare, automotive, life sciences, and manufacturing.",
+   "p_entail": 0.0318,
+   "supported": 0
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "PRICING MODEL",
+   "claim": "Teradata pricing model: Enterprise (Fixed + Flex hybrid model)",
+   "p_entail": 0.7616,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "KEY FEATURES",
+   "claim": "Teradata key features: Autonomous Knowledge Platform for real-time decision automation",
+   "p_entail": 0.8213,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "KEY FEATURES",
+   "claim": "Teradata key features: Unified AI environment for building, activating, and managing AI agents",
+   "p_entail": 0.9561,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "KEY FEATURES",
+   "claim": "Teradata key features: Multi-modal data integration to create high-quality knowledge context",
+   "p_entail": 0.9862,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "KEY FEATURES",
+   "claim": "Teradata key features: Flexible deployment options (Cloud, On-premises, and Hybrid)",
+   "p_entail": 0.8861,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "KEY FEATURES",
+   "claim": "Teradata key features: Fixed + Flex pricing with a unified \"Teradata Unit\" currency for cost transparency",
+   "p_entail": 0.9845,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Teradata unique selling points: Combines predictable fixed costs with elastic flex capacity to avoid over-provisioning",
+   "p_entail": 0.9828,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Teradata unique selling points: Single unified currency (Teradata Unit) for compute, storage, software, and AI",
+   "p_entail": 0.9596,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Teradata unique selling points: Focus on \"autonomous\" execution where AI agents act on data without human intervention",
+   "p_entail": 0.5595,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Teradata unique selling points: Trusted by top-tier enterprises in highly regulated sectors (e.g., 10 of top 10 banks)",
+   "p_entail": 0.984,
+   "supported": 1
+  },
+  {
+   "id": "TDC",
+   "tier": "mid",
+   "scraped_chars": 5686,
+   "field": "TONE & POSITIONING",
+   "claim": "Teradata tone & positioning: Enterprise / Premium",
+   "p_entail": 0.0915,
+   "supported": 0
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "INDUSTRY",
+   "claim": "SailPoint industry: Identity and Access Management (IAM) / Cybersecurity",
+   "p_entail": 0.9374,
+   "supported": 1
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "SailPoint product or service: An adaptive identity security platform that unifies identity, data, and security intelligence to govern human, machine, and AI identities in real time.",
+   "p_entail": 0.9873,
+   "supported": 1
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "TARGET CUSTOMERS",
+   "claim": "SailPoint target customers: Large enterprises, specifically Fortune 500 companies, and organizations seeking to secure agentic AI and non-human identities.",
+   "p_entail": 0.0049,
+   "supported": 0
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "PRICING MODEL",
+   "claim": "SailPoint pricing model: Enterprise",
+   "p_entail": 0.8025,
+   "supported": 1
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "SailPoint key features: Real-time adaptive security and continuous risk assessment across all identities.",
+   "p_entail": 0.9953,
+   "supported": 1
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "SailPoint key features: Governance for human, machine, and AI (non-human) identities.",
+   "p_entail": 0.9807,
+   "supported": 1
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "SailPoint key features: Data Access Security to govern access to sensitive data.",
+   "p_entail": 0.9876,
+   "supported": 1
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "SailPoint key features: Observability and insights to trace identity context and access history.",
+   "p_entail": 0.9854,
+   "supported": 1
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "SailPoint key features: Automated policy enforcement and least privilege management.",
+   "p_entail": 0.9878,
+   "supported": 1
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "SailPoint unique selling points: Named the \"Overall Leader in identity governance\" by KuppingerCole.",
+   "p_entail": 0.9174,
+   "supported": 1
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "SailPoint unique selling points: 53% of the Fortune 500 are customers.",
+   "p_entail": 0.0144,
+   "supported": 0
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "SailPoint unique selling points: Claims 300% ROI in 2 years and a 95% customer retention rate.",
+   "p_entail": 0.9695,
+   "supported": 1
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "SailPoint unique selling points: Focus on securing the \"agentic enterprise\" and AI identities.",
+   "p_entail": 0.9066,
+   "supported": 1
+  },
+  {
+   "id": "SAIL",
+   "tier": "mid",
+   "scraped_chars": 3043,
+   "field": "TONE & POSITIONING",
+   "claim": "SailPoint tone & positioning: Enterprise / Premium / Leader",
+   "p_entail": 0.6819,
+   "supported": 1
+  },
+  {
+   "id": "ARLO",
+   "tier": "mid",
+   "scraped_chars": 358,
+   "field": "INDUSTRY",
+   "claim": "Arlo industry: Smart Home Security",
+   "p_entail": 0.1559,
+   "supported": 0
+  },
+  {
+   "id": "ARLO",
+   "tier": "mid",
+   "scraped_chars": 358,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Arlo product or service: Wireless smart home security systems including security cameras, video doorbells, and floodlights.",
+   "p_entail": 0.1082,
+   "supported": 0
+  },
+  {
+   "id": "ARLO",
+   "tier": "mid",
+   "scraped_chars": 358,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Arlo target customers: Homeowners and consumers seeking smart home security solutions.",
+   "p_entail": 0.001,
+   "supported": 0
+  },
+  {
+   "id": "ARLO",
+   "tier": "mid",
+   "scraped_chars": 358,
+   "field": "KEY FEATURES",
+   "claim": "Arlo key features: Smart home security cameras",
+   "p_entail": 0.0216,
+   "supported": 0
+  },
+  {
+   "id": "ARLO",
+   "tier": "mid",
+   "scraped_chars": 358,
+   "field": "KEY FEATURES",
+   "claim": "Arlo key features: Video doorbells",
+   "p_entail": 0.0023,
+   "supported": 0
+  },
+  {
+   "id": "ARLO",
+   "tier": "mid",
+   "scraped_chars": 358,
+   "field": "KEY FEATURES",
+   "claim": "Arlo key features: Floodlights",
+   "p_entail": 0.006,
+   "supported": 0
+  },
+  {
+   "id": "ARLO",
+   "tier": "mid",
+   "scraped_chars": 358,
+   "field": "TONE & POSITIONING",
+   "claim": "Arlo tone & positioning: Consumer / Smart Home",
+   "p_entail": 0.0167,
+   "supported": 0
+  },
+  {
+   "id": "TREX",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "Trex industry: Building Materials / Outdoor Living / Composite Decking",
+   "p_entail": 0.9832,
+   "supported": 1
+  },
+  {
+   "id": "TREX",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Trex product or service: Manufactures and sells premium composite and PVC decking, railings, and integrated outdoor lighting systems designed for residential outdoor living spaces.",
+   "p_entail": 0.977,
+   "supported": 1
+  },
+  {
+   "id": "TREX",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Trex target customers: Homeowners planning deck or outdoor living renovations, as well as professional deck builders and contractors (TrexPro® network).",
+   "p_entail": 0.8789,
+   "supported": 1
+  },
+  {
+   "id": "TREX",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "Trex pricing model: Enterprise / B2B (Sold via authorized dealers and contractors; quote-based)",
+   "p_entail": 0.8975,
+   "supported": 1
+  },
+  {
+   "id": "TREX",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Trex key features: Performance-engineered composite and PVC decking materials",
+   "p_entail": 0.9524,
+   "supported": 1
+  },
+  {
+   "id": "TREX",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Trex key features: Integrated outdoor lighting solutions",
+   "p_entail": 0.9776,
+   "supported": 1
+  },
+  {
+   "id": "TREX",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Trex key features: SunComfortable™ Technology for heat reduction",
+   "p_entail": 0.8924,
+   "supported": 1
+  },
+  {
+   "id": "TREX",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Trex key features: Ignition-resistant PVC decking (Trex Refuge™)",
+   "p_entail": 0.9563,
+   "supported": 1
+  },
+  {
+   "id": "TREX",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Trex key features: Online tools including cost calculators, visualizers, and contractor locators",
+   "p_entail": 0.0898,
+   "supported": 0
+  },
+  {
+   "id": "TREX",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Trex unique selling points: 30 years of industry-leading innovation, durability against sun and storms, sustainability (recycled materials), and a dedicated network of certified professional installers.",
+   "p_entail": 0.7988,
+   "supported": 1
+  },
+  {
+   "id": "TREX",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "Trex tone & positioning: Premium / Consumer-Facing / Lifestyle-Oriented",
+   "p_entail": 0.9782,
+   "supported": 1
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "Insperity industry: Human Resources (HR) Services & Technology / Professional Employer Organization (PEO)",
+   "p_entail": 0.9542,
+   "supported": 1
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Insperity product or service: Insperity provides a combination of HR technology platforms and consultative or full-service PEO solutions, including payroll, benefits administration, compliance, and talent acquisition.",
+   "p_entail": 0.9921,
+   "supported": 1
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Insperity target customers: Small, midsize, and large businesses (ranging from under 50 to 5,000 employees) across various industries such as manufacturing, IT/technology, professional services, and financial services.",
+   "p_entail": 0.9959,
+   "supported": 1
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "Insperity pricing model: Enterprise / Subscription (Custom pricing based on company size and selected service tier)",
+   "p_entail": 0.1936,
+   "supported": 0
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Insperity key features: Tiered product offerings: Insperity HR Core (tech + service), Insperity HR 360 (full-service PEO), and Insperity HR Scale (Workday-based PEO for complex needs).",
+   "p_entail": 0.9752,
+   "supported": 1
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Insperity key features: Comprehensive HR administration including payroll, compliance, and benefits management.",
+   "p_entail": 0.9863,
+   "supported": 1
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Insperity key features: Talent acquisition and contractor management services.",
+   "p_entail": 0.9935,
+   "supported": 1
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Insperity key features: Integration with Workday technology for larger enterprises.",
+   "p_entail": 0.3511,
+   "supported": 0
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Insperity key features: Retirement and insurance services.",
+   "p_entail": 0.9914,
+   "supported": 1
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Insperity unique selling points: \"Award-winning\" HR service and technology with 40 years of innovation.",
+   "p_entail": 0.1124,
+   "supported": 0
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Insperity unique selling points: Flexible tiers allowing businesses to choose between technology-only support or full-service PEO co-employment.",
+   "p_entail": 0.0921,
+   "supported": 0
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Insperity unique selling points: Specific solution (HR Scale) leveraging Workday for businesses with complex HR technology requirements.",
+   "p_entail": 0.9903,
+   "supported": 1
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Insperity unique selling points: Focus on \"HR Cost Clarity\" and competitive employee benefits.",
+   "p_entail": 0.9461,
+   "supported": 1
+  },
+  {
+   "id": "NSP",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "Insperity tone & positioning: Enterprise / Professional / Trustworthy",
+   "p_entail": 0.2705,
+   "supported": 0
+  },
+  {
+   "id": "BHE",
+   "tier": "mid",
+   "scraped_chars": 3040,
+   "field": "INDUSTRY",
+   "claim": "Benchmark Electronics industry: Electronics Engineering & Manufacturing Services (EMS)",
+   "p_entail": 0.9346,
+   "supported": 1
+  },
+  {
+   "id": "BHE",
+   "tier": "mid",
+   "scraped_chars": 3040,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Benchmark Electronics product or service: Global product realization services providing design engineering, precision machining, full-system electronic assembly, and lifecycle management for complex electronic systems.",
+   "p_entail": 0.1141,
+   "supported": 0
+  },
+  {
+   "id": "BHE",
+   "tier": "mid",
+   "scraped_chars": 3040,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Benchmark Electronics target customers: Enterprises in demanding, high-reliability markets including Defense, Commercial Aerospace, Medical Technologies, Industrial, Next-Gen Communications, Advanced Computing, and Semiconductor Capital Equipment.",
+   "p_entail": 0.5726,
+   "supported": 1
+  },
+  {
+   "id": "BHE",
+   "tier": "mid",
+   "scraped_chars": 3040,
+   "field": "PRICING MODEL",
+   "claim": "Benchmark Electronics pricing model: Enterprise",
+   "p_entail": 0.0751,
+   "supported": 0
+  },
+  {
+   "id": "BHE",
+   "tier": "mid",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Benchmark Electronics key features: End-to-end product realization from R&D through volume production",
+   "p_entail": 0.5049,
+   "supported": 1
+  },
+  {
+   "id": "BHE",
+   "tier": "mid",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Benchmark Electronics key features: Advanced manufacturing capabilities including precision machining, microelectronics, and mixed/hybrid assembly",
+   "p_entail": 0.9883,
+   "supported": 1
+  },
+  {
+   "id": "BHE",
+   "tier": "mid",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Benchmark Electronics key features: Specialized engineering in RF/microwave, mmWave, and liquid-cooled computing",
+   "p_entail": 0.9751,
+   "supported": 1
+  },
+  {
+   "id": "BHE",
+   "tier": "mid",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Benchmark Electronics key features: Lifecycle management services including supply chain management and sustaining engineering",
+   "p_entail": 0.9823,
+   "supported": 1
+  },
+  {
+   "id": "BHE",
+   "tier": "mid",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Benchmark Electronics key features: Global presence with cross-functional, cross-site collaborative teams",
+   "p_entail": 0.9649,
+   "supported": 1
+  },
+  {
+   "id": "BHE",
+   "tier": "mid",
+   "scraped_chars": 3040,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Benchmark Electronics unique selling points: Focus on high-reliability markets where failure is not an option; unique capabilities in niche areas like liquid-cooled computing and secure technology platforms; collaborative \"joint design partner\" approach rather than just turnkey manufacturing.",
+   "p_entail": 0.829,
+   "supported": 1
+  },
+  {
+   "id": "BHE",
+   "tier": "mid",
+   "scraped_chars": 3040,
+   "field": "TONE & POSITIONING",
+   "claim": "Benchmark Electronics tone & positioning: Enterprise / Premium / Technical",
+   "p_entail": 0.0463,
+   "supported": 0
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "Clearwater Analytics industry: Financial Technology / Investment Management Software",
+   "p_entail": 0.7227,
+   "supported": 1
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Clearwater Analytics product or service: A unified, front-to-back investment management platform that consolidates data, operations, risk analytics, and execution across the entire investment lifecycle.",
+   "p_entail": 0.9349,
+   "supported": 1
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Clearwater Analytics target customers: Institutional investors including asset managers, asset owners (pension funds, endowments, corporations), insurers, and hedge funds.",
+   "p_entail": 0.0372,
+   "supported": 0
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "Clearwater Analytics pricing model: Enterprise",
+   "p_entail": 0.3751,
+   "supported": 0
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Clearwater Analytics key features: Unified operational backbone automating complex, multi-step workflows across reconciliation, reporting, accounting, and compliance.",
+   "p_entail": 0.9559,
+   "supported": 1
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Clearwater Analytics key features: Beacon by Clearwater: AI-powered risk analytics and modeling tools for real-time scenario analysis and portfolio insights.",
+   "p_entail": 0.9418,
+   "supported": 1
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Clearwater Analytics key features: Enfusion by Clearwater: Integrated environment for portfolio construction, trading, and order management execution.",
+   "p_entail": 0.9738,
+   "supported": 1
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Clearwater Analytics key features: AI-driven workflow layer with 1,000+ AI agents actively executing investment tasks.",
+   "p_entail": 0.9878,
+   "supported": 1
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "Clearwater Analytics key features: Single data foundation processing daily investment activity for over $10 trillion in assets.",
+   "p_entail": 0.9915,
+   "supported": 1
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Clearwater Analytics unique selling points: \"One dataset, total clarity\" approach eliminating siloed systems and fragmented data.",
+   "p_entail": 0.9817,
+   "supported": 1
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Clearwater Analytics unique selling points: Embedded, purpose-driven AI capabilities rather than bolt-on solutions.",
+   "p_entail": 0.9787,
+   "supported": 1
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Clearwater Analytics unique selling points: Proven scale and reliability, evidenced by a 60+ \"excellent\" NPS score and 95% reduction in reporting time.",
+   "p_entail": 0.3084,
+   "supported": 0
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Clearwater Analytics unique selling points: Comprehensive visibility across all asset classes (public and private) through a single pane of glass.",
+   "p_entail": 0.6935,
+   "supported": 1
+  },
+  {
+   "id": "CWAN",
+   "tier": "mid",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "Clearwater Analytics tone & positioning: Enterprise / Premium / Institutional",
+   "p_entail": 0.4704,
+   "supported": 0
+  },
+  {
+   "id": "HLF",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "INDUSTRY",
+   "claim": "Herbalife industry: Health & Wellness / Nutrition",
+   "p_entail": 0.8494,
+   "supported": 1
+  },
+  {
+   "id": "HLF",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Herbalife product or service: A global provider of nutritional supplements, meal replacements, and health products, including a direct sales business opportunity platform.",
+   "p_entail": 0.8308,
+   "supported": 1
+  },
+  {
+   "id": "HLF",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Herbalife target customers: Consumers seeking weight management, fitness, and daily nutrition support, as well as individuals interested in starting a direct sales business.",
+   "p_entail": 0.8647,
+   "supported": 1
+  },
+  {
+   "id": "HLF",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "PRICING MODEL",
+   "claim": "Herbalife pricing model: Enterprise / Direct Sales (Product purchase via independent distributors)",
+   "p_entail": 0.7901,
+   "supported": 1
+  },
+  {
+   "id": "HLF",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Herbalife key features: Comprehensive product lines for fitness, performance, healthy weight, and daily nutrition",
+   "p_entail": 0.9831,
+   "supported": 1
+  },
+  {
+   "id": "HLF",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Herbalife key features: Direct sales business opportunity with \"Wellness Rewards\" program",
+   "p_entail": 0.8324,
+   "supported": 1
+  },
+  {
+   "id": "HLF",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Herbalife key features: Personalized supplement options (e.g., Bioniq GO)",
+   "p_entail": 0.9864,
+   "supported": 1
+  },
+  {
+   "id": "HLF",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Herbalife key features: Scientifically researched formulas with high-quality ingredients",
+   "p_entail": 0.9871,
+   "supported": 1
+  },
+  {
+   "id": "HLF",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Herbalife key features: Community-driven wellness platform",
+   "p_entail": 0.9724,
+   "supported": 1
+  },
+  {
+   "id": "HLF",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Herbalife unique selling points: Over 45 years of history, rigorous scientific research, high-quality ingredients, and a strong sense of community spirit.",
+   "p_entail": 0.8527,
+   "supported": 1
+  },
+  {
+   "id": "HLF",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "TONE & POSITIONING",
+   "claim": "Herbalife tone & positioning: Premium / Community-focused / Empowering",
+   "p_entail": 0.8633,
+   "supported": 1
+  },
+  {
+   "id": "CNDT",
+   "tier": "small",
+   "scraped_chars": 3043,
+   "field": "INDUSTRY",
+   "claim": "Conduent industry: Business Process Outsourcing (BPO) / Enterprise Technology & AI Solutions",
+   "p_entail": 0.9714,
+   "supported": 1
+  },
+  {
+   "id": "CNDT",
+   "tier": "small",
+   "scraped_chars": 3043,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Conduent product or service: Technology-led solutions combining AI, automation, and managed services to improve operational efficiency, customer experience, and cost reduction across commercial, government, and transportation sectors.",
+   "p_entail": 0.9811,
+   "supported": 1
+  },
+  {
+   "id": "CNDT",
+   "tier": "small",
+   "scraped_chars": 3043,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Conduent target customers: Large enterprises, government agencies, healthcare providers, and transportation authorities.",
+   "p_entail": 0.0041,
+   "supported": 0
+  },
+  {
+   "id": "CNDT",
+   "tier": "small",
+   "scraped_chars": 3043,
+   "field": "PRICING MODEL",
+   "claim": "Conduent pricing model: Enterprise",
+   "p_entail": 0.9463,
+   "supported": 1
+  },
+  {
+   "id": "CNDT",
+   "tier": "small",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "Conduent key features: AI-driven transformation and agentic AI for process automation",
+   "p_entail": 0.8191,
+   "supported": 1
+  },
+  {
+   "id": "CNDT",
+   "tier": "small",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "Conduent key features: Customer experience (CX) solutions and customer service support",
+   "p_entail": 0.9847,
+   "supported": 1
+  },
+  {
+   "id": "CNDT",
+   "tier": "small",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "Conduent key features: Government program integrity, fraud detection, and payment disbursement",
+   "p_entail": 0.9891,
+   "supported": 1
+  },
+  {
+   "id": "CNDT",
+   "tier": "small",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "Conduent key features: Transportation management including tolling and journey optimization",
+   "p_entail": 0.9839,
+   "supported": 1
+  },
+  {
+   "id": "CNDT",
+   "tier": "small",
+   "scraped_chars": 3043,
+   "field": "KEY FEATURES",
+   "claim": "Conduent key features: Spend analytics and accounts payable (AP) recovery services",
+   "p_entail": 0.9867,
+   "supported": 1
+  },
+  {
+   "id": "CNDT",
+   "tier": "small",
+   "scraped_chars": 3043,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Conduent unique selling points: Ability to handle massive scale (e.g., $80B in government payments, 2B customer interactions annually) while turning complexity into clarity through integrated people, processes, and technology.",
+   "p_entail": 0.7374,
+   "supported": 1
+  },
+  {
+   "id": "CNDT",
+   "tier": "small",
+   "scraped_chars": 3043,
+   "field": "TONE & POSITIONING",
+   "claim": "Conduent tone & positioning: Enterprise / Premium / Strategic Partner",
+   "p_entail": 0.9589,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "INDUSTRY",
+   "claim": "Backblaze industry: Cloud Storage / Data Infrastructure",
+   "p_entail": 0.788,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Backblaze product or service: High-performance cloud storage solutions, including S3-compatible object storage (B2), premium high-throughput storage (B2 Overdrive), and specialized storage for AI workloads and neoclouds.",
+   "p_entail": 0.9824,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Backblaze target customers: AI developers, neoclouds, enterprise organizations, content creators, and businesses requiring backup, archive, or high-throughput data storage.",
+   "p_entail": 0.1685,
+   "supported": 0
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "PRICING MODEL",
+   "claim": "Backblaze pricing model: Freemium / Usage-based (Offers \"Start Free\" and \"Contact Sales\" for enterprise; emphasizes predictable economics and free egress)",
+   "p_entail": 0.9132,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Backblaze key features: S3-compatible object storage with no S3 limits",
+   "p_entail": 0.9612,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Backblaze key features: High-throughput capabilities (up to 1Tbps) for AI and data-heavy workloads",
+   "p_entail": 0.9644,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Backblaze key features: Free egress fees to eliminate unpredictable costs",
+   "p_entail": 0.9618,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Backblaze key features: Multi-exabyte scale support with reliable HDD-based infrastructure",
+   "p_entail": 0.9604,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "KEY FEATURES",
+   "claim": "Backblaze key features: Integration flexibility across clouds and tech stacks without vendor lock-in",
+   "p_entail": 0.9587,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Backblaze unique selling points: Eliminates hyperscaler egress fees",
+   "p_entail": 0.1438,
+   "supported": 0
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Backblaze unique selling points: Delivers high performance (terabit speeds) without compromising on cost",
+   "p_entail": 0.9668,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Backblaze unique selling points: Predictable pricing and economics",
+   "p_entail": 0.9663,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Backblaze unique selling points: Specialized solutions for AI workloads and neocloud platform expansion",
+   "p_entail": 0.7914,
+   "supported": 1
+  },
+  {
+   "id": "BLZE",
+   "tier": "small",
+   "scraped_chars": 3044,
+   "field": "TONE & POSITIONING",
+   "claim": "Backblaze tone & positioning: Enterprise / Developer-focused / Performance-oriented",
+   "p_entail": 0.2695,
+   "supported": 0
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "DISCO industry: Legal Technology (LegalTech) / E-Discovery",
+   "p_entail": 0.9736,
+   "supported": 1
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "DISCO product or service: AI-powered e-discovery software and professional services designed to streamline litigation workflows, automate document review, and accelerate case strategy through advanced research tools.",
+   "p_entail": 0.9646,
+   "supported": 1
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "DISCO target customers: Law firms (specifically Am Law 200), corporations, and legal professionals handling complex litigation matters.",
+   "p_entail": 0.0306,
+   "supported": 0
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "DISCO pricing model: Enterprise",
+   "p_entail": 0.5489,
+   "supported": 1
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DISCO key features: Cecilia Advanced Research: Agentic AI for connecting dots across massive datasets and generating strategy.",
+   "p_entail": 0.9904,
+   "supported": 1
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DISCO key features: Auto Review with Tag Tuner: AI-powered document review capable of processing 32,000 docs per hour.",
+   "p_entail": 0.9776,
+   "supported": 1
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DISCO key features: Automated Legal Hold: Reduces manual administrative load by up to 80%.",
+   "p_entail": 0.9859,
+   "supported": 1
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DISCO key features: Cecilia Q&A: Secure AI tools for investigating fact questions with 87% time savings.",
+   "p_entail": 0.9557,
+   "supported": 1
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DISCO key features: Cloud-native platform: End-to-end solution covering the entire litigation lifecycle.",
+   "p_entail": 0.874,
+   "supported": 1
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "DISCO unique selling points: \"Agentic AI\" purpose-built for complex legal cases and queries.",
+   "p_entail": 0.9747,
+   "supported": 1
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "DISCO unique selling points: Combination of cutting-edge technology with expert professional services (partnership model).",
+   "p_entail": 0.9752,
+   "supported": 1
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "DISCO unique selling points: Significant efficiency gains: Claims 85% time savings on holds and 98% faster deposition summaries.",
+   "p_entail": 0.9557,
+   "supported": 1
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "DISCO unique selling points: Intuitive, cloud-native design that fits into existing workflows rather than forcing changes.",
+   "p_entail": 0.0516,
+   "supported": 0
+  },
+  {
+   "id": "LAW",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "DISCO tone & positioning: Premium / Enterprise / Innovation-focused",
+   "p_entail": 0.6566,
+   "supported": 1
+  },
+  {
+   "id": "DHX",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "DHI Group industry: Tech Talent Recruitment / Human Resources Technology",
+   "p_entail": 0.1007,
+   "supported": 0
+  },
+  {
+   "id": "DHX",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "DHI Group product or service: DHI Group operates two specialized talent marketplaces: Dice, the largest US technology-focused talent marketplace, and ClearanceJobs, the leading platform for professionals with active U.S. security clearances.",
+   "p_entail": 0.9858,
+   "supported": 1
+  },
+  {
+   "id": "DHX",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "DHI Group target customers: Employers and recruiters seeking technology professionals (engineers, developers, data scientists, cybersecurity experts) and organizations requiring cleared talent (e.g., defense contractors, government agencies).",
+   "p_entail": 0.2545,
+   "supported": 0
+  },
+  {
+   "id": "DHX",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "DHI Group pricing model: Enterprise",
+   "p_entail": 0.0224,
+   "supported": 0
+  },
+  {
+   "id": "DHX",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DHI Group key features: AI-powered matching tools and proprietary skills algorithm",
+   "p_entail": 0.551,
+   "supported": 1
+  },
+  {
+   "id": "DHX",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DHI Group key features: Database of nearly 10 million tech professional profiles",
+   "p_entail": 0.9566,
+   "supported": 1
+  },
+  {
+   "id": "DHX",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DHI Group key features: Taxonomy of over 100,000 distinct technology skills for precise candidate identification",
+   "p_entail": 0.9646,
+   "supported": 1
+  },
+  {
+   "id": "DHX",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "DHI Group key features: Specialized marketplace for candidates with active U.S. security clearances",
+   "p_entail": 0.9589,
+   "supported": 1
+  },
+  {
+   "id": "DHX",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "DHI Group unique selling points: Purpose-built platforms for specific professional communities rather than a one-size-fits-all marketplace; deep specialization in tech and cleared talent; 35+ years of brand longevity and market leadership in niche segments.",
+   "p_entail": 0.0494,
+   "supported": 0
+  },
+  {
+   "id": "DHX",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "DHI Group tone & positioning: Enterprise / Professional",
+   "p_entail": 0.062,
+   "supported": 0
+  },
+  {
+   "id": "BRCC",
+   "tier": "small",
+   "scraped_chars": 3051,
+   "field": "INDUSTRY",
+   "claim": "Black Rifle Coffee industry: Food & Beverage / Specialty Coffee",
+   "p_entail": 0.0568,
+   "supported": 0
+  },
+  {
+   "id": "BRCC",
+   "tier": "small",
+   "scraped_chars": 3051,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Black Rifle Coffee product or service: Premium specialty coffee beans, ready-to-drink beverages, and energy drinks, along with military-inspired apparel and gear.",
+   "p_entail": 0.1904,
+   "supported": 0
+  },
+  {
+   "id": "BRCC",
+   "tier": "small",
+   "scraped_chars": 3051,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Black Rifle Coffee target customers: U.S. veterans, military personnel, and patriotic consumers who appreciate high-quality coffee and support veteran-led initiatives.",
+   "p_entail": 0.006,
+   "supported": 0
+  },
+  {
+   "id": "BRCC",
+   "tier": "small",
+   "scraped_chars": 3051,
+   "field": "PRICING MODEL",
+   "claim": "Black Rifle Coffee pricing model: Subscription / Direct-to-Consumer",
+   "p_entail": 0.3888,
+   "supported": 0
+  },
+  {
+   "id": "BRCC",
+   "tier": "small",
+   "scraped_chars": 3051,
+   "field": "KEY FEATURES",
+   "claim": "Black Rifle Coffee key features: Exclusive Coffee Club subscription offering monthly exotic roasts with unique origin stories and collectible packaging.",
+   "p_entail": 0.989,
+   "supported": 1
+  },
+  {
+   "id": "BRCC",
+   "tier": "small",
+   "scraped_chars": 3051,
+   "field": "KEY FEATURES",
+   "claim": "Black Rifle Coffee key features: \"Build Your Own Box\" customization for regular coffee deliveries.",
+   "p_entail": 0.9394,
+   "supported": 1
+  },
+  {
+   "id": "BRCC",
+   "tier": "small",
+   "scraped_chars": 3051,
+   "field": "KEY FEATURES",
+   "claim": "Black Rifle Coffee key features: Limited-run specialty releases (e.g., Gothic Serpent, Dictator Geisha) with specific flavor profiles and thematic artwork.",
+   "p_entail": 0.9185,
+   "supported": 1
+  },
+  {
+   "id": "BRCC",
+   "tier": "small",
+   "scraped_chars": 3051,
+   "field": "KEY FEATURES",
+   "claim": "Black Rifle Coffee key features: Merchandise line including apparel, mugs, and tactical gear.",
+   "p_entail": 0.9865,
+   "supported": 1
+  },
+  {
+   "id": "BRCC",
+   "tier": "small",
+   "scraped_chars": 3051,
+   "field": "KEY FEATURES",
+   "claim": "Black Rifle Coffee key features: Philanthropy integration, such as donating proceeds from specific products to veteran and health-related foundations.",
+   "p_entail": 0.0242,
+   "supported": 0
+  },
+  {
+   "id": "BRCC",
+   "tier": "small",
+   "scraped_chars": 3051,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Black Rifle Coffee unique selling points: \"America's Coffee®\" branding by veterans; strong patriotic and military community identity; exclusive limited-edition roasts with collectible packaging; direct support for veteran causes through product sales.",
+   "p_entail": 0.8437,
+   "supported": 1
+  },
+  {
+   "id": "BRCC",
+   "tier": "small",
+   "scraped_chars": 3051,
+   "field": "TONE & POSITIONING",
+   "claim": "Black Rifle Coffee tone & positioning: Patriotic / Veteran-focused / Premium / Community-driven",
+   "p_entail": 0.7634,
+   "supported": 1
+  },
+  {
+   "id": "WYY",
+   "tier": "small",
+   "scraped_chars": 4033,
+   "field": "INDUSTRY",
+   "claim": "WidePoint industry: IT Services / Cybersecurity / Managed Services",
+   "p_entail": 0.5682,
+   "supported": 1
+  },
+  {
+   "id": "WYY",
+   "tier": "small",
+   "scraped_chars": 4033,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "WidePoint product or service: WidePoint provides secure Identity & Access Management (IAM), Managed Mobility Solutions (MMS), and IT-as-a-Service (ITaaS) to protect mobile workforces and enterprise infrastructure. They also offer digital billing, analytics, and cloud security services.",
+   "p_entail": 0.9329,
+   "supported": 1
+  },
+  {
+   "id": "WYY",
+   "tier": "small",
+   "scraped_chars": 4033,
+   "field": "TARGET CUSTOMERS",
+   "claim": "WidePoint target customers: Government agencies (including those requiring top secret clearances) and commercial enterprises ranging from hundreds to thousands of users across North America.",
+   "p_entail": 0.0104,
+   "supported": 0
+  },
+  {
+   "id": "WYY",
+   "tier": "small",
+   "scraped_chars": 4033,
+   "field": "PRICING MODEL",
+   "claim": "WidePoint pricing model: Enterprise / Customized",
+   "p_entail": 0.0691,
+   "supported": 0
+  },
+  {
+   "id": "WYY",
+   "tier": "small",
+   "scraped_chars": 4033,
+   "field": "KEY FEATURES",
+   "claim": "WidePoint key features: Secure Identity & Access Management (IAM) with quantum-resistant PKI",
+   "p_entail": 0.9608,
+   "supported": 1
+  },
+  {
+   "id": "WYY",
+   "tier": "small",
+   "scraped_chars": 4033,
+   "field": "KEY FEATURES",
+   "claim": "WidePoint key features: MobileAnchor™ multi-factor authentication",
+   "p_entail": 0.9715,
+   "supported": 1
+  },
+  {
+   "id": "WYY",
+   "tier": "small",
+   "scraped_chars": 4033,
+   "field": "KEY FEATURES",
+   "claim": "WidePoint key features: Managed Mobility Solutions (MMS) for data protection and operational efficiency",
+   "p_entail": 0.9763,
+   "supported": 1
+  },
+  {
+   "id": "WYY",
+   "tier": "small",
+   "scraped_chars": 4033,
+   "field": "KEY FEATURES",
+   "claim": "WidePoint key features: IT as a Service (ITaaS) and Cloud Security (MSP/MSSP/CSP)",
+   "p_entail": 0.9863,
+   "supported": 1
+  },
+  {
+   "id": "WYY",
+   "tier": "small",
+   "scraped_chars": 4033,
+   "field": "KEY FEATURES",
+   "claim": "WidePoint key features: B2B & B2C billing and analytics solutions",
+   "p_entail": 0.9537,
+   "supported": 1
+  },
+  {
+   "id": "WYY",
+   "tier": "small",
+   "scraped_chars": 4033,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "WidePoint unique selling points: Quantum-resistant security solutions, top secret security clearances, and a history of merging specialized regional IT firms to offer customized, high-value solutions for both government and commercial sectors.",
+   "p_entail": 0.0081,
+   "supported": 0
+  },
+  {
+   "id": "WYY",
+   "tier": "small",
+   "scraped_chars": 4033,
+   "field": "TONE & POSITIONING",
+   "claim": "WidePoint tone & positioning: Enterprise / Government / Security-Focused",
+   "p_entail": 0.0355,
+   "supported": 0
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "INDUSTRY",
+   "claim": "CXApp industry: Workplace Technology / Employee Experience (EX) / SaaS",
+   "p_entail": 0.1398,
+   "supported": 0
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "CXApp product or service: An enterprise Employee Experience Platform (mobile app) that integrates desk and room booking, office mapping, internal communications, and IoT resource management to streamline daily workplace workflows.",
+   "p_entail": 0.8567,
+   "supported": 1
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "TARGET CUSTOMERS",
+   "claim": "CXApp target customers: Large enterprises, specifically Fortune 500 companies, and organizations with hybrid or digital workplaces.",
+   "p_entail": 0.0056,
+   "supported": 0
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "PRICING MODEL",
+   "claim": "CXApp pricing model: Enterprise",
+   "p_entail": 0.1076,
+   "supported": 0
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "CXApp key features: Desk and room booking with spatial mapping",
+   "p_entail": 0.0126,
+   "supported": 0
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "CXApp key features: Internal communications and proximity messaging",
+   "p_entail": 0.9413,
+   "supported": 1
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "CXApp key features: Office mapping and \"Find a Colleague\" functionality",
+   "p_entail": 0.0045,
+   "supported": 0
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "CXApp key features: Amenities, reservations, and event management",
+   "p_entail": 0.7012,
+   "supported": 1
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "CXApp key features: Manager dashboards for workplace analytics and utilization",
+   "p_entail": 0.0485,
+   "supported": 0
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "CXApp unique selling points: Built on customer experience (CX) principles and powered by AI",
+   "p_entail": 0.0988,
+   "supported": 0
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "CXApp unique selling points: Acts as a \"concierge\" app to reduce digital friction and save employee time",
+   "p_entail": 0.8714,
+   "supported": 1
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "CXApp unique selling points: Proven to boost employee engagement and optimize office space utilization",
+   "p_entail": 0.9266,
+   "supported": 1
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "CXApp unique selling points: Recognized with Gold GLOBEE® awards for best user experience and smart solutions",
+   "p_entail": 0.9918,
+   "supported": 1
+  },
+  {
+   "id": "CXAI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "TONE & POSITIONING",
+   "claim": "CXApp tone & positioning: Enterprise / Premium",
+   "p_entail": 0.1101,
+   "supported": 0
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "INDUSTRY",
+   "claim": "KORE Wireless industry: IoT Connectivity & Managed Services",
+   "p_entail": 0.4166,
+   "supported": 0
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "KORE Wireless product or service: Global enterprise IoT connectivity solutions including SIM/eSIM management, connectivity management platforms, and end-to-end hardware and logistics services.",
+   "p_entail": 0.9678,
+   "supported": 1
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "TARGET CUSTOMERS",
+   "claim": "KORE Wireless target customers: Enterprise organizations and innovators deploying IoT solutions in sectors such as asset monitoring, EV charging, connected health, fleet management, utilities, and smart agriculture.",
+   "p_entail": 0.3479,
+   "supported": 0
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "PRICING MODEL",
+   "claim": "KORE Wireless pricing model: Enterprise",
+   "p_entail": 0.5262,
+   "supported": 1
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "KORE Wireless key features: Global and local IoT connectivity across multiple networks and technologies",
+   "p_entail": 0.9694,
+   "supported": 1
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "KORE Wireless key features: SIM and eSIM options for flexible deployment",
+   "p_entail": 0.9809,
+   "supported": 1
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "KORE Wireless key features: Integrated connectivity management platform for provisioning, monitoring, and policy control",
+   "p_entail": 0.9868,
+   "supported": 1
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "KORE Wireless key features: Hardware sourcing, in-house device testing, and certification services",
+   "p_entail": 0.8384,
+   "supported": 1
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "KEY FEATURES",
+   "claim": "KORE Wireless key features: Managed services and 24/7 global support",
+   "p_entail": 0.9728,
+   "supported": 1
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "KORE Wireless unique selling points: End-to-end partner approach combining connectivity, hardware, and managed services",
+   "p_entail": 0.9654,
+   "supported": 1
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "KORE Wireless unique selling points: Resilience through multi-carrier options and automatic fallbacks",
+   "p_entail": 0.9838,
+   "supported": 1
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "KORE Wireless unique selling points: Global reach with local execution and expertise",
+   "p_entail": 0.8001,
+   "supported": 1
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "KORE Wireless unique selling points: Proven scale with 21M+ connected devices and 20+ years of carrier relationships",
+   "p_entail": 0.8907,
+   "supported": 1
+  },
+  {
+   "id": "KORE",
+   "tier": "small",
+   "scraped_chars": 6000,
+   "field": "TONE & POSITIONING",
+   "claim": "KORE Wireless tone & positioning: Enterprise",
+   "p_entail": 0.5536,
+   "supported": 1
+  },
+  {
+   "id": "XPON",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "INDUSTRY",
+   "claim": "Expion360 industry: Energy Storage / Automotive & Marine Batteries",
+   "p_entail": 0.99,
+   "supported": 1
+  },
+  {
+   "id": "XPON",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Expion360 product or service: Premium LiFePO4 lithium batteries, solar power systems, chargers, inverters, and accessories designed for off-grid, RV, marine, and industrial applications.",
+   "p_entail": 0.9908,
+   "supported": 1
+  },
+  {
+   "id": "XPON",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Expion360 target customers: RV owners, overland adventurers, marine enthusiasts, golf cart users, and industrial off-grid power users.",
+   "p_entail": 0.9892,
+   "supported": 1
+  },
+  {
+   "id": "XPON",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "PRICING MODEL",
+   "claim": "Expion360 pricing model: Direct-to-consumer retail (with periodic sales/discounts)",
+   "p_entail": 0.988,
+   "supported": 1
+  },
+  {
+   "id": "XPON",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Expion360 key features: 12-year warranty on LiFePO4 batteries",
+   "p_entail": 0.9876,
+   "supported": 1
+  },
+  {
+   "id": "XPON",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Expion360 key features: UL1973 compliant safety standards",
+   "p_entail": 0.9871,
+   "supported": 1
+  },
+  {
+   "id": "XPON",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Expion360 key features: Bluetooth-enabled battery monitoring via SmartTalk App",
+   "p_entail": 0.9882,
+   "supported": 1
+  },
+  {
+   "id": "XPON",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Expion360 key features: Wide range of voltage options including 12V and 48V systems",
+   "p_entail": 0.986,
+   "supported": 1
+  },
+  {
+   "id": "XPON",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Expion360 key features: Integrated solar charging and inverter solutions",
+   "p_entail": 0.9876,
+   "supported": 1
+  },
+  {
+   "id": "XPON",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Expion360 unique selling points: U.S.-based engineering, industry-leading reliability, and unmatched longevity for heavy-duty applications.",
+   "p_entail": 0.9897,
+   "supported": 1
+  },
+  {
+   "id": "XPON",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "TONE & POSITIONING",
+   "claim": "Expion360 tone & positioning: Premium / Adventure-focused / Trustworthy",
+   "p_entail": 0.9859,
+   "supported": 1
+  },
+  {
+   "id": "EFOI",
+   "tier": "small",
+   "scraped_chars": 5999,
+   "field": "INDUSTRY",
+   "claim": "Energy Focus industry: Renewable Energy & LED Lighting Technology",
+   "p_entail": 0.9591,
+   "supported": 1
+  },
+  {
+   "id": "EFOI",
+   "tier": "small",
+   "scraped_chars": 5999,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Energy Focus product or service: Advanced LED lighting systems, solar technology, and comprehensive energy storage solutions (including home, commercial, and industrial storage, solar inverters, and power supplies).",
+   "p_entail": 0.99,
+   "supported": 1
+  },
+  {
+   "id": "EFOI",
+   "tier": "small",
+   "scraped_chars": 5999,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Energy Focus target customers: Military & Government facilities, commercial and industrial sectors, educational institutions, healthcare facilities, and residential homeowners.",
+   "p_entail": 0.0257,
+   "supported": 0
+  },
+  {
+   "id": "EFOI",
+   "tier": "small",
+   "scraped_chars": 5999,
+   "field": "PRICING MODEL",
+   "claim": "Energy Focus pricing model: Enterprise / B2B",
+   "p_entail": 0.937,
+   "supported": 1
+  },
+  {
+   "id": "EFOI",
+   "tier": "small",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Energy Focus key features: High-efficiency LED lighting and solar technology",
+   "p_entail": 0.9835,
+   "supported": 1
+  },
+  {
+   "id": "EFOI",
+   "tier": "small",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Energy Focus key features: Turnkey energy storage systems (BESS, PCS, Inverters)",
+   "p_entail": 0.9871,
+   "supported": 1
+  },
+  {
+   "id": "EFOI",
+   "tier": "small",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Energy Focus key features: IoT connectivity and smart energy-saving systems",
+   "p_entail": 0.9819,
+   "supported": 1
+  },
+  {
+   "id": "EFOI",
+   "tier": "small",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Energy Focus key features: Advanced automation technologies for manufacturing",
+   "p_entail": 0.9541,
+   "supported": 1
+  },
+  {
+   "id": "EFOI",
+   "tier": "small",
+   "scraped_chars": 5999,
+   "field": "KEY FEATURES",
+   "claim": "Energy Focus key features: Rigorous quality control and military-grade durability",
+   "p_entail": 0.9866,
+   "supported": 1
+  },
+  {
+   "id": "EFOI",
+   "tier": "small",
+   "scraped_chars": 5999,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Energy Focus unique selling points: Proven track record with the U.S. Navy (lighting ships and submarines), status as a publicly traded company with over two decades of history, and a global presence that ensures competitiveness and supply chain resilience.",
+   "p_entail": 0.4466,
+   "supported": 0
+  },
+  {
+   "id": "EFOI",
+   "tier": "small",
+   "scraped_chars": 5999,
+   "field": "TONE & POSITIONING",
+   "claim": "Energy Focus tone & positioning: Enterprise / Industrial / Sustainable",
+   "p_entail": 0.9581,
+   "supported": 1
+  },
+  {
+   "id": "TLF",
+   "tier": "small",
+   "scraped_chars": 3047,
+   "field": "INDUSTRY",
+   "claim": "Tandy Leather industry: Leathercraft Supplies & Education",
+   "p_entail": 0.2379,
+   "supported": 0
+  },
+  {
+   "id": "TLF",
+   "tier": "small",
+   "scraped_chars": 3047,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Tandy Leather product or service: Sells leather materials, tools, and hardware for leatherworking, and offers in-person and online leathercraft classes.",
+   "p_entail": 0.0999,
+   "supported": 0
+  },
+  {
+   "id": "TLF",
+   "tier": "small",
+   "scraped_chars": 3047,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Tandy Leather target customers: Hobbyists, professional leatherworkers, and DIY enthusiasts.",
+   "p_entail": 0.0048,
+   "supported": 0
+  },
+  {
+   "id": "TLF",
+   "tier": "small",
+   "scraped_chars": 3047,
+   "field": "PRICING MODEL",
+   "claim": "Tandy Leather pricing model: Pay-per-item / Retail",
+   "p_entail": 0.1826,
+   "supported": 0
+  },
+  {
+   "id": "TLF",
+   "tier": "small",
+   "scraped_chars": 3047,
+   "field": "KEY FEATURES",
+   "claim": "Tandy Leather key features: Wide selection of leather materials and utility leather",
+   "p_entail": 0.0679,
+   "supported": 0
+  },
+  {
+   "id": "TLF",
+   "tier": "small",
+   "scraped_chars": 3047,
+   "field": "KEY FEATURES",
+   "claim": "Tandy Leather key features: Leathercraft classes and educational resources",
+   "p_entail": 0.0281,
+   "supported": 0
+  },
+  {
+   "id": "TLF",
+   "tier": "small",
+   "scraped_chars": 3047,
+   "field": "KEY FEATURES",
+   "claim": "Tandy Leather key features: Global shipping and multi-language support",
+   "p_entail": 0.2394,
+   "supported": 0
+  },
+  {
+   "id": "TLF",
+   "tier": "small",
+   "scraped_chars": 3047,
+   "field": "KEY FEATURES",
+   "claim": "Tandy Leather key features: Customer rewards program",
+   "p_entail": 0.0998,
+   "supported": 0
+  },
+  {
+   "id": "TLF",
+   "tier": "small",
+   "scraped_chars": 3047,
+   "field": "KEY FEATURES",
+   "claim": "Tandy Leather key features: Physical store locator for in-person services",
+   "p_entail": 0.0921,
+   "supported": 0
+  },
+  {
+   "id": "TLF",
+   "tier": "small",
+   "scraped_chars": 3047,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Tandy Leather unique selling points: Combines retail supply with hands-on education and community support for leather artisans.",
+   "p_entail": 0.0088,
+   "supported": 0
+  },
+  {
+   "id": "TLF",
+   "tier": "small",
+   "scraped_chars": 3047,
+   "field": "TONE & POSITIONING",
+   "claim": "Tandy Leather tone & positioning: Professional, educational, and accessible to both beginners and experts.",
+   "p_entail": 0.3429,
+   "supported": 0
+  },
+  {
+   "id": "ZYXI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "INDUSTRY",
+   "claim": "Zynex Medical industry: Medical Technology / Rehabilitation & Orthopedic Devices",
+   "p_entail": 0.5677,
+   "supported": 1
+  },
+  {
+   "id": "ZYXI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "PRODUCT OR SERVICE",
+   "claim": "Zynex Medical product or service: Innovative, non-invasive medical technologies including electrotherapy, hot/cold compression, and bracing/traction systems designed to help patients manage pain, restore mobility, and accelerate recovery.",
+   "p_entail": 0.7703,
+   "supported": 1
+  },
+  {
+   "id": "ZYXI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "TARGET CUSTOMERS",
+   "claim": "Zynex Medical target customers: Healthcare providers, rehabilitation clinics, and patients undergoing physical therapy or recovery from injury/surgery.",
+   "p_entail": 0.0124,
+   "supported": 0
+  },
+  {
+   "id": "ZYXI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "PRICING MODEL",
+   "claim": "Zynex Medical pricing model: Enterprise / B2B (Sales to healthcare providers and clinics)",
+   "p_entail": 0.7056,
+   "supported": 1
+  },
+  {
+   "id": "ZYXI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Zynex Medical key features: Electrotherapy devices for pain relief and muscle re-education",
+   "p_entail": 0.9666,
+   "supported": 1
+  },
+  {
+   "id": "ZYXI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Zynex Medical key features: Hot/Cold compression therapy for inflammation reduction and healing",
+   "p_entail": 0.6602,
+   "supported": 1
+  },
+  {
+   "id": "ZYXI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Zynex Medical key features: Orthopedic bracing and traction systems for joint stabilization",
+   "p_entail": 0.7051,
+   "supported": 1
+  },
+  {
+   "id": "ZYXI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Zynex Medical key features: Patient Portal for managing therapy supplies and care team communication",
+   "p_entail": 0.7644,
+   "supported": 1
+  },
+  {
+   "id": "ZYXI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "KEY FEATURES",
+   "claim": "Zynex Medical key features: Clinic Store for ordering provider-recommended therapy products",
+   "p_entail": 0.9457,
+   "supported": 1
+  },
+  {
+   "id": "ZYXI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "UNIQUE SELLING POINTS",
+   "claim": "Zynex Medical unique selling points: Clinically proven, non-invasive solutions; backed by decades of experience; patient-centered design focused on real-world use and functional recovery between clinical visits.",
+   "p_entail": 0.0433,
+   "supported": 0
+  },
+  {
+   "id": "ZYXI",
+   "tier": "small",
+   "scraped_chars": 3040,
+   "field": "TONE & POSITIONING",
+   "claim": "Zynex Medical tone & positioning: Professional, clinical, and patient-centric; positioned as a reliable, high-quality partner for healthcare providers and patients seeking advanced recovery solutions.",
+   "p_entail": 0.1799,
+   "supported": 0
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "id": "ORCL",
+ "homepage": "https://www.oracle.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Oracle\nINDUSTRY: Enterprise Software, Cloud Computing, and Database Management\nPRODUCT OR SERVICE: Oracle provides a comprehensive suite of cloud infrastructure, platform, and software services, including the world's first autonomous database, AI-powered cloud applications, and enterprise resource planning (ERP) solutions.\nTARGET CUSTOMERS: Large enterprises, government agencies, and organizations of all sizes across various industries, including healthcare, finance, and technology.\nPRICING MODEL: Enterprise / Subscription / Usage-based (Cloud)\nKEY FEATURES:\n- World’s first autonomous database\n- Broadest and deepest suite of AI-powered cloud applications\n- Extensive portfolio of enterprise applications (ERP, HCM, SCM)\n- Large-scale EHR implementation serving millions of beneficiaries\n- Robust developer and customer community support\nUNIQUE SELLING POINTS: Decades of innovation history, massive scale with $57B revenue, extensive R&D investment, and a proven track record of building entire industries through data and AI solutions.\nTONE & POSITIONING: Enterprise / Premium / Industry Leader",
+ "industry": "Enterprise Software, Cloud Computing, and Database Management",
+ "query": "top direct competitors of Oracle in Enterprise Software, Cloud Computing, and Database Management",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Oracle_Corporation",
+   "used": false
+  },
+  {
+   "url": "https://www.hudson-labs.com/research/oracle-competitors-orcl-key-peers-in-2026",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.spinnakersupport.com/blog/2024/01/17/oracle-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.gestisoft.com/en/blog/oracle-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.managementnote.com/topics/oracle-competitors/",
+   "used": true,
+   "page_chars": 550
+  },
+  {
+   "url": "https://fourweekmba.com/oracle-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.myshortlister.com/insights/enterprise-software-oracle-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://misstechy.com/oracle-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://whatcompetitors.com/oracle/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://thebrandhopper.com/brand/oracle-top-competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:22:46",
+ "scraped_sha256": "ee260fcb3d913ffac544779a0b1b7c6f486c0f9d62eec12454051857038aa7c9",
+ "search_content_sha256": "fda4c099ca122c4d39da5bc49c898e8da22a978e3bfc2edc43517c93eb9f068d",
+ "search_content_chars": 5643,
+ "stripped": true
+}

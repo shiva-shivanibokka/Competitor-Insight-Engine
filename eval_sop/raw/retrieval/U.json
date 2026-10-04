@@ -1,0 +1,67 @@
+{
+ "id": "U",
+ "homepage": "https://unity.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Unity\nINDUSTRY: Game Development / Interactive Software\nPRODUCT OR SERVICE: A leading cross-platform game engine and development suite for creating 2D and 3D games, XR experiences, and interactive applications, supported by tools for deployment, live operations, and monetization.\nTARGET CUSTOMERS: Game developers (indie to AAA), studios, educational institutions, and enterprises in industries such as manufacturing, retail, automotive, and simulation.\nPRICING MODEL: Freemium / Tiered Subscription\nKEY FEATURES:\n- Cross-platform support for 25+ devices including mobile, desktop, console, and XR\n- Integrated LiveOps tools for post-launch insights and game operations\n- Monetization and user acquisition services including in-app purchase management and advertising\n- Real-time 3D collaboration and immersive training capabilities\n- Extensive ecosystem including Unity Cloud, AI tools, and a global developer community\nUNIQUE SELLING POINTS: The world's leading game engine with the most successful game development community in history; data-informed decision making based on player preferences; comprehensive end-to-end solution from development to deployment and growth.\nTONE & POSITIONING: Enterprise / Developer-focused / Industry Leader",
+ "industry": "Game Development / Interactive Software",
+ "query": "top direct competitors of Unity in Game Development / Interactive Software",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.g2.com/products/unity/competitors/alternatives",
+   "used": false
+  },
+  {
+   "url": "https://www.techjockey.com/alternatives/unity",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://craft.co/unity-technologies/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://6sense.com/tech/game-development/unity-market-share",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://multiples.vc/public-comps/unity-valuation-multiples",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.marketbeat.com/stocks/NYSE/U/competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=E6A4WvsDeLE",
+   "used": false
+  },
+  {
+   "url": "https://unity.com/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://businessmodelanalyst.com/unity-business-model/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.udemy.com/topic/unity/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:24:54",
+ "scraped_sha256": "ecdc02de53cde6061bdeb52f2afe87554126076ac5eb1331b567b3541fe63ada",
+ "search_content_sha256": "6ccc49368cf72374f2f357dfa76883f319b7914166edd8c3308514fe7f9c563d",
+ "search_content_chars": 5403,
+ "stripped": true
+}

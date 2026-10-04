@@ -182,10 +182,17 @@ def main():
             summary.append(rec)
     (OUTD / "summary.json").write_text(json.dumps(summary, indent=1), encoding="utf-8")
 
-    # paired differences at T=0 (company-level, paired bootstrap)
-    t0 = {(r["id"], r["cond"]): r for r in per if r["temperature"] in (0.0, None) and r["seed"] == 0}
-    pairs = [("a_full", "b_prior"), ("a_full", "c_shuffled"), ("d_fixed", "e_fixed_prior"),
-             ("d_fixed", "a_full"), ("a_full", "z_baseline_capitalised"), ("d_fixed", "z_baseline_capitalised")]
+    # paired differences at T=0 (company-level, seed-averaged, paired bootstrap)
+    # company-level value = mean over the seeds that exist for that (company, condition)
+    acc = defaultdict(list)
+    for r in per:
+        if r["temperature"] in (0.0, None):
+            acc[(r["id"], r["cond"])].append(r)
+    t0 = {k: {m: statistics.fmean(x[m] for x in v) for m in ("p@4", "r@4", "r@all", "leak_orig_any")}
+          for k, v in acc.items()}
+    pairs = [("a_full", "b2_prior_knowledge"), ("a_full", "c_shuffled"), ("d_fixed", "e2_fixed_prior_knowledge"),
+             ("d_fixed", "a_full"), ("a_full", "z_baseline_capitalised"), ("d_fixed", "z_baseline_capitalised"),
+             ("b2_prior_knowledge", "c_shuffled"), ("a_full", "b_prior")]
     diffs = []
     for x, y in pairs:
         for tier in ("all", "large", "mid", "small"):

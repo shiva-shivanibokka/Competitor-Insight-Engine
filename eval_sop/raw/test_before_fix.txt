@@ -1,0 +1,8 @@
+E       AssertionError: ['https://www.adyen.com', 'https://www.adyen.com', 'https://www.braintreepayments.com', 'https://www.squareup.com']
+E       assert False
+E        +  where False = all(<generator object test_competitor_prompt_examples_are_fictional.<locals>.<genexpr> at 0x000001B9F2F53680>)
+
+tests\test_backend.py:150: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_backend.py::test_competitor_prompt_examples_are_fictional
+1 failed, 25 deselected in 5.59s

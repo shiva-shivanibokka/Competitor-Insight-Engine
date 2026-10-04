@@ -1,0 +1,68 @@
+{
+ "id": "DBX",
+ "homepage": "https://www.dropbox.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Dropbox\nINDUSTRY: Cloud Storage & Collaboration Software\nPRODUCT OR SERVICE: Secure cloud storage, file sharing, and collaboration platform that integrates with AI tools to streamline workflows, document management, and team communication.\nTARGET CUSTOMERS: Individuals, small businesses, and enterprise teams across industries including construction, media, technology, professional services, and manufacturing.\nPRICING MODEL: Freemium\nKEY FEATURES:\n- AI integrations with OpenAI, Anthropic, Google Gemini, and others for content summarization and analysis\n- Large file transfers up to 250GB with real-time syncing\n- Support for 175+ file types with built-in previews and version history\n- Enterprise-grade security features including encryption and tamper-proof documents\n- Cross-platform access and organization tools for team folders\nUNIQUE SELLING POINTS:\n- \"Enlightened way of working\" philosophy focused on reducing busywork and app-switching\n- Seamless AI integration that keeps users within their existing workflow\n- Strong emphasis on security and privacy, explicitly stating they never sell user data\n- Scalable solution serving over 700 million registered users from individuals to large enterprises\nTONE & POSITIONING: Professional, user-centric, and modern; positions itself as a reliable, secure, and intelligent productivity partner for both SMBs and enterprises.",
+ "industry": "Cloud Storage & Collaboration Software",
+ "query": "top direct competitors of Dropbox in Cloud Storage & Collaboration Software",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.g2.com/products/dropbox/competitors/alternatives",
+   "used": false
+  },
+  {
+   "url": "https://craft.co/dropbox/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.softwaretestinghelp.com/dropbox-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.cloudwards.net/top-10-secure-dropbox-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.info2soft.com/blogs/dropbox-business-alternatives.html",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://technologycounter.com/products/dropbox",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.marketing91.com/top-10-dropbox-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://whatcompetitors.com/dropbox/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.owler.com/company/dropbox/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://assistouest.fr/en/blog/web-en/online-storage-the-best-free-cloud-services/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:24:17",
+ "scraped_sha256": "823c21e8d03e1471cc18680e93ab8225f814ded17da51329ff9e6728bdaa835f",
+ "search_content_sha256": "24b78b814110d9c6472c1429030266cf89f3406fcfe920f03d15accd0dc89ed3",
+ "search_content_chars": 5480,
+ "stripped": true
+}

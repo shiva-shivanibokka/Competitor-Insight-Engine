@@ -1,0 +1,66 @@
+{
+ "id": "SAIL",
+ "homepage": "https://www.sailpoint.com",
+ "scraped_chars": 3046,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: SailPoint\nINDUSTRY: Identity and Access Management (IAM) / Cybersecurity\nPRODUCT OR SERVICE: An adaptive identity security platform that unifies identity, data, and security intelligence to govern human, machine, and AI identities in real time.\nTARGET CUSTOMERS: Large enterprises, specifically Fortune 500 companies, and organizations seeking to secure agentic AI and non-human identities.\nPRICING MODEL: Enterprise\nKEY FEATURES:\n- Real-time adaptive security and continuous risk assessment across all identities.\n- Governance for human, machine, and AI (non-human) identities.\n- Data Access Security to govern access to sensitive data.\n- Observability and insights to trace identity context and access history.\n- Automated policy enforcement and least privilege management.\nUNIQUE SELLING POINTS:\n- Named the \"Overall Leader in identity governance\" by KuppingerCole.\n- 53% of the Fortune 500 are customers.\n- Claims 300% ROI in 2 years and a 95% customer retention rate.\n- Focus on securing the \"agentic enterprise\" and AI identities.\nTONE & POSITIONING: Enterprise / Premium / Leader",
+ "industry": "Identity and Access Management (IAM) / Cybersecurity",
+ "query": "top direct competitors of SailPoint in Identity and Access Management (IAM) / Cybersecurity",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.g2.com/products/sailpoint/competitors/alternatives",
+   "used": false
+  },
+  {
+   "url": "https://www.toriihq.com/blog/sailpoints-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://sumble.com/tech/sailpoint",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.lumos.com/identity-matters/identity-governance/sailpoint-competitors-and-alternatives",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://sourceforge.net/software/product/SailPoint/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.infisign.ai/de/blog/10-sailpoint-competitors-and-alternatives-iam-tools-like-sailpoint",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.linkedin.com/posts/chathurya-ananta_identityandaccessmanagement-iam-cybersecurity-activity-7364930542888288256-CMdv",
+   "used": false
+  },
+  {
+   "url": "https://6sense.com/tech/identity-and-access-management/sailpoint-identityiq-market-share",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=6XY8hWOQjhY",
+   "used": false
+  },
+  {
+   "url": "https://mindmajix.com/sailpoint-tutorial",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:26:36",
+ "scraped_sha256": "e701d1afe8bd151082b843a201a816feece6d1afefec732d2b2c30516aaafec8",
+ "search_content_sha256": "ef8d0c8b59fc7066b6fb233d8700f1ff3d4c71900c4f4bbcdffe9fb0a46e8fd1",
+ "search_content_chars": 4251,
+ "stripped": true
+}

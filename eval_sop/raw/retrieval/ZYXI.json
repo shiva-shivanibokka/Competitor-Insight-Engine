@@ -1,0 +1,69 @@
+{
+ "id": "ZYXI",
+ "homepage": "https://www.zynex.com",
+ "scraped_chars": 3042,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Altivera (formerly Zynex Medical)\nINDUSTRY: Medical Technology / Rehabilitation & Orthopedic Devices\nPRODUCT OR SERVICE: Innovative, non-invasive medical technologies including electrotherapy, hot/cold compression, and bracing/traction systems designed to help patients manage pain, restore mobility, and accelerate recovery.\nTARGET CUSTOMERS: Healthcare providers, rehabilitation clinics, and patients undergoing physical therapy or recovery from injury/surgery.\nPRICING MODEL: Enterprise / B2B (Sales to healthcare providers and clinics)\nKEY FEATURES:\n- Electrotherapy devices for pain relief and muscle re-education\n- Hot/Cold compression therapy for inflammation reduction and healing\n- Orthopedic bracing and traction systems for joint stabilization\n- Patient Portal for managing therapy supplies and care team communication\n- Clinic Store for ordering provider-recommended therapy products\nUNIQUE SELLING POINTS: Clinically proven, non-invasive solutions; backed by decades of experience; patient-centered design focused on real-world use and functional recovery between clinical visits.\nTONE & POSITIONING: Professional, clinical, and patient-centric; positioned as a reliable, high-quality partner for healthcare providers and patients seeking advanced recovery solutions.",
+ "industry": "Medical Technology / Rehabilitation & Orthopedic Devices",
+ "query": "top direct competitors of Zynex Medical in Medical Technology / Rehabilitation & Orthopedic Devices",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://pestel-analysis.com/blogs/competitors/zynex",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://craft.co/zynex/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://growjo.com/company/Zynex_Medical",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://tracxn.com/d/companies/zynex/__NqVh9liqwBoCzDfXJXMUyQah0sJLL9HVpwG97Vt4-SM",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://leadiq.com/c/zynex-medical/5a1d8a9f2400002400647362",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.platformexecutive.com/swot_analysis/zynex-inc/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.cbinsights.com/company/zynex-medical/alternatives-competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.mpo-mag.com/breaking-news/zynex-hires-director-of-business-development/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://rocketreach.co/zynex-medical-profile_b5c7f0ebf42e0db0",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://thehealthcaretechnologyreport.com/the-top-50-healthcare-technology-ceos-of-2024/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:32:24",
+ "scraped_sha256": "da195b6f59c97bced99bea67b66f9fa3681fe524dd89a8027196be470f83b9ff",
+ "search_content_sha256": "c793e4a02001b0dd0104d3f93d497f488eea0556ec1f54cc7a048cdc8c3ff2db",
+ "search_content_chars": 4621,
+ "stripped": true
+}

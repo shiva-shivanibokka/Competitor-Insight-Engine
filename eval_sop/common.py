@@ -105,7 +105,7 @@ class GroqShim:
         }
         est = (len(system_prompt) + len(user_prompt)) // 3 + MAX_TOKENS // 2
         key = _api_key()
-        for attempt in range(8):
+        for attempt in range(400):
             _pace(est)
             t = time.time()
             try:
@@ -120,9 +120,9 @@ class GroqShim:
                     raise BillingRequired(txt)
                 wait = float(r.headers.get("retry-after", "20") or 20)
                 print(f"    [groq] {r.status_code}; retry-after {wait}s; {txt[:160]}", flush=True)
-                if "tokens per day" in txt.lower() or "(tpd)" in txt.lower() or "requests per day" in txt.lower():
+                if os.environ.get("EVAL_STOP_ON_DAILY") and ("(tpd)" in txt.lower() or "(rpd)" in txt.lower()):
                     raise SystemExit(f"daily Groq limit reached: {txt[:200]}")
-                time.sleep(wait + 1)
+                time.sleep(wait + 1)  # daily limits are rolling; honour retry-after and continue
                 continue
             if r.status_code in (402, 403) or "billing" in r.text[:300].lower():
                 raise BillingRequired(r.text[:300])

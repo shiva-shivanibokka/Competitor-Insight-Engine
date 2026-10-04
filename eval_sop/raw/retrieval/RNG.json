@@ -1,0 +1,69 @@
+{
+ "id": "RNG",
+ "homepage": "https://www.ringcentral.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: RingCentral\nINDUSTRY: Cloud Communications / Unified Communications as a Service (UCaaS) / Contact Center as a Service (CCaaS)\nPRODUCT OR SERVICE: An Agentic Voice AI platform that provides cloud-based business phone, video meetings, and contact center solutions. It integrates AI agents to automate, assist, and analyze customer interactions across voice, SMS, and chat.\nTARGET CUSTOMERS: Businesses of all sizes, ranging from SMBs to large enterprises (including global brands like T-Mobile, Vodafone, and Restoration Hardware).\nPRICING MODEL: Subscription / Enterprise\nKEY FEATURES:\n- Agentic Voice AI (AI Receptionist, AI Representative, AI Virtual Assistant) for 24/7 call handling and intent-based automation.\n- Unified Communications (RingEX) including business phone, SMS, team chat, and AI-powered video meetings.\n- AI Contact Center (RingCX) with omnichannel management, AI workforce engagement, and quality management.\n- AIR Pro: A no-code platform for building custom conversational AI agents across multiple channels.\n- AI Conversation Expert (ACE) for analyzing interactions to uncover insights and improve performance.\nUNIQUE SELLING POINTS:\n- Named a Gartner Magic Quadrant Leader for 12 consecutive years.\n- \"Agentic Voice AI\" approach that creates a self-learning flywheel to automate outcomes and assist agents.\n- Scalable and reliable infrastructure trusted by over 600,000 businesses worldwide.\n- No-code capability to build custom AI agents using natural language prompts.\nTONE & POSITIONING: Enterprise / Premium / Innovation-focused",
+ "industry": "Cloud Communications / Unified Communications as a Service (UCaaS) / Contact Center as a Service (CCaaS)",
+ "query": "top direct competitors of RingCentral in Cloud Communications / Unified Communications as a Service (UCaaS) / Contact Center as a Service (CCaaS)",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://sumble.com/tech/ringcentral",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.avoxi.com/blog/ringcentral-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.stratospherenetworks.com/blog/dialpad-vs-ringcentral-identify-the-best-cloud-phone-system-for-your-business/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.nextiva.com/blog/contact-center-as-a-service.html",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.trustradius.com/categories/unified-communications-as-a-service-ucaas",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.ringcentral.com/whyringcentral/company/pressreleases/ringcentral-and-nice-expand-and-extend-partnership.html",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.infotech.com/software-reviews/categories/unified-communications-as-a-service",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://foundationinc.co/lab/ringcentral-ucaas",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.cloudcommunications.com/news/ringcentral-announces-expansion-of-ringcentral-global-office-across-six-continents-with-unified-team-messaging-video-meetings-and-cloud-phone-system",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.nice.com/press-releases/nice-and-ringcentral-extend-partnership-to-accelerate-ai-driven-customer-and-employee-experiences",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:25:53",
+ "scraped_sha256": "2810e6a454bec03ac0653c984df0f05ce8e6b84071da1d1f44ad02e4889fe713",
+ "search_content_sha256": "af4b5437e98645ff02dd4cf416394dffe8ba040f0a572a01811038eaa19fb06a",
+ "search_content_chars": 6000,
+ "stripped": true
+}

@@ -7,8 +7,14 @@ content varied:
   a_full        original prompt (commit c3eac2d) + retrieved search content
   b_prior       original prompt + NO search content (LLM prior only)
   c_shuffled    original prompt + another company's search content (derangement, seed 0)
-  d_fixed       fixed prompt (fictional few-shot examples) + retrieved search content
+  d_fixed       candidate fixed prompt (fictional few-shot examples, eval_sop/fixed_prompt.py) + retrieved search content
   e_fixed_prior fixed prompt + NO search content
+  b2_prior_knowledge  original prompt, search slot says "use your own knowledge" (LLM prior only)
+  e2_fixed_prior_knowledge  fixed prompt, same "use your own knowledge" slot
+
+b_/e_ were the first operationalisation of "prior only"; the model answered []
+for all 48 companies (it abstains when told no search ran), so b2_/e2_ add an
+explicit invitation to answer from parametric knowledge. Both are reported.
 
     python eval_sop/run_discovery.py --temps 0 --seeds 0 1 2
 
@@ -22,6 +28,7 @@ import random
 import subprocess
 
 from common import MODEL, ROOT, load_companies, shim
+from fixed_prompt import FIXED_COMPETITOR_EXTRACTION_PROMPT
 
 import analyzer  # noqa: E402
 
@@ -43,8 +50,10 @@ def original_prompt() -> str:
 
 
 ORIGINAL = original_prompt()
-FIXED = analyzer.COMPETITOR_EXTRACTION_PROMPT  # whatever the working tree ships
+FIXED = FIXED_COMPETITOR_EXTRACTION_PROMPT  # candidate fix, kept in eval_sop/, not shipped
 NO_SEARCH = "(none — no web search was run for this request)"
+OWN_KNOWLEDGE = ("(No search results are available for this request. "
+                 "Answer from your own knowledge of the company and its market.)")
 
 
 def main():
@@ -52,10 +61,10 @@ def main():
     ap.add_argument("--temps", type=float, nargs="+", default=[0.0])
     ap.add_argument("--seeds", type=int, nargs="+", default=[0])
     ap.add_argument("--conds", nargs="+",
-                    default=["a_full", "b_prior", "c_shuffled", "d_fixed", "e_fixed_prior"])
+                    default=["a_full", "b_prior", "c_shuffled", "d_fixed", "e_fixed_prior",
+                             "b2_prior_knowledge", "e2_fixed_prior_knowledge"])
     args = ap.parse_args()
-    if FIXED == ORIGINAL and any(c.startswith(("d_", "e_")) for c in args.conds):
-        raise SystemExit("working-tree prompt == original prompt; apply the fix first")
+    assert FIXED != ORIGINAL
 
     comps = [c for c in load_companies() if (RET / f"{c['id']}.json").exists()]
     ret = {c["id"]: json.loads((RET / f"{c['id']}.json").read_text(encoding="utf-8")) for c in comps}
@@ -81,11 +90,13 @@ def main():
         key = (c["id"], cond, temp, seed)
         if key in done:
             continue
-        prompt = ORIGINAL if cond in ("a_full", "b_prior", "c_shuffled") else FIXED
+        prompt = ORIGINAL if cond in ("a_full", "b_prior", "c_shuffled", "b2_prior_knowledge") else FIXED
         if cond in ("a_full", "d_fixed"):
             content, src = ret[c["id"]]["search_content"], c["id"]
         elif cond == "c_shuffled":
             content, src = ret[donor[c["id"]]]["search_content"], donor[c["id"]]
+        elif cond in ("b2_prior_knowledge", "e2_fixed_prior_knowledge"):
+            content, src = OWN_KNOWLEDGE, None
         else:
             content, src = NO_SEARCH, None
         analyzer.COMPETITOR_EXTRACTION_PROMPT = prompt

@@ -1,0 +1,88 @@
+DASH
+ZM
+SNOW
+DDOG
+PINS
+SNAP
+WDAY
+MDB
+CVNA
+ORCL
+RBLX
+FTNT
+ABNB
+LYV
+DBX
+ROKU
+U
+BOX
+S
+RNG
+TDC
+SAIL
+ARLO
+TREX
+NSP
+BHE
+CWAN
+HLF
+CNDT
+BLZE
+LAW
+DHX
+BRCC
+WYY
+CXAI
+KORE
+XPON
+EFOI
+TLF
+ZYXI
+{
+ "all": {
+  "n_companies": 40,
+  "n_claims": 499,
+  "support_rate_mean_over_companies": 0.6376,
+  "ci95": [
+   0.5597,
+   0.7099
+  ]
+ },
+ "large": {
+  "n_companies": 14,
+  "n_claims": 179,
+  "support_rate_mean_over_companies": 0.6279,
+  "ci95": [
+   0.5496,
+   0.7087
+  ]
+ },
+ "mid": {
+  "n_companies": 13,
+  "n_claims": 166,
+  "support_rate_mean_over_companies": 0.5884,
+  "ci95": [
+   0.4256,
+   0.7283
+  ]
+ },
+ "small": {
+  "n_companies": 13,
+  "n_claims": 154,
+  "support_rate_mean_over_companies": 0.6973,
+  "ci95": [
+   0.5395,
+   0.8307
+  ]
+ },
+ "by_scrape_length_claim_level": {
+  "lt_1000_chars": {
+   "n_claims": 30,
+   "support_rate": 0.2
+  },
+  "ge_1000_chars": {
+   "n_claims": 469,
+   "support_rate": 0.6674
+  }
+ }
+}

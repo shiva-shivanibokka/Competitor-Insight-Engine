@@ -1,0 +1,67 @@
+{
+ "id": "SNAP",
+ "homepage": "https://www.snap.com",
+ "scraped_chars": 454,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Snap Inc.\nINDUSTRY: Social Media / Mobile Technology\nPRODUCT OR SERVICE: Snapchat, a visual messaging service for communication, and Lens Studio, a creative tool for building AR & AI experiences.\nTARGET CUSTOMERS: General consumers (for Snapchat) and developers/creators (for Lens Studio).\nPRICING MODEL: unknown\nKEY FEATURES:\n- Visual messaging for friends, family, and the world\n- AR & AI experience creation tools\n- Human-centric computing via Specs\n- Real-time expression and moment capture\nUNIQUE SELLING POINTS: Empowers human progress by enabling self-expression, learning, and fun; makes computing more human.\nTONE & POSITIONING: Consumer-focused / Developer-focused / Human-centric",
+ "industry": "Social Media / Mobile Technology",
+ "query": "top direct competitors of Snap in Social Media / Mobile Technology",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://craft.co/snap/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://sumble.com/tech/snap",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.cbinsights.com/company/snapchat/alternatives-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.owler.com/company/snapinc",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://discovery.patsnap.com/company/snap/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.marketbeat.com/stocks/NYSE/SNAP/competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=KbWnjelrhxA",
+   "used": false
+  },
+  {
+   "url": "https://www.snapchat.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://csimarket.com/stocks/SNAP-Competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.forbes.com/sites/greatspeculations/2020/09/28/snap-is-priced-to-take-over-the-world/",
+   "used": false
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:21:42",
+ "scraped_sha256": "0e467cb0779f1fc2ffd65a621440cdb9ef2133bff530201c680957aaf21009ac",
+ "search_content_sha256": "640883a27b7675515b9687cc30cbda72892d7692bfc410d0c0441434f51d1008",
+ "search_content_chars": 5429,
+ "stripped": true
+}

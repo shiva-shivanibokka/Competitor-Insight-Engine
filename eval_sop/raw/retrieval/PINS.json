@@ -1,0 +1,68 @@
+{
+ "id": "PINS",
+ "homepage": "https://www.pinterest.com",
+ "scraped_chars": 4379,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Pinterest\nINDUSTRY: Social Media / Visual Discovery / E-commerce\nPRODUCT OR SERVICE: A visual discovery engine that allows users to find, save, and organize ideas (Pins) into collections (Boards), with integrated shopping features to purchase products directly from the platform.\nTARGET CUSTOMERS: General consumers seeking inspiration for lifestyle, home, fashion, and food; businesses and marketers looking to reach audiences through visual advertising.\nPRICING MODEL: Freemium (Free for individual users; paid advertising models for businesses)\nKEY FEATURES:\n- Visual search and AI-powered recommendations tailored to user taste\n- Integrated shopping capabilities to buy products directly from Pins\n- Customizable search filters (e.g., skin tone, hair type, body type)\n- Safety and wellbeing tools including age verification and parental controls\n- Business tools for creating ads and tracking performance\nUNIQUE SELLING POINTS: Positions itself as a \"more positive place online\" focused on inspiration rather than social validation; emphasizes inclusivity through diverse representation filters; strong focus on user wellbeing and safety.\nTONE & POSITIONING: Consumer-focused, positive, inspirational, and inclusive; emphasizes emotional wellbeing and a safer internet experience.",
+ "industry": "Social Media / Visual Discovery / E-commerce",
+ "query": "top direct competitors of Pinterest in Social Media / Visual Discovery / E-commerce",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://twitblogs.com/pinterest-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.linkedin.com/pulse/pinterest-future-e-commerce-jannat-kakar",
+   "used": false
+  },
+  {
+   "url": "https://www.jploft.com/blog/pinterest-alternatives",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://iide.co/case-studies/business-model-of-pinterest/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://explodingtopics.com/blog/top-social-media-platforms",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://apollosmarketing.com/pinterest-competitors-top-alternatives-you-should-try/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://business.pinterest.com/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://xtendedview.com/pinterest-statistics/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://itechnolabs.ca/blog/apps-like-pinterest/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://wiselancer.net/swot-analysis-of-pinterest/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:21:29",
+ "scraped_sha256": "d6a97b838a89871a33671e73bfdcad495005c0aa2ca48bd20ba6ca1b566c89ae",
+ "search_content_sha256": "6ab0475a184ccfacc2c150be684acd8989500633f71e291bc9585098287ad486",
+ "search_content_chars": 6000,
+ "stripped": true
+}

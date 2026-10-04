@@ -1,0 +1,68 @@
+{
+ "id": "ARLO",
+ "homepage": "https://www.arlo.com",
+ "scraped_chars": 360,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Arlo\nINDUSTRY: Smart Home Security\nPRODUCT OR SERVICE: Wireless smart home security systems including security cameras, video doorbells, and floodlights.\nTARGET CUSTOMERS: Homeowners and consumers seeking smart home security solutions.\nPRICING MODEL: Unknown\nKEY FEATURES: \n- Smart home security cameras\n- Video doorbells\n- Floodlights\nUNIQUE SELLING POINTS: Unknown\nTONE & POSITIONING: Consumer / Smart Home",
+ "industry": "Smart Home Security",
+ "query": "top direct competitors of Arlo in Smart Home Security",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.arlo.com/",
+   "used": true,
+   "page_chars": 66
+  },
+  {
+   "url": "https://www.security.org/security-cameras/arlo/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://portersfiveforce.com/blogs/competitors/arlo",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.safewise.com/home-security-systems/arlo-vs-nest-cameras/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://smarthomesolver.com/reviews/arlo-alternative/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.cnet.com/home/security/best-home-security-systems-in-2026-every-sensor-tested/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://realestate.usnews.com/home-services/home-security-systems/arlo-vs-ring-alarm",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=a8xg7JeDUhI",
+   "used": false
+  },
+  {
+   "url": "https://csimarket.com/stocks/ARLO-Competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://umbrex.com/resources/company-profiles/arlo-technologies/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:26:48",
+ "scraped_sha256": "241c31599405656bd26d65db331e3cda9b63cf9fec4ea09172d521f31b29c885",
+ "search_content_sha256": "36fab2764078217c737a28e6468706a65fd3fee51b844224527aca7a92a65144",
+ "search_content_chars": 5005,
+ "stripped": true
+}

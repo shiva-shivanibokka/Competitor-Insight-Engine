@@ -1,0 +1,67 @@
+{
+ "id": "WYY",
+ "homepage": "https://www.widepoint.com",
+ "scraped_chars": 4035,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: WidePoint Corporation\nINDUSTRY: IT Services / Cybersecurity / Managed Services\nPRODUCT OR SERVICE: WidePoint provides secure Identity & Access Management (IAM), Managed Mobility Solutions (MMS), and IT-as-a-Service (ITaaS) to protect mobile workforces and enterprise infrastructure. They also offer digital billing, analytics, and cloud security services.\nTARGET CUSTOMERS: Government agencies (including those requiring top secret clearances) and commercial enterprises ranging from hundreds to thousands of users across North America.\nPRICING MODEL: Enterprise / Customized\nKEY FEATURES:\n- Secure Identity & Access Management (IAM) with quantum-resistant PKI\n- MobileAnchor™ multi-factor authentication\n- Managed Mobility Solutions (MMS) for data protection and operational efficiency\n- IT as a Service (ITaaS) and Cloud Security (MSP/MSSP/CSP)\n- B2B & B2C billing and analytics solutions\nUNIQUE SELLING POINTS: Quantum-resistant security solutions, top secret security clearances, and a history of merging specialized regional IT firms to offer customized, high-value solutions for both government and commercial sectors.\nTONE & POSITIONING: Enterprise / Government / Security-Focused",
+ "industry": "IT Services / Cybersecurity / Managed Services",
+ "query": "top direct competitors of WidePoint in IT Services / Cybersecurity / Managed Services",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/WidePoint_Corporation",
+   "used": false
+  },
+  {
+   "url": "https://tracxn.com/d/companies/widepoint/__uX2_w7KU2BqrPI_ELxe9j-TzTXnRd3xz0OfBZ-HRyuw",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.owler.com/company/widepoint",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://craft.co/widepoint",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://pestel-analysis.com/blogs/how-it-works/widepoint",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://technologycounter.com/products/widepoint",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.softwaresuggest.com/widepoint/alternatives",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.capterra.com/p/171898/WidePoint/",
+   "used": false
+  },
+  {
+   "url": "https://nerdisa.com/widepoint/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://rocketreach.co/widepoint-corporation-profile_b5c6a819f42e0cec",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:30:41",
+ "scraped_sha256": "81bb3f18ad0f31d2c4cc6c76fea1921110809ff052395a19ccf2c8b293d7b653",
+ "search_content_sha256": "438522cc46f6af3f8d3dafa3cd99e94ee416eb93973038c8763f443be7ab3baa",
+ "search_content_chars": 5321,
+ "stripped": true
+}

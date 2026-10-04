@@ -1,0 +1,69 @@
+{
+ "id": "ROKU",
+ "homepage": "https://www.roku.com",
+ "scraped_chars": 214,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Roku\nINDUSTRY: Consumer Electronics / Streaming Media\nPRODUCT OR SERVICE: Roku offers streaming media players, sticks, and smart TV operating systems that allow users to access a wide variety of streaming services and live TV channels.\nTARGET CUSTOMERS: Consumers and households looking to add streaming capabilities to their televisions or replace traditional cable/satellite TV services.\nPRICING MODEL: Hardware sales (one-time purchase) and optional subscription services for premium channels.\nKEY FEATURES: \n- Access to thousands of streaming apps and channels\n- Live TV streaming options\n- User-friendly interface and remote control\n- Integration with major streaming platforms (Netflix, Hulu, Disney+, etc.)\n- Support for multiple screen sizes and resolutions\nUNIQUE SELLING POINTS: \n- Aggregates content from multiple providers into a single interface\n- Affordable hardware options\n- Wide compatibility with various TV brands\n- Regular software updates and new feature releases\nTONE & POSITIONING: Consumer-friendly, accessible, and focused on simplifying the streaming experience for a broad audience.",
+ "industry": "Consumer Electronics / Streaming Media",
+ "query": "top direct competitors of Roku in Consumer Electronics / Streaming Media",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://bstrategyhub.com/roku-competitors-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://craft.co/roku/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.cbinsights.com/company/roku/alternatives-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.roku.com/",
+   "used": true,
+   "page_chars": 78
+  },
+  {
+   "url": "https://www.comparably.com/companies/roku/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.similarweb.com/website/roku.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.kavout.com/market-lens/rokus-market-leadership-in-2024-strengthening-its-grip-on-the-streaming-industry",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://multiples.vc/public-comps/roku-valuation-multiples",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://growjo.com/company/Roku",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://tracxn.com/d/companies/roku/__nO1n_wv-Irebpwst5SU-0jo2ZqM8UbldBk0tT7H50Wc",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:24:30",
+ "scraped_sha256": "4b8cfbd2421b1d8fd8dbbe1fadc3876cfac5c3cd3f35841c400346751886e422",
+ "search_content_sha256": "263dba7e8db798139820532feda88811da0e568386ae04eb4f10609192c1b11b",
+ "search_content_chars": 4321,
+ "stripped": true
+}

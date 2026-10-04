@@ -1,0 +1,69 @@
+{
+ "id": "HLF",
+ "homepage": "https://www.herbalife.com",
+ "scraped_chars": 3046,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Herbalife\nINDUSTRY: Health & Wellness / Nutrition\nPRODUCT OR SERVICE: A global provider of nutritional supplements, meal replacements, and health products, including a direct sales business opportunity platform.\nTARGET CUSTOMERS: Consumers seeking weight management, fitness, and daily nutrition support, as well as individuals interested in starting a direct sales business.\nPRICING MODEL: Enterprise / Direct Sales (Product purchase via independent distributors)\nKEY FEATURES: \n- Comprehensive product lines for fitness, performance, healthy weight, and daily nutrition\n- Direct sales business opportunity with \"Wellness Rewards\" program\n- Personalized supplement options (e.g., Bioniq GO)\n- Scientifically researched formulas with high-quality ingredients\n- Community-driven wellness platform\nUNIQUE SELLING POINTS: Over 45 years of history, rigorous scientific research, high-quality ingredients, and a strong sense of community spirit.\nTONE & POSITIONING: Premium / Community-focused / Empowering",
+ "industry": "Health & Wellness / Nutrition",
+ "query": "top direct competitors of Herbalife in Health & Wellness / Nutrition",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://craft.co/herbalife/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.latterly.org/herbalife-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://thebigmarketing.com/herbalife-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://multiples.vc/public-comps/herbalife-valuation-multiples",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://directsellerz.com/company/herbalife",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.herbalife.com/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://seriosity.com/top-herbalife-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://portersfiveforce.com/blogs/competitors/herbalife",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://pitchgrade.com/companies/herbalife-ltd",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.owler.com/company/herbalife/competitors",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:28:47",
+ "scraped_sha256": "ed19ee706ba4ac755437cb19b3d0fe4699dc093d1a7931a354571cd1f6ad07c4",
+ "search_content_sha256": "85f3d5e41c10e12986b04ca456c37331866a7de8c3c4d885f38a99483dd2e404",
+ "search_content_chars": 6000,
+ "stripped": true
+}

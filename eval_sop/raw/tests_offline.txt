@@ -1,0 +1,3 @@
+FAILED tests/test_backend.py::test_ssrf_allows_public - AssertionError: asser...
+FAILED tests/test_backend.py::test_reachability_checks_do_not_follow_redirect_chains
+2 failed, 24 passed, 1 warning in 8.37s

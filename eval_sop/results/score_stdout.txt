@@ -1,0 +1,70 @@
+a_full                   T=0.0  seeds=[0] all   n=48 P@4 0.524 [0.43,0.62]  R@4 0.303 [0.23,0.39]  R@all 0.402 [0.32,0.49]  empty 0.04  leak 0.00
+a_full                   T=0.0  seeds=[0] large n=16 P@4 0.625 [0.48,0.77]  R@4 0.301 [0.19,0.43]  R@all 0.408 [0.26,0.56]  empty 0.00  leak 0.00
+a_full                   T=0.0  seeds=[0] mid   n=16 P@4 0.703 [0.56,0.83]  R@4 0.457 [0.32,0.60]  R@all 0.546 [0.40,0.69]  empty 0.00  leak 0.00
+a_full                   T=0.0  seeds=[0] small n=16 P@4 0.245 [0.11,0.40]  R@4 0.152 [0.06,0.27]  R@all 0.251 [0.13,0.38]  empty 0.12  leak 0.00
+b2_prior_knowledge       T=0.0  seeds=[0] all   n=21 P@4 0.607 [0.48,0.73]  R@4 0.336 [0.22,0.47]  R@all 0.393 [0.27,0.53]  empty 0.00  leak 0.00
+b2_prior_knowledge       T=0.0  seeds=[0] large n=16 P@4 0.578 [0.42,0.72]  R@4 0.273 [0.17,0.40]  R@all 0.317 [0.20,0.45]  empty 0.00  leak 0.00
+b2_prior_knowledge       T=0.0  seeds=[0] mid   n= 5 P@4 0.700 [0.55,0.85]  R@4 0.537 [0.27,0.80]  R@all 0.636 [0.34,0.93]  empty 0.00  leak 0.00
+b_prior                  T=0.0  seeds=[0] all   n=48 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00
+b_prior                  T=0.0  seeds=[0] large n=16 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00
+b_prior                  T=0.0  seeds=[0] mid   n=16 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00
+b_prior                  T=0.0  seeds=[0] small n=16 P@4 0.000 [0.00,0.00]  R@4 0.000 [0.00,0.00]  R@all 0.000 [0.00,0.00]  empty 1.00  leak 0.00
+c_shuffled               T=0.0  seeds=[0] all   n=31 P@4 0.032 [0.00,0.08]  R@4 0.009 [0.00,0.02]  R@all 0.013 [0.00,0.03]  empty 0.84  leak 0.00
+c_shuffled               T=0.0  seeds=[0] large n=16 P@4 0.031 [0.00,0.09]  R@4 0.007 [0.00,0.02]  R@all 0.013 [0.00,0.04]  empty 0.88  leak 0.00
+c_shuffled               T=0.0  seeds=[0] mid   n=15 P@4 0.033 [0.00,0.10]  R@4 0.012 [0.00,0.04]  R@all 0.012 [0.00,0.04]  empty 0.80  leak 0.00
+z_baseline_capitalised   T=None seeds=[0] all   n=48 P@4 0.099 [0.05,0.15]  R@4 0.056 [0.03,0.09]  R@all 0.130 [0.08,0.19]  empty 0.00  leak 0.00
+z_baseline_capitalised   T=None seeds=[0] large n=16 P@4 0.188 [0.08,0.30]  R@4 0.080 [0.03,0.13]  R@all 0.152 [0.09,0.24]  empty 0.00  leak 0.00
+z_baseline_capitalised   T=None seeds=[0] mid   n=16 P@4 0.078 [0.03,0.14]  R@4 0.056 [0.01,0.11]  R@all 0.144 [0.04,0.27]  empty 0.00  leak 0.00
+z_baseline_capitalised   T=None seeds=[0] small n=16 P@4 0.031 [0.00,0.09]  R@4 0.031 [0.00,0.09]  R@all 0.093 [0.00,0.22]  empty 0.00  leak 0.00
+
+        a_full - b2_prior_knowledge       all   p@4            n=21 +0.048 [-0.036,+0.131]
+        a_full - b2_prior_knowledge       all   r@all          n=21 +0.055 [-0.007,+0.119]
+        a_full - b2_prior_knowledge       all   leak_orig_any  n=21 +0.000 [+0.000,+0.000]
+        a_full - b2_prior_knowledge       large p@4            n=16 +0.047 [-0.047,+0.141]
+        a_full - b2_prior_knowledge       large r@all          n=16 +0.091 [+0.033,+0.156]
+        a_full - b2_prior_knowledge       large leak_orig_any  n=16 +0.000 [+0.000,+0.000]
+        a_full - b2_prior_knowledge       mid   p@4            n= 5 +0.050 [-0.100,+0.200]
+        a_full - b2_prior_knowledge       mid   r@all          n= 5 -0.060 [-0.200,+0.040]
+        a_full - b2_prior_knowledge       mid   leak_orig_any  n= 5 +0.000 [+0.000,+0.000]
+        a_full - c_shuffled               all   p@4            n=31 +0.629 [+0.524,+0.734]
+        a_full - c_shuffled               all   r@all          n=31 +0.456 [+0.342,+0.571]
+        a_full - c_shuffled               all   leak_orig_any  n=31 +0.000 [+0.000,+0.000]
+        a_full - c_shuffled               large p@4            n=16 +0.594 [+0.438,+0.734]
+        a_full - c_shuffled               large r@all          n=16 +0.395 [+0.245,+0.552]
+        a_full - c_shuffled               large leak_orig_any  n=16 +0.000 [+0.000,+0.000]
+        a_full - c_shuffled               mid   p@4            n=15 +0.667 [+0.533,+0.800]
+        a_full - c_shuffled               mid   r@all          n=15 +0.520 [+0.361,+0.687]
+        a_full - c_shuffled               mid   leak_orig_any  n=15 +0.000 [+0.000,+0.000]
+        a_full - z_baseline_capitalised   all   p@4            n=48 +0.425 [+0.326,+0.529]
+        a_full - z_baseline_capitalised   all   r@all          n=48 +0.272 [+0.193,+0.358]
+        a_full - z_baseline_capitalised   all   leak_orig_any  n=48 +0.000 [+0.000,+0.000]
+        a_full - z_baseline_capitalised   large p@4            n=16 +0.438 [+0.234,+0.625]
+        a_full - z_baseline_capitalised   large r@all          n=16 +0.256 [+0.128,+0.399]
+        a_full - z_baseline_capitalised   large leak_orig_any  n=16 +0.000 [+0.000,+0.000]
+        a_full - z_baseline_capitalised   mid   p@4            n=16 +0.625 [+0.484,+0.750]
+        a_full - z_baseline_capitalised   mid   r@all          n=16 +0.402 [+0.256,+0.560]
+        a_full - z_baseline_capitalised   mid   leak_orig_any  n=16 +0.000 [+0.000,+0.000]
+        a_full - z_baseline_capitalised   small p@4            n=16 +0.213 [+0.094,+0.349]
+        a_full - z_baseline_capitalised   small r@all          n=16 +0.158 [+0.062,+0.272]
+        a_full - z_baseline_capitalised   small leak_orig_any  n=16 +0.000 [+0.000,+0.000]
+b2_prior_knowledge - c_shuffled               all   p@4            n=21 +0.583 [+0.452,+0.702]
+b2_prior_knowledge - c_shuffled               all   r@all          n=21 +0.383 [+0.253,+0.520]
+b2_prior_knowledge - c_shuffled               all   leak_orig_any  n=21 +0.000 [+0.000,+0.000]
+b2_prior_knowledge - c_shuffled               large p@4            n=16 +0.547 [+0.391,+0.688]
+b2_prior_knowledge - c_shuffled               large r@all          n=16 +0.304 [+0.184,+0.436]
+b2_prior_knowledge - c_shuffled               large leak_orig_any  n=16 +0.000 [+0.000,+0.000]
+b2_prior_knowledge - c_shuffled               mid   p@4            n= 5 +0.700 [+0.550,+0.850]
+b2_prior_knowledge - c_shuffled               mid   r@all          n= 5 +0.636 [+0.339,+0.933]
+b2_prior_knowledge - c_shuffled               mid   leak_orig_any  n= 5 +0.000 [+0.000,+0.000]
+        a_full - b_prior                  all   p@4            n=48 +0.524 [+0.427,+0.623]
+        a_full - b_prior                  all   r@all          n=48 +0.402 [+0.315,+0.494]
+        a_full - b_prior                  all   leak_orig_any  n=48 +0.000 [+0.000,+0.000]
+        a_full - b_prior                  large p@4            n=16 +0.625 [+0.484,+0.766]
+        a_full - b_prior                  large r@all          n=16 +0.408 [+0.264,+0.561]
+        a_full - b_prior                  large leak_orig_any  n=16 +0.000 [+0.000,+0.000]
+        a_full - b_prior                  mid   p@4            n=16 +0.703 [+0.562,+0.828]
+        a_full - b_prior                  mid   r@all          n=16 +0.546 [+0.396,+0.695]
+        a_full - b_prior                  mid   leak_orig_any  n=16 +0.000 [+0.000,+0.000]
+        a_full - b_prior                  small p@4            n=16 +0.245 [+0.109,+0.396]
+        a_full - b_prior                  small r@all          n=16 +0.251 [+0.128,+0.385]
+        a_full - b_prior                  small leak_orig_any  n=16 +0.000 [+0.000,+0.000]

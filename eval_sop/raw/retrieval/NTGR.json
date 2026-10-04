@@ -1,0 +1,69 @@
+{
+ "id": "NTGR",
+ "homepage": "https://www.netgear.com",
+ "scraped_chars": 0,
+ "product_would_abort": true,
+ "scraped": null,
+ "profile": "",
+ "industry": "technology",
+ "query": "top direct competitors of NETGEAR in technology",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://sumble.com/tech/netgear",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://craft.co/netgear/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.gartner.com/reviews/market/data-center-and-cloud-networking/vendor/netgear/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.owler.com/company/netgear/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.similarweb.com/website/netgear.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://pestel-analysis.com/blogs/competitors/netgear",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://tracxn.com/d/companies/netgear/__qD1Qud2Wwmac9UzRggsQ3IScSoCaoAFYawtDDYEPSjo",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.marketbeat.com/stocks/NASDAQ/NTGR/competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.comparably.com/companies/netgear/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://csimarket.com/stocks/NTGR-Competitors",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:28:30",
+ "scraped_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+ "search_content_sha256": "b930929f6783fece70280e9cc6a44f0b754d8538f37cf3b5c333dc38b8342bfd",
+ "search_content_chars": 4506,
+ "stripped": true
+}

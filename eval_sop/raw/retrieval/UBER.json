@@ -1,0 +1,69 @@
+{
+ "id": "UBER",
+ "homepage": "https://www.uber.com",
+ "scraped_chars": 0,
+ "product_would_abort": true,
+ "scraped": null,
+ "profile": "",
+ "industry": "technology",
+ "query": "top direct competitors of Uber in technology",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://penmypaper.com/knowledge-base/uber-competitor",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://businessmodelanalyst.com/top-10-uber-competitors-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://thestrategystory.com/blog/uber-competitor-analysis/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.rankred.com/uber-competitors-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.marketbeat.com/stocks/NYSE/UBER/competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://craft.co/uber/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://fourweekmba.com/uber-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://bstrategyhub.com/top-ubers-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.hudson-labs.com/research/uber-competitors-uber-key-rivals-in-2026",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://coreteka.com/blog/uber-competitors-among-startups-top-10/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:19:57",
+ "scraped_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+ "search_content_sha256": "c143846d988d3e6e6a71a6bf3b897987d8f090410fecd5cc3db43b73d777728d",
+ "search_content_chars": 5806,
+ "stripped": true
+}
