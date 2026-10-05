@@ -41,13 +41,24 @@ def wilson(k: int, n: int, z: float = 1.96):
     return [round(c - h, 4), round(c + h, 4)]
 
 
-def main():
-    comps = {c["id"]: c for c in load_companies()}
-    runs = [json.loads(x) for x in (ROOT / "raw" / "discovery.jsonl").read_text(encoding="utf-8").splitlines()]
-    ret = {i: json.loads((ROOT / "raw" / "retrieval" / f"{i}.json").read_text(encoding="utf-8")) for i in comps}
-    out = {"model": runs[0]["model"]}
+def runs_by_model(raw_dir) -> dict[str, list[dict]]:
+    """Every discovery record, grouped by the model that produced it.
 
-    # 1. verbatim-only
+    Keyed on each record's own `model` field and globbed over `discovery*.jsonl`,
+    deliberately matching `score.py`. Reading `discovery.jsonl` by name instead
+    made this analysis cover only whichever model happened to be in the
+    unsuffixed file, and say nothing about the one it skipped.
+    """
+    by_model: dict[str, list[dict]] = defaultdict(list)
+    for f in sorted(raw_dir.glob("discovery*.jsonl")):
+        for line in f.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                r = json.loads(line)
+                by_model[r["model"]].append(r)
+    return dict(by_model)
+
+
+def verbatim_only_p4(runs: list[dict], comps: dict) -> dict:
     vb = defaultdict(list)
     for r in runs:
         if r["temperature"] != 0.0 or r["seed"] != 0:
@@ -55,18 +66,43 @@ def main():
         names = [p["name"] for p in r["predictions"]]
         c = comps[r["id"]]
         vb[r["cond"]].append((c["tier"], metrics(names, c["competitors"])["p@4"], metrics(names, verbatim_gt(c))["p@4"]))
-    out["verbatim_only_p@4"] = {}
+    out = {}
     for cond, rows in sorted(vb.items()):
         for tier in ("all", "large", "mid", "small"):
             sel = [x for x in rows if tier == "all" or x[0] == tier]
             if not sel:
                 continue
             m, lo, hi = bootstrap([x[2] for x in sel])
-            out["verbatim_only_p@4"][f"{cond}/{tier}"] = {
+            out[f"{cond}/{tier}"] = {
                 "n": len(sel), "with_aliases": round(statistics.fmean(x[1] for x in sel), 4),
                 "verbatim_only": round(m, 4), "ci95": [round(lo, 4), round(hi, 4)]}
+    return out
+
+
+def a_full_by_coverage(runs: list[dict], comps: dict, cov: dict, med: float) -> dict:
+    a_full = {r["id"]: metrics([p["name"] for p in r["predictions"]], comps[r["id"]]["competitors"])["p@4"]
+              for r in runs if r["cond"] == "a_full" and r["seed"] == 0}
+    out = {}
+    for label, sel in (("coverage<=median", [i for i in cov if cov[i] <= med]),
+                       ("coverage>median", [i for i in cov if cov[i] > med])):
+        sel = [i for i in sel if i in a_full]  # a model may not have run every company
+        out[label] = {
+            "median_coverage": round(med, 4), "n": len(sel),
+            "tiers": {t: sum(comps[i]["tier"] == t for i in sel) for t in ("large", "mid", "small")},
+            "p@4": round(statistics.fmean(a_full[i] for i in sel), 4) if sel else None}
+    return out
+
+
+def main():
+    comps = {c["id"]: c for c in load_companies()}
+    by_model = runs_by_model(ROOT / "raw")
+    ret = {i: json.loads((ROOT / "raw" / "retrieval" / f"{i}.json").read_text(encoding="utf-8")) for i in comps}
+    out: dict = {}
 
     # 2. retrieval coverage
+    # Computed before the per-model blocks because section 1's coverage strata
+    # need the median, and because coverage depends only on the cached search
+    # text and the ground truth -- it is reported once, not per model.
     cov = {}
     for i, c in comps.items():
         text = ret[i]["search_content"]
@@ -77,17 +113,14 @@ def main():
         vals = [v for i, v in cov.items() if tier == "all" or comps[i]["tier"] == tier]
         m, lo, hi = bootstrap(vals)
         out["gt_in_search_coverage"][tier] = {"n": len(vals), "mean": round(m, 4), "ci95": [round(lo, 4), round(hi, 4)]}
-    a_full = {r["id"]: metrics([p["name"] for p in r["predictions"]], comps[r["id"]]["competitors"])["p@4"]
-              for r in runs if r["cond"] == "a_full" and r["seed"] == 0}
     med = statistics.median(cov.values())
-    out["a_full_p@4_by_coverage"] = {}
-    for label, sel in (("coverage<=median", [i for i in cov if cov[i] <= med]),
-                       ("coverage>median", [i for i in cov if cov[i] > med])):
-        out["a_full_p@4_by_coverage"][label] = {
-            "median_coverage": round(med, 4), "n": len(sel),
-            "tiers": {t: sum(comps[i]["tier"] == t for i in sel) for t in ("large", "mid", "small")},
-            "p@4": round(statistics.fmean(a_full[i] for i in sel), 4)}
     out["per_company_coverage"] = {i: round(v, 4) for i, v in cov.items()}
+
+    # 1. verbatim-only, and a_full by coverage stratum: one block per model.
+    out["models"] = {
+        name: {"verbatim_only_p@4": verbatim_only_p4(runs, comps),
+               "a_full_p@4_by_coverage": a_full_by_coverage(runs, comps, cov, med)}
+        for name, runs in sorted(by_model.items())}
     # looser variant: any name or alias (incl. LLM-added), case-insensitive
     loose = {}
     for i, c in comps.items():

@@ -46,6 +46,13 @@ class Provider:
     model: str
     cache: Path
     ledger: Path | None          # None = free tier, no cost accounting
+    # A committed, read-only second cache, consulted on read and never written to.
+    # The paid run's working cache sits in the user-level state directory beside the
+    # ledger and lock so the three move together; that kept the evidence for the
+    # paid numbers out of the repository, where a reader needs it. This path puts a
+    # copy in, so `score.py` and `sensitivity.py` reproduce the paid run offline
+    # with no key. It cannot increase spend: a hit here is a request not sent.
+    replay_cache: Path | None = None
     price_in: float = 0.0        # $ per input token
     price_out: float = 0.0       # $ per output token
     max_tokens: int = 700
@@ -76,7 +83,9 @@ STATE_DIR = Path.home() / ".sop_eval" / "competitor_insight"
 PROVIDERS = {
     "groq": Provider("groq", "qwen/qwen3.8-27b", ROOT / "raw" / "llm_cache.jsonl", None),
     "anthropic": Provider("anthropic", "claude-haiku-4-5-20251001", STATE_DIR / "llm_cache_haiku.jsonl",
-                          STATE_DIR / "cost_ledger_haiku.jsonl", price_in=1.0e-6, price_out=5.0e-6),
+                          STATE_DIR / "cost_ledger_haiku.jsonl",
+                          replay_cache=ROOT / "raw" / "llm_cache_haiku.jsonl",
+                          price_in=1.0e-6, price_out=5.0e-6),
 }
 PROVIDER = PROVIDERS[os.environ.get("EVAL_PROVIDER", "groq")]
 MODEL = PROVIDER.model
@@ -160,6 +169,39 @@ def ledger_total(path: Path) -> float:
     return sum(cost.values())
 
 
+def cache_key(provider: Provider, system: str, user: str, temperature: float, seed: int = 0) -> str:
+    """The cache key for one request, as a function of the provider rather than of a
+    live shim.
+
+    A free function so a read-only consumer -- the scorer, checking whether a cached
+    response was cut off at max_tokens -- can look up any provider's cache without
+    constructing that provider's shim. `LLMShim.key` delegates here, so there is one
+    implementation: a second copy would have to be kept in step with the committed
+    Groq cache by hand, and would quietly stop matching it the day it was not.
+    """
+    h = hashlib.sha256()
+    if provider.name == "groq":  # unchanged from the committed run so its cache replays
+        parts = (provider.model, system, user, repr(float(temperature)), str(seed), str(provider.max_tokens))
+    else:
+        parts = (provider.name, provider.model, system, user, repr(float(temperature)), str(provider.max_tokens))
+    for part in parts:
+        h.update(part.encode("utf-8"))
+        h.update(b"\x00")
+    return h.hexdigest()
+
+
+def cached_records(provider: Provider) -> dict[str, dict]:
+    """Every cached response available for a provider, read straight off disk.
+
+    Takes no ledger lock and needs no key, because it cannot send anything: this is
+    the read side only. Mirrors the precedence `LLMShim` uses -- committed replay
+    cache first, live state cache second.
+    """
+    recs = {r["key"]: r for r in _read_jsonl(provider.replay_cache)} if provider.replay_cache else {}
+    recs.update({r["key"]: r for r in _read_jsonl(provider.cache)})
+    return recs
+
+
 def _read_jsonl(p: Path) -> list[dict]:
     if not p.exists():
         return []
@@ -195,7 +237,11 @@ class LLMShim:
         self._lock_path = None
         if provider.ledger is not None:
             self._acquire_lock(provider.ledger.with_suffix(provider.ledger.suffix + ".lock"))
-        self.cache = {r["key"]: r for r in _read_jsonl(provider.cache)}
+        # Committed replay cache first, live state cache second: where both hold a
+        # key the state copy wins, since it is the one this machine actually wrote.
+        # They agree for the committed run; that only decides a hypothetical
+        # disagreement, and prefers the local record over the checked-in one.
+        self.cache = cached_records(provider)
         self._spent = ledger_total(provider.ledger) if provider.ledger else 0.0
 
     # ------------------------------------------------------------------ lock
@@ -249,15 +295,7 @@ class LLMShim:
         return est_input_tokens(system, user) * self.p.price_in + self.p.max_tokens * self.p.price_out
 
     def key(self, system: str, user: str, temperature: float) -> str:
-        h = hashlib.sha256()
-        if self.p.name == "groq":  # unchanged from the committed run so its cache replays
-            parts = (self.p.model, system, user, repr(float(temperature)), str(self.seed), str(self.p.max_tokens))
-        else:
-            parts = (self.p.name, self.p.model, system, user, repr(float(temperature)), str(self.p.max_tokens))
-        for part in parts:
-            h.update(part.encode("utf-8"))
-            h.update(b"\x00")
-        return h.hexdigest()
+        return cache_key(self.p, system, user, temperature, self.seed)
 
     # ------------------------------------------------------------------ call
     def __call__(self, system_prompt, user_prompt, model=None, temperature=0.2, api_keys=None):

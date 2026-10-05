@@ -19,6 +19,7 @@ over companies, 10,000 resamples, seed 0):
   empty fraction of runs that returned no competitors (P@4 counts these as 0)
 """
 
+import functools
 import json
 import random
 import re
@@ -79,20 +80,35 @@ def is_truncated(cache_rec: dict) -> bool:
     return cache_rec.get("stop_reason") == "max_tokens" or cache_rec.get("finish_reason") == "length"
 
 
+@functools.cache
+def cached_responses() -> dict[str, tuple]:
+    """Cached responses for every model that has any, as {model: (provider, records)}.
+
+    Read directly from each provider's cache files, not through the active shim.
+    Looking them up through `common.shim` meant a record whose model was not the
+    provider named by EVAL_PROVIDER got no cached response and so an *unknown*
+    truncation flag -- so `results/per_run.json` depended on an environment
+    variable, and no single invocation could fill it in for both models. This
+    sends nothing and takes no ledger lock; see `common.cached_records`.
+    """
+    from common import PROVIDERS, cached_records
+
+    return {p.model: (p, cached_records(p)) for p in PROVIDERS.values()}
+
+
 def response_record(r: dict, ret: dict) -> dict:
     """The cached LLM response behind a discovery record (rebuilt from the exact prompt)."""
     import run_discovery as rd
-    from common import shim
+    from common import cache_key
 
+    entry = cached_responses().get(r["model"])
+    if entry is None:
+        return {}
+    provider, records = entry
     system = rd.prompt_for(r["cond"])
     user = (f"The company being researched is: {r['name']}\n\n"
             f"Search results:\n\n{rd.content_for(r['cond'], r['id'], ret, r.get('evidence_from'))}")
-    if shim.p.model != r["model"]:
-        return {}
-    shim.seed = r["seed"]
-    rec = shim.cache.get(shim.key(system, user, r["temperature"]), {})
-    shim.seed = 0
-    return rec
+    return records.get(cache_key(provider, system, user, r["temperature"], r["seed"]), {})
 
 
 def mentions(names: list[str], x: str) -> bool:

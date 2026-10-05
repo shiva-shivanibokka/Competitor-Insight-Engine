@@ -1,6 +1,8 @@
 # Competitor-Insight-Engine: SOP evaluation (branch `sop-eval`)
 
-**Status: partial run (Groq, seed 0) plus a fix phase.** The free Groq quota (200,000 tokens a day for the one allowed model) ran out before every condition finished. After an adversarial review, the harness was fixed so a paid Haiku run can be done under a hard cost cap. That paid run has **not** been done.
+**Status: two runs, both complete enough to compare.** The free Groq run (seed 0) stopped short of every condition because the free quota (200,000 tokens a day for the one allowed model) ran out. After an adversarial review the harness was fixed so a paid Haiku run could be done under a hard cost cap, and on 2026-10-05 **that run was done**: 192 calls, **$0.4495** against a $1.1884 worst case and a $2.75 hard cap. It completes the conditions the free quota cut short, and the central finding replicates across both models — see §3f.
+
+Both runs replay offline from caches committed to this repository, so every number here can be re-derived with **no API key**: see §3g.
 
 Every number below is measured unless it says otherwise. Anything that did not run is marked as not run; nothing missing has been estimated.
 
@@ -10,12 +12,12 @@ Every number below is measured unless it says otherwise. Anything that did not r
 |---|---|
 | Code under test | `backend/` at commit `c3eac2d`. Unchanged; see the Change log. |
 | Pipeline steps exercised | Step 1 scrapes the homepage. Step 2 builds an LLM profile, which supplies INDUSTRY. Step 3 runs a web search. Step 4 is LLM competitor extraction. Steps 5–7 (competitor profiles and the report) were **not run**. |
-| LLM (the only model in every reported comparison) | `qwen/qwen3.8-27b` on the Groq free tier, with `reasoning_effort="none"` and `max_tokens=700`. The product's own prompts and temperatures were used: 0.0 for extraction and 0.2 for the profile. |
+| LLMs | **Two, reported separately and never pooled.** (a) `qwen/qwen3.8-27b` on the Groq free tier, `reasoning_effort="none"`, `max_tokens=700`. (b) `claude-haiku-4-5-20251001` on the paid Anthropic API, same `max_tokens=700`, 192 calls. Both use the product's own prompts and temperatures: 0.0 for extraction, 0.2 for the profile. The skip key includes the model, so the two runs never mix. |
 | Search | **Substituted, so this is not the shipped configuration.** No Tavily key was available. I used free `ddgs` 9.13.1 metasearch (`backend=auto`) with the product's exact query `top direct competitors of {name} in {industry}`. On top of the snippets, up to 6 non-blocklisted result pages were fetched with the product's `scrape_page()`, at 600 characters each and 6,000 characters in total. sec.gov results were dropped. All search text is cached in `raw/retrieval/`. |
 | Ground truth | 48 companies from SEC 10-K "Competition" sections (see §2). |
-| Runs | One run at temperature 0, seed 0. Seeds 1–2 were not run because of the quota. |
-| Raw outputs | `raw/llm_cache.jsonl` holds all 188 LLM calls (hashed prompts, responses, token counts, timestamps). Also `raw/discovery.jsonl` and `raw/retrieval/*.json`. |
-| Replay (no API calls) | `python eval_sop/score.py && python eval_sop/sensitivity.py` (install `backend/requirements.txt` + `eval_sop/requirements.txt`; nothing else is needed and no key is read). `tests/test_transport.py` checks that all 148 discovery records replay exactly from the cache. |
+| Runs | One run at temperature 0, seed 0, per model. Seeds 1–2 were not run: for Groq because of the quota, for Haiku because the Messages API accepts no seed, so a repeat would not be a seed replication. |
+| Raw outputs | `raw/llm_cache.jsonl` holds the 188 Groq calls and `raw/llm_cache_haiku.jsonl` the 192 Haiku calls (hashed prompts, responses, token counts, timestamps). Also `raw/discovery.jsonl` (148 records), `raw/discovery_haiku.jsonl` (192) and `raw/retrieval/*.json`. The paid run's working cache lives in the user-level state directory beside its cost ledger and lock, so the three move together and no repo edit can hand a run a fresh budget; `raw/llm_cache_haiku.jsonl` is a committed read-only copy of it, added so a reader can reproduce the paid numbers at all. |
+| Replay (no API calls) | `python eval_sop/score.py && python eval_sop/sensitivity.py` (install `backend/requirements.txt` + `eval_sop/requirements.txt`; nothing else is needed and no key is read). `tests/test_transport.py` checks that all 148 Groq records replay exactly from the cache, and `tests/test_replay_haiku.py` that all 192 Haiku records do — the decisive case there moves the state directory out of reach, so the committed cache is the only thing that can answer and any gap would become an attempted API call. |
 | Fresh run | `EDGAR_UA="Competitor-Insight-Engine noreply@users.noreply.github.com" python eval_sop/ground_truth/build_gt.py` (SEC asks for a contact in the User-Agent; use a no-reply address, not a personal one), then `retrieve.py`, `run_discovery.py` and `score.py`. Set the key with `EVAL_KEY_ENV` / `EVAL_KEY_VAR`. |
 
 ### 2. Ground truth (`eval_sop/ground_truth/`)
@@ -33,9 +35,13 @@ Every number below is measured unless it says otherwise. Anything that did not r
 - **Confidence intervals.** 95% percentile bootstrap over companies, 10,000 resamples, seed 0. Comparisons between conditions use a paired bootstrap.
 - **Simple baseline (no LLM).** The most frequent capitalised 1–3-word phrases in the same search text.
 
-## 3. Results (`qwen/qwen3.8-27b`, temperature 0, single run)
+## 3. Results
 
-### 3a. Competitor discovery: mean [95% CI]
+**§3a–3e are the free Groq run (`qwen/qwen3.8-27b`, temperature 0, single run).**
+The paid Haiku run is §3f, reported separately; §3g is how to re-derive either
+without a key. The two models are never pooled into one number.
+
+### 3a. Competitor discovery, Groq: mean [95% CI]
 
 | Condition | Tier | n | P@4 | P@4, verbatim-only labels | R@all | Hit@4 | Empty |
 |---|---|---|---|---|---|---|---|
@@ -46,9 +52,9 @@ Every number below is measured unless it says otherwise. Anything that did not r
 | (b) no search, as-shipped wording ("no web search was run") | all | 48 | 0.00 | 0.00 | 0.00 | 0.00 | **1.00** |
 | (b2) no search, "answer from your own knowledge" (**post hoc**) | large | 16 | 0.59 [0.44, 0.73] | 0.50 [0.34, 0.64] | 0.32 | 0.88 | 0 |
 | (b2) | mid | 5 | 0.70 | 0.60 | 0.59 | 1.00 | 0 |
-| (b2) | small | 0 | not run (quota) | | | | |
+| (b2) | small | 0 | not run (quota) — **run on Haiku, §3f** | | | | |
 | (c) shuffled evidence (another company's search text) | large + mid | 31 | 0.03 [0.00, 0.08] | 0.02 | 0.01 | 0.06 | **0.84** |
-| (d) fixed few-shot prompt | all | 0 | not run (quota) | | | | |
+| (d) fixed few-shot prompt | all | 0 | not run (quota) — **run on Haiku, §3f** | | | | |
 | Simple baseline | all | 48 | 0.10 [0.05, 0.15] | — | 0.13 | 0.29 | 0 |
 | Simple baseline | large / mid / small | 16 each | 0.19 / 0.08 / 0.03 | — | | | |
 
@@ -80,10 +86,10 @@ Every number below is measured unless it says otherwise. Anything that did not r
 - The claim-level Wilson 95% CI is [0.10, 0.37], against 0.67 [0.62, 0.71] for scrapes of 1,000 characters or more (n = 469). This is descriptive only.
 
 ### 3c. Few-shot leak (Adyen / Braintree / Square)
-- **Not reproduced.** None of the 148 seed-0 discovery outputs from the original prompt (a, b, b2, c) contain these names, and none of the 188 raw responses do.
+- **Not reproduced, on either model.** None of the 148 Groq seed-0 discovery outputs from the original prompt (a, b, b2, c) contain these names, none of the 188 Groq raw responses do, and **none of the 192 Haiku records do either** — `leak_orig_any` and `leak_fixed_any` are 0.000 in every condition and tier of both runs (`results/summary.json`).
 - The scorer's own leak detector was broken until commit `cf15d45`; see the Change log. After the fix it also reports 0.
 - The Stripe demo (claude-haiku-4-5) returns Adyen, PayPal, Square and Braintree. Those are genuine Stripe competitors, so the demo is not evidence of copying.
-- The leak remains **untested for Haiku**.
+- This closes the "**untested for Haiku**" gap this section used to record.
 
 ### 3d. Pipeline aborts
 - 8 of 48 homepages (17%) gave no text to the plain-HTTP scraper: Uber, Supermicro, Wayfair, Ubiquiti, Weatherford, NETGEAR, Aviat and Phunware.
@@ -96,20 +102,158 @@ Every number below is measured unless it says otherwise. Anything that did not r
   - AUROC 0.71
 - **Overall support.** Across 40 profiles and 499 claims, 0.64 [0.56, 0.71] of claims are supported, averaged over companies.
 - **By tier.** Large 0.63, mid 0.59, small 0.70. The CIs overlap.
+
+### 3f. The paid Haiku run (`claude-haiku-4-5-20251001`, 2026-10-05)
+
+192 calls, **$0.4495**, worst case $1.1884, hard cap $2.75. All four conditions ran
+over all 48 companies — the free quota had left (b2) at n = 21 and (d) at n = 0, so
+this is the first complete picture. Same cached search text as the Groq run, so the
+only thing that changed is the model.
+
+| Condition | n | P@4 | P@4, verbatim-only | R@all | Empty |
+|---|---|---|---|---|---|
+| (a) full pipeline | 48 | **0.538** [0.44, 0.64] | 0.491 [0.39, 0.60] | 0.366 | 0.02 |
+| (b2) no search, "answer from your own knowledge" | 48 | **0.469** [0.36, 0.57] | 0.411 [0.31, 0.51] | 0.394 | 0.06 |
+| (c) shuffled evidence (another company's search text) | 48 | 0.028 [0.00, 0.06] | 0.023 | 0.015 | **0.83** |
+| (d) candidate fixed few-shot prompt | 48 | 0.523 [0.43, 0.62] | 0.470 [0.38, 0.57] | 0.347 | 0.02 |
+| Simple baseline (no LLM, same search text) | 48 | 0.099 [0.05, 0.15] | — | 0.129 | 0 |
+
+By tier, (a): large 0.583, mid 0.750, small 0.281 — the same steep fame gradient the
+Groq run showed, and §3b's coverage confound applies to it unchanged.
+
+**Paired differences (paired bootstrap over companies):**
+
+| Comparison | n | P@4 | R@all |
+|---|---|---|---|
+| (a) − (b2) | 48 | **+0.069 [−0.035, +0.177]** | **−0.028 [−0.089, +0.034]** |
+| (a) − (c) | 48 | +0.510 [+0.410, +0.615] | +0.352 [+0.269, +0.442] |
+| (d) − (a) | 48 | **−0.016 [−0.042, +0.005]** | −0.019 [−0.056, +0.008] |
+
+**Three findings, in the order they matter.**
+
+1. **The retrieved search evidence is worth very little over the model's own
+   knowledge.** (a) − (b2) is +0.069 P@4 with an interval that crosses zero, and on
+   R@all the point estimate is *negative*. Deleting the search step entirely — the
+   expensive, rate-limited, Tavily-billed part of the pipeline — costs about nothing
+   measurable at n = 48. §3b explains why: the search text contains a verbatim
+   mention of only **0.33** of the true competitors on average, so most of the answer
+   was never in the evidence to begin with.
+2. **But the model is genuinely reading the evidence, not ignoring it.** Given
+   *another company's* search text it does not confabulate: P@4 collapses to 0.028
+   and it returns an empty list **83%** of the time. A model that ignored the
+   evidence and answered from memory would have scored like (b2) here. So the
+   pipeline is faithful to its input and the input is thin — two separate facts, and
+   only the second is a retrieval problem.
+3. **The candidate prompt fix does not work.** (d) − (a) is −0.016 [−0.042, +0.005]:
+   flat, with the interval mostly below zero. `eval_sop/fixed_prompt.py` was written
+   to address the suspected few-shot leak, and on this evidence it should **not** be
+   shipped. It was never shipped; this is why.
+
+**Other measurements.**
+- **Few-shot leak: 0 in all 192 records**, both the original and the fixed prompt's
+  example names. See §3c.
+- **Truncation: 1 of 192** responses stopped at `max_tokens` — (b2) Wayfair, mid tier,
+  which is also a row in the table above. A truncated response parses to `[]` and would
+  otherwise be scored as an honest "no competitors found", which is why the flag is
+  checked rather than assumed. The scorer could not always report it; see §6c.
+- **A product defect the eval found: the parser throws away usable answers when the
+  model talks after the JSON.** The product requires the whole response to parse, so a
+  response that contains a correct JSON array *followed by commentary* is discarded
+  entirely and becomes "no competitors found".
+
+  Every non-abstention empty in the Haiku run has this one cause. Measured by feeding
+  each cached response through `backend/analyzer.py` unchanged, then feeding it again
+  with only its first JSON block:
+
+  | record | as returned | first JSON block only | what the model appended |
+  |---|---|---|---|
+  | (a) DHI Group | 0 | **3** | "Wait - I need to reconsider." (it had included LinkedIn/Glassdoor, which the prompt forbids) |
+  | (b2) Airbnb | 0 | **10** | "Wait, I need to correct this. FlipKey is owned by TripAdvisor" |
+  | (b2) Wayfair | 0 | **9** | "I need to correct this - I included Wayfair itself" (also the one `max_tokens` response) |
+  | (d) CXApp | 0 | **1** | "**Note:** Based on the search results provided…" |
+
+  So **4 of 192 responses (2.1%)** lost a usable competitor list. The model's
+  self-correction is the trigger: in three of the four it noticed its own rule
+  violation, and the parser punished it for saying so. DHI Group yields 3 rather than
+  5 because the blocklist then removes LinkedIn and Glassdoor — the blocklist was
+  working; the parser was not.
+
+  **This is model-dependent, which is the point.** The same parser on the same 48
+  companies loses **0 of 188** Groq responses and **4 of 192** Haiku ones, because the
+  newer model is chattier. Code that is correct for one model is silently lossy for
+  another, and only running both revealed it.
+
+  Not fixed here: `backend/` is frozen at `c3eac2d` so the two runs stay comparable.
+  The fix is to extract the first JSON array rather than require the whole response to
+  be JSON. Logged in §7b.
+- Cost per call averaged **$0.00234**; the worst-case reservation was 2.6× the true
+  spend, because it assumes every response fills `max_tokens` and almost none do.
+
+**What this does not support.** n = 48 companies, one pass, one temperature, on
+substituted `ddgs` search rather than the shipped Tavily configuration. The
+(a) − (b2) interval includes zero, so the honest claim is "no measurable benefit at
+this sample size", **not** "search does not help". A larger sample, or search text
+with better coverage, could show one.
+
+### 3f(i). The same finding on both models
+
+The central result is not a quirk of one model. Running the identical conditions on
+two models from different providers:
+
+| Comparison | qwen/qwen3.8-27b (free) | claude-haiku-4-5 (paid) |
+|---|---|---|
+| (a) − (b2), P@4 | +0.036 [−0.048, +0.119] (n=21) | +0.069 [−0.035, +0.177] (n=48) |
+| (a) − (c), P@4 | +0.629 [+0.524, +0.734] (n=31) | +0.510 [+0.410, +0.615] (n=48) |
+| (a) P@4, all | 0.529 [0.43, 0.62] | 0.538 [0.44, 0.64] |
+| empty rate under (c) | 0.84 | 0.83 |
+| few-shot leak | 0 | 0 |
+
+Both models: search evidence gives no measurable gain over parametric knowledge, a
+large and unambiguous drop on shuffled evidence, and near-identical abstention
+behaviour. The paid run's contribution is that it says this at **n = 48 over all four
+conditions**, where the free quota could only manage n = 21 and could not run (d) at
+all.
+
+### 3g. Reproducing either run with no API key
+
+Both caches are committed, so:
+
+```bash
+pip install -r backend/requirements.txt -r eval_sop/requirements.txt
+python eval_sop/score.py && python eval_sop/sensitivity.py
+```
+
+regenerates `results/summary.json`, `per_run.json`, `paired_diffs_T0.json` and
+`sensitivity.json`. **Measured, not assumed:** with `USERPROFILE` pointed at an empty
+directory (which removes the paid run's state directory, its ledger and its working
+cache from reach) and no key in the environment, all four files come back
+**byte-for-byte identical**. `EVAL_PROVIDER` does not need to be set and does not
+change the output — that it once did is §6c.
 - **Human-labelling file.** `results/claims_sample.csv` holds 100 claims with an empty `human_label` column. No result depends on it.
 
 ## 4. What the numbers support, and what they don't
 
-**Supported** (one model, one run, free search):
+**Supported by the Groq run** (one model, one run, free search). §3f states what the
+paid Haiku run adds; where they overlap they agree.
 - P@4 is 0.53 [0.43, 0.62], or 0.48 with verbatim-only labels. The non-LLM baseline scores 0.10.
 - Small companies score much lower (P@4 0.26) than large (0.63) or mid (0.70). **The search text contains far fewer of small companies' real competitors (coverage 0.19 vs 0.38), so this gap cannot be attributed to the model alone.**
 - The extraction step depends on its evidence. Given another company's search text, it returns nothing 84% of the time, and its P@4 drops to 0.03. This holds on 31 large- and mid-cap companies.
 - For large companies, the model's own knowledge ((b2), added post hoc) is **not significantly different** from the full pipeline in P@4: +0.03 [−0.06, +0.13], n = 16. Retrieval does add recall.
 
 **Not supported:**
-- "Grounding matters more for the long tail." The small and mid (b2) runs did not happen.
-- Anything about the shipped Haiku + Tavily configuration, report quality, or seed variance.
-- That a few-shot leak exists.
+- Anything about the shipped Tavily configuration, report quality, or seed variance.
+  The Haiku run changes the model, not the substituted search.
+- That a few-shot leak exists — now tested on both models and absent in all 340
+  records, which is evidence of absence at this sample size, not proof.
+- A significance claim anywhere. Every interval that crosses zero is reported as
+  crossing zero, and the key (a) − (b2) comparison does on both models.
+
+**No longer unsupported, because the paid run covered it:**
+- "Grounding matters more for the long tail." §3a could not speak to it (the small and
+  mid (b2) runs never happened on free quota). On Haiku all 48 companies ran in every
+  condition, and the answer is **no**: (a) − (b2) P@4 is **−0.016** [−0.156, +0.141] for
+  small caps against **+0.099** [−0.026, +0.219] for large — if anything the reverse of
+  the prediction, with both intervals crossing zero.
 
 ## 5. Threats to validity
 - **ddgs is not Tavily.** Results and coverage differ, and they drift over time.
@@ -118,18 +262,22 @@ Every number below is measured unless it says otherwise. Anything that did not r
 - **Fame proxy.** Public float is not the same as how familiar an LLM is with a company.
 - **Selection bias.** The 48 companies were chosen for naming competitors in their filings.
 - **(b2) is post hoc.** It was added after (b) produced empty output for every company.
-- **(c)'s n = 31 is a quota-truncated subset, not a random sample.** Runs went large first, then mid, and the quota ended before any small company ran.
-- **(b2)'s 21 companies are also truncated.** They are all 16 large companies plus the first 5 mid ones.
+- **(c)'s n = 31 is a quota-truncated subset, not a random sample.** Runs went large first, then mid, and the quota ended before any small company ran. On Haiku (c) ran all 48.
+- **(b2)'s 21 companies are also truncated.** They are all 16 large companies plus the first 5 mid ones. On Haiku (b2) ran all 48.
+- **The paid run is also one pass, and has no seed at all.** The Messages API accepts no seed, so its single pass cannot be turned into a seed replication even in principle; repeating it would measure sampling at temperature 0, which is a different question.
+- **The two models are not a random sample of models.** Two points of agreement is weak evidence of generality — it rules out a one-model artefact, nothing more.
 - **Possible label leakage into search.** Web pages can paraphrase a 10-K. Only sec.gov itself was excluded.
 - **The NLI judge is moderately reliable** (κ 0.31).
 - **Third-party text.** `raw/retrieval/*.json` contains excerpts of third-party web pages. `strip_retrieval.py` is prepared and deliberately **not run**. This is an open decision, not a settled one — see §7.
-- **One run.** There is no seed variance.
+- **One run per model.** There is no seed variance in either.
 
 ## 6. Change log
 
 **Product code (`backend/`): no changes.** It is byte-identical to `c3eac2d` and its suite still passes 25/25. There are 25 tests at `c3eac2d`. `raw/test_after_fix.txt` shows "26 passed" only because it was produced with the unapplied few-shot patch (+1 test) in place.
 
-**Test counts as they stand.** `backend/tests` 25 passed. `eval_sop/tests` collects **81** tests (`test_build_gt` 3, `test_transport` 74, `test_score` 4) and in **a clean clone runs 80 passed + 1 skipped**, not 81 passed: see §7 on the gitignored EDGAR cache. In this working tree, where that cache exists, it is 81 passed. Both suites in one pytest process at the repo root: **106 passed** (that used to be 3 failures; see the `c5bdf46` row below). Ten of those tests are the round-5 state-directory cases.
+**Test counts, measured on 2026-10-05 after the paid run landed.** `backend/tests` 25 passed. `eval_sop/tests` collects **97** tests (`test_transport` 74, `test_replay_haiku` 6, `test_sensitivity` 5, `test_score_provider_independence` 5, `test_score` 4, `test_build_gt` 3). Both suites in one pytest process at the repo root: **122 passed** (that used to be 3 failures; see the `c5bdf46` row below). In **a clean clone one of these skips** rather than passes — see §7 on the gitignored EDGAR cache; in this working tree, where that cache exists, nothing skips.
+
+These are counts at a moment, not invariants: any later commit that adds a test makes them stale. Re-derive with `python -m pytest eval_sop/tests --collect-only -q` rather than trusting this line — an earlier version of this paragraph was made wrong by my own next commit.
 
 | Commit | Change | Why / evidence | Preserved |
 |---|---|---|---|
@@ -285,7 +433,71 @@ A note on how to check this, because the obvious check is wrong: `git cat-file
 therefore not a staleness test. The valid test is reachability from the branch
 tip: `git merge-base --is-ancestor <sha> HEAD`.
 
-## 7. Open decisions for the owner
+### 6c. Round 6: three defects that only running the paid run could expose
+
+All three were found after the run, by using its output rather than by reading code.
+Each was reproduced with a failing test before being fixed, and each fix was then
+checked by reverting it in the real worktree and confirming the test goes red —
+because a test that passes either way proves nothing.
+
+**1. `sensitivity.py` silently analysed only one of the two runs.** It read
+`raw/discovery.jsonl` by name while `score.py` globbed `raw/discovery*.jsonl`. Once
+`discovery_haiku.jsonl` existed the two disagreed: the scorer reported both models,
+the sensitivity analysis reported whichever happened to be in the unsuffixed file,
+and its output said nothing about the one it skipped. So §3b's verbatim-only and
+coverage-stratum numbers covered Groq only, and would have been quoted as if they
+covered the paid run.
+*Fix:* `runs_by_model()` keys on each record's own `model` and globs like the scorer;
+model-dependent sections are emitted per model under `models`, model-independent ones
+(retrieval coverage, thin scrape) once at the top level. *Evidence:*
+`tests/test_sensitivity.py`, 5 tests, 4 red before. The first is a guard asserting at
+least two models have runs — without it the others pass trivially on a one-model tree
+and would not notice the glob regressing.
+
+**2. The scorer's truncation flag depended on an environment variable.**
+`response_record` looked the cached response up through the single active shim and
+returned `{}` for any record whose model was not `EVAL_PROVIDER`'s, so that model's
+truncation came out *unknown*. Measured both ways on the same tree:
+
+| `EVAL_PROVIDER` | Haiku truncation | Groq truncation |
+|---|---|---|
+| groq | unknown × 192 | known |
+| anthropic | known (191 false, 1 true) | unknown × 148 |
+
+No single invocation could fill in both, and `results/per_run.json` recorded whichever
+half the last person to run it had set — with no warning. Not cosmetic: a response cut
+off at `max_tokens` parses to `[]` and otherwise scores as an honest "no competitors",
+and the paid run contains exactly one such response.
+*Fix:* `common.cache_key()` became a free function of the provider (with
+`LLMShim.key` delegating, so there is one implementation rather than two to keep in
+step with the committed Groq cache), and `common.cached_records()` reads any
+provider's caches off disk. `score.cached_responses()` uses them, keyed by the
+record's model. It sends nothing and takes no lock — a cache read is the opposite of a
+request. *Evidence:* `tests/test_score_provider_independence.py`, 5 tests, 2 of them
+end-to-end and red before; the decisive one asserts the scorer's output is byte-identical
+under either variable.
+
+**3. The paid run was not reproducible by anyone else.** The working cache lives in the
+user-level state directory beside the ledger and lock — correct for spend safety, and
+unchanged — but it meant the evidence for every number in §3f sat outside the
+repository. *Fix:* `Provider.replay_cache`, a committed read-only second cache
+(`raw/llm_cache_haiku.jsonl`, 184 KB, the same order as the Groq cache already
+committed), consulted on read; writes still go only to the state cache. It cannot
+increase spend, because a hit it serves is a request not sent. *Evidence:*
+`tests/test_replay_haiku.py`, 6 tests. The decisive one moves `USERPROFILE` so the
+state directory is unreachable, leaving the committed file as the only thing that can
+answer; any gap becomes an attempted request, which the child turns into a failure.
+Reverting `replay_cache` turns that test red while the plain replay test stays green —
+correctly, since only the first can tell which cache answered.
+
+**A false alarm, recorded because the reasoning error is the lesson.** Mid-run I
+reported the ledger at "297 calls, $1.226, past the $1.1884 worst case". Both figures
+were wrong: those were ledger *rows*, and this ledger writes two per call — a
+worst-case `reserve`, then a `settle` carrying the true cost. Summing every row
+double-counts. The ledger's own accounting (`ledger_total`: a `settle` replaces its
+`reserve`, an unsettled reservation stays charged) gives 157 calls and $0.396 at that
+moment. Nothing was ever near the cap. The rule this cost me: **read the accounting
+function before summing a column that looks like money.**
 
 Two things on this branch are **not settled** and are not mine to settle. Neither
 has been acted on; both are left exactly as they were.
@@ -295,8 +507,9 @@ has been acted on; both are left exactly as they were.
    unlicensed for redistribution. They are currently **committed**, so pushing
    this branch publishes them. `eval_sop/strip_retrieval.py` would reduce them to
    hashes and is **deliberately unrun**. The consequence either way: keep them
-   and the committed Groq run stays exactly replayable by anyone (`test_transport`
-   replays all 148 records from them) but third-party copy is redistributed;
+   and both committed runs stay exactly replayable by anyone
+   (`test_transport` replays the 148 Groq records from them and
+   `test_replay_haiku` the 192 Haiku records) but third-party copy is redistributed;
    strip them and the third-party text goes away but the public replay, the
    retrieval-coverage numbers in §3b and the `(c)` shuffled-evidence condition can
    no longer be reproduced from the repository alone.
@@ -336,7 +549,28 @@ has been acted on; both are left exactly as they were.
   harness's new `requirements.txt` declares both, so installing it alongside the
   backend's makes `cd backend && pytest` work, but the backend half is still
   undeclared on its own.
-- **Few-shot patch.** Apply it only if the leak is shown with the production model.
+- **Parse the first JSON array instead of the whole response.** `backend/analyzer.py`
+  requires the entire response to parse, so a correct JSON array followed by the
+  model's own commentary is discarded and becomes "no competitors found" — 4 of 192
+  Haiku responses, 0 of 188 Groq ones, measured in §3f. Not done here because
+  `backend/` is frozen at `c3eac2d` so the two runs stay comparable; it should be
+  done on `main`, with those 4 cached responses as the regression fixtures.
+- **Reading the ledger should not require taking its lock.** Importing `common` with
+  `EVAL_PROVIDER=anthropic` constructs the module-level shim, which acquires the
+  ledger lock and holds it until interpreter exit. So a read-only consumer locks the
+  spend record: scoring cannot run while a run is in progress, and an in-process shim
+  in one test blocks every later child process in the same pytest session (which is
+  how this was found — see the comment in `tests/test_score_provider_independence.py`).
+  Deliberately **not** changed here: the lock is the only thing preventing two paid
+  runs from overlapping, and making its acquisition lazy moves a spend-safety
+  guarantee. It needs its own review round, not a late edit. `score.py` and
+  `sensitivity.py` no longer need the paid provider at all, so nothing in the
+  documented replay path takes the lock today.
+- **Few-shot patch.** **Do not apply it.** The leak is now tested on the production
+  model and is absent (§3c), and the candidate prompt measures flat-to-slightly-worse
+  on Haiku: (d) − (a) = −0.016 [−0.042, +0.005] (§3f). This item used to read "apply
+  it only if the leak is shown with the production model"; the condition was tested
+  and not met.
 - **Scrape aborts.** Fall back to search snippets instead of aborting when the homepage can't be scraped (17% of companies).
 - **Wording.** Describe the system as a fixed LLM pipeline, not an agent. The LLM never calls tools. The README does not say "agent".
 - **History.** Nothing outstanding. The squash described in §6a removed the
@@ -347,13 +581,29 @@ has been acted on; both are left exactly as they were.
   organisation ID, and `backup/pre-resultsscrub-competitor` still carries the
   username. Delete both before publishing.
 
-## 8. Paid run, prepared but not executed
+## 8. The paid run — executed 2026-10-05
+
+**Outcome first.** It ran as specified below: 192 calls, **$0.4495** actual against the
+$1.1884 worst case and the $2.75 hard cap, no retries, no cap event, no lock contention.
+Results are in §3f. Everything from here down was written *before* the run and is left
+as written, so the plan can be compared with what happened; the three differences are:
+
+1. **Cost came in at 38% of the worst case** ($0.4495 vs $1.1884). The reservation
+   assumes every response fills all 700 output tokens; actual mean output was far lower.
+   The worst case was an upper bound, as intended, not a forecast.
+2. **Scoring no longer needs `EVAL_PROVIDER=anthropic`**, contrary to the bullet below.
+   That requirement was a defect, not a feature — see §6c.
+3. **The cache was copied into the repo**, as the state-directory bullet below allows
+   ("copy the cache into the repo after the run if it should be committed"). Without it
+   nobody could reproduce the paid numbers; see §3g.
+
+### 8a. The plan as written beforehand
 - **What it is: "Haiku on the fixed ddgs evidence."** It runs `claude-haiku-4-5-20251001` on exactly the cached `raw/retrieval/` search text, over 48 companies × {a_full, b2, c_shuffled, d_fixed}, once at T=0. That is 192 calls.
 - **What it is not.** It is **not** the shipped Haiku + Tavily configuration and must never be described as such.
 - **Dry run.** `EVAL_PROVIDER=anthropic python eval_sop/run_discovery.py --dry-run` gives a **worst-case total of $1.1884** (`results/haiku_dry_run.txt`). It was $1.0175 before the estimate change in `3c9a167`. The worst case assumes max(chars, UTF-8 bytes)/2 + 50 input tokens and the full 700 output tokens.
 - **Where the spend record lives.** The cost ledger, its lock and the Haiku response cache are in one fixed user-level directory outside the repo, `~/.sop_eval/competitor_insight/` (`common.STATE_DIR`), resolved from `Path.home()`. A run from this worktree and a run from the main checkout therefore share a single spend record. **There is no environment-variable override** — and unlike the earlier version of this sentence, that is now true and tested. It previously read `%LOCALAPPDATA%`, which an independent check showed relocates the ledger, the lock and the cache together; see change-log row `round 5` and the nine tests in `test_transport.py` that redirect eight variables individually and all of them at once. Haiku discovery outputs still go to `eval_sop/raw/discovery_haiku.jsonl`; copy the cache into the repo after the run if it should be committed.
 - **Run safety.** Only one process may use the ledger, enforced by the lock file. If the lock exists, the error says whether the PID inside it is still running or the lock is stale; recovery is always manual: confirm nothing is running, then delete the lock. Each attempt is reserved at the worst case before it is sent. The cap can only be passed if a single response's real input exceeds the estimate; the estimate checked out above all 188 real counts, with a minimum ratio of 1.25.
-- **Scoring the Haiku run.** Score it with `EVAL_PROVIDER=anthropic` so the truncation check can see the Haiku cache. Otherwise those rows report `n_truncation_unknown`.
+- **Scoring the Haiku run.** ~~Score it with `EVAL_PROVIDER=anthropic` so the truncation check can see the Haiku cache. Otherwise those rows report `n_truncation_unknown`.~~ **No longer true, and it was a defect rather than a usage note:** the scorer now reads every provider's cache, so one invocation fills in both models and the output does not depend on the variable. See §6c.
 - **Cap.** $2.75, inside this project's $3 share, and **enforced as a project
   hard maximum**: `common.PROJECT_HARD_MAX_USD = 2.75`. `EVAL_COST_CAP` can only
   lower it. A cap that is not a finite positive number at or below $2.75 —
@@ -366,7 +616,19 @@ has been acted on; both are left exactly as they were.
 - **Model ID check.** The pinned ID `claude-haiku-4-5-20251001` was required by the review. The current Anthropic model list names `claude-haiku-4-5`. If the dated ID returns 404, the shim fails fast at $0. Switching IDs is then a one-line change in `common.py`.
 - **Free remainder (Groq, same model).** The leftover Groq conditions need about 0.7M tokens, roughly 4 days of free quota.
 
-## 9. SOP-ready sentences (true for this run)
+## 9. SOP-ready sentences (every one measured; §9 is the Groq run, §9a both runs)
 1. "I built a 48-company ground-truth set from the Competition sections of SEC 10-K filings. The labels are LLM-assisted, and each labelled competitor appears verbatim in the filing's Competition passage. On it, my competitor-discovery pipeline (the qwen3.8-27b model served on Groq, free web search, single run) reached precision@4 of 0.53 (95% CI 0.43–0.62; 0.48 counting only names exactly as written in the filing), against 0.10 for a non-LLM baseline."
 2. "For large-cap companies, the model's parametric knowledge alone (a condition I added after the first run) was not significantly different in precision from the retrieval pipeline (0.59 vs 0.63, n=16). Precision fell to 0.26 for small caps, but the search results also contained far fewer of their true competitors, so that gap mixes model knowledge with retrieval coverage."
 3. "An evidence-shuffling ablation on 31 large- and mid-cap companies showed that the extraction step depends on its evidence: given another company's search results, it returned no competitors 84% of the time."
+
+### 9a. After the paid run (all 48 companies, all four conditions, two models)
+
+4. "I ran the same four conditions over all 48 companies on a second model from a different provider (Claude Haiku 4.5, 192 calls, $0.45 under a hard cost cap), and the central result replicated: retrieved web evidence gave **no measurable precision gain over the model's own parametric knowledge** — +0.069 P@4, 95% CI [−0.035, +0.177] on Haiku and +0.036 [−0.048, +0.119] on qwen3.8-27b — while the model was clearly still *reading* that evidence, since shuffled evidence collapsed precision to 0.028 and produced an empty answer 83% of the time."
+5. "The explanation was a retrieval measurement, not a model one: the search text contained a verbatim mention of only 33% of the true competitors (19% for small caps), so most of the answer was never in the evidence. That reframed the problem from prompt quality to retrieval coverage, and I rejected my own candidate prompt fix on the evidence — it measured −0.016 P@4, 95% CI [−0.042, +0.005], so I did not ship it."
+6. "Running two models through the same harness exposed a parsing defect the single-model run had hidden: the pipeline required the whole LLM response to be valid JSON, so a correct answer followed by the model's own commentary was discarded as 'no competitors found'. That cost 4 of 192 responses on the newer model and 0 of 188 on the older one — code that was correct for one model was silently lossy for another."
+7. "Both runs replay offline from caches committed to the repository: with no API key and the paid run's state directory made unreachable, the four result files regenerate byte-for-byte, checked by a test that would turn any missing cache entry into an attempted API call rather than a silent gap."
+
+**Wording to avoid.** Do not call any of this significant: every interval that crosses
+zero is reported as crossing zero. Do not describe the search configuration as the
+shipped one — it is substituted `ddgs`, not Tavily. Do not pool the two models into a
+single number.
