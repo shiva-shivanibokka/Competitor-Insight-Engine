@@ -129,7 +129,7 @@ Every number below is measured unless it says otherwise. Anything that did not r
 
 **Product code (`backend/`): no changes.** It is byte-identical to `c3eac2d` and its suite still passes 25/25. There are 25 tests at `c3eac2d`. `raw/test_after_fix.txt` shows "26 passed" only because it was produced with the unapplied few-shot patch (+1 test) in place.
 
-**Test counts as they stand.** `backend/tests` 25 passed. `eval_sop/tests` collects **71** tests (`test_build_gt` 3, `test_transport` 64, `test_score` 4) and in **a clean clone runs 70 passed + 1 skipped**, not 71 passed: see §7 on the gitignored EDGAR cache. In this working tree, where that cache exists, it is 71 passed. Both suites in one pytest process at the repo root: **96 passed** (that used to be 3 failures; see the `bee8b8a` row below).
+**Test counts as they stand.** `backend/tests` 25 passed. `eval_sop/tests` collects **71** tests (`test_build_gt` 3, `test_transport` 64, `test_score` 4) and in **a clean clone runs 70 passed + 1 skipped**, not 71 passed: see §7 on the gitignored EDGAR cache. In this working tree, where that cache exists, it is 71 passed. Both suites in one pytest process at the repo root: **96 passed** (that used to be 3 failures; see the `c5bdf46` row below).
 
 | Commit | Change | Why / evidence | Preserved |
 |---|---|---|---|
@@ -140,7 +140,7 @@ Every number below is measured unless it says otherwise. Anything that did not r
 | `9f92ca7` | Ground truth completed from the stored excerpts with a new `--offline` rebuild (no EDGAR calls). Added NTGR Synology, TP-Link, TRENDnet, Ubiquiti and WatchGuard (span now ends at the enterprise bullet); CNDT Leidos, TransCore, Thales, Cubic and INIT; WDAY NetSuite; BOX OpenText. Added the aliases Belden, Vistance and Resideo. | Review found truncated spans; I re-audited every excerpt for unlabelled capitalised names. P@4 for (a) went 0.524 → 0.529. | No labels removed |
 | `9a683a5` | New `LLMShim` transport covering the items below. Tests use a fake client: usage, 429, 400/401/403/404, the cap, crash/resume, model pinning, and exact replay of the Groq run. | Paid-run readiness | Groq cache keys unchanged (replay test) |
 | `9a683a5` (cont.) | Haiku provider pinned to `claude-haiku-4-5-20251001`. Uses the official SDK with `max_retries=0`, sends no `seed` or `reasoning_effort`, and records `model_reported`. | Paid-run readiness | |
-| `9a683a5` (cont.) | Persisted cost ledger at $1/M input and $5/M output. A call is refused if the worst case would pass the cap (then a $2.75 default that `EVAL_COST_CAP` could override; made a project hard maximum in `bee8b8a`). | Paid-run readiness | |
+| `9a683a5` (cont.) | Persisted cost ledger at $1/M input and $5/M output. A call is refused if the worst case would pass the cap (then a $2.75 default that `EVAL_COST_CAP` could override; made a project hard maximum in `c5bdf46`). | Paid-run readiness | |
 | `9a683a5` (cont.) | At most 3 attempts per call (was up to 400). As committed, any non-429 status that was not an `InternalServerError` failed fast, which wrongly included 529/503. Corrected in `369f294`: 429 and all 5xx retry; other 4xx fail fast. | Paid-run readiness | |
 | `9a683a5` (cont.) | The shim now rejects any `model` argument other than its pinned model. | Paid-run readiness | |
 | `cf15d45` | Leak detector fixed. `score.py` contained literal backspace characters where `\b` was intended, so it could never match. | Reproduced: `tests/test_score.py` failed (`raw/leak_detector_before_fix.txt`) and passes after the fix. Leak rates stay 0, which agrees with the independent raw-response check. | |
@@ -158,35 +158,40 @@ Every number below is measured unless it says otherwise. Anything that did not r
 | `5c5b382` | Ledger, lock and Haiku cache moved from `eval_sop/raw/` to `%LOCALAPPDATA%\sop_eval\competitor_insight\`, with no env override. Lock errors now report whether the PID in the lock file is running (psutil) and leave recovery manual. | Shared spend record across worktree and main checkout. Failing tests first: `raw/state_dir_before_fix.txt`. | Groq cache stays in the repo |
 | `240fbb1` | The scorer flags responses that hit max_tokens (`truncated`, `n_truncated`) instead of silently counting them as empty | Groq run: 0 truncated in every group; metrics unchanged. Failing tests: `raw/truncation_before_fix.txt`. | |
 | `c798dce` | `build_gt.py`'s documented `EDGAR_UA` example, and the §1 "Fresh run" line, use a GitHub no-reply address instead of a personal one. SEC asks for a contact in the User-Agent; it does not ask for a personal mailbox. | Privacy review of the only place this repo tells a reader to put an email address. No code path changed: `EDGAR_UA` was already read from the environment. | Labels, cache, results |
-| `b689388` | Documentation only. Every stale commit hash this file cited was remapped to the rewritten commit with the same subject (13 hashes; `0f658d7` and `c3eac2d` were already valid). The superseded privacy claim was replaced by §6a, which states only what was verified commit by commit. | The rewrite described in §6a changed the hashes. Staleness was tested with `git merge-base --is-ancestor`, not `git cat-file -e`. | No code, data or results touched |
+| `abfacc7` | Documentation only. Every stale commit hash this file cited was remapped to the rewritten commit with the same subject (13 hashes; `0f658d7` and `c3eac2d` were already valid). The superseded privacy claim was replaced by §6a, which states only what was verified commit by commit. | The rewrite described in §6a changed the hashes. Staleness was tested with `git merge-base --is-ancestor`, not `git cat-file -e`. | No code, data or results touched |
 
-| `bee8b8a` | **The cap is now a project hard maximum, not a default.** `common.PROJECT_HARD_MAX_USD = 2.75`, and `check_cap()` rejects any cap that is not a finite positive number at or below it. `EVAL_COST_CAP` may only *lower* the cap. `LLMShim.__init__` validates its `cap` argument through the same function. | `EVAL_COST_CAP` silently overrode the documented $2.75 cap, so the figure in §8 was not enforceable. Worse, `EVAL_COST_CAP=nan` disabled spending control entirely: `nan` fails every comparison, so `spent + worst > cap` was always False. Failing tests first: 38 new parametrised cases in `tests/test_transport.py` cover `nan`, `NaN`, `inf`, `-inf`, `0`, `-1`, `-0.01`, `2.76` and `1e9` through `check_cap()`, through `cap_from_env()`, through the shim constructor, and through the command line (a subprocess running `run_discovery.py --dry-run`, which refuses at import). Follows the sibling project's `eval_sop/budget.py` (`check_cap` / `PROJECT_HARD_MAX_USD`). | Ledger format, cache keys, all results |
-| `bee8b8a` (cont.) | **Cross-suite state pollution fixed.** `eval_sop/common.py` no longer assigns `analyzer.llm_call = shim` at import; the assignment moved into `common.install_shim()`, called by `retrieve.py` and `run_discovery.py` at their entry points. The replay test installs it with `monkeypatch` and also sets `analyzer.COMPETITOR_EXTRACTION_PROMPT` through `monkeypatch` rather than by assignment. | `python -m pytest -q` at the repo root was **red**: 3 backend tests failed (`test_llm_call_retries_without_temperature_when_rejected`, `..._keeps_temperature_when_accepted`, `..._does_not_swallow_unrelated_bad_requests`) and passed in isolation. Mechanism: both suites share `sys.modules["analyzer"]`, so importing the harness replaced the product's transport under the product's own tests. Regression test: `test_importing_the_harness_does_not_patch_the_product_transport`. | Harness behaviour (the entry points install the shim as before) |
-| `bee8b8a` (cont.) | `eval_sop/requirements.txt` (pytest, ruff, psutil, anthropic, httpx) and `eval_sop/requirements-optional.txt` (ddgs; torch, transformers, pandas, scikit-learn) added, and README gained an install + run section for the harness. | Nothing declared the harness's dependencies; a reviewer had to add them by hand. Verified by building a fresh venv from the new README lines alone: 25 backend, 71 `eval_sop`, 96 at the root, and `score.py` + `sensitivity.py` reproduced `results/*.json` byte-for-byte. | — |
-| `bee8b8a` (cont.) | README's "22 offline unit tests" corrected to "25 unit tests (23 fully offline; 2 resolve DNS)" in all three places. | The branch shipped a README that §7 itself documented as false. | — |
-| `274dfa0`, `3d6b7ac` and this row's own commit | Documentation only. §6a rewritten to the re-verified position (16 subject-matched pairs, trees identical; tip tree no longer identical to the pre-rewrite tip). The two `(round N, this commit)` labels replaced by `5c5b382` and `b689388`. A row added for `c798dce`. The machine username and the quoted drive-rooted path removed from §6a, so this file is no longer a hit for the scan it describes. §7 rewritten as the owner's two open decisions plus what the uncommitted EDGAR cache costs; the README test-count item moved to done. The post-redaction scan was then re-run and found the username still in this file in `b689388` and `bee8b8a`, which §6a and §7b now state. | Each claim re-verified in this repository before it was written. | No code, data or results touched |
+| `c5bdf46` | **The cap is now a project hard maximum, not a default.** `common.PROJECT_HARD_MAX_USD = 2.75`, and `check_cap()` rejects any cap that is not a finite positive number at or below it. `EVAL_COST_CAP` may only *lower* the cap. `LLMShim.__init__` validates its `cap` argument through the same function. | `EVAL_COST_CAP` silently overrode the documented $2.75 cap, so the figure in §8 was not enforceable. Worse, `EVAL_COST_CAP=nan` disabled spending control entirely: `nan` fails every comparison, so `spent + worst > cap` was always False. Failing tests first: 38 new parametrised cases in `tests/test_transport.py` cover `nan`, `NaN`, `inf`, `-inf`, `0`, `-1`, `-0.01`, `2.76` and `1e9` through `check_cap()`, through `cap_from_env()`, through the shim constructor, and through the command line (a subprocess running `run_discovery.py --dry-run`, which refuses at import). Follows the sibling project's `eval_sop/budget.py` (`check_cap` / `PROJECT_HARD_MAX_USD`). | Ledger format, cache keys, all results |
+| `c5bdf46` (cont.) | **Cross-suite state pollution fixed.** `eval_sop/common.py` no longer assigns `analyzer.llm_call = shim` at import; the assignment moved into `common.install_shim()`, called by `retrieve.py` and `run_discovery.py` at their entry points. The replay test installs it with `monkeypatch` and also sets `analyzer.COMPETITOR_EXTRACTION_PROMPT` through `monkeypatch` rather than by assignment. | `python -m pytest -q` at the repo root was **red**: 3 backend tests failed (`test_llm_call_retries_without_temperature_when_rejected`, `..._keeps_temperature_when_accepted`, `..._does_not_swallow_unrelated_bad_requests`) and passed in isolation. Mechanism: both suites share `sys.modules["analyzer"]`, so importing the harness replaced the product's transport under the product's own tests. Regression test: `test_importing_the_harness_does_not_patch_the_product_transport`. | Harness behaviour (the entry points install the shim as before) |
+| `c5bdf46` (cont.) | `eval_sop/requirements.txt` (pytest, ruff, psutil, anthropic, httpx) and `eval_sop/requirements-optional.txt` (ddgs; torch, transformers, pandas, scikit-learn) added, and README gained an install + run section for the harness. | Nothing declared the harness's dependencies; a reviewer had to add them by hand. Verified by building a fresh venv from the new README lines alone: 25 backend, 71 `eval_sop`, 96 at the root, and `score.py` + `sensitivity.py` reproduced `results/*.json` byte-for-byte. | — |
+| `c5bdf46` (cont.) | README's "22 offline unit tests" corrected to "25 unit tests (23 fully offline; 2 resolve DNS)" in all three places. | The branch shipped a README that §7 itself documented as false. | — |
+| `b8b4a16`, `47da243` and this row's own commit | Documentation only. §6a rewritten to the re-verified position (16 subject-matched pairs, trees identical; tip tree no longer identical to the pre-rewrite tip). The two `(round N, this commit)` labels replaced by `5c5b382` and `abfacc7`. A row added for `c798dce`. The machine username and the quoted drive-rooted path removed from §6a, so this file is no longer a hit for the scan it describes. §7 rewritten as the owner's two open decisions plus what the uncommitted EDGAR cache costs; the README test-count item moved to done. The post-redaction scan was then re-run and found the username still in this file in two earlier commits — removed afterwards by the tree filter in §6b. | Each claim re-verified in this repository before it was written. | No code, data or results touched |
+| `054520d` and this row's own commit | Documentation only. **A second history rewrite**, recorded in the new §6b: a `--tree-filter` over `c3eac2d..HEAD` replacing the username with `<user>` in `RESULTS.md`, which removed the last trace of it from history without collapsing the change log. §6a now says the branch was rewritten twice and re-derives its pairing figures; §9's history item is closed; the four hashes the filter moved were remapped by subject. | Redacting the working tree had left the line in the two commits that carried it — the first attempt mistook a tip-level edit for a history fix. Squashing `c3eac2d..HEAD`, which §6a previously proposed, would have destroyed 23 commits to fix one line. Verified after: 23 commits preserved, `git diff backup/pre-resultsscrub-competitor HEAD` empty, 0 username matches on `sop-eval` against 2 on the backup as the positive control. | No code, data or results touched; the tip tree is byte-identical |
 
 ### 6a. History rewrite, and what is actually in it now
 
-`sop-eval` was rewritten after the change log above was first written. The
-rewrite was a **squash and replay, not a `--tree-filter`**: the two commits that
+`sop-eval` has been rewritten **twice**. This section describes the first
+rewrite; §6b describes the second. Both are local only — nothing has been
+pushed at any point, so neither rewrite changed history that anyone else held.
+
+The first rewrite was a **squash and replay, not a `--tree-filter`**: the two commits that
 recorded the seed-0 results and then redacted the Groq organisation ID were
 squashed into the single commit `37fb65f`, and every later commit was replayed
 onto it, so every hash after `0f658d7` changed. The hashes cited in this
 document were remapped by matching commit subjects.
 
-Re-verified here by pairing the 19 commits in `c3eac2d..HEAD` against the 18 in
+Re-verified here by pairing the 23 commits in `c3eac2d..HEAD` against the 18 in
 `c3eac2d..backup/pre-squash-competitor` by subject: **16 pairs match by subject,
 and for all 16 `git diff <old> <new>` is empty** — the replay changed no tree it
-carried over. Three commits on `sop-eval` have no pre-rewrite counterpart, all
-expected: `37fb65f` itself, the squash product, and the two commits that landed
-*after* the rewrite, `c798dce` and `b689388`.
+carried over. The unmatched commits are all expected: two on the backup side are
+the pair that was squashed away, and seven on `sop-eval` are `37fb65f` itself,
+the squash product, plus the six commits that landed *after* the first rewrite.
 
-Because of those two later commits, **the branch tip's tree is no longer
-identical to the pre-rewrite tip.** `git diff backup/pre-squash-competitor HEAD`
-is non-empty, and what it shows is exactly `c798dce` plus `b689388`. An earlier
-version of this section claimed tip-tree identity and "all fifteen pairs". Both
-were true when written; both are corrected above.
+Because of those later commits, **the branch tip's tree is no longer identical to
+the pre-rewrite tip**, and `git diff backup/pre-squash-competitor HEAD` is
+non-empty by exactly that work. An earlier version of this section claimed
+tip-tree identity and "all fifteen pairs". Both were true when written; both are
+corrected above. The figures in this paragraph are re-derived, not carried
+forward — the second rewrite (§6b) changed the commit count again.
 
 `backup/pre-squash-competitor` is the branch that keeps the pre-rewrite objects,
 including `3d9532c` with the unredacted Groq organisation ID. It is local only
@@ -199,17 +204,17 @@ Verified in this repository, commit by commit over `c3eac2d..HEAD`:
   literal ID over every commit on `sop-eval` returns nothing. The same scan
   over `backup/pre-squash-competitor` returns exactly one commit (`3d9532c`),
   which is the positive control that the scan works.
-- **No machine path reaches any code, data or result, in any commit.** `git grep
-  -I -i` over every commit on `sop-eval`, for the machine username and for a
-  drive-rooted user path in both slash directions, hits **two commits and one
-  file: `RESULTS.md` itself, one line each, in `b689388` and `bee8b8a`.** That
-  line was the prose of this very bullet, which used to quote the terms it
-  greps for — so the audit text was its own only hit. It is redacted from
-  `274dfa0` onwards, and the terms are described rather than quoted from here
-  on, but **the two earlier commits still carry it and cannot be fixed without
-  rewriting history, which this branch will not do.** Anyone who cares about the
-  username not appearing in the published history must squash
-  `c3eac2d..HEAD` before pushing; nothing else on the branch requires it.
+- **No machine path reaches any code, data or result, in any commit — and as of
+  the second rewrite, none reaches any file.** `git grep -I -i` over every commit
+  on `sop-eval`, for the machine username and for a drive-rooted user path in
+  both slash directions, now returns **nothing**. It previously hit two commits
+  and one file: `RESULTS.md` itself, one line each, where the prose of this very
+  bullet quoted the terms it greps for — the audit text was its own only hit.
+  Redacting the working tree was not enough, because the two earlier commits kept
+  the line. The second rewrite in §6b fixed exactly that one line in exactly
+  those two commits. The positive control is
+  `backup/pre-resultsscrub-competitor`, where the same scan still returns those
+  two commits, so the scan demonstrably works.
   No commit, before or after the redaction, puts a machine path in
   `backend/`, `eval_sop/*.py`, the ground truth, the caches or `results/`.
   The only matches for `AppData` and `OneDrive` are benign and deliberate: the
@@ -227,6 +232,41 @@ The superseded claim, kept for the record: the change log previously said the
 org ID was "still present in commit `3d9532c`", that history "was not
 rewritten", and that the branch had to be squashed before any push. That was
 true when written. It no longer describes this branch.
+
+### 6b. Second history rewrite: the username in this file
+
+The redaction recorded in the change log cleaned the **working tree**, but the
+two commits that introduced and carried the offending line kept it. Redacting a
+file at the tip does not remove it from history — a point worth stating plainly,
+because the first attempt here made exactly that mistake.
+
+The fix was a **`--tree-filter` over `c3eac2d..HEAD`** replacing the username
+with `<user>` in `RESULTS.md` and nothing else. It was chosen over squashing
+`c3eac2d..HEAD`, which the previous version of §6a proposed, because squashing
+would have collapsed 23 commits — including the reproduce-before-fix pairs that
+are the point of the change log — into one, to fix a single line. The filter
+preserves every commit.
+
+Verified after the rewrite:
+
+- **The commit count is unchanged**: 23 commits in `c3eac2d..HEAD`, same as the
+  backup.
+- **The tip tree is byte-identical** to the pre-rewrite tip:
+  `git diff backup/pre-resultsscrub-competitor HEAD` is empty. The filter touched
+  only intermediate blobs, so no delivered content changed and the test results
+  recorded in this document still describe the tree they were measured on.
+- **The scan is clean and the control fires**: the username matches 0 commits on
+  `sop-eval` and still matches 2 on `backup/pre-resultsscrub-competitor`.
+- **Commit messages were never affected** — 0 matches on either branch.
+- Only four hashes moved, because `filter-branch` reuses a commit whose tree and
+  parent are both unchanged: everything before the first edited commit kept its
+  hash. The four were remapped by subject, each matching exactly one commit, and
+  every hash this document cites was then re-checked with
+  `git merge-base --is-ancestor`. `3d9532c` remains a deliberate exception: it
+  exists only on `backup/pre-squash-competitor`, which is the point of citing it.
+
+`backup/pre-resultsscrub-competitor` holds the pre-filter objects and **must
+never be pushed**, for the same reason as the other backup branch.
 
 A note on how to check this, because the obvious check is wrong: `git cat-file
 -e <sha>` **succeeds for pre-rewrite SHAs** here, because
@@ -286,13 +326,13 @@ has been acted on; both are left exactly as they were.
 - **Few-shot patch.** Apply it only if the leak is shown with the production model.
 - **Scrape aborts.** Fall back to search snippets instead of aborting when the homepage can't be scraped (17% of companies).
 - **Wording.** Describe the system as a fixed LLM pipeline, not an agent. The LLM never calls tools. The README does not say "agent".
-- **History.** The squash described in §6a has happened, so the unredacted Groq
-  log exists in no commit on `sop-eval`. One thing is still outstanding: the
-  machine username is in `RESULTS.md` in `b689388` and `bee8b8a` (§6a), and
-  removing it from the published history would mean squashing `c3eac2d..HEAD`
-  before pushing. That is the owner's call, not a correctness problem. And the
-  standing housekeeping item: do not push `backup/pre-squash-competitor`, which
-  still carries `3d9532c`.
+- **History.** Nothing outstanding. The squash described in §6a removed the
+  unredacted Groq log, and the tree filter in §6b removed the machine username
+  from the two commits that still carried it, so neither appears in any commit on
+  `sop-eval`. The standing housekeeping item remains: **do not push either backup
+  branch** — `backup/pre-squash-competitor` still carries `3d9532c` with the Groq
+  organisation ID, and `backup/pre-resultsscrub-competitor` still carries the
+  username. Delete both before publishing.
 
 ## 8. Paid run, prepared but not executed
 - **What it is: "Haiku on the fixed ddgs evidence."** It runs `claude-haiku-4-5-20251001` on exactly the cached `raw/retrieval/` search text, over 48 companies × {a_full, b2, c_shuffled, d_fixed}, once at T=0. That is 192 calls.
