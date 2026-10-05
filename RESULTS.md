@@ -15,7 +15,7 @@ Every number below is measured unless it says otherwise. Anything that did not r
 | Ground truth | 48 companies from SEC 10-K "Competition" sections (see §2). |
 | Runs | One run at temperature 0, seed 0. Seeds 1–2 were not run because of the quota. |
 | Raw outputs | `raw/llm_cache.jsonl` holds all 188 LLM calls (hashed prompts, responses, token counts, timestamps). Also `raw/discovery.jsonl` and `raw/retrieval/*.json`. |
-| Replay (no API calls) | `python eval_sop/score.py && python eval_sop/sensitivity.py`. `tests/test_transport.py` checks that all 148 discovery records replay exactly from the cache. |
+| Replay (no API calls) | `python eval_sop/score.py && python eval_sop/sensitivity.py` (install `backend/requirements.txt` + `eval_sop/requirements.txt`; nothing else is needed and no key is read). `tests/test_transport.py` checks that all 148 discovery records replay exactly from the cache. |
 | Fresh run | `EDGAR_UA="Competitor-Insight-Engine noreply@users.noreply.github.com" python eval_sop/ground_truth/build_gt.py` (SEC asks for a contact in the User-Agent; use a no-reply address, not a personal one), then `retrieve.py`, `run_discovery.py` and `score.py`. Set the key with `EVAL_KEY_ENV` / `EVAL_KEY_VAR`. |
 
 ### 2. Ground truth (`eval_sop/ground_truth/`)
@@ -122,12 +122,14 @@ Every number below is measured unless it says otherwise. Anything that did not r
 - **(b2)'s 21 companies are also truncated.** They are all 16 large companies plus the first 5 mid ones.
 - **Possible label leakage into search.** Web pages can paraphrase a 10-K. Only sec.gov itself was excluded.
 - **The NLI judge is moderately reliable** (κ 0.31).
-- **Third-party text.** `raw/retrieval/*.json` contains excerpts of third-party web pages. `strip_retrieval.py` is prepared but not run; the user decides.
+- **Third-party text.** `raw/retrieval/*.json` contains excerpts of third-party web pages. `strip_retrieval.py` is prepared and deliberately **not run**. This is an open decision, not a settled one — see §7.
 - **One run.** There is no seed variance.
 
 ## 6. Change log
 
-**Product code (`backend/`): no changes.** It is byte-identical to `c3eac2d` and its suite still passes 25/25. There are 25 tests at `c3eac2d`. `raw/test_after_fix.txt` shows "26 passed" only because it was produced with the unapplied few-shot patch (+1 test) in place. The `eval_sop/tests` suite has 33 tests (`test_build_gt` 3, `test_transport` 26, `test_score` 4).
+**Product code (`backend/`): no changes.** It is byte-identical to `c3eac2d` and its suite still passes 25/25. There are 25 tests at `c3eac2d`. `raw/test_after_fix.txt` shows "26 passed" only because it was produced with the unapplied few-shot patch (+1 test) in place.
+
+**Test counts as they stand.** `backend/tests` 25 passed. `eval_sop/tests` collects **71** tests (`test_build_gt` 3, `test_transport` 64, `test_score` 4) and in **a clean clone runs 70 passed + 1 skipped**, not 71 passed: see §7 on the gitignored EDGAR cache. In this working tree, where that cache exists, it is 71 passed. Both suites in one pytest process at the repo root: **96 passed** (that used to be 3 failures; see the `bee8b8a` row below).
 
 | Commit | Change | Why / evidence | Preserved |
 |---|---|---|---|
@@ -138,7 +140,7 @@ Every number below is measured unless it says otherwise. Anything that did not r
 | `9f92ca7` | Ground truth completed from the stored excerpts with a new `--offline` rebuild (no EDGAR calls). Added NTGR Synology, TP-Link, TRENDnet, Ubiquiti and WatchGuard (span now ends at the enterprise bullet); CNDT Leidos, TransCore, Thales, Cubic and INIT; WDAY NetSuite; BOX OpenText. Added the aliases Belden, Vistance and Resideo. | Review found truncated spans; I re-audited every excerpt for unlabelled capitalised names. P@4 for (a) went 0.524 → 0.529. | No labels removed |
 | `9a683a5` | New `LLMShim` transport covering the items below. Tests use a fake client: usage, 429, 400/401/403/404, the cap, crash/resume, model pinning, and exact replay of the Groq run. | Paid-run readiness | Groq cache keys unchanged (replay test) |
 | `9a683a5` (cont.) | Haiku provider pinned to `claude-haiku-4-5-20251001`. Uses the official SDK with `max_retries=0`, sends no `seed` or `reasoning_effort`, and records `model_reported`. | Paid-run readiness | |
-| `9a683a5` (cont.) | Persisted cost ledger at $1/M input and $5/M output. A call is refused if the worst case would pass the cap (default $2.75). | Paid-run readiness | |
+| `9a683a5` (cont.) | Persisted cost ledger at $1/M input and $5/M output. A call is refused if the worst case would pass the cap (then a $2.75 default that `EVAL_COST_CAP` could override; made a project hard maximum in `bee8b8a`). | Paid-run readiness | |
 | `9a683a5` (cont.) | At most 3 attempts per call (was up to 400). As committed, any non-429 status that was not an `InternalServerError` failed fast, which wrongly included 529/503. Corrected in `369f294`: 429 and all 5xx retry; other 4xx fail fast. | Paid-run readiness | |
 | `9a683a5` (cont.) | The shim now rejects any `model` argument other than its pinned model. | Paid-run readiness | |
 | `cf15d45` | Leak detector fixed. `score.py` contained literal backspace characters where `\b` was intended, so it could never match. | Reproduced: `tests/test_score.py` failed (`raw/leak_detector_before_fix.txt`) and passes after the fix. Leak rates stay 0, which agrees with the independent raw-response check. | |
@@ -153,21 +155,43 @@ Every number below is measured unless it says otherwise. Anything that did not r
 | `da5ad63` | `build_gt.py` refuses to write on any problem | Failing test: `raw/build_gt_refuse_before_fix.txt`. The real rebuild is unchanged. | Labels |
 | `3c9a167` | The tautological estimate test is replaced by a check against the 188 real Groq prompt_token counts. The estimate divisor goes from 3 to 2 (`max(chars, bytes)/2 + 50`). | At /3, 1 of 188 prompts was under-estimated (ratio 0.84, `raw/estimate_before_fix.txt`); /2 gives a minimum ratio of 1.25. The Groq tokenizer stands in for Claude's. | |
 | `3c9a167` (cont.) | The replay test now fails if it tries to make any API call, even with keys set. | Review item | |
-| (round 3, this commit) | Ledger, lock and Haiku cache moved from `eval_sop/raw/` to `%LOCALAPPDATA%\sop_eval\competitor_insight\`, with no env override. Lock errors now report whether the PID in the lock file is running (psutil) and leave recovery manual. | Shared spend record across worktree and main checkout. Failing tests first: `raw/state_dir_before_fix.txt`. | Groq cache stays in the repo |
+| `5c5b382` | Ledger, lock and Haiku cache moved from `eval_sop/raw/` to `%LOCALAPPDATA%\sop_eval\competitor_insight\`, with no env override. Lock errors now report whether the PID in the lock file is running (psutil) and leave recovery manual. | Shared spend record across worktree and main checkout. Failing tests first: `raw/state_dir_before_fix.txt`. | Groq cache stays in the repo |
 | `240fbb1` | The scorer flags responses that hit max_tokens (`truncated`, `n_truncated`) instead of silently counting them as empty | Groq run: 0 truncated in every group; metrics unchanged. Failing tests: `raw/truncation_before_fix.txt`. | |
-| (round 4, this commit) | Documentation only. Every stale commit hash this file cited was remapped to the rewritten commit with the same subject (13 hashes; `0f658d7` and `c3eac2d` were already valid). The superseded privacy claim was replaced by §6a, which states only what was verified commit by commit. | The rewrite described in §6a changed the hashes. Staleness was tested with `git merge-base --is-ancestor`, not `git cat-file -e`. | No code, data or results touched |
+| `c798dce` | `build_gt.py`'s documented `EDGAR_UA` example, and the §1 "Fresh run" line, use a GitHub no-reply address instead of a personal one. SEC asks for a contact in the User-Agent; it does not ask for a personal mailbox. | Privacy review of the only place this repo tells a reader to put an email address. No code path changed: `EDGAR_UA` was already read from the environment. | Labels, cache, results |
+| `b689388` | Documentation only. Every stale commit hash this file cited was remapped to the rewritten commit with the same subject (13 hashes; `0f658d7` and `c3eac2d` were already valid). The superseded privacy claim was replaced by §6a, which states only what was verified commit by commit. | The rewrite described in §6a changed the hashes. Staleness was tested with `git merge-base --is-ancestor`, not `git cat-file -e`. | No code, data or results touched |
+
+| `bee8b8a` | **The cap is now a project hard maximum, not a default.** `common.PROJECT_HARD_MAX_USD = 2.75`, and `check_cap()` rejects any cap that is not a finite positive number at or below it. `EVAL_COST_CAP` may only *lower* the cap. `LLMShim.__init__` validates its `cap` argument through the same function. | `EVAL_COST_CAP` silently overrode the documented $2.75 cap, so the figure in §8 was not enforceable. Worse, `EVAL_COST_CAP=nan` disabled spending control entirely: `nan` fails every comparison, so `spent + worst > cap` was always False. Failing tests first: 38 new parametrised cases in `tests/test_transport.py` cover `nan`, `NaN`, `inf`, `-inf`, `0`, `-1`, `-0.01`, `2.76` and `1e9` through `check_cap()`, through `cap_from_env()`, through the shim constructor, and through the command line (a subprocess running `run_discovery.py --dry-run`, which refuses at import). Follows the sibling project's `eval_sop/budget.py` (`check_cap` / `PROJECT_HARD_MAX_USD`). | Ledger format, cache keys, all results |
+| `bee8b8a` (cont.) | **Cross-suite state pollution fixed.** `eval_sop/common.py` no longer assigns `analyzer.llm_call = shim` at import; the assignment moved into `common.install_shim()`, called by `retrieve.py` and `run_discovery.py` at their entry points. The replay test installs it with `monkeypatch` and also sets `analyzer.COMPETITOR_EXTRACTION_PROMPT` through `monkeypatch` rather than by assignment. | `python -m pytest -q` at the repo root was **red**: 3 backend tests failed (`test_llm_call_retries_without_temperature_when_rejected`, `..._keeps_temperature_when_accepted`, `..._does_not_swallow_unrelated_bad_requests`) and passed in isolation. Mechanism: both suites share `sys.modules["analyzer"]`, so importing the harness replaced the product's transport under the product's own tests. Regression test: `test_importing_the_harness_does_not_patch_the_product_transport`. | Harness behaviour (the entry points install the shim as before) |
+| `bee8b8a` (cont.) | `eval_sop/requirements.txt` (pytest, ruff, psutil, anthropic, httpx) and `eval_sop/requirements-optional.txt` (ddgs; torch, transformers, pandas, scikit-learn) added, and README gained an install + run section for the harness. | Nothing declared the harness's dependencies; a reviewer had to add them by hand. Verified by building a fresh venv from the new README lines alone: 25 backend, 71 `eval_sop`, 96 at the root, and `score.py` + `sensitivity.py` reproduced `results/*.json` byte-for-byte. | — |
+| `bee8b8a` (cont.) | README's "22 offline unit tests" corrected to "25 unit tests (23 fully offline; 2 resolve DNS)" in all three places. | The branch shipped a README that §7 itself documented as false. | — |
+| (the documentation commit immediately after `bee8b8a`) | Documentation only. §6a rewritten to the re-verified position (16 subject-matched pairs, trees identical; tip tree no longer identical to the pre-rewrite tip). The two `(round N, this commit)` labels replaced by `5c5b382` and `b689388`. A row added for `c798dce`. The machine username and the quoted drive-rooted path removed from §6a, so this file is no longer a hit for the scan it describes. §7 rewritten as the owner's two open decisions plus what the uncommitted EDGAR cache costs; the README test-count item moved to done. | Each claim re-verified in this repository before it was written. | No code, data or results touched |
 
 ### 6a. History rewrite, and what is actually in it now
 
-`sop-eval` was rewritten after the change log above was first written. The two
-commits that recorded the seed-0 results and then redacted the Groq
-organisation ID were **squashed into the single commit `37fb65f`**, and every
-later commit was replayed onto it, so the hashes changed. This was a squash and
-replay, not a `--tree-filter`: for every commit that survived the rewrite, the
-tree is byte-identical to its pre-rewrite counterpart (`git diff <old> <new>`
-is empty for all fifteen pairs), and the branch tip's tree is byte-identical to
-the pre-rewrite tip. The hashes cited in this document were remapped by
-matching commit subjects.
+`sop-eval` was rewritten after the change log above was first written. The
+rewrite was a **squash and replay, not a `--tree-filter`**: the two commits that
+recorded the seed-0 results and then redacted the Groq organisation ID were
+squashed into the single commit `37fb65f`, and every later commit was replayed
+onto it, so every hash after `0f658d7` changed. The hashes cited in this
+document were remapped by matching commit subjects.
+
+Re-verified here by pairing the 19 commits in `c3eac2d..HEAD` against the 18 in
+`c3eac2d..backup/pre-squash-competitor` by subject: **16 pairs match by subject,
+and for all 16 `git diff <old> <new>` is empty** — the replay changed no tree it
+carried over. Three commits on `sop-eval` have no pre-rewrite counterpart, all
+expected: `37fb65f` itself, the squash product, and the two commits that landed
+*after* the rewrite, `c798dce` and `b689388`.
+
+Because of those two later commits, **the branch tip's tree is no longer
+identical to the pre-rewrite tip.** `git diff backup/pre-squash-competitor HEAD`
+is non-empty, and what it shows is exactly `c798dce` plus `b689388`. An earlier
+version of this section claimed tip-tree identity and "all fifteen pairs". Both
+were true when written; both are corrected above.
+
+`backup/pre-squash-competitor` is the branch that keeps the pre-rewrite objects,
+including `3d9532c` with the unredacted Groq organisation ID. It is local only
+and **must never be pushed**. It is also why pre-rewrite SHAs still resolve in
+this repository — see the note at the end of this section.
 
 Verified in this repository, commit by commit over `c3eac2d..HEAD`:
 
@@ -176,7 +200,10 @@ Verified in this repository, commit by commit over `c3eac2d..HEAD`:
   over `backup/pre-squash-competitor` returns exactly one commit (`3d9532c`),
   which is the positive control that the scan works.
 - **No machine path survives in any commit's tracked content.** `git grep -I -i`
-  for `<user>` and for `C:\Users` / `C:/Users` over every commit returns nothing.
+  over every commit, for the machine username and for a drive-rooted user path
+  in both slash directions, returns nothing. Those search terms are described
+  rather than quoted here on purpose: writing them into a tracked file would
+  make this document itself a hit and defeat the scan it describes.
   The only matches for `AppData` and `OneDrive` are benign and deliberate: the
   `%LOCALAPPDATA%` / `Path.home()/"AppData"/"Local"` state directory in
   `eval_sop/common.py`, `eval_sop/tests/test_transport.py` and this file, and
@@ -199,8 +226,55 @@ A note on how to check this, because the obvious check is wrong: `git cat-file
 therefore not a staleness test. The valid test is reachability from the branch
 tip: `git merge-base --is-ancestor <sha> HEAD`.
 
-## 7. Proposed, not done
-- **README test count.** Lines 207, 272 and 327 say "22 offline unit tests". There are 25, and 2 of them need DNS (`test_ssrf_allows_public` and `test_reachability_checks_do_not_follow_redirect_chains`; see `check_tests_offline.py` and `raw/tests_offline.txt`). Suggested wording: "25 unit tests (23 fully offline; 2 resolve DNS)".
+## 7. Open decisions for the owner
+
+Two things on this branch are **not settled** and are not mine to settle. Neither
+has been acted on; both are left exactly as they were.
+
+1. **Whether to publish `eval_sop/raw/retrieval/*.json`.** These 48 files hold
+   excerpts of third-party commercial web pages, scraped by `retrieve.py` and
+   unlicensed for redistribution. They are currently **committed**, so pushing
+   this branch publishes them. `eval_sop/strip_retrieval.py` would reduce them to
+   hashes and is **deliberately unrun**. The consequence either way: keep them
+   and the committed Groq run stays exactly replayable by anyone (`test_transport`
+   replays all 148 records from them) but third-party copy is redistributed;
+   strip them and the third-party text goes away but the public replay, the
+   retrieval-coverage numbers in §3b and the `(c)` shuffled-evidence condition can
+   no longer be reproduced from the repository alone.
+2. **Whether to commit `eval_sop/raw/edgar_cache` (~20 MB).** It is gitignored
+   today. The consequence of leaving it out is listed immediately below; the
+   consequence of committing it is 20 MB of SEC filing text in the repository
+   forever, and SEC filings are US government works, so the licensing question
+   is the easy half.
+
+**What depends on the uncommitted EDGAR cache.** Without it, in a clean clone:
+- `tests/test_build_gt.py::test_build_refuses_to_write_when_a_label_is_not_in_the_excerpt`
+  **skips** (`pytest.skip("10-K text cache not present (gitignored)")`). The suite
+  is therefore **32 passed + 1 skipped** at the commit where §6 previously said
+  "33 tests", and 70 passed + 1 skipped now. A reader must not take "the suite
+  passes" as evidence that the refusal in `da5ad63` works — in a clean clone that
+  test never runs.
+- The §2 claims **"each labelled competitor appears verbatim in the stored 10-K
+  excerpt"** and **"all 48 companies pass"** cannot be re-checked: the verbatim
+  check reads the cached excerpts.
+- The `--offline` ground-truth rebuild of `9f92ca7` cannot be re-run, so
+  `companies.json` has to be taken on trust.
+- The **no-mojibake scan over all 48 cached 10-K texts** cited for `aa90862`
+  cannot be reproduced.
+- The same holds for §9's first SOP sentence, which restates the verbatim claim.
+
+## 7b. Proposed, not done
+- **`eval_sop/` is not linted.** `backend/` has a pinned `ruff.toml` and CI runs
+  it; `eval_sop/` has neither. Under the product's rule set at a 130-column line
+  length it reports 32 findings, mostly import ordering and now-redundant `noqa`
+  markers, but including 3 `B023` closure-binds-loop-variable warnings at
+  `score.py:248` that are worth a look before they are silenced. Not touched
+  here: it is a cleanup pass, not a merge-gate fix.
+- **Neither `backend/requirements.txt` nor CI's install line declares `pytest`
+  and `httpx`** for the backend suite; CI passes them on the command line. The
+  harness's new `requirements.txt` declares both, so installing it alongside the
+  backend's makes `cd backend && pytest` work, but the backend half is still
+  undeclared on its own.
 - **Few-shot patch.** Apply it only if the leak is shown with the production model.
 - **Scrape aborts.** Fall back to search snippets instead of aborting when the homepage can't be scraped (17% of companies).
 - **Wording.** Describe the system as a fixed LLM pipeline, not an agent. The LLM never calls tools. The README does not say "agent".
@@ -216,7 +290,13 @@ tip: `git merge-base --is-ancestor <sha> HEAD`.
 - **Where the spend record lives.** The cost ledger, its lock and the Haiku response cache are in one fixed user-level directory outside the repo, `%LOCALAPPDATA%\sop_eval\competitor_insight\` (`common.STATE_DIR`). A run from this worktree and a run from the main checkout therefore share a single spend record. There is no env override. Haiku discovery outputs still go to `eval_sop/raw/discovery_haiku.jsonl`; copy the cache into the repo after the run if it should be committed.
 - **Run safety.** Only one process may use the ledger, enforced by the lock file. If the lock exists, the error says whether the PID inside it is still running or the lock is stale; recovery is always manual: confirm nothing is running, then delete the lock. Each attempt is reserved at the worst case before it is sent. The cap can only be passed if a single response's real input exceeds the estimate; the estimate checked out above all 188 real counts, with a minimum ratio of 1.25.
 - **Scoring the Haiku run.** Score it with `EVAL_PROVIDER=anthropic` so the truncation check can see the Haiku cache. Otherwise those rows report `n_truncation_unknown`.
-- **Cap.** $2.75, inside this project's $3 share.
+- **Cap.** $2.75, inside this project's $3 share, and **enforced as a project
+  hard maximum**: `common.PROJECT_HARD_MAX_USD = 2.75`. `EVAL_COST_CAP` can only
+  lower it. A cap that is not a finite positive number at or below $2.75 —
+  including `nan`, `NaN`, `inf`, `-inf`, `0` and any negative — raises `ValueError`
+  at import, so every entry point (including `--dry-run`) refuses before spending
+  anything. Raising the ceiling is a deliberate source change, not an environment
+  variable.
 - **What it allows.** A clean Haiku comparison of (a) vs (b2) by tier, including small companies, the leak test for Haiku, and (d).
 - **Command.** `EVAL_PROVIDER=anthropic EVAL_KEY_ENV=<.env> EVAL_KEY_VAR=ANTHROPIC_API_KEY python eval_sop/run_discovery.py`
 - **Model ID check.** The pinned ID `claude-haiku-4-5-20251001` was required by the review. The current Anthropic model list names `claude-haiku-4-5`. If the dated ID returns 404, the shim fails fast at $0. Switching IDs is then a one-line change in `common.py`.

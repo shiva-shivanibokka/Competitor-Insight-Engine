@@ -289,7 +289,7 @@ pip install -r backend/requirements.txt -r eval_sop/requirements.txt
 python -m pytest eval_sop/tests -q    # offline: fake SDK client, no network, no keys
 ```
 
-`ruff` is in `eval_sop/requirements.txt` because the lint command above (`ruff check .` inside `backend/`) needs it and nothing else declared it. `eval_sop/` itself is **not** linted yet — it has no `ruff.toml` and does not pass the product's rule set; see RESULTS.md §7.
+`ruff` is in `eval_sop/requirements.txt` because the lint command above (`ruff check .` inside `backend/`) needs it and nothing else declared it. `eval_sop/` itself is **not** linted yet — it has no `ruff.toml` and does not pass the product's rule set; see RESULTS.md §7b.
 
 One of the `eval_sop` tests is skipped in a fresh clone: `test_build_refuses_to_write_when_a_label_is_not_in_the_excerpt` needs `eval_sop/raw/edgar_cache/`, which is gitignored (see RESULTS.md §7).
 
