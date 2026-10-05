@@ -273,13 +273,59 @@ def test_5xx_including_529_retries_and_stays_charged(prov, cls, status):
 
 # ---------------------------------------------------------------- round-3: shared user-level spend state
 def test_paid_state_lives_in_one_user_level_dir_outside_the_repo():
-    import os
-
-    expected = Path(os.environ["LOCALAPPDATA"]) / "sop_eval" / "competitor_insight"
+    expected = Path.home() / ".sop_eval" / "competitor_insight"
     p = PROVIDERS["anthropic"]
     assert common.STATE_DIR == expected
     assert p.ledger.parent == expected and p.cache.parent == expected
     assert HERE.parent not in p.ledger.parents  # a worktree and the main checkout share one record
+
+
+# ------------------------------------------------- round-5: the state dir must not be movable by the environment
+#
+# An earlier version derived STATE_DIR from %LOCALAPPDATA%, while the comment
+# above it claimed there was no env override. Tools set that variable per
+# process, and moving it moved the ledger (a fresh $0 total, so the cap re-arms
+# and earlier spend is forgotten) together with the lock beside it, which is what
+# stops two paid runs overlapping. Resolution is checked in a CHILD PROCESS:
+# reloading the module in-process pollutes module identity for other tests.
+def _state_dir_in_child(**overrides):
+    import os
+    import subprocess
+    import sys
+
+    env = {**os.environ, "PYTHONPATH": str(HERE.parent.parent)}
+    for key, value in overrides.items():
+        if value is None:
+            env.pop(key, None)
+        else:
+            env[key] = value
+    out = subprocess.run(
+        [sys.executable, "-c", "import eval_sop.common as c; print(c.STATE_DIR)"],
+        capture_output=True, text=True, env=env, check=True,
+    )
+    return out.stdout.strip()
+
+
+@pytest.mark.parametrize("var", ["LOCALAPPDATA", "APPDATA", "XDG_STATE_HOME",
+                                 "TEMP", "TMP", "HOME", "HOMEDRIVE", "HOMEPATH"])
+def test_state_dir_does_not_move_when_an_env_var_is_redirected(tmp_path, var):
+    baseline = _state_dir_in_child()
+    assert _state_dir_in_child(**{var: str(tmp_path / "fake")}) == baseline
+
+
+def test_state_dir_does_not_move_when_all_of_them_are_redirected_at_once(tmp_path):
+    baseline = _state_dir_in_child()
+    moved = _state_dir_in_child(LOCALAPPDATA=str(tmp_path / "a"), APPDATA=str(tmp_path / "b"),
+                                XDG_STATE_HOME=str(tmp_path / "c"), TEMP=str(tmp_path / "d"),
+                                TMP=str(tmp_path / "e"), HOME=str(tmp_path / "f"))
+    assert moved == baseline
+
+
+def test_state_dir_is_under_the_home_directory_and_the_lock_sits_beside_the_ledger():
+    p = PROVIDERS["anthropic"]
+    assert str(common.STATE_DIR).startswith(str(Path.home()))
+    lock = p.ledger.with_suffix(p.ledger.suffix + ".lock")
+    assert lock.parent == p.ledger.parent  # move one, move the other -- so neither may move
 
 
 def _write_lock(prov, pid):

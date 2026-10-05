@@ -129,7 +129,7 @@ Every number below is measured unless it says otherwise. Anything that did not r
 
 **Product code (`backend/`): no changes.** It is byte-identical to `c3eac2d` and its suite still passes 25/25. There are 25 tests at `c3eac2d`. `raw/test_after_fix.txt` shows "26 passed" only because it was produced with the unapplied few-shot patch (+1 test) in place.
 
-**Test counts as they stand.** `backend/tests` 25 passed. `eval_sop/tests` collects **71** tests (`test_build_gt` 3, `test_transport` 64, `test_score` 4) and in **a clean clone runs 70 passed + 1 skipped**, not 71 passed: see §7 on the gitignored EDGAR cache. In this working tree, where that cache exists, it is 71 passed. Both suites in one pytest process at the repo root: **96 passed** (that used to be 3 failures; see the `c5bdf46` row below).
+**Test counts as they stand.** `backend/tests` 25 passed. `eval_sop/tests` collects **81** tests (`test_build_gt` 3, `test_transport` 74, `test_score` 4) and in **a clean clone runs 80 passed + 1 skipped**, not 81 passed: see §7 on the gitignored EDGAR cache. In this working tree, where that cache exists, it is 81 passed. Both suites in one pytest process at the repo root: **106 passed** (that used to be 3 failures; see the `c5bdf46` row below). Ten of those tests are the round-5 state-directory cases.
 
 | Commit | Change | Why / evidence | Preserved |
 |---|---|---|---|
@@ -155,17 +155,18 @@ Every number below is measured unless it says otherwise. Anything that did not r
 | `da5ad63` | `build_gt.py` refuses to write on any problem | Failing test: `raw/build_gt_refuse_before_fix.txt`. The real rebuild is unchanged. | Labels |
 | `3c9a167` | The tautological estimate test is replaced by a check against the 188 real Groq prompt_token counts. The estimate divisor goes from 3 to 2 (`max(chars, bytes)/2 + 50`). | At /3, 1 of 188 prompts was under-estimated (ratio 0.84, `raw/estimate_before_fix.txt`); /2 gives a minimum ratio of 1.25. The Groq tokenizer stands in for Claude's. | |
 | `3c9a167` (cont.) | The replay test now fails if it tries to make any API call, even with keys set. | Review item | |
-| `5c5b382` | Ledger, lock and Haiku cache moved from `eval_sop/raw/` to `%LOCALAPPDATA%\sop_eval\competitor_insight\`, with no env override. Lock errors now report whether the PID in the lock file is running (psutil) and leave recovery manual. | Shared spend record across worktree and main checkout. Failing tests first: `raw/state_dir_before_fix.txt`. | Groq cache stays in the repo |
+| `5c5b382` | Ledger, lock and Haiku cache moved from `eval_sop/raw/` to `%LOCALAPPDATA%\sop_eval\competitor_insight\`, with no env override. **The "no env override" half of this was false when written** — `%LOCALAPPDATA%` *is* an env override; corrected in the `round 5` row below. Lock errors now report whether the PID in the lock file is running (psutil) and leave recovery manual. | Shared spend record across worktree and main checkout. Failing tests first: `raw/state_dir_before_fix.txt`. | Groq cache stays in the repo |
 | `240fbb1` | The scorer flags responses that hit max_tokens (`truncated`, `n_truncated`) instead of silently counting them as empty | Groq run: 0 truncated in every group; metrics unchanged. Failing tests: `raw/truncation_before_fix.txt`. | |
 | `c798dce` | `build_gt.py`'s documented `EDGAR_UA` example, and the §1 "Fresh run" line, use a GitHub no-reply address instead of a personal one. SEC asks for a contact in the User-Agent; it does not ask for a personal mailbox. | Privacy review of the only place this repo tells a reader to put an email address. No code path changed: `EDGAR_UA` was already read from the environment. | Labels, cache, results |
 | `abfacc7` | Documentation only. Every stale commit hash this file cited was remapped to the rewritten commit with the same subject (13 hashes; `0f658d7` and `c3eac2d` were already valid). The superseded privacy claim was replaced by §6a, which states only what was verified commit by commit. | The rewrite described in §6a changed the hashes. Staleness was tested with `git merge-base --is-ancestor`, not `git cat-file -e`. | No code, data or results touched |
 
 | `c5bdf46` | **The cap is now a project hard maximum, not a default.** `common.PROJECT_HARD_MAX_USD = 2.75`, and `check_cap()` rejects any cap that is not a finite positive number at or below it. `EVAL_COST_CAP` may only *lower* the cap. `LLMShim.__init__` validates its `cap` argument through the same function. | `EVAL_COST_CAP` silently overrode the documented $2.75 cap, so the figure in §8 was not enforceable. Worse, `EVAL_COST_CAP=nan` disabled spending control entirely: `nan` fails every comparison, so `spent + worst > cap` was always False. Failing tests first: 38 new parametrised cases in `tests/test_transport.py` cover `nan`, `NaN`, `inf`, `-inf`, `0`, `-1`, `-0.01`, `2.76` and `1e9` through `check_cap()`, through `cap_from_env()`, through the shim constructor, and through the command line (a subprocess running `run_discovery.py --dry-run`, which refuses at import). Follows the sibling project's `eval_sop/budget.py` (`check_cap` / `PROJECT_HARD_MAX_USD`). | Ledger format, cache keys, all results |
 | `c5bdf46` (cont.) | **Cross-suite state pollution fixed.** `eval_sop/common.py` no longer assigns `analyzer.llm_call = shim` at import; the assignment moved into `common.install_shim()`, called by `retrieve.py` and `run_discovery.py` at their entry points. The replay test installs it with `monkeypatch` and also sets `analyzer.COMPETITOR_EXTRACTION_PROMPT` through `monkeypatch` rather than by assignment. | `python -m pytest -q` at the repo root was **red**: 3 backend tests failed (`test_llm_call_retries_without_temperature_when_rejected`, `..._keeps_temperature_when_accepted`, `..._does_not_swallow_unrelated_bad_requests`) and passed in isolation. Mechanism: both suites share `sys.modules["analyzer"]`, so importing the harness replaced the product's transport under the product's own tests. Regression test: `test_importing_the_harness_does_not_patch_the_product_transport`. | Harness behaviour (the entry points install the shim as before) |
-| `c5bdf46` (cont.) | `eval_sop/requirements.txt` (pytest, ruff, psutil, anthropic, httpx) and `eval_sop/requirements-optional.txt` (ddgs; torch, transformers, pandas, scikit-learn) added, and README gained an install + run section for the harness. | Nothing declared the harness's dependencies; a reviewer had to add them by hand. Verified by building a fresh venv from the new README lines alone: 25 backend, 71 `eval_sop`, 96 at the root, and `score.py` + `sensitivity.py` reproduced `results/*.json` byte-for-byte. | — |
+| `c5bdf46` (cont.) | `eval_sop/requirements.txt` (pytest, ruff, psutil, anthropic, httpx) and `eval_sop/requirements-optional.txt` (ddgs; torch, transformers, pandas, scikit-learn) added, and README gained an install + run section for the harness. | Nothing declared the harness's dependencies; a reviewer had to add them by hand. Verified by building a fresh venv from the new README lines alone: 25 backend, 71 `eval_sop`, 96 at the root (81 and 106 after the round-5 tests landed), and `score.py` + `sensitivity.py` reproduced `results/*.json` byte-for-byte. | — |
 | `c5bdf46` (cont.) | README's "22 offline unit tests" corrected to "25 unit tests (23 fully offline; 2 resolve DNS)" in all three places. | The branch shipped a README that §7 itself documented as false. | — |
 | `b8b4a16`, `47da243` and this row's own commit | Documentation only. §6a rewritten to the re-verified position (16 subject-matched pairs, trees identical; tip tree no longer identical to the pre-rewrite tip). The two `(round N, this commit)` labels replaced by `5c5b382` and `abfacc7`. A row added for `c798dce`. The machine username and the quoted drive-rooted path removed from §6a, so this file is no longer a hit for the scan it describes. §7 rewritten as the owner's two open decisions plus what the uncommitted EDGAR cache costs; the README test-count item moved to done. The post-redaction scan was then re-run and found the username still in this file in two earlier commits — removed afterwards by the tree filter in §6b. | Each claim re-verified in this repository before it was written. | No code, data or results touched |
-| `054520d` and this row's own commit | Documentation only. **A second history rewrite**, recorded in the new §6b: a `--tree-filter` over `c3eac2d..HEAD` replacing the username with `<user>` in `RESULTS.md`, which removed the last trace of it from history without collapsing the change log. §6a now says the branch was rewritten twice and re-derives its pairing figures; §9's history item is closed; the four hashes the filter moved were remapped by subject. | Redacting the working tree had left the line in the two commits that carried it — the first attempt mistook a tip-level edit for a history fix. Squashing `c3eac2d..HEAD`, which §6a previously proposed, would have destroyed 23 commits to fix one line. Verified after: 23 commits preserved, `git diff backup/pre-resultsscrub-competitor HEAD` empty, 0 username matches on `sop-eval` against 2 on the backup as the positive control. | No code, data or results touched; the tip tree is byte-identical |
+| round 5, this row's own commit | **`STATE_DIR` no longer derives from `%LOCALAPPDATA%`.** `common.py:57` now resolves `Path.home() / ".sop_eval" / "competitor_insight"`, matching the sibling projects. No environment variable can move the ledger, its lock or the Haiku cache. | **A spend bug, found by an independent check, not by this suite.** Setting `LOCALAPPDATA` relocated all three: measured `C:\…\AppData\Local\sop_eval\competitor_insight` → `<tmp>\sop_eval\competitor_insight`. A fresh ledger means $0.00 spent, so the $2.75 cap re-arms and any earlier spend is forgotten; the lock moves with it, so two paid runs can overlap. Worse, **the round-3 test asserted the variable's value, so the suite certified the defect**, and the comment above the line claimed "Deliberately no env override" while the line read an env var. Failing tests first: 10 new cases — one per variable for `LOCALAPPDATA`, `APPDATA`, `XDG_STATE_HOME`, `TEMP`, `TMP`, `HOME`, `HOMEDRIVE`, `HOMEPATH`, one with all of them redirected at once, and one asserting the lock sits beside the ledger. Each resolves `STATE_DIR` in a **child process**: reloading the module in-process pollutes module identity for other tests. 3 were red (`LOCALAPPDATA` individually, all-at-once, and the round-3 assertion), the other 7 vars never moved it. | The old directory was **empty — no ledger, $0 spent** — so there was nothing to migrate. §8 corrected; its "no env override" claim is now true and tested |
+| `054520d` and this row's own commit | Documentation only. **A second history rewrite**, recorded in the new §6b: a `--tree-filter` over `c3eac2d..HEAD` replacing the username with `<user>` in `RESULTS.md`, which removed the last trace of it from history without collapsing the change log. §6a now says the branch was rewritten twice and re-derives its pairing figures; §9's history item is closed; the four hashes the filter moved were remapped by subject. | Redacting the working tree had left the line in the two commits that carried it — the first attempt mistook a tip-level edit for a history fix. Squashing `c3eac2d..HEAD`, which §6a previously proposed, would have destroyed the whole range to fix one line. Verified at the moment the filter finished: commit count preserved, `git diff backup/pre-resultsscrub-competitor HEAD` empty, 0 username matches on `sop-eval` against 2 on the backup as the positive control. | No code, data or results touched; the tip tree was byte-identical to the pre-filter tip |
 
 ### 6a. History rewrite, and what is actually in it now
 
@@ -179,12 +180,14 @@ squashed into the single commit `37fb65f`, and every later commit was replayed
 onto it, so every hash after `0f658d7` changed. The hashes cited in this
 document were remapped by matching commit subjects.
 
-Re-verified here by pairing the 23 commits in `c3eac2d..HEAD` against the 18 in
+Re-verified here by pairing the 24 commits in `c3eac2d..HEAD` against the 18 in
 `c3eac2d..backup/pre-squash-competitor` by subject: **16 pairs match by subject,
 and for all 16 `git diff <old> <new>` is empty** — the replay changed no tree it
 carried over. The unmatched commits are all expected: two on the backup side are
 the pair that was squashed away, and seven on `sop-eval` are `37fb65f` itself,
-the squash product, plus the six commits that landed *after* the first rewrite.
+the squash product, plus the seven commits that landed *after* the first rewrite.
+(Eight sop-eval-only subjects, 16 matched: 16 + 8 = 24. Re-derive these before
+quoting them -- every commit added since moves them.)
 
 Because of those later commits, **the branch tip's tree is no longer identical to
 the pre-rewrite tip**, and `git diff backup/pre-squash-competitor HEAD` is
@@ -217,11 +220,12 @@ Verified in this repository, commit by commit over `c3eac2d..HEAD`:
   two commits, so the scan demonstrably works.
   No commit, before or after the redaction, puts a machine path in
   `backend/`, `eval_sop/*.py`, the ground truth, the caches or `results/`.
-  The only matches for `AppData` and `OneDrive` are benign and deliberate: the
-  `%LOCALAPPDATA%` / `Path.home()/"AppData"/"Local"` state directory in
-  `eval_sop/common.py`, `eval_sop/tests/test_transport.py` and this file, and
-  Microsoft **OneDrive** as a labelled competitor in the 10-K ground truth and
-  the retrieval cache.
+  The only matches for `AppData` and `OneDrive` are benign and deliberate: at the
+  tip, `AppData` survives only in this file, discussing the variable the state
+  directory no longer uses, and Microsoft **OneDrive** appears as a labelled
+  competitor in the 10-K ground truth and the retrieval cache. Earlier commits
+  also match in `eval_sop/common.py` and `eval_sop/tests/test_transport.py`, from
+  when the state directory was derived from `%LOCALAPPDATA%`.
 - **Commit messages are clean.** The only match across `c3eac2d..HEAD` is the
   literal `%LOCALAPPDATA%` in one subject line.
 - **A backup of the pre-rewrite history exists locally** on the branch
@@ -243,18 +247,25 @@ because the first attempt here made exactly that mistake.
 The fix was a **`--tree-filter` over `c3eac2d..HEAD`** replacing the username
 with `<user>` in `RESULTS.md` and nothing else. It was chosen over squashing
 `c3eac2d..HEAD`, which the previous version of §6a proposed, because squashing
-would have collapsed 23 commits — including the reproduce-before-fix pairs that
+would have collapsed the whole range — including the reproduce-before-fix pairs that
 are the point of the change log — into one, to fix a single line. The filter
 preserves every commit.
 
 Verified after the rewrite:
 
-- **The commit count is unchanged**: 23 commits in `c3eac2d..HEAD`, same as the
-  backup.
-- **The tip tree is byte-identical** to the pre-rewrite tip:
-  `git diff backup/pre-resultsscrub-competitor HEAD` is empty. The filter touched
-  only intermediate blobs, so no delivered content changed and the test results
-  recorded in this document still describe the tree they were measured on.
+- **The filter preserved every commit and changed no delivered content.** Both
+  properties were measured at the moment the filter finished, against
+  `backup/pre-resultsscrub-competitor`, which is the pre-filter tip: equal commit
+  counts, and `git diff backup/pre-resultsscrub-competitor HEAD` empty. The filter
+  touched only intermediate blobs.
+  **Commits have landed since**, so neither comparison is empty or equal any more,
+  and that is expected rather than a regression: `git diff` against that backup
+  now shows exactly the work committed after the filter, and `c3eac2d..HEAD` is
+  longer by the same number of commits. The check that does not go stale is the
+  one in §6a — 16 subject-matched pairs with empty diffs — plus the scan below.
+  Re-derive the counts before quoting them; the earlier version of this bullet
+  asserted "23 commits" and "diff empty" and was falsified by the very next
+  commit, which is the failure mode this document keeps having to correct.
 - **The scan is clean and the control fires**: the username matches 0 commits on
   `sop-eval` and still matches 2 on `backup/pre-resultsscrub-competitor`.
 - **Commit messages were never affected** — 0 matches on either branch.
@@ -296,10 +307,10 @@ has been acted on; both are left exactly as they were.
    is the easy half.
 
 **What depends on the uncommitted EDGAR cache.** Without it, in a clean clone:
-- `tests/test_build_gt.py::test_build_refuses_to_write_when_a_label_is_not_in_the_excerpt`
+- `eval_sop/tests/test_build_gt.py::test_build_refuses_to_write_when_a_label_is_not_in_the_excerpt`
   **skips** (`pytest.skip("10-K text cache not present (gitignored)")`). The suite
   is therefore **32 passed + 1 skipped** at the commit where §6 previously said
-  "33 tests", and 70 passed + 1 skipped now. A reader must not take "the suite
+  "33 tests", and 80 passed + 1 skipped now. A reader must not take "the suite
   passes" as evidence that the refusal in `da5ad63` works — in a clean clone that
   test never runs.
 - The §2 claims **"each labelled competitor appears verbatim in the stored 10-K
@@ -313,8 +324,10 @@ has been acted on; both are left exactly as they were.
 
 ## 7b. Proposed, not done
 - **`eval_sop/` is not linted.** `backend/` has a pinned `ruff.toml` and CI runs
-  it; `eval_sop/` has neither. Under the product's rule set at a 130-column line
-  length it reports 32 findings, mostly import ordering and now-redundant `noqa`
+  ruff over it; `eval_sop/` pins the same `ruff==0.16.3` in its own
+  `requirements.txt` but has no config of its own and no CI step, so nothing
+  actually lints it. Under the product's rule set at a 130-column line
+  length it reports 25 findings, mostly import ordering and now-redundant `noqa`
   markers, but including 3 `B023` closure-binds-loop-variable warnings at
   `score.py:248` that are worth a look before they are silenced. Not touched
   here: it is a cleanup pass, not a merge-gate fix.
@@ -338,7 +351,7 @@ has been acted on; both are left exactly as they were.
 - **What it is: "Haiku on the fixed ddgs evidence."** It runs `claude-haiku-4-5-20251001` on exactly the cached `raw/retrieval/` search text, over 48 companies × {a_full, b2, c_shuffled, d_fixed}, once at T=0. That is 192 calls.
 - **What it is not.** It is **not** the shipped Haiku + Tavily configuration and must never be described as such.
 - **Dry run.** `EVAL_PROVIDER=anthropic python eval_sop/run_discovery.py --dry-run` gives a **worst-case total of $1.1884** (`results/haiku_dry_run.txt`). It was $1.0175 before the estimate change in `3c9a167`. The worst case assumes max(chars, UTF-8 bytes)/2 + 50 input tokens and the full 700 output tokens.
-- **Where the spend record lives.** The cost ledger, its lock and the Haiku response cache are in one fixed user-level directory outside the repo, `%LOCALAPPDATA%\sop_eval\competitor_insight\` (`common.STATE_DIR`). A run from this worktree and a run from the main checkout therefore share a single spend record. There is no env override. Haiku discovery outputs still go to `eval_sop/raw/discovery_haiku.jsonl`; copy the cache into the repo after the run if it should be committed.
+- **Where the spend record lives.** The cost ledger, its lock and the Haiku response cache are in one fixed user-level directory outside the repo, `~/.sop_eval/competitor_insight/` (`common.STATE_DIR`), resolved from `Path.home()`. A run from this worktree and a run from the main checkout therefore share a single spend record. **There is no environment-variable override** — and unlike the earlier version of this sentence, that is now true and tested. It previously read `%LOCALAPPDATA%`, which an independent check showed relocates the ledger, the lock and the cache together; see change-log row `round 5` and the nine tests in `test_transport.py` that redirect eight variables individually and all of them at once. Haiku discovery outputs still go to `eval_sop/raw/discovery_haiku.jsonl`; copy the cache into the repo after the run if it should be committed.
 - **Run safety.** Only one process may use the ledger, enforced by the lock file. If the lock exists, the error says whether the PID inside it is still running or the lock is stale; recovery is always manual: confirm nothing is running, then delete the lock. Each attempt is reserved at the worst case before it is sent. The cap can only be passed if a single response's real input exceeds the estimate; the estimate checked out above all 188 real counts, with a minimum ratio of 1.25.
 - **Scoring the Haiku run.** Score it with `EVAL_PROVIDER=anthropic` so the truncation check can see the Haiku cache. Otherwise those rows report `n_truncation_unknown`.
 - **Cap.** $2.75, inside this project's $3 share, and **enforced as a project

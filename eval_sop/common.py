@@ -12,7 +12,7 @@ Provider is chosen with EVAL_PROVIDER (one model per provider, never mixed):
              Cache raw/llm_cache.jsonl (the committed seed-0 run).
   anthropic  claude-haiku-4-5-20251001 (pinned), official `anthropic` SDK,
              no seed / reasoning params. Cache, cost ledger and lock live in
-             %LOCALAPPDATA%/sop_eval/competitor_insight/ (STATE_DIR, outside the repo):
+             ~/.sop_eval/competitor_insight/ (STATE_DIR, outside the repo):
              llm_cache_haiku.jsonl, cost_ledger_haiku.jsonl (+ .lock); hard cap EVAL_COST_CAP
              (default $2.75) at $1/M input and $5/M output tokens.
 
@@ -53,8 +53,18 @@ class Provider:
 
 # Paid-run state (cost ledger, its lock, response cache) lives in ONE fixed user-level
 # directory outside the repo, so a run from a worktree and a run from the main checkout
-# share a single spend record. Deliberately no env override; tests monkeypatch paths.
-STATE_DIR = Path(os.environ.get("LOCALAPPDATA") or (Path.home() / "AppData" / "Local")) / "sop_eval" / "competitor_insight"
+# share a single spend record.
+#
+# `Path.home()`, never %LOCALAPPDATA%. This line used to read that variable while
+# the comment above it claimed there was no env override -- the comment was wrong,
+# and the round-3 test asserted the variable's value, so the suite certified the
+# defect instead of catching it. Tools set LOCALAPPDATA per process, and moving it
+# moved the ledger (a fresh $0 total: the $2.75 cap re-arms and earlier spend is
+# forgotten) along with the lock beside it, which is the only thing stopping two
+# paid runs from overlapping. There is deliberately no environment-variable
+# override; tests monkeypatch the paths instead. The sibling projects resolve
+# their state the same way.
+STATE_DIR = Path.home() / ".sop_eval" / "competitor_insight"
 
 PROVIDERS = {
     "groq": Provider("groq", "qwen/qwen3.8-27b", ROOT / "raw" / "llm_cache.jsonl", None),
