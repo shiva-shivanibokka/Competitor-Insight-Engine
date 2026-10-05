@@ -93,6 +93,52 @@ def a_full_by_coverage(runs: list[dict], comps: dict, cov: dict, med: float) -> 
     return out
 
 
+def _stripped(ret: dict) -> bool:
+    """True when the committed retrieval files carry no search text.
+
+    `strip_retrieval.py` sets `search_content` to None and adds a SHA-256 and a
+    length. Keyed on the text being absent rather than on the `stripped` flag, so
+    a hand-edited file cannot claim to be intact while holding nothing.
+    """
+    return any(not r.get("search_content") for r in ret.values())
+
+
+def _coverage_from_text(ret: dict, comps: dict) -> tuple[dict, dict]:
+    cov, loose = {}, {}
+    for i, c in comps.items():
+        text = ret[i]["search_content"]
+        low = text.lower()
+        hits = [any(a in text for a in [e["name"], *e["aliases"]] if a in c["excerpt"])
+                for e in c["competitors"]]
+        cov[i] = sum(hits) / len(hits)
+        loose[i] = statistics.fmean(any(a.lower() in low for a in [e["name"], *e["aliases"]] if len(a) > 2)
+                                    for e in c["competitors"])
+    return cov, loose
+
+
+def _coverage_from_file(comps: dict) -> tuple[dict, dict]:
+    """Coverage as precomputed by derive_from_retrieval.py, for a stripped tree.
+
+    Ordered by `comps`, not by the file. `bootstrap` resamples a list built from
+    this dict's iteration order with a fixed seed, so the order is part of the
+    result: the file is written with sorted keys, and returning it in that order
+    moved every CI in the 4th decimal while leaving the means untouched. That is
+    also why this is a dict rebuild rather than a comprehension over `data`.
+    """
+    path = ROOT / "results" / "retrieval_coverage.json"
+    if not path.exists():
+        raise SystemExit(
+            f"{path.name} is missing and raw/retrieval/*.json is stripped, so coverage "
+            "cannot be computed. Either restore the unstripped retrieval copy and run "
+            "eval_sop/derive_from_retrieval.py, or fetch the committed file.")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    missing = [cid for cid in comps if cid not in data]
+    if missing:
+        raise SystemExit(f"{path.name} has no coverage for: {', '.join(sorted(missing)[:5])}")
+    return ({cid: data[cid]["strict"] for cid in comps},
+            {cid: data[cid]["loose"] for cid in comps})
+
+
 def main():
     comps = {c["id"]: c for c in load_companies()}
     by_model = runs_by_model(ROOT / "raw")
@@ -103,11 +149,18 @@ def main():
     # Computed before the per-model blocks because section 1's coverage strata
     # need the median, and because coverage depends only on the cached search
     # text and the ground truth -- it is reported once, not per model.
-    cov = {}
-    for i, c in comps.items():
-        text = ret[i]["search_content"]
-        hits = [any(a in text for a in [e["name"], *e["aliases"]] if a in c["excerpt"]) for e in c["competitors"]]
-        cov[i] = sum(hits) / len(hits)
+    #
+    # The search text is third-party page content with no licence to
+    # redistribute, so `raw/retrieval/*.json` is committed stripped (see
+    # strip_retrieval.py). When it is stripped, coverage is read from
+    # results/retrieval_coverage.json, which derive_from_retrieval.py wrote from
+    # the full text before stripping and which carries the per-entity booleans
+    # behind every figure. Both paths were checked to agree exactly at the
+    # precision these files store.
+    if _stripped(ret):
+        cov, loose = _coverage_from_file(comps)
+    else:
+        cov, loose = _coverage_from_text(ret, comps)
     out["gt_in_search_coverage"] = {}
     for tier in ("all", "large", "mid", "small"):
         vals = [v for i, v in cov.items() if tier == "all" or comps[i]["tier"] == tier]
@@ -121,12 +174,8 @@ def main():
         name: {"verbatim_only_p@4": verbatim_only_p4(runs, comps),
                "a_full_p@4_by_coverage": a_full_by_coverage(runs, comps, cov, med)}
         for name, runs in sorted(by_model.items())}
-    # looser variant: any name or alias (incl. LLM-added), case-insensitive
-    loose = {}
-    for i, c in comps.items():
-        text = ret[i]["search_content"].lower()
-        loose[i] = statistics.fmean(any(a.lower() in text for a in [e["name"], *e["aliases"]] if len(a) > 2)
-                                    for e in c["competitors"])
+    # looser variant: any name or alias (incl. LLM-added), case-insensitive.
+    # `loose` came from the same branch above as `cov`.
     out["gt_in_search_coverage_loose"] = {
         t: round(statistics.fmean(v for i, v in loose.items() if t == "all" or comps[i]["tier"] == t), 4)
         for t in ("all", "large", "mid", "small")}

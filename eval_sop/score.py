@@ -96,8 +96,28 @@ def cached_responses() -> dict[str, tuple]:
     return {p.model: (p, cached_records(p)) for p in PROVIDERS.values()}
 
 
+@functools.cache
+def committed_prompt_keys() -> dict:
+    """(cond, id, temperature, seed) -> cache key, per model, as committed.
+
+    The cache key is a hash of the exact prompt, and the prompt embeds the scraped
+    search text. That text is third-party page content with no licence to
+    redistribute, so `raw/retrieval/*.json` is committed stripped and the keys are
+    committed instead -- otherwise nothing downstream could find a cached response
+    and every `truncated` flag would silently become unknown, which is the defect
+    §6c of RESULTS.md describes. Written by derive_from_retrieval.py.
+    """
+    path = OUTD / "prompt_keys.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
 def response_record(r: dict, ret: dict) -> dict:
-    """The cached LLM response behind a discovery record (rebuilt from the exact prompt)."""
+    """The cached LLM response behind a discovery record.
+
+    Prefers the committed key map, which works whether or not the search text is
+    present; falls back to rebuilding the prompt, which a fresh `retrieve.py` run
+    needs and which is also how the map itself is generated.
+    """
     import run_discovery as rd
     from common import cache_key
 
@@ -105,10 +125,17 @@ def response_record(r: dict, ret: dict) -> dict:
     if entry is None:
         return {}
     provider, records = entry
-    system = rd.prompt_for(r["cond"])
-    user = (f"The company being researched is: {r['name']}\n\n"
-            f"Search results:\n\n{rd.content_for(r['cond'], r['id'], ret, r.get('evidence_from'))}")
-    return records.get(cache_key(provider, system, user, r["temperature"], r["seed"]), {})
+
+    slot = committed_prompt_keys().get(r["model"], {})
+    key = slot.get(f"{r['cond']}|{r['id']}|{r['temperature']}|{r['seed']}")
+    if key is None:
+        if not ret.get(r["id"], {}).get("search_content"):
+            return {}       # stripped tree and no committed key: nothing to look up
+        system = rd.prompt_for(r["cond"])
+        user = (f"The company being researched is: {r['name']}\n\n"
+                f"Search results:\n\n{rd.content_for(r['cond'], r['id'], ret, r.get('evidence_from'))}")
+        key = cache_key(provider, system, user, r["temperature"], r["seed"])
+    return records.get(key, {})
 
 
 def mentions(names: list[str], x: str) -> bool:
@@ -178,11 +205,27 @@ def main():
         if p.exists():
             ret[cid] = json.loads(p.read_text(encoding="utf-8"))
 
-    # add the non-LLM baseline as a pseudo-condition
+    # add the non-LLM baseline as a pseudo-condition.
+    # It mines capitalised phrases out of the search text, which is committed
+    # stripped (third-party page content, no licence to redistribute), so its
+    # output is read from the precomputed file in that case. Written by
+    # derive_from_retrieval.py; the live computation is still used when the text
+    # is present, and the two were checked to agree exactly.
+    precomputed = OUTD / "baseline_predictions.json"
+    base = json.loads(precomputed.read_text(encoding="utf-8")) if precomputed.exists() else {}
     for cid, r in ret.items():
+        if r.get("search_content"):
+            names = baseline_capitalised(r["search_content"], comps[cid]["name"])
+        elif cid in base:
+            names = base[cid]
+        else:
+            raise SystemExit(
+                f"{cid}: raw/retrieval is stripped and {precomputed.name} has no entry, so the "
+                "no-LLM baseline cannot be scored. Restore the unstripped retrieval copy and run "
+                "eval_sop/derive_from_retrieval.py.")
         runs.append({"id": cid, "tier": comps[cid]["tier"], "cond": "z_baseline_capitalised",
                      "temperature": None, "seed": 0, "model": "none (no LLM)",
-                     "predictions": [{"name": n} for n in baseline_capitalised(r["search_content"], comps[cid]["name"])]})
+                     "predictions": [{"name": n} for n in names]})
 
     per = []  # one row per (run)
     for r in runs:

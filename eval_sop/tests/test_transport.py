@@ -135,6 +135,20 @@ def _committed_prompts():
     return out
 
 
+def _retrieval_is_stripped() -> bool:
+    for p in (HERE / "raw" / "retrieval").glob("*.json"):
+        if not json.loads(p.read_text(encoding="utf-8")).get("search_content"):
+            return True
+    return False
+
+
+@pytest.mark.skipif(
+    _retrieval_is_stripped(),
+    reason="needs the scraped search text, which is committed stripped (third-party page "
+           "content, no licence to redistribute). The estimator cannot be re-measured "
+           "without it: the measured result is recorded in RESULTS.md as a minimum ratio "
+           "of 1.25 over all 188 real prompts. Restore the private unstripped copy over "
+           "raw/retrieval/ to run this.")
 def test_estimate_is_above_real_token_counts():
     """Checked against the 188 real prompt_token counts Groq reported for this run's
     exact prompts (Qwen tokenizer; a proxy for Claude's, which these files cannot measure)."""
@@ -166,35 +180,41 @@ def test_model_argument_is_respected(prov):
 
 
 def test_committed_groq_run_replays_exactly_from_cache(monkeypatch):
-    """Every committed discovery record is reproduced from the cache, with no network."""
+    """Every committed discovery record is reproduced from its cached response, no network.
+
+    The prompt is no longer rebuilt. `raw/retrieval/*.json` is committed stripped
+    (third-party page text, no licence to redistribute), so the response is located
+    by the committed key map in `results/prompt_keys.json` and pushed through the
+    product's own parser, blocklist and dedup.
+
+    What this proves: every committed prediction follows from a committed response,
+    deterministically and offline — which is what the reported numbers rest on.
+    What it no longer proves: that each response followed from the recorded prompt.
+    That needs the text and can only be rerun against the private unstripped copy.
+    """
     import analyzer
-    import run_discovery as rd
 
     shim = common.shim
     assert shim.p.name == "groq"
-    # monkeypatch, not a bare assignment: both of these are product-module globals
-    # shared with backend/tests when the two suites are collected in one process.
-    monkeypatch.setattr(analyzer, "llm_call", shim)
-    monkeypatch.setattr(analyzer, "COMPETITOR_EXTRACTION_PROMPT", analyzer.COMPETITOR_EXTRACTION_PROMPT)
 
     def no_network(*a, **k):
         raise AssertionError("replay test tried to call an API")
 
     # even if EVAL_KEY_* / EVAL_GROQ_* are set in the environment, nothing can be sent
     shim._send_groq = shim._send_anthropic = no_network
-    ret = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in (HERE / "raw" / "retrieval").glob("*.json")}
+
+    keys = json.loads((HERE / "results" / "prompt_keys.json").read_text(encoding="utf-8"))[common.MODEL]
+    cache = common.cached_records(PROVIDERS["groq"])
     recs = [json.loads(x) for x in (HERE / "raw" / "discovery.jsonl").read_text(encoding="utf-8").splitlines()]
-    calls_before = shim.calls_made
+    assert recs
     for r in recs:
-        content = rd.content_for(r["cond"], r["id"], ret, r.get("evidence_from"))
-        monkeypatch.setattr(analyzer, "COMPETITOR_EXTRACTION_PROMPT", rd.prompt_for(r["cond"]))
-        shim.seed, shim.force_temperature = r["seed"], r["temperature"]
-        try:
-            preds = analyzer.extract_competitors_from_search(r["name"], content, model=common.MODEL)
-        finally:
-            shim.force_temperature = None
+        rec = cache.get(keys[f"{r['cond']}|{r['id']}|{r['temperature']}|{r['seed']}"])
+        assert rec is not None, f"no cached response for {r['cond']}:{r['id']}"
+        # monkeypatch, not a bare assignment: `llm_call` is a product-module global
+        # shared with backend/tests when both suites are collected in one process.
+        monkeypatch.setattr(analyzer, "llm_call", lambda *a, _t=rec["response"], **k: _t)
+        preds = analyzer.extract_competitors_from_search(r["name"], "", model=None)
         assert preds == r["predictions"], r["id"]
-    assert shim.calls_made == calls_before
 
 
 # ---------------------------------------------------------------- round-2 review: spend safety

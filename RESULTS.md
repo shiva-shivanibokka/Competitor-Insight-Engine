@@ -17,7 +17,7 @@ Every number below is measured unless it says otherwise. Anything that did not r
 | Ground truth | 48 companies from SEC 10-K "Competition" sections (see §2). |
 | Runs | One run at temperature 0, seed 0, per model. Seeds 1–2 were not run: for Groq because of the quota, for Haiku because the Messages API accepts no seed, so a repeat would not be a seed replication. |
 | Raw outputs | `raw/llm_cache.jsonl` holds the 188 Groq calls and `raw/llm_cache_haiku.jsonl` the 192 Haiku calls (hashed prompts, responses, token counts, timestamps). Also `raw/discovery.jsonl` (148 records), `raw/discovery_haiku.jsonl` (192) and `raw/retrieval/*.json`. The paid run's working cache lives in the user-level state directory beside its cost ledger and lock, so the three move together and no repo edit can hand a run a fresh budget; `raw/llm_cache_haiku.jsonl` is a committed read-only copy of it, added so a reader can reproduce the paid numbers at all. |
-| Replay (no API calls) | `python eval_sop/score.py && python eval_sop/sensitivity.py` (install `backend/requirements.txt` + `eval_sop/requirements.txt`; nothing else is needed and no key is read). `tests/test_transport.py` checks that all 148 Groq records replay exactly from the cache, and `tests/test_replay_haiku.py` that all 192 Haiku records do — the decisive case there moves the state directory out of reach, so the committed cache is the only thing that can answer and any gap would become an attempted API call. |
+| Replay (no API calls) | `python eval_sop/score.py && python eval_sop/sensitivity.py` (install `backend/requirements.txt` + `eval_sop/requirements.txt`; nothing else is needed and no key is read). Verified to reproduce all four `results/*.json` byte-for-byte on the stripped tree. `tests/test_transport.py` replays all 148 Groq records and `tests/test_replay_haiku.py` all 192 Haiku records — each located by its committed cache key and pushed through the product's own parser, with no network; the decisive Haiku case also moves the state directory out of reach so the committed cache is the only thing that can answer. Prompt-level replay needs the private unstripped retrieval copy; see §7. |
 | Fresh run | `EDGAR_UA="Competitor-Insight-Engine noreply@users.noreply.github.com" python eval_sop/ground_truth/build_gt.py` (SEC asks for a contact in the User-Agent; use a no-reply address, not a personal one), then `retrieve.py`, `run_discovery.py` and `score.py`. Set the key with `EVAL_KEY_ENV` / `EVAL_KEY_VAR`. |
 
 ### 2. Ground truth (`eval_sop/ground_truth/`)
@@ -268,7 +268,7 @@ paid Haiku run adds; where they overlap they agree.
 - **The two models are not a random sample of models.** Two points of agreement is weak evidence of generality — it rules out a one-model artefact, nothing more.
 - **Possible label leakage into search.** Web pages can paraphrase a 10-K. Only sec.gov itself was excluded.
 - **The NLI judge is moderately reliable** (κ 0.31).
-- **Third-party text.** `raw/retrieval/*.json` contains excerpts of third-party web pages. `strip_retrieval.py` is prepared and deliberately **not run**. This is an open decision, not a settled one — see §7.
+- **Third-party text: removed.** `raw/retrieval/*.json` held excerpts of third-party web pages; `strip_retrieval.py` has now been **run** and they carry only a SHA-256 and a length. The committed numbers still regenerate byte-for-byte from precomputed artifacts, but prompt-level replay and the estimator check now need the private unstripped copy — see §7.
 - **One run per model.** There is no seed variance in either.
 
 ## 6. Change log
@@ -499,20 +499,62 @@ double-counts. The ledger's own accounting (`ledger_total`: a `settle` replaces 
 moment. Nothing was ever near the cap. The rule this cost me: **read the accounting
 function before summing a column that looks like money.**
 
-Two things on this branch are **not settled** and are not mine to settle. Neither
-has been acted on; both are left exactly as they were.
+One thing on this branch is **not settled** and is not mine to settle.
 
-1. **Whether to publish `eval_sop/raw/retrieval/*.json`.** These 48 files hold
-   excerpts of third-party commercial web pages, scraped by `retrieve.py` and
-   unlicensed for redistribution. They are currently **committed**, so pushing
-   this branch publishes them. `eval_sop/strip_retrieval.py` would reduce them to
-   hashes and is **deliberately unrun**. The consequence either way: keep them
-   and both committed runs stay exactly replayable by anyone
-   (`test_transport` replays the 148 Groq records from them and
-   `test_replay_haiku` the 192 Haiku records) but third-party copy is redistributed;
-   strip them and the third-party text goes away but the public replay, the
-   retrieval-coverage numbers in §3b and the `(c)` shuffled-evidence condition can
-   no longer be reproduced from the repository alone.
+**Settled 2026-10-05, by the owner, before the first push: the scraped text is
+stripped.** `eval_sop/strip_retrieval.py --in-place` has been **run**. All 48
+`raw/retrieval/*.json` files now carry a SHA-256 and a character count in place of
+`scraped` and `search_content`; the URLs, the query, the industry and the
+LLM-written profile remain. That removed 636 KB of verbatim third-party page text
+(Gartner, Craft.co, Tracxn, Owler and others, including third-party author names
+and contact addresses) and left 136 KB of metadata. The unstripped copy is kept
+privately outside every repository.
+
+**What was done so the numbers survive it.** Stripping would otherwise have taken
+the retrieval-coverage figures, the `z_baseline_capitalised` row and both replay
+tests with it, because each rebuilt something from the text.
+`eval_sop/derive_from_retrieval.py` precomputes the three derived artifacts and is
+run *before* stripping:
+
+| file | what it serves | why the text is not needed |
+|---|---|---|
+| `results/prompt_keys.json` | 340 (cond, id, temperature, seed) → response-cache key, per model | the key is a hash *of* the prompt, so committing the key replaces rebuilding the prompt |
+| `results/retrieval_coverage.json` | §3b coverage, strict and loose | holds the per-entity booleans behind every figure, so a reader can recheck the arithmetic |
+| `results/baseline_predictions.json` | the no-LLM baseline's 480 predicted names | the baseline's *output* is derived data; only its input was third-party prose |
+
+**Measured, not assumed:** with the text stripped, `score.py` and `sensitivity.py`
+regenerate `summary.json`, `per_run.json`, `paired_diffs_T0.json` and
+`sensitivity.json` **byte-for-byte identically** to the versions produced from the
+full text. Two defects were found getting there and are worth recording, because
+both would have silently shifted published numbers:
+
+- The coverage file was first written rounded to 6 decimal places. `bootstrap`
+  resamples those very numbers, so rounding moved every confidence interval in the
+  4th decimal. It is now stored unrounded.
+- The coverage file is written with sorted keys, but the live path iterates
+  companies in `companies.json` order. `bootstrap` draws with a fixed seed from a
+  list built in iteration order, so returning the file's order changed every
+  interval while leaving the means untouched. `_coverage_from_file` now re-orders
+  to match. **A seeded bootstrap makes dictionary order part of the result.**
+
+**What is genuinely lost, stated plainly.** Two checks can no longer run from the
+repository alone, and both are reported as such rather than quietly dropped:
+
+1. **Prompt-level replay.** The replay tests previously rebuilt each prompt and
+   confirmed the cached response came back. They now locate the response by its
+   committed key and push it through the product's own parser, blocklist and dedup.
+   That still proves *every committed prediction follows from a committed response,
+   offline* — which is what every reported number rests on — but no longer proves
+   the response followed from the recorded prompt. Verified to still discriminate:
+   perturbing one record's predictions turns the test red.
+2. **`test_estimate_is_above_real_token_counts` is skipped**, with that reason in
+   its `skipif`. It compares the cost estimator against 188 real prompt-token
+   counts and cannot be re-measured without the prompts. Its measured result stands
+   in this file: a minimum ratio of 1.25.
+
+Restoring the private copy over `raw/retrieval/` makes both run again, and
+`derive_from_retrieval.py` refuses to run against an already-stripped tree rather
+than writing empty artifacts.
 2. **Whether to commit `eval_sop/raw/edgar_cache` (~20 MB).** It is gitignored
    today. The consequence of leaving it out is listed immediately below; the
    consequence of committing it is 20 MB of SEC filing text in the repository

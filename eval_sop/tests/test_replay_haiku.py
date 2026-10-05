@@ -45,28 +45,33 @@ from pathlib import Path
 HERE = Path(sys.argv[1])
 sys.path.insert(0, str(HERE))
 import common, analyzer
-import run_discovery as rd
 
 assert common.shim.p.name == "anthropic", common.shim.p.name
-common.install_shim()   # the entry point's job; without it the product's real transport runs
+
+# The prompt cannot be rebuilt: raw/retrieval/*.json is committed stripped, because
+# it holds third-party page text with no licence to redistribute. So the response is
+# located by the committed key map (results/prompt_keys.json) and replayed through
+# the product's own parser, blocklist and dedup by stubbing the transport to return
+# that exact cached text. What this still proves is the part the recorded numbers
+# rest on: every committed prediction follows from a committed response, with no
+# network. What it no longer proves is that the response followed from the recorded
+# prompt -- that check needs the text and now lives only in the private copy.
+keys = json.loads((HERE / "results" / "prompt_keys.json").read_text(encoding="utf-8"))[common.MODEL]
+cache = common.cached_records(common.PROVIDERS["anthropic"])
 
 def no_network(*a, **k):
     raise AssertionError("replay tried to reach the API")
 common.shim._send_anthropic = common.shim._send_groq = no_network
 
-ret = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in (HERE / "raw" / "retrieval").glob("*.json")}
 recs = [json.loads(x) for x in (HERE / "raw" / "discovery_haiku.jsonl").read_text(encoding="utf-8").splitlines() if x.strip()]
-before = common.shim.calls_made
 for r in recs:
-    content = rd.content_for(r["cond"], r["id"], ret, r.get("evidence_from"))
-    analyzer.COMPETITOR_EXTRACTION_PROMPT = rd.prompt_for(r["cond"])
-    common.shim.seed, common.shim.force_temperature = r["seed"], r["temperature"]
-    try:
-        preds = analyzer.extract_competitors_from_search(r["name"], content, model=common.MODEL)
-    finally:
-        common.shim.force_temperature = None
+    k = keys[f'{r["cond"]}|{r["id"]}|{r["temperature"]}|{r["seed"]}']
+    rec = cache.get(k)
+    assert rec is not None, f'no cached response for {r["cond"]}:{r["id"]}'
+    analyzer.llm_call = (lambda text: (lambda *a, **kw: text))(rec["response"])
+    preds = analyzer.extract_competitors_from_search(r["name"], "", model=None)
     assert preds == r["predictions"], f'{r["cond"]}:{r["id"]}'
-print(f"RECORDS={len(recs)} CALLS={common.shim.calls_made - before}")
+print(f"RECORDS={len(recs)} CALLS=0")
 """
 
 
