@@ -165,13 +165,17 @@ def test_model_argument_is_respected(prov):
         s(SYS, USER, model="claude-sonnet-5")
 
 
-def test_committed_groq_run_replays_exactly_from_cache():
+def test_committed_groq_run_replays_exactly_from_cache(monkeypatch):
     """Every committed discovery record is reproduced from the cache, with no network."""
     import analyzer
     import run_discovery as rd
 
     shim = common.shim
     assert shim.p.name == "groq"
+    # monkeypatch, not a bare assignment: both of these are product-module globals
+    # shared with backend/tests when the two suites are collected in one process.
+    monkeypatch.setattr(analyzer, "llm_call", shim)
+    monkeypatch.setattr(analyzer, "COMPETITOR_EXTRACTION_PROMPT", analyzer.COMPETITOR_EXTRACTION_PROMPT)
 
     def no_network(*a, **k):
         raise AssertionError("replay test tried to call an API")
@@ -183,7 +187,7 @@ def test_committed_groq_run_replays_exactly_from_cache():
     calls_before = shim.calls_made
     for r in recs:
         content = rd.content_for(r["cond"], r["id"], ret, r.get("evidence_from"))
-        analyzer.COMPETITOR_EXTRACTION_PROMPT = rd.prompt_for(r["cond"])
+        monkeypatch.setattr(analyzer, "COMPETITOR_EXTRACTION_PROMPT", rd.prompt_for(r["cond"]))
         shim.seed, shim.force_temperature = r["seed"], r["temperature"]
         try:
             preds = analyzer.extract_competitors_from_search(r["name"], content, model=common.MODEL)
@@ -301,3 +305,57 @@ def test_live_lock_is_reported_as_live(prov):
     _write_lock(prov, os.getpid())
     with pytest.raises(common.LedgerLocked, match=r"pid \d+ is running"):
         LLMShim(prov, cap=1.0, client=FakeClient([]), sleep=lambda x: None)
+
+
+# ------------------------------------------- round-5 review: the cap is a hard project maximum
+# EVAL_COST_CAP used to be read straight into DEFAULT_CAP with float(), so the
+# documented $2.75 cap could be raised to any figure, and `nan` disabled it
+# entirely: nan fails every comparison, so `spent + worst > cap` is always False.
+BAD_CAPS = ["nan", "NaN", "inf", "-inf", "0", "-1", "-0.01", "2.76", "1e9"]
+
+
+@pytest.mark.parametrize("value", BAD_CAPS)
+def test_check_cap_rejects_non_finite_non_positive_and_above_max(value):
+    with pytest.raises(ValueError):
+        common.check_cap(value)
+
+
+@pytest.mark.parametrize("value", BAD_CAPS)
+def test_cap_from_env_rejects_every_bad_value(value, monkeypatch):
+    monkeypatch.setenv("EVAL_COST_CAP", value)
+    with pytest.raises(ValueError):
+        common.cap_from_env()
+
+
+@pytest.mark.parametrize("value", BAD_CAPS)
+def test_the_shim_itself_refuses_to_be_built_with_a_bad_cap(value, prov):
+    with pytest.raises(ValueError):
+        LLMShim(prov, cap=float(value), client=FakeClient([]), sleep=lambda x: None)
+
+
+@pytest.mark.parametrize("value", BAD_CAPS)
+def test_the_cli_refuses_a_bad_env_cap_before_doing_anything(value):
+    """Every command-line entry point imports common, so a bad EVAL_COST_CAP
+    stops the process — including `--dry-run`, which prints the cap."""
+    import os
+    import subprocess
+
+    env = {**os.environ, "EVAL_COST_CAP": value}
+    p = subprocess.run([sys.executable, str(HERE / "run_discovery.py"), "--dry-run"],
+                       capture_output=True, text=True, env=env, cwd=str(HERE), check=False)
+    assert p.returncode != 0, p.stdout
+    assert "cap" in (p.stderr + p.stdout).lower()
+
+
+def test_env_cap_at_or_below_the_project_max_is_accepted(monkeypatch):
+    monkeypatch.setenv("EVAL_COST_CAP", "0.50")
+    assert common.cap_from_env() == 0.50
+    monkeypatch.delenv("EVAL_COST_CAP")
+    assert common.cap_from_env() == common.PROJECT_HARD_MAX_USD == 2.75
+
+
+def test_importing_the_harness_does_not_patch_the_product_transport():
+    """eval_sop used to replace analyzer.llm_call at import time, which leaked
+    into backend/tests when both suites were collected in one process."""
+    import analyzer
+    assert analyzer.llm_call is not common.shim

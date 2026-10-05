@@ -19,7 +19,7 @@ searcher.get_competitor_search_content ("SOURCE: title\\ncontent" blocks).
 import json
 import time
 
-from common import MODEL, ROOT, load_companies, shim  # noqa: F401  (installs the LLM shim)
+from common import MODEL, ROOT, install_shim, load_companies, shim
 
 import analyzer  # noqa: E402
 from blocklist import is_blocked  # noqa: E402
@@ -89,6 +89,7 @@ def build(c: dict) -> dict:
 
 
 if __name__ == "__main__":
+    install_shim()  # the product's analyzer.llm_call now goes through the eval transport
     for c in load_companies():
         r = build(c)
         print(f"  {c['id']}: scraped={r['scraped_chars']} search={len(r['search_content'])} "

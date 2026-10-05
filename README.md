@@ -204,7 +204,7 @@ A clean Markdown report with five sections: **Company Overview**, **Competitor P
 - **CI/CD** — GitHub Actions runs linting and the test suite on every push.
 - **Concurrent systems design** — bounded-thread-pool fan-out for competitor processing to stay within the request timeout.
 - **Provider-agnostic integration** — one OpenAI-compatible client routing to six LLM providers with zero per-provider code.
-- **Test-driven development** — 22 offline unit tests covering the security guard, blocklist, parsing edge cases, the temperature-rejection retry, that every route answers under both mount points, and that the committed recording carries no key.
+- **Test-driven development** — 25 unit tests (23 fully offline; 2 resolve DNS) covering the security guard, blocklist, parsing edge cases, the temperature-rejection retry, that every route answers under both mount points, and that the committed recording carries no key.
 - **System design & tradeoff reasoning** — documented why the frontend/backend are split and why competitor filtering is two-layered.
 
 ---
@@ -265,11 +265,11 @@ Get keys: [Tavily (free)](https://app.tavily.com) · [Groq (free)](https://conso
 
 ## Testing
 
-Offline unit tests — no API keys and no network needed (LLM/Tavily calls are monkeypatched):
+Offline unit tests — no API keys needed (LLM/Tavily calls are monkeypatched). 23 of the 25 need no network at all; 2 resolve DNS (`test_ssrf_allows_public` and `test_reachability_checks_do_not_follow_redirect_chains`):
 
 ```bash
 cd backend
-python -m pytest tests/ -q        # 22 tests
+python -m pytest tests/ -q        # 25 tests (23 offline; 2 resolve DNS)
 ruff check .                      # lint (same as CI)
 python security.py                # SSRF-guard self-check
 ```
@@ -277,6 +277,35 @@ python security.py                # SSRF-guard self-check
 The suite covers the SSRF guard (including the redirect-bypass case), the domain blocklist (including substring false-positives), competitor dedup/filtering, malformed-LLM-output handling, the URL/field parsing helpers, the retry that drops `temperature` for models that reject it, and that every route answers under both `/x` and `/api/x`. GitHub Actions runs the same lint + tests on every push, plus a frontend build.
 
 **ruff is pinned** (`ruff==0.16.3` in CI, rules in `backend/ruff.toml`). Unpinned, CI installs whatever shipped most recently, so the result tracks the day it ran rather than the commit — this repo was green in July and red on the identical tree two months later.
+
+### The SOP evaluation harness (`eval_sop/`)
+
+`eval_sop/` is the offline evaluation of the competitor-discovery step, written up in [RESULTS.md](RESULTS.md). It imports the product's own `analyzer`/`scraper`/`blocklist` from `backend/`, so it needs the backend's dependencies **plus** its own:
+
+```bash
+python -m venv .venv && . .venv/Scripts/activate     # Linux/macOS: . .venv/bin/activate
+pip install -r backend/requirements.txt -r eval_sop/requirements.txt
+
+python -m pytest eval_sop/tests -q    # offline: fake SDK client, no network, no keys
+```
+
+`ruff` is in `eval_sop/requirements.txt` because the lint command above (`ruff check .` inside `backend/`) needs it and nothing else declared it. `eval_sop/` itself is **not** linted yet — it has no `ruff.toml` and does not pass the product's rule set; see RESULTS.md §7.
+
+One of the `eval_sop` tests is skipped in a fresh clone: `test_build_refuses_to_write_when_a_label_is_not_in_the_excerpt` needs `eval_sop/raw/edgar_cache/`, which is gitignored (see RESULTS.md §7).
+
+Replaying and re-scoring the committed run makes **no API calls** and needs nothing beyond the above:
+
+```bash
+python eval_sop/score.py && python eval_sop/sensitivity.py
+```
+
+Regenerating data needs the heavy extras, which are deliberately a separate file (`ddgs` for `retrieve.py`; torch/transformers/pandas/scikit-learn for the `nli.py` claim-support judge):
+
+```bash
+pip install -r eval_sop/requirements-optional.txt
+```
+
+Running the whole repo's tests in one pytest process (`python -m pytest -q` at the root) works and is green; both suites are independent.
 
 ---
 
@@ -324,13 +353,18 @@ Competitor-Insight-Engine/
 │   ├── ruff.toml               # pinned lint rules (version pinned in CI)
 │   ├── record_demo.py          # records the real runs behind the replay tab
 │   ├── README.md               # Backend/API notes
-│   └── tests/test_backend.py   # 22 offline unit tests (no keys / network)
+│   └── tests/test_backend.py   # 25 unit tests (23 offline; 2 resolve DNS)
 ├── frontend/                   # Next.js BYOK UI → Vercel `web` service
 │   ├── app/page.tsx            # The app: form, provider/model dropdowns, report view
 │   ├── app/layout.tsx          # Fonts (next/font) + metadata
 │   ├── app/globals.css         # Styling
 │   ├── public/demo/*.json      # the committed recordings + a generated index.json
 │   └── package.json
+├── eval_sop/                    # offline SOP evaluation of the discovery step (see RESULTS.md)
+│   ├── requirements.txt         # harness deps (install alongside backend/requirements.txt)
+│   ├── requirements-optional.txt # ddgs + torch/transformers, only to regenerate data
+│   └── tests/                   # offline transport / scorer / ground-truth tests
+├── RESULTS.md                   # what the evaluation measured, and what it does not support
 ├── vercel.json                 # the two services and the /api/* rewrite
 ├── competitor_intel.ipynb      # Optional — run the pipeline locally
 ├── .github/workflows/ci.yml    # CI: lint + test backend, build frontend

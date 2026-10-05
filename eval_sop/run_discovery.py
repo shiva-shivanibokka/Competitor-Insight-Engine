@@ -34,7 +34,7 @@ import json
 import random
 import subprocess
 
-from common import DEFAULT_CAP, MODEL, PROVIDER, ROOT, load_companies, shim
+from common import DEFAULT_CAP, MODEL, PROVIDER, ROOT, install_shim, load_companies, shim
 from fixed_prompt import FIXED_COMPETITOR_EXTRACTION_PROMPT
 
 import analyzer  # noqa: E402
@@ -90,6 +90,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true",
                     help="print the worst-case cost of all uncached calls and exit; refuse if above the cap")
     args = ap.parse_args()
+    install_shim()  # the product's analyzer.llm_call now goes through the eval transport
     if haiku and args.seeds != [0]:
         raise SystemExit("Anthropic has no seed parameter; extra seeds would only repeat T=0 calls")
     assert FIXED != ORIGINAL

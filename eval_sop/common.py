@@ -25,6 +25,7 @@ import atexit
 import collections
 import hashlib
 import json
+import math
 import os
 import sys
 import time
@@ -62,7 +63,32 @@ PROVIDERS = {
 }
 PROVIDER = PROVIDERS[os.environ.get("EVAL_PROVIDER", "groq")]
 MODEL = PROVIDER.model
-DEFAULT_CAP = float(os.environ.get("EVAL_COST_CAP", "2.75"))
+# Hard ceiling for this project, whatever EVAL_COST_CAP says. The prepared paid
+# run's worst case is $1.19, and $2.75 is this project's share of the budget, so
+# nothing legitimate needs more. Raising it is a deliberate source change.
+PROJECT_HARD_MAX_USD = 2.75
+
+
+def check_cap(cap_usd) -> float:
+    """A cap must be a finite, positive number of dollars, no greater than the
+    project hard max. This is a function rather than a bare `cap > MAX` guard
+    because `nan` fails EVERY comparison: `EVAL_COST_CAP=nan` passed such a
+    guard, and then every `spent + worst > cap` was False too — a paid run with
+    no cap at all. Accepts strings, so it also works as argparse's `type=`."""
+    cap_usd = float(cap_usd)
+    if not math.isfinite(cap_usd) or cap_usd <= 0:
+        raise ValueError(f"cap {cap_usd!r} must be a finite positive number of dollars")
+    if cap_usd > PROJECT_HARD_MAX_USD:
+        raise ValueError(f"cap ${cap_usd} exceeds this project's hard max ${PROJECT_HARD_MAX_USD}")
+    return cap_usd
+
+
+def cap_from_env() -> float:
+    """EVAL_COST_CAP may only LOWER the cap; anything else raises ValueError."""
+    return check_cap(os.environ.get("EVAL_COST_CAP", PROJECT_HARD_MAX_USD))
+
+
+DEFAULT_CAP = cap_from_env()
 MAX_ATTEMPTS = 3          # total attempts per call, including the first
 GROQ_TPM_BUDGET = 7000    # Groq free tier reported 8000 tokens/minute
 
@@ -141,7 +167,7 @@ class LLMShim:
 
     def __init__(self, provider: Provider, cap: float = DEFAULT_CAP, client=None, sleep=time.sleep):
         self.p = provider
-        self.cap = cap
+        self.cap = check_cap(cap)
         self.seed = 0
         self.tag = ""
         self.force_temperature: float | None = None
@@ -343,7 +369,15 @@ class LLMShim:
 
 
 shim = LLMShim(PROVIDER)
-analyzer.llm_call = shim  # every analyzer.* function now uses the shim
+
+
+def install_shim(shim=shim):
+    """Point the product's transport at the shim. Call this from an entry point,
+    NOT at import: when backend/tests and eval_sop/tests are collected in one
+    pytest process they share sys.modules["analyzer"], so patching at import
+    leaked the shim into the product's own llm_call tests."""
+    analyzer.llm_call = shim
+    return shim
 
 
 def load_companies() -> list[dict]:
