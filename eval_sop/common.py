@@ -61,9 +61,16 @@ class Provider:
 # defect instead of catching it. Tools set LOCALAPPDATA per process, and moving it
 # moved the ledger (a fresh $0 total: the $2.75 cap re-arms and earlier spend is
 # forgotten) along with the lock beside it, which is the only thing stopping two
-# paid runs from overlapping. There is deliberately no environment-variable
-# override; tests monkeypatch the paths instead. The sibling projects resolve
-# their state the same way.
+# paid runs from overlapping. There is deliberately no override variable of our
+# own; tests monkeypatch the paths instead. The sibling projects resolve their
+# state the same way.
+#
+# One caveat, stated rather than glossed: Path.home() reads USERPROFILE on
+# Windows, so that one variable does still move this path. It is not the hole
+# LOCALAPPDATA was -- the OS sets USERPROFILE at logon and redirecting it breaks
+# the whole session, whereas tools set LOCALAPPDATA per process routinely.
+# Measured: LOCALAPPDATA, APPDATA, XDG_STATE_HOME, TEMP, TMP, HOME, HOMEDRIVE,
+# HOMEPATH and HOMESHARE all leave it unmoved, individually and together.
 STATE_DIR = Path.home() / ".sop_eval" / "competitor_insight"
 
 PROVIDERS = {

@@ -321,9 +321,13 @@ def test_state_dir_does_not_move_when_all_of_them_are_redirected_at_once(tmp_pat
     assert moved == baseline
 
 
-def test_state_dir_is_under_the_home_directory_and_the_lock_sits_beside_the_ledger():
+def test_state_dir_is_directly_under_the_home_directory_and_the_lock_sits_beside_the_ledger():
     p = PROVIDERS["anthropic"]
-    assert str(common.STATE_DIR).startswith(str(Path.home()))
+    # `startswith(str(Path.home()))` would NOT discriminate: %LOCALAPPDATA% is
+    # itself under the home directory, so the old buggy path satisfied it. An
+    # independent check caught that this assertion passed on the reverted code.
+    assert common.STATE_DIR.parent.parent == Path.home()
+    assert common.STATE_DIR == Path.home() / ".sop_eval" / "competitor_insight"
     lock = p.ledger.with_suffix(p.ledger.suffix + ".lock")
     assert lock.parent == p.ledger.parent  # move one, move the other -- so neither may move
 
