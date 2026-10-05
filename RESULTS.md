@@ -199,11 +199,19 @@ Verified in this repository, commit by commit over `c3eac2d..HEAD`:
   literal ID over every commit on `sop-eval` returns nothing. The same scan
   over `backup/pre-squash-competitor` returns exactly one commit (`3d9532c`),
   which is the positive control that the scan works.
-- **No machine path survives in any commit's tracked content.** `git grep -I -i`
-  over every commit, for the machine username and for a drive-rooted user path
-  in both slash directions, returns nothing. Those search terms are described
-  rather than quoted here on purpose: writing them into a tracked file would
-  make this document itself a hit and defeat the scan it describes.
+- **No machine path reaches any code, data or result, in any commit.** `git grep
+  -I -i` over every commit on `sop-eval`, for the machine username and for a
+  drive-rooted user path in both slash directions, hits **two commits and one
+  file: `RESULTS.md` itself, one line each, in `b689388` and `bee8b8a`.** That
+  line was the prose of this very bullet, which used to quote the terms it
+  greps for — so the audit text was its own only hit. It is redacted from
+  `274dfa0` onwards, and the terms are described rather than quoted from here
+  on, but **the two earlier commits still carry it and cannot be fixed without
+  rewriting history, which this branch will not do.** Anyone who cares about the
+  username not appearing in the published history must squash
+  `c3eac2d..HEAD` before pushing; nothing else on the branch requires it.
+  No commit, before or after the redaction, puts a machine path in
+  `backend/`, `eval_sop/*.py`, the ground truth, the caches or `results/`.
   The only matches for `AppData` and `OneDrive` are benign and deliberate: the
   `%LOCALAPPDATA%` / `Path.home()/"AppData"/"Local"` state directory in
   `eval_sop/common.py`, `eval_sop/tests/test_transport.py` and this file, and
@@ -278,10 +286,13 @@ has been acted on; both are left exactly as they were.
 - **Few-shot patch.** Apply it only if the leak is shown with the production model.
 - **Scrape aborts.** Fall back to search snippets instead of aborting when the homepage can't be scraped (17% of companies).
 - **Wording.** Describe the system as a fixed LLM pipeline, not an agent. The LLM never calls tools. The README does not say "agent".
-- **History.** Done, not pending. The squash described in §6a has happened: the
-  unredacted log exists in no commit on `sop-eval`, so this branch no longer
-  needs squashing before a push. What remains is housekeeping: do not push
-  `backup/pre-squash-competitor`, which still carries `3d9532c`.
+- **History.** The squash described in §6a has happened, so the unredacted Groq
+  log exists in no commit on `sop-eval`. One thing is still outstanding: the
+  machine username is in `RESULTS.md` in `b689388` and `bee8b8a` (§6a), and
+  removing it from the published history would mean squashing `c3eac2d..HEAD`
+  before pushing. That is the owner's call, not a correctness problem. And the
+  standing housekeeping item: do not push `backup/pre-squash-competitor`, which
+  still carries `3d9532c`.
 
 ## 8. Paid run, prepared but not executed
 - **What it is: "Haiku on the fixed ddgs evidence."** It runs `claude-haiku-4-5-20251001` on exactly the cached `raw/retrieval/` search text, over 48 companies × {a_full, b2, c_shuffled, d_fixed}, once at T=0. That is 192 calls.
