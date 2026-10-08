@@ -1,0 +1,24 @@
+# Dependencies of the SOP evaluation harness, on top of backend/requirements.txt
+# (the harness imports the product's own analyzer/scraper/blocklist, so install
+# both: pip install -r backend/requirements.txt -r eval_sop/requirements.txt).
+#
+# This file is what the offline test suites, the scorer and the sensitivity
+# analysis need. The retrieval and NLI-judge paths pull in much heavier
+# packages; those are in requirements-optional.txt and are not needed to run
+# the tests or to replay/score the committed run.
+#
+# Pinned to compatible-release ranges like backend/requirements.txt: patch
+# fixes, no surprise major bumps. ruff is pinned exactly for the same reason
+# CI pins it -- an unpinned linter makes the result depend on the day it ran.
+
+# test runner and linter (README's Testing section runs both)
+pytest~=9.0
+ruff==0.16.3
+
+# common.py: reports whether the PID in a stale ledger lock is still running
+psutil~=7.0
+
+# common.py's Anthropic transport for the paid run; httpx is also how
+# tests/test_transport.py builds the fake SDK error responses
+anthropic~=0.93
+httpx~=0.28

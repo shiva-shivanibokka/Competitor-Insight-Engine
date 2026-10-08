@@ -1,0 +1,67 @@
+{
+ "id": "LYV",
+ "homepage": "https://www.livenation.com",
+ "scraped_chars": 3333,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Live Nation\nINDUSTRY: Live Entertainment / Ticketing\nPRODUCT OR SERVICE: A comprehensive platform for purchasing tickets to live events, including concerts, festivals, and comedy shows, along with VIP packages, merchandise, and livestreams.\nTARGET CUSTOMERS: General consumers and fans of live music, sports, and entertainment seeking tickets, premium experiences, and artist merchandise.\nPRICING MODEL: Transaction-based (ticket sales, merchandise sales, and premium package fees)\nKEY FEATURES:\n- Ticket sales for concerts, festivals, and comedy\n- VIP packages including meet & greets, exclusive lounges, and special merchandise\n- Artist presale access and sign-ups\n- Merchandise store for tour-specific apparel\n- Livestreams of live performances and premieres\nUNIQUE SELLING POINTS: Exclusive access to VIP experiences and presales; wide variety of event types (music, comedy, festivals); integrated merchandise and livestream offerings.\nTONE & POSITIONING: Consumer-focused / Premium (via VIP offerings) / Entertainment",
+ "industry": "Live Entertainment / Ticketing",
+ "query": "top direct competitors of Live Nation in Live Entertainment / Ticketing",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://en.wikipedia.org/wiki/Live_Nation_Entertainment",
+   "used": false
+  },
+  {
+   "url": "https://www.livenation.com/events",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.livenation.co.uk/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.livenation.be/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.livenationtero.co.th/en/login",
+   "used": true,
+   "page_chars": 175
+  },
+  {
+   "url": "https://www.axs.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.youtube.com/channel/UCY6gfYYPFEeQp5nRaAX9sSA",
+   "used": false
+  },
+  {
+   "url": "https://www.bigtechontrial.com/p/day-7-ticketmasters-velvet-hammer",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.google.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.ticketmaster.com/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:23:44",
+ "scraped_sha256": "787763c1ebe5aa59b9c2d60f755fd296e01c729eb0def034b30bc19f5da58080",
+ "search_content_sha256": "bf43f8194d73ad9216daf1477d8260a17212f7525b666728eb58336041e33af4",
+ "search_content_chars": 4197,
+ "stripped": true
+}

@@ -1,0 +1,13 @@
+0
+25
+50
+75
+100
+125
+150
+175
+200
+225
+250
+275
+{'benchmark': 'RAGTruth test (local parquet sha256 2fc4fb703ea4...), sentence-level, balanced 300', 'judge': 'cross-encoder/nli-deberta-v3-large', 'threshold': 0.5, 'n': 300, 'n_supported': 150, 'accuracy': 0.6567, 'balanced_accuracy': 0.6567, 'balanced_accuracy_ci95': [0.6033, 0.7087], 'macro_f1': 0.6534, 'cohen_kappa': 0.3133, 'cohen_kappa_ci95': [0.2066, 0.4183], 'auroc': 0.707, 'precision_unsupported': 0.6313, 'by_task': {'Summary': {'n': 100, 'balanced_accuracy': 0.63}, 'QA': {'n': 100, 'balanced_accuracy': 0.68}, 'Data2txt': {'n': 100, 'balanced_accuracy': 0.66}}, 'recall_unsupported': 0.7533}

@@ -1,0 +1,68 @@
+{
+ "id": "ABNB",
+ "homepage": "https://www.airbnb.com",
+ "scraped_chars": 3458,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Airbnb\nINDUSTRY: Travel & Hospitality / Short-term Rentals\nPRODUCT OR SERVICE: A global marketplace connecting travelers with hosts for vacation rentals, unique homes, and local experiences.\nTARGET CUSTOMERS: Travelers seeking alternative accommodations and authentic local experiences; property owners and hosts looking to monetize their spaces.\nPRICING MODEL: Transaction-based (marketplace commission)\nKEY FEATURES: \n- AI-powered search for homes, experiences, and services\n- Global inventory of 9M+ active listings across 220+ countries\n- Curated \"Experiences\" for local immersion\n- Instant Book and bespoke payments platform\n- Host Guarantee and disaster relief tools\nUNIQUE SELLING POINTS: Authentic community connection, massive global scale (2.5B+ guest arrivals), and a diverse range of unique stays beyond traditional hotels.\nTONE & POSITIONING: Consumer-focused, community-oriented, and authentic",
+ "industry": "Travel & Hospitality / Short-term Rentals",
+ "query": "top direct competitors of Airbnb in Travel & Hospitality / Short-term Rentals",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.lodgify.com/blog/airbnb-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://hospitable.com/competitors-for-airbnb",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.igms.com/airbnb-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.hostfully.com/blog/top-airbnb-competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://rentalsunited.com/blog/airbnb-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://boostly.co.uk/competitors-of-airbnb/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://travelfreak.com/airbnb-alternative/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.cloudbeds.com/articles/airbnb-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://brand24.com/blog/airbnb-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.producthunt.com/products/airbnb/alternatives",
+   "used": false
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:23:30",
+ "scraped_sha256": "af83ebd0f2512b55b79fbf372d4ecb9b9f628a44b7751c0ce256c7c9e715fc52",
+ "search_content_sha256": "ffd38e747a20440bea252ea0bdbf68312e6c9a1edefd4f3f9b02fed2a46becaa",
+ "search_content_chars": 6000,
+ "stripped": true
+}

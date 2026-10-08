@@ -1,0 +1,69 @@
+{
+ "id": "FTNT",
+ "homepage": "https://www.fortinet.com",
+ "scraped_chars": 3045,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Fortinet\nINDUSTRY: Cybersecurity\nPRODUCT OR SERVICE: Fortinet provides a comprehensive suite of cybersecurity solutions, including Next-Generation Firewalls (NGFW), Secure Access Service Edge (SASE), Endpoint Detection and Response (EDR), and Security Orchestration, Automation, and Response (SOAR) platforms.\nTARGET CUSTOMERS: Enterprises, hybrid workforces, and organizations requiring protection for networks, endpoints, and AI infrastructure.\nPRICING MODEL: Enterprise\nKEY FEATURES:\n*   AI-powered, cloud-centric Unified SASE for securing hybrid workforces.\n*   FortiEndpoint EDR with certified leader status for stopping APT-grade attacks.\n*   FortiSOAR 8 featuring agentic AI and automation for security operations.\n*   Convergence of networking and security across edges, users, and devices (NGFW, Switching, WLAN).\n*   Continuous AI protection and runtime validation via the acquisition of Virtue AI.\nUNIQUE SELLING POINTS:\n*   Named a Leader in the 2026 Gartner Magic Quadrant for Hybrid Mesh Firewall.\n*   Purpose-built security fabric designed specifically for the AI era and hybrid enterprise environments.\n*   ASIC-powered local enforcement combined with cloud-delivered security for enhanced performance.\n*   Integrated approach that unites networking and security to simplify management and enhance data protection.\nTONE & POSITIONING: Enterprise / Premium",
+ "industry": "Cybersecurity",
+ "query": "top direct competitors of Fortinet in Cybersecurity",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://heimdalsecurity.com/blog/fortinet-competitors-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.gartner.com/reviews/market/endpoint-protection-platforms/vendor/fortinet/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://rankedvendors.com/vendors/fortinet-cybersecurity/alternatives",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.gartner.com/reviews/market/hybrid-mesh-firewall/vendor/fortinet/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://thenetworkinstallers.com/blog/fortinet-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.datastackhub.com/alternatives-to/fortinet-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://unanswered.io/guide/fortinet-competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://craft.co/fortinet/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.checkpoint.com/comparison/fortinet-alternatives/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.paloaltonetworks.com/cyberpedia/fortinet-competitors-and-alternatives",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:23:15",
+ "scraped_sha256": "0aa741ed44be75e17e3dba8992e4e97b8f58a2866ebd7216dd8715cac69a1a03",
+ "search_content_sha256": "4a0255851082062f350182a9adf48e8de6fe18cb0bde08ee66745b5ea244f568",
+ "search_content_chars": 6000,
+ "stripped": true
+}

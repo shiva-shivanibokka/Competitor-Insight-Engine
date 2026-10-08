@@ -1,0 +1,69 @@
+{
+ "id": "DHX",
+ "homepage": "https://www.dhigroupinc.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: DHI Group, Inc.\nINDUSTRY: Tech Talent Recruitment / Human Resources Technology\nPRODUCT OR SERVICE: DHI Group operates two specialized talent marketplaces: Dice, the largest US technology-focused talent marketplace, and ClearanceJobs, the leading platform for professionals with active U.S. security clearances.\nTARGET CUSTOMERS: Employers and recruiters seeking technology professionals (engineers, developers, data scientists, cybersecurity experts) and organizations requiring cleared talent (e.g., defense contractors, government agencies).\nPRICING MODEL: Enterprise\nKEY FEATURES:\n- AI-powered matching tools and proprietary skills algorithm\n- Database of nearly 10 million tech professional profiles\n- Taxonomy of over 100,000 distinct technology skills for precise candidate identification\n- Specialized marketplace for candidates with active U.S. security clearances\nUNIQUE SELLING POINTS: Purpose-built platforms for specific professional communities rather than a one-size-fits-all marketplace; deep specialization in tech and cleared talent; 35+ years of brand longevity and market leadership in niche segments.\nTONE & POSITIONING: Enterprise / Professional",
+ "industry": "Tech Talent Recruitment / Human Resources Technology",
+ "query": "top direct competitors of DHI Group in Tech Talent Recruitment / Human Resources Technology",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://t.me/SaluteTalents_bot",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.untapped.io/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://simplify.jobs/p/ac87e4d0-e8ca-4a9c-83fd-e627accc89dc/Senior-Manager-Marketing",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.dice.com/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://craft.co/dhi/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.builtincolorado.com/articles/dhi-group-colorado-tech-careers",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://rocketreach.co/dhi-group-inc-hr-department_b549da1ff746bdb9",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.owler.com/company/dhigroupinc",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.comparably.com/competitors/dhi-group-vs-indeed",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://claude.ai/login",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:30:01",
+ "scraped_sha256": "f381428a9495852d8c92df3e02a4e5b3476f862e28a943d0af837e70727fa120",
+ "search_content_sha256": "916345a02240cc23ce2230aa0298fc92a10f4ee9c2c7ae488fc1b14fcff60218",
+ "search_content_chars": 5357,
+ "stripped": true
+}

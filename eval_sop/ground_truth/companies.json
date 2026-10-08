@@ -1,0 +1,2972 @@
+[
+ {
+  "id": "UBER",
+  "name": "Uber",
+  "homepage": "https://www.uber.com",
+  "cik": "0001543151",
+  "tier": "large",
+  "public_float_usd": 187600000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315126000015/uber-20251231.htm",
+  "accession": "0001543151-26-000015",
+  "filing_date": "2026-02-13",
+  "excerpt": "livery and other car services. In addition, public transportation can be a superior substitute to our Mobility offering and in many cases, offers a faster and lower-cost travel option in many cities. We also compete with other ridesharing companies for Drivers and Riders, including Bolt, Didi, Lyft, and Ola. There are also a number of companies developing and introducing autonomous vehicles and technologies that either are competing with us or may compete with us in the future, including Alphabet (Waymo), Amazon (Zoox), and Tesla. • Delivery . Our Delivery offering competes with numerous companies in the meal, grocery and other delivery space in various regions for Drivers, consumers, and merchants, including DoorDash, Instacart, Gopuff, Rappi, Delivery Hero, Just Eat Takeaway, and Amazon. Our Delivery offering also competes with restaurants and other merchants, including those that offer their own delivery and/or take-away, meal kit delivery services, grocery delivery services, and traditional grocers. • Freight . Our Freight offering competes with global and North American freight brokers and managed transportation providers such as C.H. Robinson, Total Quality Logistics, RXO, XPO, Echo Global Logistics, and DHL. Government Regulation We operate in a particularly complex legal and regulatory environment. Our business is subject to a variety of U.S. federal, state, local and foreign laws, rules, and regulations, including those related to Internet activities, privacy, cybers",
+  "competitors": [
+   {
+    "name": "Bolt",
+    "aliases": []
+   },
+   {
+    "name": "Didi",
+    "aliases": [
+     "DiDi Global"
+    ]
+   },
+   {
+    "name": "Lyft",
+    "aliases": []
+   },
+   {
+    "name": "Ola",
+    "aliases": []
+   },
+   {
+    "name": "Alphabet",
+    "aliases": [
+     "Waymo",
+     "Google"
+    ]
+   },
+   {
+    "name": "Amazon",
+    "aliases": [
+     "Zoox"
+    ]
+   },
+   {
+    "name": "Tesla",
+    "aliases": []
+   },
+   {
+    "name": "DoorDash",
+    "aliases": []
+   },
+   {
+    "name": "Instacart",
+    "aliases": [
+     "Maplebear"
+    ]
+   },
+   {
+    "name": "Gopuff",
+    "aliases": []
+   },
+   {
+    "name": "Rappi",
+    "aliases": []
+   },
+   {
+    "name": "Delivery Hero",
+    "aliases": []
+   },
+   {
+    "name": "Just Eat Takeaway",
+    "aliases": [
+     "Just Eat"
+    ]
+   },
+   {
+    "name": "C.H. Robinson",
+    "aliases": []
+   },
+   {
+    "name": "Total Quality Logistics",
+    "aliases": []
+   },
+   {
+    "name": "RXO",
+    "aliases": []
+   },
+   {
+    "name": "XPO",
+    "aliases": []
+   },
+   {
+    "name": "Echo Global Logistics",
+    "aliases": []
+   },
+   {
+    "name": "DHL",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "DASH",
+  "name": "DoorDash",
+  "homepage": "https://www.doordash.com",
+  "cik": "0001792789",
+  "tier": "large",
+  "public_float_usd": 90800000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1792789/000179278926000013/dash-20251231.htm",
+  "accession": "0001792789-26-000013",
+  "filing_date": "2026-02-18",
+  "excerpt": ", overall quality of the dashing experience, and earnings potential. In particular, local food delivery logistics, the largest category of our business today, is fragmented and intensely competitive. Globally, we compete with other local on-demand delivery companies, including Amazon, Uber Eats, Prosus, Delivery Hero, and other local incumbents. We also compete with merchants that have their own o",
+  "competitors": [
+   {
+    "name": "Amazon",
+    "aliases": []
+   },
+   {
+    "name": "Uber Eats",
+    "aliases": [
+     "Uber"
+    ]
+   },
+   {
+    "name": "Prosus",
+    "aliases": []
+   },
+   {
+    "name": "Delivery Hero",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "ZM",
+  "name": "Zoom",
+  "homepage": "https://www.zoom.com",
+  "cik": "0001585521",
+  "tier": "large",
+  "public_float_usd": 19800000000,
+  "public_float_as_of": "2025-07-31",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1585521/000158552126000030/zm-20260131.htm",
+  "accession": "0001585521-26-000030",
+  "filing_date": "2026-02-27",
+  "excerpt": "ociated with our international operations, see “Risks Related to Our Business and Our Industry” under “Item 1A - Risk Factors.” Our Competition The markets in which we operate are highly competitive. We face competition from legacy web-based meeting services providers, including Cisco Webex and GoTo, bundled productivity suite providers with communications offerings, including Microsoft 365 (with Teams) and Google Workspace (with Meet), and UCaaS and legacy web-based meeting providers, including Avaya, RingCentral, 8x8, and in our Contact Center offerings, Five9, Inc., Genesys, and NICE inContact, as well as consumer-facing platforms that can support small- or medium-sized businesses, including Amazon, Apple, and Facebook. We believe we compete favor",
+  "competitors": [
+   {
+    "name": "Cisco Webex",
+    "aliases": [
+     "Cisco",
+     "Webex"
+    ]
+   },
+   {
+    "name": "GoTo",
+    "aliases": [
+     "GoTo Meeting",
+     "LogMeIn"
+    ]
+   },
+   {
+    "name": "Microsoft 365",
+    "aliases": [
+     "Microsoft",
+     "Teams"
+    ]
+   },
+   {
+    "name": "Google Workspace",
+    "aliases": [
+     "Google",
+     "Google Meet"
+    ]
+   },
+   {
+    "name": "Avaya",
+    "aliases": []
+   },
+   {
+    "name": "RingCentral",
+    "aliases": []
+   },
+   {
+    "name": "8x8",
+    "aliases": []
+   },
+   {
+    "name": "Five9",
+    "aliases": []
+   },
+   {
+    "name": "Genesys",
+    "aliases": []
+   },
+   {
+    "name": "NICE inContact",
+    "aliases": [
+     "NICE",
+     "CXone"
+    ]
+   },
+   {
+    "name": "Amazon",
+    "aliases": []
+   },
+   {
+    "name": "Apple",
+    "aliases": []
+   },
+   {
+    "name": "Facebook",
+    "aliases": [
+     "Meta"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "SNOW",
+  "name": "Snowflake",
+  "homepage": "https://www.snowflake.com",
+  "cik": "0001640147",
+  "tier": "large",
+  "public_float_usd": 73500000000,
+  "public_float_as_of": "2025-07-31",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1640147/000164014726000008/snow-20260131.htm",
+  "accession": "0001640147-26-000008",
+  "filing_date": "2026-03-20",
+  "excerpt": "s Our Competition The markets we serve are highly competitive and rapidly evolving. With the introduction of new technologies and innovations, we expect the competitive environment to remain intense. Our competition includes the following: • large, well-established, public cloud providers that generally compete in all of our markets, including Amazon Web Services (AWS), Microsoft Azure (Azure), and Google Cloud Platform (GCP); • less-established public and private cloud companies with products t",
+  "competitors": [
+   {
+    "name": "Amazon Web Services",
+    "aliases": [
+     "AWS",
+     "Amazon",
+     "Amazon Redshift"
+    ]
+   },
+   {
+    "name": "Microsoft Azure",
+    "aliases": [
+     "Azure",
+     "Microsoft"
+    ]
+   },
+   {
+    "name": "Google Cloud Platform",
+    "aliases": [
+     "GCP",
+     "Google Cloud",
+     "Google",
+     "BigQuery"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "DDOG",
+  "name": "Datadog",
+  "homepage": "https://www.datadoghq.com",
+  "cik": "0001561550",
+  "tier": "large",
+  "public_float_usd": 43000000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1561550/000162828026008819/ddog-20251231.htm",
+  "accession": "0001628280-26-008819",
+  "filing_date": "2026-02-18",
+  "excerpt": " brand recognition and reputation. Our unified platform combines functionality from numerous traditional product categories, and hence we compete in each of these categories with different vendors: • with respect to on-premise infrastructure monitoring, we compete with diversified technology companies and systems management vendors including IBM, Microsoft Corporation, and SolarWinds Corporation. • with respect to APM, we compete with Cisco Systems, Inc., New Relic, Inc. and Dynatrace Software Inc. • with respect to Log Management, we compete with Cisco Systems, Inc., and Elastic N.V. • with respect to Cloud monitoring, we compete with native solutions from cloud providers such as Amazon Web Services, or AWS, Microsoft Azure, and Google Cloud Platform, or GCP. Additionally, we compete with home-grown and open-source technologies across the categories described above. We believe that we compete favorably wit",
+  "competitors": [
+   {
+    "name": "IBM",
+    "aliases": []
+   },
+   {
+    "name": "Microsoft",
+    "aliases": []
+   },
+   {
+    "name": "SolarWinds",
+    "aliases": []
+   },
+   {
+    "name": "Cisco Systems",
+    "aliases": [
+     "Cisco",
+     "AppDynamics",
+     "Splunk"
+    ]
+   },
+   {
+    "name": "New Relic",
+    "aliases": []
+   },
+   {
+    "name": "Dynatrace",
+    "aliases": []
+   },
+   {
+    "name": "Elastic",
+    "aliases": []
+   },
+   {
+    "name": "Amazon Web Services",
+    "aliases": [
+     "AWS",
+     "Amazon",
+     "CloudWatch"
+    ]
+   },
+   {
+    "name": "Microsoft Azure",
+    "aliases": [
+     "Azure"
+    ]
+   },
+   {
+    "name": "Google Cloud Platform",
+    "aliases": [
+     "GCP",
+     "Google Cloud",
+     "Google"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "PINS",
+  "name": "Pinterest",
+  "homepage": "https://www.pinterest.com",
+  "cik": "0001506293",
+  "tier": "large",
+  "public_float_usd": 18700000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000021/pins-20251231.htm",
+  "accession": "0001506293-26-000021",
+  "filing_date": "2026-02-12",
+  "excerpt": "Our competition We primarily compete with consumer internet companies that are either tools (search, ecommerce) or media (newsfeeds, video, social networks), particularly ones focused on advertising. Competitors such as Amazon, Meta (including Facebook, Instagram, Threads and MetaAI), Google (including Gemini, Lens and YouTube), OpenAI (including ChatGPT), Snap, Reddit, TikTok and X, many of which are larger and have significantly greater financial and hum",
+  "competitors": [
+   {
+    "name": "Amazon",
+    "aliases": []
+   },
+   {
+    "name": "Meta",
+    "aliases": [
+     "Facebook",
+     "Instagram",
+     "Threads"
+    ]
+   },
+   {
+    "name": "Google",
+    "aliases": [
+     "YouTube",
+     "Alphabet"
+    ]
+   },
+   {
+    "name": "OpenAI",
+    "aliases": [
+     "ChatGPT"
+    ]
+   },
+   {
+    "name": "Snap",
+    "aliases": [
+     "Snapchat"
+    ]
+   },
+   {
+    "name": "Reddit",
+    "aliases": []
+   },
+   {
+    "name": "TikTok",
+    "aliases": [
+     "ByteDance"
+    ]
+   },
+   {
+    "name": "X",
+    "aliases": [
+     "Twitter"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "SNAP",
+  "name": "Snap",
+  "homepage": "https://www.snap.com",
+  "cik": "0001564408",
+  "tier": "large",
+  "public_float_usd": 11600000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1564408/000156440826000013/snap-20251231.htm",
+  "accession": "0001564408-26-000013",
+  "filing_date": "2026-02-05",
+  "excerpt": "ness both domestically and internationally, especially because our products and services operate across a broad list of categories, including camera, visual messaging, content, and augmented reality. Our competitors range from smaller or newer companies to larger, more established companies such as Alphabet (including Google and YouTube), Apple, ByteDance ( TikTok and affiliated joint ventures), Kakao, LINE, Meta (including Facebook, Instagram, Threads, and WhatsApp), Naver (including Snow), Pinterest, Reddit, Tencent, and X (formerly Twitter). Our competitors also include platforms that offer, or will offer, a v",
+  "competitors": [
+   {
+    "name": "Alphabet",
+    "aliases": [
+     "Google",
+     "YouTube"
+    ]
+   },
+   {
+    "name": "Apple",
+    "aliases": []
+   },
+   {
+    "name": "ByteDance",
+    "aliases": [
+     "TikTok"
+    ]
+   },
+   {
+    "name": "Kakao",
+    "aliases": []
+   },
+   {
+    "name": "LINE",
+    "aliases": []
+   },
+   {
+    "name": "Meta",
+    "aliases": [
+     "Facebook",
+     "Instagram",
+     "WhatsApp",
+     "Threads"
+    ]
+   },
+   {
+    "name": "Naver",
+    "aliases": []
+   },
+   {
+    "name": "Pinterest",
+    "aliases": []
+   },
+   {
+    "name": "Reddit",
+    "aliases": []
+   },
+   {
+    "name": "Tencent",
+    "aliases": [
+     "WeChat"
+    ]
+   },
+   {
+    "name": "X",
+    "aliases": [
+     "Twitter"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "WDAY",
+  "name": "Workday",
+  "homepage": "https://www.workday.com",
+  "cik": "0001327811",
+  "tier": "large",
+  "public_float_usd": 49500000000,
+  "public_float_as_of": "2025-07-31",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1327811/000132781126000014/wday-20260131.htm",
+  "accession": "0001327811-26-000014",
+  "filing_date": "2026-03-06",
+  "excerpt": " that address only one or a portion of our applications, and from vendors that specialize in specific industries in which we provide services, some of which offer cloud-based or AI-powered solutions. These vendors include, without limitation, Anaplan, Inc.; ADP; Coupa Software Inc.; Dayforce, Inc.; Microsoft; NetSuite; ServiceNow, Inc.; and UKG Inc. In addit",
+  "competitors": [
+   {
+    "name": "Anaplan",
+    "aliases": []
+   },
+   {
+    "name": "ADP",
+    "aliases": []
+   },
+   {
+    "name": "Coupa",
+    "aliases": []
+   },
+   {
+    "name": "Dayforce",
+    "aliases": [
+     "Ceridian"
+    ]
+   },
+   {
+    "name": "Microsoft",
+    "aliases": []
+   },
+   {
+    "name": "NetSuite",
+    "aliases": [
+     "Oracle NetSuite"
+    ]
+   },
+   {
+    "name": "ServiceNow",
+    "aliases": []
+   },
+   {
+    "name": "UKG",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "MDB",
+  "name": "MongoDB",
+  "homepage": "https://www.mongodb.com",
+  "cik": "0001441816",
+  "tier": "large",
+  "public_float_usd": 19100000000,
+  "public_float_as_of": "2025-07-31",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1441816/000162828026016799/mdb-20260131.htm",
+  "accession": "0001628280-26-016799",
+  "filing_date": "2026-03-11",
+  "excerpt": "stomer base and level of user adoption; • strength of sales and marketing efforts; and • brand awareness and reputation. We believe that we compete favorably on the basis of the factors listed above. We primarily compete with established legacy database software providers such as IBM, Microsoft, Oracle and other similar companies. We also compete with public cloud providers that offer database functionality, such as AWS, GCP and Microsoft Azure as well as other database software providers. Some ",
+  "competitors": [
+   {
+    "name": "IBM",
+    "aliases": []
+   },
+   {
+    "name": "Microsoft",
+    "aliases": [
+     "SQL Server",
+     "Azure"
+    ]
+   },
+   {
+    "name": "Oracle",
+    "aliases": []
+   },
+   {
+    "name": "Amazon Web Services",
+    "aliases": [
+     "AWS",
+     "Amazon",
+     "DynamoDB"
+    ]
+   },
+   {
+    "name": "Google Cloud Platform",
+    "aliases": [
+     "GCP",
+     "Google Cloud",
+     "Google"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "CVNA",
+  "name": "Carvana",
+  "homepage": "https://www.carvana.com",
+  "cik": "0001690820",
+  "tier": "large",
+  "public_float_usd": 43800000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1690820/000169082026000009/cvna-20251231.htm",
+  "accession": "0001690820-26-000009",
+  "filing_date": "2026-02-18",
+  "excerpt": "marketplace is a highly fragmented and highly competitive industry. We believe the primary competitive factors in this market include transparency, convenience, price, selection, and vehicle quality. Our current and future competitors include: • traditional used vehicle dealerships such as CarMax; • internet and online automotive sites, such as Amazon, Autobytel, AutoTrader, Cars, Carfax, CarGurus, eBay Motors, Edmunds, Google, KBB, and TrueCar; • providers of offline, membership-based car-buying services such as the Costco Auto Program; • new and used vehicle dealers or marketplaces with e-commerce business or online platforms; • marketplaces that could compete with our wholesale marketplace program; • automobile manufacturers such as Ford, General Motors, Toyota, Volkswagen, Tesla, Rivian, and Lucid; and • ",
+  "competitors": [
+   {
+    "name": "CarMax",
+    "aliases": []
+   },
+   {
+    "name": "Amazon",
+    "aliases": []
+   },
+   {
+    "name": "Autobytel",
+    "aliases": []
+   },
+   {
+    "name": "AutoTrader",
+    "aliases": [
+     "Autotrader"
+    ]
+   },
+   {
+    "name": "Cars",
+    "aliases": [
+     "Cars.com"
+    ]
+   },
+   {
+    "name": "Carfax",
+    "aliases": []
+   },
+   {
+    "name": "CarGurus",
+    "aliases": []
+   },
+   {
+    "name": "eBay Motors",
+    "aliases": [
+     "eBay"
+    ]
+   },
+   {
+    "name": "Edmunds",
+    "aliases": []
+   },
+   {
+    "name": "Google",
+    "aliases": []
+   },
+   {
+    "name": "KBB",
+    "aliases": [
+     "Kelley Blue Book"
+    ]
+   },
+   {
+    "name": "TrueCar",
+    "aliases": []
+   },
+   {
+    "name": "Costco Auto Program",
+    "aliases": [
+     "Costco"
+    ]
+   },
+   {
+    "name": "Ford",
+    "aliases": []
+   },
+   {
+    "name": "General Motors",
+    "aliases": [
+     "GM"
+    ]
+   },
+   {
+    "name": "Toyota",
+    "aliases": []
+   },
+   {
+    "name": "Volkswagen",
+    "aliases": []
+   },
+   {
+    "name": "Tesla",
+    "aliases": []
+   },
+   {
+    "name": "Rivian",
+    "aliases": []
+   },
+   {
+    "name": "Lucid",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "ORCL",
+  "name": "Oracle",
+  "homepage": "https://www.oracle.com",
+  "cik": "0001341439",
+  "tier": "large",
+  "public_float_usd": 305793119000,
+  "public_float_as_of": "2024-11-29",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm",
+  "accession": "0001193125-26-277521",
+  "filing_date": "2026-06-22",
+  "excerpt": "-effective and higher performance and availability in the implementation, sourcing, integration and ongoing maintenance of their IT environments. Our enterprise cloud, software and hardware offerings compete directly with certain offerings from some of the largest and most competitive companies in the world, including Adobe Systems Incorporated, Alphabet Inc., Amazon.com, Inc., Cisco Systems, Inc., Intel Corporation, International Business Machines Corporation, Microsoft Corporation, Salesforce, Inc. and SAP SE, as well as other companies like Hewlett-Packard Enterprise and Workday, Inc. In addition, due to the l",
+  "competitors": [
+   {
+    "name": "Adobe",
+    "aliases": []
+   },
+   {
+    "name": "Alphabet",
+    "aliases": [
+     "Google"
+    ]
+   },
+   {
+    "name": "Amazon",
+    "aliases": [
+     "AWS",
+     "Amazon Web Services"
+    ]
+   },
+   {
+    "name": "Cisco",
+    "aliases": []
+   },
+   {
+    "name": "Intel",
+    "aliases": []
+   },
+   {
+    "name": "International Business Machines",
+    "aliases": [
+     "IBM"
+    ]
+   },
+   {
+    "name": "Microsoft",
+    "aliases": []
+   },
+   {
+    "name": "Salesforce",
+    "aliases": []
+   },
+   {
+    "name": "SAP",
+    "aliases": []
+   },
+   {
+    "name": "Hewlett-Packard Enterprise",
+    "aliases": [
+     "HPE",
+     "Hewlett Packard Enterprise"
+    ]
+   },
+   {
+    "name": "Workday",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "RBLX",
+  "name": "Roblox",
+  "homepage": "https://www.roblox.com",
+  "cik": "0001315098",
+  "tier": "large",
+  "public_float_usd": 65500000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1315098/000131509826000024/rblx-20251231.htm",
+  "accession": "0001315098-26-000024",
+  "filing_date": "2026-02-11",
+  "excerpt": "o reach the right audiences with precision. Competition We compete for both users and creators. We compete to attract and retain our users’ attention on the basis of our content and user experiences. We compete for users and their engagement hours with global technology leaders such as Amazon, Apple, Meta Platforms, Google, Microsoft, and Tencent, global entertainment companies such as Comcast, Disney, Paramount Global, and Warner Bros Discovery, global gaming companies such as Activision Blizzard (now owned by Microsoft), Electronic Arts, Take-Two, Epic Games, Krafton, NetEase, and Valve, online content platforms such as Netflix, Spotify, and YouTube, as well as platforms such as Facebook, TikTok, Instagram, WhatsApp, Pinterest, X, Reddit, Discord, and Snap. We are able to compete for these users based on our variety of content",
+  "competitors": [
+   {
+    "name": "Amazon",
+    "aliases": []
+   },
+   {
+    "name": "Apple",
+    "aliases": []
+   },
+   {
+    "name": "Meta Platforms",
+    "aliases": [
+     "Meta",
+     "Facebook",
+     "Instagram",
+     "WhatsApp"
+    ]
+   },
+   {
+    "name": "Google",
+    "aliases": [
+     "YouTube"
+    ]
+   },
+   {
+    "name": "Microsoft",
+    "aliases": [
+     "Activision Blizzard",
+     "Xbox",
+     "Minecraft"
+    ]
+   },
+   {
+    "name": "Tencent",
+    "aliases": []
+   },
+   {
+    "name": "Comcast",
+    "aliases": []
+   },
+   {
+    "name": "Disney",
+    "aliases": []
+   },
+   {
+    "name": "Paramount Global",
+    "aliases": [
+     "Paramount"
+    ]
+   },
+   {
+    "name": "Warner Bros Discovery",
+    "aliases": [
+     "Warner Bros"
+    ]
+   },
+   {
+    "name": "Electronic Arts",
+    "aliases": [
+     "EA"
+    ]
+   },
+   {
+    "name": "Take-Two",
+    "aliases": [
+     "Take-Two Interactive"
+    ]
+   },
+   {
+    "name": "Epic Games",
+    "aliases": [
+     "Fortnite"
+    ]
+   },
+   {
+    "name": "Krafton",
+    "aliases": []
+   },
+   {
+    "name": "NetEase",
+    "aliases": []
+   },
+   {
+    "name": "Valve",
+    "aliases": [
+     "Steam"
+    ]
+   },
+   {
+    "name": "Netflix",
+    "aliases": []
+   },
+   {
+    "name": "Spotify",
+    "aliases": []
+   },
+   {
+    "name": "TikTok",
+    "aliases": []
+   },
+   {
+    "name": "Pinterest",
+    "aliases": []
+   },
+   {
+    "name": "X",
+    "aliases": [
+     "Twitter"
+    ]
+   },
+   {
+    "name": "Reddit",
+    "aliases": []
+   },
+   {
+    "name": "Discord",
+    "aliases": []
+   },
+   {
+    "name": "Snap",
+    "aliases": [
+     "Snapchat"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "FTNT",
+  "name": "Fortinet",
+  "homepage": "https://www.fortinet.com",
+  "cik": "0001262039",
+  "tier": "large",
+  "public_float_usd": 56846175983,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1262039/000126203926000007/ftnt-20251231.htm",
+  "accession": "0001262039-26-000007",
+  "filing_date": "2026-02-25",
+  "excerpt": "tomer segments and use cases; • sales and distribution capabilities; • size and financial stability; • breadth of product line; • form factor of the solution; and • other competitive differentiators. Among others, our competitors include Check Point Software Technologies Ltd. (“Check Point”), Cisco Systems, Inc. (“Cisco”), CrowdStrike Holdings, Inc. (“CrowdStrike”), F5 Networks, Inc. (“F5 Networks”), Hewlett-Packard Enterprise (“HPE”), Huawei Technologies Co., Ltd. (“Huawei”), Microsoft Corporation (“Microsoft”), Netskope Inc. (“Netskope”), Palo Alto Networks, Inc. (“Palo Alto Networks”), SonicWALL, Inc. (“SonicWALL”), Sophos Group Plc (“Sophos”) and Zscaler, Inc. (“Zscaler”). We believe we compete favorably based on our products’ security performanc",
+  "competitors": [
+   {
+    "name": "Check Point",
+    "aliases": []
+   },
+   {
+    "name": "Cisco",
+    "aliases": []
+   },
+   {
+    "name": "CrowdStrike",
+    "aliases": []
+   },
+   {
+    "name": "F5",
+    "aliases": [
+     "F5 Networks"
+    ]
+   },
+   {
+    "name": "Hewlett-Packard Enterprise",
+    "aliases": [
+     "HPE",
+     "Hewlett Packard Enterprise",
+     "Aruba"
+    ]
+   },
+   {
+    "name": "Huawei",
+    "aliases": []
+   },
+   {
+    "name": "Microsoft",
+    "aliases": []
+   },
+   {
+    "name": "Netskope",
+    "aliases": []
+   },
+   {
+    "name": "Palo Alto Networks",
+    "aliases": []
+   },
+   {
+    "name": "SonicWall",
+    "aliases": [
+     "SonicWALL"
+    ]
+   },
+   {
+    "name": "Sophos",
+    "aliases": []
+   },
+   {
+    "name": "Zscaler",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "ABNB",
+  "name": "Airbnb",
+  "homepage": "https://www.airbnb.com",
+  "cik": "0001559720",
+  "tier": "large",
+  "public_float_usd": 56200000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972026000004/abnb-20251231.htm",
+  "accession": "0001559720-26-000004",
+  "filing_date": "2026-02-12",
+  "excerpt": "ll-in cost of host offerings on our platform relative to other options, our brand, ease of use of our platform, the trust and safety of our platform, and community support. Our competitors include: • online travel agencies (“OTAs”), such as Booking Holdings (including the brand Booking.com), Expedia Group (including the brands Expedia and VRBO), Trip.com Group, and other regional OTAs; • internet search engines, such as Google and those powered by AI, including its travel search products; • hotel chains, such as Marriott, Hilton, Accor, and Wyndham, as well as boutique hotel chains and independent hotels; • prope",
+  "competitors": [
+   {
+    "name": "Booking Holdings",
+    "aliases": [
+     "Booking.com",
+     "Booking"
+    ]
+   },
+   {
+    "name": "Expedia",
+    "aliases": [
+     "Expedia Group",
+     "Vrbo"
+    ]
+   },
+   {
+    "name": "Trip.com",
+    "aliases": []
+   },
+   {
+    "name": "Google",
+    "aliases": []
+   },
+   {
+    "name": "Marriott",
+    "aliases": []
+   },
+   {
+    "name": "Hilton",
+    "aliases": []
+   },
+   {
+    "name": "Accor",
+    "aliases": []
+   },
+   {
+    "name": "Wyndham",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "LYV",
+  "name": "Live Nation",
+  "homepage": "https://www.livenation.com",
+  "cik": "0001335258",
+  "tier": "large",
+  "public_float_usd": 24100000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1335258/000133525826000009/lyv-20251231.htm",
+  "accession": "0001335258-26-000009",
+  "filing_date": "2026-02-19",
+  "excerpt": "l self-ticketing systems, as well as from venues that choose to integrate self-ticketing systems into their existing operations or acquire primary ticketing service providers. Our competitors include primary ticketing companies such as Tickets.com, AXS, Paciolan, Inc., CTS Eventim AG, Eventbrite, eTix, SeatGeek, Ticketek and Fever; secondary ticketing companies such as StubHub, Vivid Seats, Viagogo and SeatGeek; and many others, including large technology and ecommerce companies that could enter these markets. Our main compe",
+  "competitors": [
+   {
+    "name": "Tickets.com",
+    "aliases": []
+   },
+   {
+    "name": "AXS",
+    "aliases": []
+   },
+   {
+    "name": "Paciolan",
+    "aliases": []
+   },
+   {
+    "name": "CTS Eventim",
+    "aliases": [
+     "Eventim"
+    ]
+   },
+   {
+    "name": "Eventbrite",
+    "aliases": []
+   },
+   {
+    "name": "eTix",
+    "aliases": [
+     "Etix"
+    ]
+   },
+   {
+    "name": "SeatGeek",
+    "aliases": []
+   },
+   {
+    "name": "Ticketek",
+    "aliases": []
+   },
+   {
+    "name": "Fever",
+    "aliases": []
+   },
+   {
+    "name": "StubHub",
+    "aliases": []
+   },
+   {
+    "name": "Vivid Seats",
+    "aliases": []
+   },
+   {
+    "name": "Viagogo",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "SMCI",
+  "name": "Supermicro",
+  "homepage": "https://www.supermicro.com",
+  "cik": "0001375365",
+  "tier": "large",
+  "public_float_usd": 15104749459,
+  "public_float_as_of": "2025-12-31",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536526000022/smci-20260630.htm",
+  "accession": "0001375365-26-000022",
+  "filing_date": "2026-08-31",
+  "excerpt": "e experienced increased competition from original design manufacturers (“ODMs”) that benefit from their scale and very low-cost manufacturing and are increasingly offering their own branded products. We believe our principal competitors include: • global technology vendors, such as Cisco, Dell, Hewlett-Packard Enterprise, and Lenovo; and • ODMs, such as Foxconn, Quanta Computer, and Wiwynn Corpora",
+  "competitors": [
+   {
+    "name": "Cisco",
+    "aliases": []
+   },
+   {
+    "name": "Dell",
+    "aliases": [
+     "Dell Technologies"
+    ]
+   },
+   {
+    "name": "Hewlett-Packard Enterprise",
+    "aliases": [
+     "HPE",
+     "Hewlett Packard Enterprise"
+    ]
+   },
+   {
+    "name": "Lenovo",
+    "aliases": []
+   },
+   {
+    "name": "Foxconn",
+    "aliases": [
+     "Hon Hai"
+    ]
+   },
+   {
+    "name": "Quanta Computer",
+    "aliases": [
+     "Quanta",
+     "QCT"
+    ]
+   },
+   {
+    "name": "Wiwynn",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "DBX",
+  "name": "Dropbox",
+  "homepage": "https://www.dropbox.com",
+  "cik": "0001467623",
+  "tier": "mid",
+  "public_float_usd": 3097800000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1467623/000146762326000008/dbx-20251231.htm",
+  "accession": "0001467623-26-000008",
+  "filing_date": "2026-02-20",
+  "excerpt": "icies to ensure we review our business practices for appropriate compliance with such requirements. Our Competition The market for content collaboration platforms is competitive and rapidly changing. Certain features of our platform compete in the cloud storage market with products offered by Microsoft, Amazon, Apple, Google, and Adobe and in the content collaboration market with products offered by Microsoft, Atlassian, Slack (now part of Salesforce) and Google. On a more limited basis, we compete with Box in the cloud storage market for deployments by large enterprises as well as in the e-signature market along with Adobe and DocuSign and in the AI content search market along with Glean, Guru and Notion. We also compete with smaller private compani",
+  "competitors": [
+   {
+    "name": "Microsoft",
+    "aliases": [
+     "OneDrive",
+     "SharePoint"
+    ]
+   },
+   {
+    "name": "Amazon",
+    "aliases": []
+   },
+   {
+    "name": "Apple",
+    "aliases": [
+     "iCloud"
+    ]
+   },
+   {
+    "name": "Google",
+    "aliases": [
+     "Google Drive"
+    ]
+   },
+   {
+    "name": "Adobe",
+    "aliases": []
+   },
+   {
+    "name": "Atlassian",
+    "aliases": []
+   },
+   {
+    "name": "Slack",
+    "aliases": [
+     "Salesforce"
+    ]
+   },
+   {
+    "name": "Box",
+    "aliases": []
+   },
+   {
+    "name": "DocuSign",
+    "aliases": []
+   },
+   {
+    "name": "Glean",
+    "aliases": []
+   },
+   {
+    "name": "Guru",
+    "aliases": []
+   },
+   {
+    "name": "Notion",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "ROKU",
+  "name": "Roku",
+  "homepage": "https://www.roku.com",
+  "cik": "0001428439",
+  "tier": "mid",
+  "public_float_usd": 9700000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1428439/000162828026008114/roku-20251231.htm",
+  "accession": "0001628280-26-008114",
+  "filing_date": "2026-02-13",
+  "excerpt": "lso must effectively support popular sources of streaming content that are available on our platform. And we must respond rapidly to actual and anticipated market trends in the TV streaming industry. Large companies such as Amazon, Apple, and Google offer TV streaming devices tha",
+  "competitors": [
+   {
+    "name": "Amazon",
+    "aliases": [
+     "Fire TV"
+    ]
+   },
+   {
+    "name": "Apple",
+    "aliases": [
+     "Apple TV"
+    ]
+   },
+   {
+    "name": "Google",
+    "aliases": [
+     "Chromecast",
+     "Google TV"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "W",
+  "name": "Wayfair",
+  "homepage": "https://www.wayfair.com",
+  "cik": "0001616707",
+  "tier": "mid",
+  "public_float_usd": 5200000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1616707/000161670726000027/w-20251231.htm",
+  "accession": "0001616707-26-000027",
+  "filing_date": "2026-02-19",
+  "excerpt": "ompetition includes furniture stores, big box retailers, department stores, specialty retailers and online retailers and marketplaces in the U.S., Canada, the United Kingdom and Ireland, including: • Furniture Stores: Ashley Furniture, Bob's Discount Furniture, Havertys, Nebraska Furniture Mart, Raymour & Flanigan and Rooms To Go; • Big Box Retailers: Home Depot, IKEA, Lowe's, Costco, Target and Walmart; • Department Stores: JCPenney, Macy's and Neiman Marcus; • Specialty Retailers: Arhaus, At Home, Container Store, Crate and Barrel, Design Within Reach, Ethan Allen, Floor & Decor, LL Flooring, Restoration Hardware, Ferguson, Room & Board, Serena & Lily, TJX Companies and Williams Sonoma; • Online Retailers and Marketplaces: Amazon, Houzz, eBay, Etsy and Bed Bath & Beyond; • International: Argos, Canadian Tire, John Lewis, Leon's, and Next in addition to several of the companies listed above who also compete with us internationally. We believe that the primary competitive factors in the mass market are vast selection, visually inspiring browsing, compelling merchandising, ease of pro",
+  "competitors": [
+   {
+    "name": "Ashley Furniture",
+    "aliases": [
+     "Ashley"
+    ]
+   },
+   {
+    "name": "Bob's Discount Furniture",
+    "aliases": []
+   },
+   {
+    "name": "Havertys",
+    "aliases": []
+   },
+   {
+    "name": "Nebraska Furniture Mart",
+    "aliases": []
+   },
+   {
+    "name": "Raymour & Flanigan",
+    "aliases": []
+   },
+   {
+    "name": "Rooms To Go",
+    "aliases": []
+   },
+   {
+    "name": "Home Depot",
+    "aliases": []
+   },
+   {
+    "name": "IKEA",
+    "aliases": []
+   },
+   {
+    "name": "Lowe's",
+    "aliases": []
+   },
+   {
+    "name": "Costco",
+    "aliases": []
+   },
+   {
+    "name": "Target",
+    "aliases": []
+   },
+   {
+    "name": "Walmart",
+    "aliases": []
+   },
+   {
+    "name": "JCPenney",
+    "aliases": []
+   },
+   {
+    "name": "Macy's",
+    "aliases": []
+   },
+   {
+    "name": "Neiman Marcus",
+    "aliases": []
+   },
+   {
+    "name": "Arhaus",
+    "aliases": []
+   },
+   {
+    "name": "At Home",
+    "aliases": []
+   },
+   {
+    "name": "Container Store",
+    "aliases": []
+   },
+   {
+    "name": "Crate and Barrel",
+    "aliases": [
+     "Crate & Barrel"
+    ]
+   },
+   {
+    "name": "Design Within Reach",
+    "aliases": []
+   },
+   {
+    "name": "Ethan Allen",
+    "aliases": []
+   },
+   {
+    "name": "Floor & Decor",
+    "aliases": []
+   },
+   {
+    "name": "LL Flooring",
+    "aliases": []
+   },
+   {
+    "name": "Restoration Hardware",
+    "aliases": [
+     "RH"
+    ]
+   },
+   {
+    "name": "Ferguson",
+    "aliases": []
+   },
+   {
+    "name": "Room & Board",
+    "aliases": []
+   },
+   {
+    "name": "Serena & Lily",
+    "aliases": []
+   },
+   {
+    "name": "TJX Companies",
+    "aliases": [
+     "TJX",
+     "HomeGoods"
+    ]
+   },
+   {
+    "name": "Williams Sonoma",
+    "aliases": [
+     "Williams-Sonoma",
+     "Pottery Barn",
+     "West Elm"
+    ]
+   },
+   {
+    "name": "Amazon",
+    "aliases": []
+   },
+   {
+    "name": "Houzz",
+    "aliases": []
+   },
+   {
+    "name": "eBay",
+    "aliases": []
+   },
+   {
+    "name": "Etsy",
+    "aliases": []
+   },
+   {
+    "name": "Bed Bath & Beyond",
+    "aliases": [
+     "Overstock"
+    ]
+   },
+   {
+    "name": "Argos",
+    "aliases": []
+   },
+   {
+    "name": "Canadian Tire",
+    "aliases": []
+   },
+   {
+    "name": "John Lewis",
+    "aliases": []
+   },
+   {
+    "name": "Leon's",
+    "aliases": []
+   },
+   {
+    "name": "Next",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "U",
+  "name": "Unity",
+  "homepage": "https://unity.com",
+  "cik": "0001810806",
+  "tier": "mid",
+  "public_float_usd": 9000000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1810806/000181080626000011/unity-20251231.htm",
+  "accession": "0001810806-26-000011",
+  "filing_date": "2026-02-11",
+  "excerpt": "er point solutions that represent a subset of the offerings on our platform: • Create Solutions: We primarily compete against proprietary game engines built in-house by large game studios, as well as Cocos2d-x (Chukong Technologies), Godot, and Unreal Engine (",
+  "competitors": [
+   {
+    "name": "Cocos2d-x",
+    "aliases": [
+     "Cocos",
+     "Chukong"
+    ]
+   },
+   {
+    "name": "Godot",
+    "aliases": []
+   },
+   {
+    "name": "Unreal Engine",
+    "aliases": [
+     "Epic Games",
+     "Unreal"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "BOX",
+  "name": "Box",
+  "homepage": "https://www.box.com",
+  "cik": "0001372612",
+  "tier": "mid",
+  "public_float_usd": 4500000000,
+  "public_float_as_of": "2025-07-31",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1372612/000119312526098466/box-20260131.htm",
+  "accession": "0001193125-26-098466",
+  "filing_date": "2026-03-09",
+  "excerpt": "AI, and security and governance markets. In the content management market, our primary competitors include, but are not limited to, Microsoft (SharePoint) and OpenText (Documentum). In the enterprise file sync and share market, our primary competitors include, but are not limited to, Microsoft (OneDrive), Google (Drive) and, to a lesser extent, Dropbox. We also compete with com",
+  "competitors": [
+   {
+    "name": "Microsoft",
+    "aliases": [
+     "OneDrive",
+     "SharePoint"
+    ]
+   },
+   {
+    "name": "Google",
+    "aliases": [
+     "Google Drive"
+    ]
+   },
+   {
+    "name": "Dropbox",
+    "aliases": []
+   },
+   {
+    "name": "OpenText",
+    "aliases": [
+     "Documentum"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "S",
+  "name": "SentinelOne",
+  "homepage": "https://www.sentinelone.com",
+  "cik": "0001583708",
+  "tier": "mid",
+  "public_float_usd": 5100000000,
+  "public_float_as_of": "2025-07-31",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1583708/000158370826000020/s-20260131.htm",
+  "accession": "0001583708-26-000020",
+  "filing_date": "2026-03-19",
+  "excerpt": "ustry standards, frequent new product and service offerings, and improvements. We compete with an array of established and emerging security solution vendors. Our competitors include the following: • endpoint security providers, such as CrowdStrike Holdings, Inc. (CrowdStrike) and Carbon Black (within Broadcom, Inc.); • legacy antivirus providers such as Trellix (formerly McAfee Corp.), Symantec (a subsidiary of Broadcom, Inc.) (Symantec), and Microsoft Corporation (Microsoft); • providers of general network security products and services who offer a broad portfolio of solutions, such as Palo Alto Networks, Inc. ",
+  "competitors": [
+   {
+    "name": "CrowdStrike",
+    "aliases": []
+   },
+   {
+    "name": "Carbon Black",
+    "aliases": [
+     "VMware Carbon Black"
+    ]
+   },
+   {
+    "name": "Broadcom",
+    "aliases": [
+     "Symantec"
+    ]
+   },
+   {
+    "name": "Trellix",
+    "aliases": [
+     "McAfee"
+    ]
+   },
+   {
+    "name": "Microsoft",
+    "aliases": [
+     "Microsoft Defender"
+    ]
+   },
+   {
+    "name": "Palo Alto Networks",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "RNG",
+  "name": "RingCentral",
+  "homepage": "https://www.ringcentral.com",
+  "cik": "0001384905",
+  "tier": "mid",
+  "public_float_usd": 2300000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1384905/000138490526000021/rng-20251231.htm",
+  "accession": "0001384905-26-000021",
+  "filing_date": "2026-02-27",
+  "excerpt": "y of the pricing model; and • total cost of ownership. We face competition from a broad range of providers of business communications and collaboration solutions. Some of these competitors include: • traditional on-premise, hardware business communications providers such as Alcatel-Lucent Enterprise, Avaya LLC, Cisco Systems, Inc., Mitel Networks Corporation, NEC Corporation, and Siemens Enterprise Networks, LLC, any of which may now or in the future also host their solutions through the cloud; • software providers such as Microsoft Corporation, Zoom Communications, Inc. and Cisco Systems, Inc. that generally lic",
+  "competitors": [
+   {
+    "name": "Alcatel-Lucent Enterprise",
+    "aliases": [
+     "Alcatel-Lucent"
+    ]
+   },
+   {
+    "name": "Avaya",
+    "aliases": []
+   },
+   {
+    "name": "Cisco",
+    "aliases": [
+     "Webex"
+    ]
+   },
+   {
+    "name": "Mitel",
+    "aliases": []
+   },
+   {
+    "name": "NEC",
+    "aliases": []
+   },
+   {
+    "name": "Siemens Enterprise Networks",
+    "aliases": [
+     "Unify",
+     "Siemens"
+    ]
+   },
+   {
+    "name": "Microsoft",
+    "aliases": [
+     "Teams"
+    ]
+   },
+   {
+    "name": "Zoom",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "TDC",
+  "name": "Teradata",
+  "homepage": "https://www.teradata.com",
+  "cik": "0000816761",
+  "tier": "mid",
+  "public_float_usd": 2100000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/816761/000162828026012671/tdc-20251231.htm",
+  "accession": "0001628280-26-012671",
+  "filing_date": "2026-02-27",
+  "excerpt": "companies, which could adversely affect our ability to compete, including if our key partners merge or partner with our competitors. Our competitors include established companies within our industry, including AWS, Databricks, Google Cloud, Microsoft Azure, Snowflake, and others, many of which are well-capitalized comp",
+  "competitors": [
+   {
+    "name": "AWS",
+    "aliases": [
+     "Amazon Web Services",
+     "Amazon",
+     "Amazon Redshift"
+    ]
+   },
+   {
+    "name": "Databricks",
+    "aliases": []
+   },
+   {
+    "name": "Google Cloud",
+    "aliases": [
+     "Google",
+     "BigQuery"
+    ]
+   },
+   {
+    "name": "Microsoft Azure",
+    "aliases": [
+     "Azure",
+     "Microsoft"
+    ]
+   },
+   {
+    "name": "Snowflake",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "SAIL",
+  "name": "SailPoint",
+  "homepage": "https://www.sailpoint.com",
+  "cik": "0002030781",
+  "tier": "mid",
+  "public_float_usd": 1500000000,
+  "public_float_as_of": "2025-07-31",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/2030781/000203078126000003/sail-20260131.htm",
+  "accession": "0002030781-26-000003",
+  "filing_date": "2026-03-19",
+  "excerpt": "mmittee of our board of directors (our \"Board\"). Competition We operate in a highly competitive market characterized by constant change and innovation. Our competitors include large public companies, such as IBM, Microsoft, and Oracle that offer identity solutions within their product portfolios, and identity centric solution providers, including Palo Alto Networks (CyberArk), Okta, and One Identity. There are also a number of smaller scale, regional, or s",
+  "competitors": [
+   {
+    "name": "IBM",
+    "aliases": []
+   },
+   {
+    "name": "Microsoft",
+    "aliases": [
+     "Entra",
+     "Microsoft Entra"
+    ]
+   },
+   {
+    "name": "Oracle",
+    "aliases": []
+   },
+   {
+    "name": "Palo Alto Networks",
+    "aliases": []
+   },
+   {
+    "name": "CyberArk",
+    "aliases": []
+   },
+   {
+    "name": "Okta",
+    "aliases": []
+   },
+   {
+    "name": "One Identity",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "ARLO",
+  "name": "Arlo",
+  "homepage": "https://www.arlo.com",
+  "cik": "0001736946",
+  "tier": "mid",
+  "public_float_usd": 1454000000,
+  "public_float_as_of": "2025-06-29",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1736946/000173694626000031/arlo-20251231.htm",
+  "accession": "0001736946-26-000031",
+  "filing_date": "2026-02-27",
+  "excerpt": "result in reduced margins and loss of market share. We compete in a rapidly evolving and fiercely competitive market, and we expect competition to continue to be intense, including price competition. Our principal competitors include Amazon (Blink and Ring), Google (Nest), Canary, D-Link, Foxconn Corporation (Belkin), Night Owl, Samsung, SimpliSafe, Swann, TP Link, Eufy, and Wyze. Other competitors include numerous local vendors such as Netatmo, Logitech, Bosch, Instar, and Uniden. In addition, these local vendors may target",
+  "competitors": [
+   {
+    "name": "Amazon",
+    "aliases": [
+     "Ring",
+     "Blink"
+    ]
+   },
+   {
+    "name": "Google",
+    "aliases": [
+     "Nest"
+    ]
+   },
+   {
+    "name": "Canary",
+    "aliases": []
+   },
+   {
+    "name": "D-Link",
+    "aliases": []
+   },
+   {
+    "name": "Foxconn",
+    "aliases": [
+     "Belkin"
+    ]
+   },
+   {
+    "name": "Night Owl",
+    "aliases": []
+   },
+   {
+    "name": "Samsung",
+    "aliases": []
+   },
+   {
+    "name": "SimpliSafe",
+    "aliases": []
+   },
+   {
+    "name": "Swann",
+    "aliases": []
+   },
+   {
+    "name": "TP-Link",
+    "aliases": [
+     "TP Link",
+     "Tapo"
+    ]
+   },
+   {
+    "name": "Eufy",
+    "aliases": [
+     "Anker"
+    ]
+   },
+   {
+    "name": "Wyze",
+    "aliases": []
+   },
+   {
+    "name": "Netatmo",
+    "aliases": []
+   },
+   {
+    "name": "Logitech",
+    "aliases": []
+   },
+   {
+    "name": "Bosch",
+    "aliases": []
+   },
+   {
+    "name": "Instar",
+    "aliases": []
+   },
+   {
+    "name": "Uniden",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "UI",
+  "name": "Ubiquiti",
+  "homepage": "https://www.ui.com",
+  "cik": "0001511737",
+  "tier": "mid",
+  "public_float_usd": 2340584731,
+  "public_float_as_of": "2025-12-31",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1511737/000151173726000056/ubnt-20260630.htm",
+  "accession": "0001511737-26-000056",
+  "filing_date": "2026-08-21",
+  "excerpt": "emanded by our customers to achieve a strong overall return on their investment. Our products are designed to operate in growing networks without degradation in performance or operational complexity. In the backhaul market, our competitors include Cambium Networks, Ceragon Networks, MikroTîk and Trango. In the CPE market, our competitors include Cambium Networks, MikroTîk, Tarana Wireless and TP-Link Technologies. In the enterprise WLAN and switching markets, we primarily compete with Cisco, Fortinet, Hewlett Packard Enterprise (Aruba Networks and Juniper Networks), and Ruckus (Belden). In the video surveillance ",
+  "competitors": [
+   {
+    "name": "Cambium Networks",
+    "aliases": [
+     "Cambium"
+    ]
+   },
+   {
+    "name": "Ceragon Networks",
+    "aliases": [
+     "Ceragon"
+    ]
+   },
+   {
+    "name": "MikroTik",
+    "aliases": [
+     "Mikro"
+    ]
+   },
+   {
+    "name": "Trango",
+    "aliases": []
+   },
+   {
+    "name": "Tarana Wireless",
+    "aliases": [
+     "Tarana"
+    ]
+   },
+   {
+    "name": "TP-Link",
+    "aliases": []
+   },
+   {
+    "name": "Cisco",
+    "aliases": [
+     "Meraki"
+    ]
+   },
+   {
+    "name": "Fortinet",
+    "aliases": []
+   },
+   {
+    "name": "HPE Aruba Networks",
+    "aliases": [
+     "Aruba",
+     "HPE",
+     "Hewlett Packard Enterprise"
+    ]
+   },
+   {
+    "name": "Juniper Networks",
+    "aliases": [
+     "Juniper"
+    ]
+   },
+   {
+    "name": "Ruckus",
+    "aliases": [
+     "CommScope",
+     "Belden"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "TREX",
+  "name": "Trex",
+  "homepage": "https://www.trex.com",
+  "cik": "0001069878",
+  "tier": "mid",
+  "public_float_usd": 5800000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1069878/000119312526068732/trex-20251231.htm",
+  "accession": "0001193125-26-068732",
+  "filing_date": "2026-02-25",
+  "excerpt": " also compete with other manufacturers of wood-alternative products. Industry studies indicate that we have the leading market share of the wood-alternative segment of the decking and railing market. Our principal competitors include Azek (a division of James Hardie Industries PLC), Deckorators (a division of UFP Industries, Inc.), and Fiberon (a division of Fortune Brands, Inc.). Our ability to c",
+  "competitors": [
+   {
+    "name": "Azek",
+    "aliases": [
+     "TimberTech",
+     "James Hardie"
+    ]
+   },
+   {
+    "name": "Deckorators",
+    "aliases": [
+     "UFP Industries"
+    ]
+   },
+   {
+    "name": "Fiberon",
+    "aliases": [
+     "Fortune Brands"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "NSP",
+  "name": "Insperity",
+  "homepage": "https://www.insperity.com",
+  "cik": "0001000753",
+  "tier": "mid",
+  "public_float_usd": 2100000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1000753/000100075326000011/nsp-20251231.htm",
+  "accession": "0001000753-26-000011",
+  "filing_date": "2026-02-11",
+  "excerpt": "human resources services. The PEO industry is highly fragmented and we have seen competition intensify; however, we believe Insperity is one of the largest PEO service providers in the United States. Our largest national competitors include the PEO divisions of large business services companies such as Automatic Data Processing, Inc. and Paychex, Inc., and other national PEOs, such as TriNet Group, Inc, Vensure, and Rippling. ",
+  "competitors": [
+   {
+    "name": "Automatic Data Processing",
+    "aliases": [
+     "ADP"
+    ]
+   },
+   {
+    "name": "Paychex",
+    "aliases": []
+   },
+   {
+    "name": "TriNet",
+    "aliases": []
+   },
+   {
+    "name": "Vensure",
+    "aliases": []
+   },
+   {
+    "name": "Rippling",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "BHE",
+  "name": "Benchmark Electronics",
+  "homepage": "https://www.bench.com",
+  "cik": "0000863436",
+  "tier": "mid",
+  "public_float_usd": 1400000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/863436/000119312526064849/bhe-20251231.htm",
+  "accession": "0001193125-26-064849",
+  "filing_date": "2026-02-24",
+  "excerpt": " I, Item 1A of this Report. Competition The services we provide are available from many independent sources as well as from the in-house manufacturing capabilities of current and potential customers. Our competitors include Celestica Inc., Flex Ltd., Jabil Inc., Kimball Electronics Inc., Plexus Corp, and Sanmina Corpor",
+  "competitors": [
+   {
+    "name": "Celestica",
+    "aliases": []
+   },
+   {
+    "name": "Flex",
+    "aliases": [
+     "Flextronics"
+    ]
+   },
+   {
+    "name": "Jabil",
+    "aliases": []
+   },
+   {
+    "name": "Kimball Electronics",
+    "aliases": []
+   },
+   {
+    "name": "Plexus",
+    "aliases": []
+   },
+   {
+    "name": "Sanmina",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "CWAN",
+  "name": "Clearwater Analytics",
+  "homepage": "https://clearwateranalytics.com",
+  "cik": "0001866368",
+  "tier": "mid",
+  "public_float_usd": 6253649261,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1866368/000186636826000011/cwan-20251231.htm",
+  "accession": "0001866368-26-000011",
+  "filing_date": "2026-02-18",
+  "excerpt": " each of our core client end-markets, we compete with a variety of firms depending on client size, type, location, computing environment and functional requirements. Our principal competitors include large providers of investment operations, accounting and analytics systems such as SS&C (with its Advent, CAMRA, Maximus, and Singularity products), State Street (with its PAM and outsourced service offerings), SAP, BNY Mellon’s Eagle product, Deutsche Börse’s Simcorp Dimension, BlackRock’s Aladdin, FIS’s iWorks, Broadridge, Bloomberg AIM, LayerOne, Coremont and Northern Trust. We occasionally see smaller providers of specialized applications and services. We also compete with outsourcers, as well as the internal p",
+  "competitors": [
+   {
+    "name": "SS&C",
+    "aliases": [
+     "Advent",
+     "SS&C Technologies"
+    ]
+   },
+   {
+    "name": "State Street",
+    "aliases": []
+   },
+   {
+    "name": "SAP",
+    "aliases": []
+   },
+   {
+    "name": "BNY Mellon",
+    "aliases": [
+     "BNY",
+     "Eagle"
+    ]
+   },
+   {
+    "name": "Deutsche Börse",
+    "aliases": [
+     "SimCorp",
+     "Simcorp"
+    ]
+   },
+   {
+    "name": "BlackRock",
+    "aliases": [
+     "Aladdin"
+    ]
+   },
+   {
+    "name": "FIS",
+    "aliases": []
+   },
+   {
+    "name": "Broadridge",
+    "aliases": []
+   },
+   {
+    "name": "Bloomberg",
+    "aliases": [
+     "Bloomberg AIM"
+    ]
+   },
+   {
+    "name": "LayerOne",
+    "aliases": []
+   },
+   {
+    "name": "Coremont",
+    "aliases": []
+   },
+   {
+    "name": "Northern Trust",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "WFRD",
+  "name": "Weatherford",
+  "homepage": "https://www.weatherford.com",
+  "cik": "0001603923",
+  "tier": "mid",
+  "public_float_usd": 2700000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1603923/000160392326000014/wfrd-20251231.htm",
+  "accession": "0001603923-26-000014",
+  "filing_date": "2026-02-04",
+  "excerpt": "s, including acidizing, fracturing, cementing, and coiled-tubing intervention. Competition We provide our products and services worldwide and compete with a number of global and regional competitors. Our principal competitors include SLB, Halliburton, Baker Hughes and Expro Group",
+  "competitors": [
+   {
+    "name": "SLB",
+    "aliases": [
+     "Schlumberger"
+    ]
+   },
+   {
+    "name": "Halliburton",
+    "aliases": []
+   },
+   {
+    "name": "Baker Hughes",
+    "aliases": []
+   },
+   {
+    "name": "Expro",
+    "aliases": [
+     "Expro Group"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "NTGR",
+  "name": "NETGEAR",
+  "homepage": "https://www.netgear.com",
+  "cik": "0001122904",
+  "tier": "small",
+  "public_float_usd": 807600000,
+  "public_float_as_of": "2025-06-27",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1122904/000119312526051346/ntgr-20251231.htm",
+  "accession": "0001193125-26-051346",
+  "filing_date": "2026-02-13",
+  "excerpt": " service provider markets are intensely competitive and subject to rapid technological change. We expect competition to continue to intensify. Our principal competitors include: 7 Table of Contents • within the enterprise markets, companies such as Allied Telesis, Arista, Barracuda (owned by KKR), Buffalo, Cisco Systems, Dell, D-Link, Extreme, Fortinet, Huawei, Hewlett-Packard Enterprise (\"HPE\") Aruba, Juniper Networks Mist (part of HPE), Mellanox (owned by Nvidia), Palo Alto Networks, QNAP Systems, Ruckus Networks (formerly CommScope; Vistance Networks portfolio), SonicWall, Snap One (formerly SnapAV; owned by Resideo), Synology, TP- Link, TRENDnet, Ubiquiti, and WatchGuard;",
+  "competitors": [
+   {
+    "name": "Allied Telesis",
+    "aliases": []
+   },
+   {
+    "name": "Arista",
+    "aliases": []
+   },
+   {
+    "name": "Barracuda",
+    "aliases": []
+   },
+   {
+    "name": "Buffalo",
+    "aliases": []
+   },
+   {
+    "name": "Cisco",
+    "aliases": []
+   },
+   {
+    "name": "Dell",
+    "aliases": []
+   },
+   {
+    "name": "D-Link",
+    "aliases": []
+   },
+   {
+    "name": "Extreme",
+    "aliases": [
+     "Extreme Networks"
+    ]
+   },
+   {
+    "name": "Fortinet",
+    "aliases": []
+   },
+   {
+    "name": "Huawei",
+    "aliases": []
+   },
+   {
+    "name": "Hewlett-Packard Enterprise",
+    "aliases": [
+     "HPE",
+     "Aruba",
+     "Hewlett Packard Enterprise"
+    ]
+   },
+   {
+    "name": "Juniper Networks",
+    "aliases": [
+     "Juniper",
+     "Mist"
+    ]
+   },
+   {
+    "name": "Mellanox",
+    "aliases": [
+     "Nvidia"
+    ]
+   },
+   {
+    "name": "Palo Alto Networks",
+    "aliases": []
+   },
+   {
+    "name": "QNAP",
+    "aliases": []
+   },
+   {
+    "name": "Ruckus",
+    "aliases": [
+     "CommScope",
+     "Vistance"
+    ]
+   },
+   {
+    "name": "SonicWall",
+    "aliases": []
+   },
+   {
+    "name": "Snap One",
+    "aliases": [
+     "SnapAV",
+     "Resideo"
+    ]
+   },
+   {
+    "name": "Synology",
+    "aliases": []
+   },
+   {
+    "name": "TP-Link",
+    "aliases": [
+     "TP- Link"
+    ]
+   },
+   {
+    "name": "TRENDnet",
+    "aliases": []
+   },
+   {
+    "name": "Ubiquiti",
+    "aliases": []
+   },
+   {
+    "name": "WatchGuard",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "HLF",
+  "name": "Herbalife",
+  "homepage": "https://www.herbalife.com",
+  "cik": "0001180262",
+  "tier": "small",
+  "public_float_usd": 762000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1180262/000119312526057113/hlf-20251231.htm",
+  "accession": "0001193125-26-057113",
+  "filing_date": "2026-02-18",
+  "excerpt": "ood Foods Company. Additionally, we compete for the recruitment of Members from other direct selling companies, including those that market nutrition products and other entrepreneurial opportunities. Our direct-selling competitors include companies such as Medifast, Inc., Nu Skin Enterprises, Inc., USANA Health Sciences, Inc., and Amway Corp. Our ability to ",
+  "competitors": [
+   {
+    "name": "Medifast",
+    "aliases": []
+   },
+   {
+    "name": "Nu Skin",
+    "aliases": []
+   },
+   {
+    "name": "USANA",
+    "aliases": []
+   },
+   {
+    "name": "Amway",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "CNDT",
+  "name": "Conduent",
+  "homepage": "https://www.conduent.com",
+  "cik": "0001677703",
+  "tier": "small",
+  "public_float_usd": 411512508,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1677703/000167770326000024/cndt-20251231.htm",
+  "accession": "0001677703-26-000024",
+  "filing_date": "2026-02-19",
+  "excerpt": " specialize in certain areas but none compete across all the same segments in our total portfolio which enables us to serve our clients end-to-end across their enterprises. Our competitors include: • Large multinational service providers such as Accenture, Cognizant, TTEC and Teleperformance; • Traditional business process outsourcing companies such as Genpact, Wipro and EXL Services; • Human resource, payroll processing and human capital management providers such as Alight and Willis Towers Watson; • Healthcare-focused IT and service solutions providers such as Gainwell, Optum and Maximus; • U.S. Federal-focused government services providers such as Leidos; • Transportation multi-nationals such as TransCore, Thales, Cubic and INIT;",
+  "competitors": [
+   {
+    "name": "Accenture",
+    "aliases": []
+   },
+   {
+    "name": "Cognizant",
+    "aliases": []
+   },
+   {
+    "name": "TTEC",
+    "aliases": []
+   },
+   {
+    "name": "Teleperformance",
+    "aliases": []
+   },
+   {
+    "name": "Genpact",
+    "aliases": []
+   },
+   {
+    "name": "Wipro",
+    "aliases": []
+   },
+   {
+    "name": "EXL Services",
+    "aliases": [
+     "EXL",
+     "ExlService"
+    ]
+   },
+   {
+    "name": "Alight",
+    "aliases": []
+   },
+   {
+    "name": "Willis Towers Watson",
+    "aliases": [
+     "WTW"
+    ]
+   },
+   {
+    "name": "Gainwell",
+    "aliases": []
+   },
+   {
+    "name": "Optum",
+    "aliases": []
+   },
+   {
+    "name": "Maximus",
+    "aliases": []
+   },
+   {
+    "name": "Leidos",
+    "aliases": []
+   },
+   {
+    "name": "TransCore",
+    "aliases": []
+   },
+   {
+    "name": "Thales",
+    "aliases": []
+   },
+   {
+    "name": "Cubic",
+    "aliases": []
+   },
+   {
+    "name": "INIT",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "AVNW",
+  "name": "Aviat Networks",
+  "homepage": "https://aviatnetworks.com",
+  "cik": "0001377789",
+  "tier": "small",
+  "public_float_usd": 265000000,
+  "public_float_as_of": "2025-12-26",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1377789/000162828026059187/avnw-20260703.htm",
+  "accession": "0001628280-26-059187",
+  "filing_date": "2026-08-27",
+  "excerpt": "Competition The microwave and millimeter-wave wireless networking business is a competitive and specialized segment of the telecommunications industry that is sensitive to technological advancements. Our principal competitors include business units of large mobile and IP network infrastructure manufacturers such as Ericsson, Huawei, ZTE, Nokia Corporation and GE Vernova, as well as a number of smaller transport and access specialist companies such as Ceragon Networks Ltd. and Cambium Networks Corporation. We also compete with fiber optic cable for networking connections. Some of our larger competitors may have gr",
+  "competitors": [
+   {
+    "name": "Ericsson",
+    "aliases": []
+   },
+   {
+    "name": "Huawei",
+    "aliases": []
+   },
+   {
+    "name": "ZTE",
+    "aliases": []
+   },
+   {
+    "name": "Nokia",
+    "aliases": []
+   },
+   {
+    "name": "GE Vernova",
+    "aliases": [
+     "GE"
+    ]
+   },
+   {
+    "name": "Ceragon Networks",
+    "aliases": [
+     "Ceragon"
+    ]
+   },
+   {
+    "name": "Cambium Networks",
+    "aliases": [
+     "Cambium"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "BLZE",
+  "name": "Backblaze",
+  "homepage": "https://www.backblaze.com",
+  "cik": "0001462056",
+  "tier": "small",
+  "public_float_usd": 240300000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1462056/000162828026016395/blze-20251231.htm",
+  "accession": "0001628280-26-016395",
+  "filing_date": "2026-03-10",
+  "excerpt": "do not compete effectively, our operating results would be harmed. The markets in which we operate are highly competitive, with relatively low barriers to entry for certain applications and services. Some of our competitors include cloud-based services such as those offered by Amazon.com, Inc. through Amazon Web Services, Alphabet Inc. through Google Cloud Platform, and Microsoft Corporation through Azure, and on-premises offerings such as those offered by EMC/Dell and NetApp. Many of our competitors and potential competitor",
+  "competitors": [
+   {
+    "name": "Amazon",
+    "aliases": [
+     "Amazon Web Services",
+     "AWS",
+     "Amazon S3"
+    ]
+   },
+   {
+    "name": "Alphabet",
+    "aliases": [
+     "Google Cloud Platform",
+     "Google Cloud",
+     "Google"
+    ]
+   },
+   {
+    "name": "Microsoft",
+    "aliases": [
+     "Azure",
+     "Microsoft Azure"
+    ]
+   },
+   {
+    "name": "EMC",
+    "aliases": [
+     "Dell",
+     "Dell EMC"
+    ]
+   },
+   {
+    "name": "NetApp",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "LAW",
+  "name": "DISCO",
+  "homepage": "https://csdisco.com",
+  "cik": "0001625641",
+  "tier": "small",
+  "public_float_usd": 155500000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1625641/000162564126000044/law-20251231.htm",
+  "accession": "0001625641-26-000044",
+  "filing_date": "2026-02-25",
+  "excerpt": "eview in place, which typically consists of a mix of cloud-based solutions, on-premise point solutions and human professional service providers to deliver these solutions. Our competitors include (i) legal services providers, including large dedicated legal services providers such as Consilio LLC, Epiq Systems, Inc. and KLDiscovery Inc., the legal services divisions of large professional firms such as Deloitte & Touche LLP, Ernst and Young LLP, KPMG LLP and PricewaterhouseCoopers LLP, as well as a large number of smaller reg",
+  "competitors": [
+   {
+    "name": "Consilio",
+    "aliases": []
+   },
+   {
+    "name": "Epiq",
+    "aliases": [
+     "Epiq Systems"
+    ]
+   },
+   {
+    "name": "KLDiscovery",
+    "aliases": []
+   },
+   {
+    "name": "Deloitte",
+    "aliases": []
+   },
+   {
+    "name": "Ernst and Young",
+    "aliases": [
+     "EY",
+     "Ernst & Young"
+    ]
+   },
+   {
+    "name": "KPMG",
+    "aliases": []
+   },
+   {
+    "name": "PricewaterhouseCoopers",
+    "aliases": [
+     "PwC"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "DHX",
+  "name": "DHI Group",
+  "homepage": "https://www.dhigroupinc.com",
+  "cik": "0001393883",
+  "tier": "small",
+  "public_float_usd": 122000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1393883/000139388326000041/dhx-20251231.htm",
+  "accession": "0001393883-26-000041",
+  "filing_date": "2026-02-12",
+  "excerpt": "tion based models, and our reputation among our candidates and our customers and potential customers, who are increasingly sophisticated and demanding. Our competitors include: 11 Table of Contents • social and professional networking sites, such as LinkedIn, Facebook, X and Google; • niche or specialist professional networking sites such as GitHub and Stack Overflow; • generalist job boards, some of which have substantially greater resources and brand recognition than we do, such as CareerBuilder, Monster, and Seek which, unlike specialized job boards, permit customers to enter into a single contract to find pro",
+  "competitors": [
+   {
+    "name": "LinkedIn",
+    "aliases": []
+   },
+   {
+    "name": "Facebook",
+    "aliases": [
+     "Meta"
+    ]
+   },
+   {
+    "name": "X",
+    "aliases": [
+     "Twitter"
+    ]
+   },
+   {
+    "name": "Google",
+    "aliases": []
+   },
+   {
+    "name": "GitHub",
+    "aliases": []
+   },
+   {
+    "name": "Stack Overflow",
+    "aliases": []
+   },
+   {
+    "name": "CareerBuilder",
+    "aliases": []
+   },
+   {
+    "name": "Monster",
+    "aliases": []
+   },
+   {
+    "name": "Seek",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "BRCC",
+  "name": "Black Rifle Coffee",
+  "homepage": "https://www.blackriflecoffee.com",
+  "cik": "0001891101",
+  "tier": "small",
+  "public_float_usd": 85094351,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1891101/000189110126000022/brcc-20251231.htm",
+  "accession": "0001891101-26-000022",
+  "filing_date": "2026-03-02",
+  "excerpt": "egories, with competition driven by factors such as price, flavor, packaging, innovation, variety, shelf space, channel distribution, and marketing and promotional strategies. Our competitors include large international food and beverage companies like Nestlé, Starbucks, Monster, and Pepsi, as well ",
+  "competitors": [
+   {
+    "name": "Nestlé",
+    "aliases": [
+     "Nestle",
+     "Nespresso"
+    ]
+   },
+   {
+    "name": "Starbucks",
+    "aliases": []
+   },
+   {
+    "name": "Monster",
+    "aliases": [
+     "Monster Beverage"
+    ]
+   },
+   {
+    "name": "Pepsi",
+    "aliases": [
+     "PepsiCo"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "WYY",
+  "name": "WidePoint",
+  "homepage": "https://www.widepoint.com",
+  "cik": "0001034760",
+  "tier": "small",
+  "public_float_usd": 28000000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1034760/000165495426002749/wyy_10k.htm",
+  "accession": "0001654954-26-002749",
+  "filing_date": "2026-03-25",
+  "excerpt": "eds. Competition. Our TMaaS solution crosses into several different market segments and as a result we do not have competitors that compete in all of the market segments in which we conduct business. Some of our principal competitors include: Calero Software Solutions LLC, Tangoe, Inc., Brightfin, DMI, A&T Systems, and Turning Point Global Services, LLC; Identity Management – Entrust Corp., IdenTrust and XTec Inc.; Digital Billing & Analytics – Amdocs Britebill and Globys Inc.; ITaaS - BMC Software, HPE, StratCore; Next Level Technologies, and many others. Our larger competitors often have mor",
+  "competitors": [
+   {
+    "name": "Calero",
+    "aliases": [
+     "Calero Software Solutions",
+     "Calero-MDSL"
+    ]
+   },
+   {
+    "name": "Tangoe",
+    "aliases": []
+   },
+   {
+    "name": "Brightfin",
+    "aliases": []
+   },
+   {
+    "name": "DMI",
+    "aliases": []
+   },
+   {
+    "name": "A&T Systems",
+    "aliases": []
+   },
+   {
+    "name": "Turning Point Global Services",
+    "aliases": [
+     "Turning Point"
+    ]
+   },
+   {
+    "name": "Entrust",
+    "aliases": []
+   },
+   {
+    "name": "IdenTrust",
+    "aliases": []
+   },
+   {
+    "name": "XTec",
+    "aliases": []
+   },
+   {
+    "name": "Amdocs",
+    "aliases": [
+     "Britebill"
+    ]
+   },
+   {
+    "name": "Globys",
+    "aliases": []
+   },
+   {
+    "name": "BMC Software",
+    "aliases": [
+     "BMC"
+    ]
+   },
+   {
+    "name": "HPE",
+    "aliases": [
+     "Hewlett Packard Enterprise"
+    ]
+   },
+   {
+    "name": "StratCore",
+    "aliases": []
+   },
+   {
+    "name": "Next Level Technologies",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "CXAI",
+  "name": "CXApp",
+  "homepage": "https://www.cxapp.com",
+  "cik": "0001820875",
+  "tier": "small",
+  "public_float_usd": 22942043,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1820875/000182912626002840/cxappinc_10k.htm",
+  "accession": "0001829126-26-002840",
+  "filing_date": "2026-03-30",
+  "excerpt": "e and workplace optimization. Our primary competitors include: ● Employee Experience and Desk Booking Platforms: We face competition from specialized SaaS providers focused on workplace optimization, such as Envoy, Modo Labs, Condeco, Robin, and Petur. These c",
+  "competitors": [
+   {
+    "name": "Envoy",
+    "aliases": []
+   },
+   {
+    "name": "Modo Labs",
+    "aliases": []
+   },
+   {
+    "name": "Condeco",
+    "aliases": [
+     "Eptura"
+    ]
+   },
+   {
+    "name": "Robin",
+    "aliases": []
+   },
+   {
+    "name": "Petur",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "PHUN",
+  "name": "Phunware",
+  "homepage": "https://www.phunware.com",
+  "cik": "0001665300",
+  "tier": "small",
+  "public_float_usd": 6378668,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1665300/000119312526126850/phun-20251231.htm",
+  "accession": "0001193125-26-126850",
+  "filing_date": "2026-03-27",
+  "excerpt": "t. We also sometimes compete with application development agencies, in-house mobile teams and products developed by software providers that allow customers to build and scale new mobile applications. Our competitors include Airship, Apadmi, Mutual Mobile, Pointr and Purple. We be",
+  "competitors": [
+   {
+    "name": "Airship",
+    "aliases": []
+   },
+   {
+    "name": "Apadmi",
+    "aliases": []
+   },
+   {
+    "name": "Mutual Mobile",
+    "aliases": []
+   },
+   {
+    "name": "Pointr",
+    "aliases": []
+   },
+   {
+    "name": "Purple",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "KORE",
+  "name": "KORE Wireless",
+  "homepage": "https://www.korewireless.com",
+  "cik": "0001855457",
+  "tier": "small",
+  "public_float_usd": 13800000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1855457/000185545726000014/kore-20251231.htm",
+  "accession": "0001855457-26-000014",
+  "filing_date": "2026-03-31",
+  "excerpt": "ce alternative solutions. IoT Connectivity The IoT Connectivity market remains highly competitive and includes large global mobile network operators as well as specialized IoT Connectivity providers. Our principal competitors include telecom carriers such as T-Mobile, AT&T, Vodafone, Telefónica, and Verizon, as well as IoT-focused mobile virtual network operators and connectivity aggregators such as Aeris, Wireless Logic, Hologram, and other regional providers. We compete in the IoT Connectivity market based on: • The breadt",
+  "competitors": [
+   {
+    "name": "T-Mobile",
+    "aliases": []
+   },
+   {
+    "name": "AT&T",
+    "aliases": []
+   },
+   {
+    "name": "Vodafone",
+    "aliases": []
+   },
+   {
+    "name": "Telefónica",
+    "aliases": [
+     "Telefonica"
+    ]
+   },
+   {
+    "name": "Verizon",
+    "aliases": []
+   },
+   {
+    "name": "Aeris",
+    "aliases": []
+   },
+   {
+    "name": "Wireless Logic",
+    "aliases": []
+   },
+   {
+    "name": "Hologram",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "XPON",
+  "name": "Expion360",
+  "homepage": "https://expion360.com",
+  "cik": "0001894954",
+  "tier": "small",
+  "public_float_usd": 3100000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/1894954/000190359626000075/xpon_10k.htm",
+  "accession": "0001903596-26-000075",
+  "filing_date": "2026-03-17",
+  "excerpt": "nstallations or conversions which includes but is not limited to chargers, monitors, inverters, and solar components from brands such as Victron Energy and RedArc. Competitors Our competitors include lithium-ion battery manufacturers, such as Relion (which was acquired by Brunswick Corporation in September 2021); Dragonfly Energy Holdings Corp (Nasdaq: DFLI), the manufacturer of Battle Born Batteries; Renogy; and Dakota Lithium. Lead-acid battery manufactures also continue to have a presence in the marketplace. We have desig",
+  "competitors": [
+   {
+    "name": "Relion",
+    "aliases": [
+     "RELiON",
+     "Brunswick"
+    ]
+   },
+   {
+    "name": "Dragonfly Energy",
+    "aliases": [
+     "Battle Born",
+     "Battle Born Batteries"
+    ]
+   },
+   {
+    "name": "Renogy",
+    "aliases": []
+   },
+   {
+    "name": "Dakota Lithium",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "EFOI",
+  "name": "Energy Focus",
+  "homepage": "https://energyfocus.com",
+  "cik": "0000924168",
+  "tier": "small",
+  "public_float_usd": 7800000,
+  "public_float_as_of": "2025-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/924168/000162828026020697/efoi-20251231.htm",
+  "accession": "0001628280-26-020697",
+  "filing_date": "2026-03-24",
+  "excerpt": " compete with a small number of qualified military lighting lamp and fixture suppliers. In certain commercial applications, we typically compete with LED systems produced by large lighting companies. Our primary competitors include Signify, Osram Sylvania, LED Smart, Energy Source Group, Orion Energy Systems, and Keystone Technologies. Some of these competit",
+  "competitors": [
+   {
+    "name": "Signify",
+    "aliases": [
+     "Philips Lighting",
+     "Philips"
+    ]
+   },
+   {
+    "name": "Osram Sylvania",
+    "aliases": [
+     "Osram",
+     "Sylvania",
+     "LEDVANCE"
+    ]
+   },
+   {
+    "name": "LED Smart",
+    "aliases": []
+   },
+   {
+    "name": "Energy Source Group",
+    "aliases": []
+   },
+   {
+    "name": "Orion Energy Systems",
+    "aliases": [
+     "Orion"
+    ]
+   },
+   {
+    "name": "Keystone Technologies",
+    "aliases": [
+     "Keystone"
+    ]
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "TLF",
+  "name": "Tandy Leather",
+  "homepage": "https://www.tandyleather.com",
+  "cik": "0000909724",
+  "tier": "small",
+  "public_float_usd": 15907771,
+  "public_float_as_of": "2025-12-31",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/909724/000114036126006550/ef20060825_10k.htm",
+  "accession": "0001140361-26-006550",
+  "filing_date": "2026-02-24",
+  "excerpt": "ales and market share. Competition Our competitors include smaller, independently-owned brick-and-mortar retailers, internet-based retailers including those selling on platforms like Amazon and eBay, national craft chains like Michaels Stores, Inc. and Hobby Lobby Stores, Inc., some wholesale-focused distributors, and two mid-sized competitors – Weaver Leather and Springfield Leather – who have on",
+  "competitors": [
+   {
+    "name": "Michaels",
+    "aliases": [
+     "Michaels Stores"
+    ]
+   },
+   {
+    "name": "Hobby Lobby",
+    "aliases": []
+   },
+   {
+    "name": "Weaver Leather",
+    "aliases": []
+   },
+   {
+    "name": "Springfield Leather",
+    "aliases": []
+   },
+   {
+    "name": "Amazon",
+    "aliases": []
+   },
+   {
+    "name": "eBay",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ },
+ {
+  "id": "ZYXI",
+  "name": "Zynex Medical",
+  "homepage": "https://www.zynex.com",
+  "cik": "0000846475",
+  "tier": "small",
+  "public_float_usd": 143400000,
+  "public_float_as_of": "2024-06-30",
+  "tenk_url": "https://www.sec.gov/Archives/edgar/data/846475/000155837025002717/zyxi-20241231x10k.htm",
+  "accession": "0001558370-25-002717",
+  "filing_date": "2025-03-11",
+  "excerpt": " for medical electrotherapy products, we face a mixture of competitors ranging from large manufacturers with multiple business lines to small manufacturers that offer a limited selection of products. Our principal competitors include International Rehabilitative Sciences, Inc. d/b/a RS Medical, EMSI, and H-Wave. In add",
+  "competitors": [
+   {
+    "name": "RS Medical",
+    "aliases": [
+     "International Rehabilitative Sciences"
+    ]
+   },
+   {
+    "name": "EMSI",
+    "aliases": [
+     "Electromedical Products"
+    ]
+   },
+   {
+    "name": "H-Wave",
+    "aliases": []
+   }
+  ],
+  "labels_by": "Claude (LLM) transcription of names in the verbatim excerpt; aliases are LLM-added"
+ }
+]

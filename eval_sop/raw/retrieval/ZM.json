@@ -1,0 +1,68 @@
+{
+ "id": "ZM",
+ "homepage": "https://www.zoom.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Zoom\nINDUSTRY: Communication & Collaboration / Enterprise Software\nPRODUCT OR SERVICE: An AI-first work platform offering a suite of tools including video conferencing, chat, phone, mail, calendar, and customer experience solutions.\nTARGET CUSTOMERS: Small and midsize businesses, enterprises, developers, and specific industries such as education, healthcare, financial services, and government.\nPRICING MODEL: Freemium / Enterprise\nKEY FEATURES: \n- AI-first collaboration tools (Meetings, Chat, Phone, Mail & Calendar)\n- Customer Experience (CX) suite including Contact Center and Workforce Management\n- Developer tools including Video SDK, Co-Browse, and APIs\n- AI Productivity Suite for turning discussions into deliverables\n- Extensive marketplace with thousands of integrations and apps\nUNIQUE SELLING POINTS: \n- \"AI that turns conversations into action\"\n- Unified platform connecting communication, productivity, and employee engagement\n- Comprehensive business services for sales, marketing, and HR\n- Robust developer ecosystem for embedding and integrating Zoom technology\nTONE & POSITIONING: Enterprise / Professional / Developer-focused",
+ "industry": "Communication & Collaboration / Enterprise Software",
+ "query": "top direct competitors of Zoom in Communication & Collaboration / Enterprise Software",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.gartner.com/reviews/market/meeting-solutions/vendor/zoom/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.vendr.com/blog/zoom-alternatives-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://fourweekmba.com/zoom-competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://zoom.us/download",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=5Otqy38TrtE",
+   "used": false
+  },
+  {
+   "url": "https://businesschronicler.com/competitors/zoom-competitors-analysis/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.nextiva.com/blog/communication-platforms.html",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.zoom.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://conceptticker.com/ai-meeting-intelligence-enterprise-collaboration-stocks/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://blog.hubspot.com/service/team-collaboration",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:20:24",
+ "scraped_sha256": "7d70597520a3a99b6bc303b8122fdcfbb4d785afb839fc6bc3880426641d40cc",
+ "search_content_sha256": "4e0196a0409c21af93b9bfe05590f2da8097670cec6b8fefb98bee616777f294",
+ "search_content_chars": 4810,
+ "stripped": true
+}

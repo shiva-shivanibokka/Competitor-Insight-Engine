@@ -1,0 +1,69 @@
+{
+ "id": "S",
+ "homepage": "https://www.sentinelone.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: SentinelOne\nINDUSTRY: Cybersecurity / Enterprise Security\nPRODUCT OR SERVICE: An AI-native cybersecurity platform providing unified protection across endpoint, identity, AI, and cloud environments. It features autonomous security intelligence to detect, contain, and respond to threats at machine speed.\nTARGET CUSTOMERS: Enterprise organizations, security operations centers (SOCs), and defenders managing complex IT environments including SaaS, on-premises, hybrid, and air-gapped systems.\nPRICING MODEL: Enterprise\nKEY FEATURES:\n- Unified endpoint and identity security in a single lightweight agent\n- Autonomous SOC capabilities with AI-automated response and remediation\n- Real-time detection and disruption of identity-based attacks and ransomware\n- Cloud security and protection for AI systems\n- Support for diverse deployment models (SaaS, on-premises, hybrid, air-gapped)\nUNIQUE SELLING POINTS:\n- AI-native architecture designed to operate at machine speed to counter AI-driven threats\n- \"Human Amplification\" approach where AI handles triage and routine tasks, allowing analysts to focus on high-value decisions\n- Recognized as a Leader in the Gartner Magic Quadrant for Endpoint Protection Platforms for six consecutive years\n- Unified console for visibility, investigation, and action to reduce operational friction\nTONE & POSITIONING: Enterprise / Premium / Developer-focused",
+ "industry": "Cybersecurity / Enterprise Security",
+ "query": "top direct competitors of SentinelOne in Cybersecurity / Enterprise Security",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.cynet.com/security-foundations/endpoint-security/5-sentinelone-competitors-and-alternatives-you-should-know/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://heimdalsecurity.com/blog/sentinelone-competitors-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.datastackhub.com/alternatives-to/sentinelone-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://craft.co/sentinelone/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.sangfor.com/blog/cybersecurity/sentinelone-competitors-15-alternatives-endpoint-security-2025",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://roguelogics.com/blog/sentinelone-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.gartner.com/reviews/market/managed-detection-and-response/vendor/sentinelone/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.sentinelone.com/vs/competition/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://tracxn.com/d/companies/sentinelone/__VcvNaLKHZo2q_lfuvQ6YLzfg6ACVN7ZCI4fsb56Z0UY",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://pestel-analysis.com/blogs/competitors/sentinelone",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:25:23",
+ "scraped_sha256": "f9a43289595357b4041f0cd4474b29437c712a722bc7f12b4bbaeba02ca40152",
+ "search_content_sha256": "169c3983190f1ab4ea4f9282683957ba22150c7374ef4236398b799b439e484d",
+ "search_content_chars": 5240,
+ "stripped": true
+}

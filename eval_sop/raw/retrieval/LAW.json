@@ -1,0 +1,68 @@
+{
+ "id": "LAW",
+ "homepage": "https://csdisco.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: DISCO\nINDUSTRY: Legal Technology (LegalTech) / E-Discovery\nPRODUCT OR SERVICE: AI-powered e-discovery software and professional services designed to streamline litigation workflows, automate document review, and accelerate case strategy through advanced research tools.\nTARGET CUSTOMERS: Law firms (specifically Am Law 200), corporations, and legal professionals handling complex litigation matters.\nPRICING MODEL: Enterprise\nKEY FEATURES:\n- Cecilia Advanced Research: Agentic AI for connecting dots across massive datasets and generating strategy.\n- Auto Review with Tag Tuner: AI-powered document review capable of processing 32,000 docs per hour.\n- Automated Legal Hold: Reduces manual administrative load by up to 80%.\n- Cecilia Q&A: Secure AI tools for investigating fact questions with 87% time savings.\n- Cloud-native platform: End-to-end solution covering the entire litigation lifecycle.\nUNIQUE SELLING POINTS:\n- \"Agentic AI\" purpose-built for complex legal cases and queries.\n- Combination of cutting-edge technology with expert professional services (partnership model).\n- Significant efficiency gains: Claims 85% time savings on holds and 98% faster deposition summaries.\n- Intuitive, cloud-native design that fits into existing workflows rather than forcing changes.\nTONE & POSITIONING: Premium / Enterprise / Innovation-focused",
+ "industry": "Legal Technology (LegalTech) / E-Discovery",
+ "query": "top direct competitors of DISCO in Legal Technology (LegalTech) / E-Discovery",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.researchandmarkets.com/articles/key-companies-in-ediscovery-market-by-component-deployment-mode",
+   "used": true,
+   "page_chars": 348
+  },
+  {
+   "url": "https://www.veniosystems.com/guide/top-10-ediscovery-software-vendors-in-2026",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.gartner.com/reviews/product/disco/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://legalalphabet.com/blog/best-ediscovery-software-2026",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.verifiedmarketreports.com/blog/top-10-companies-in-e-discovery-software/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://softwarefinder.com/legal/disco-ediscovery/alternatives",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.f6s.com/companies/ediscovery-software/united-states/co",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.futuremarketinsights.com/reports/legaltech-market",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://legaltechbreakthrough.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.linkedin.com/posts/melaniewhiteantoon_get-legal-ai-on-every-matter-with-the-disco-activity-7434256506075877376-LA4B",
+   "used": false
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:29:48",
+ "scraped_sha256": "fd2e3f42a3e980002c373f8170684ae1b1683880c313a53135f8bbf3100b9fe1",
+ "search_content_sha256": "e199ddda6200ee562c4cdc1fc5c9a81d3010145b32daa2401da7ececf726ed28",
+ "search_content_chars": 6000,
+ "stripped": true
+}

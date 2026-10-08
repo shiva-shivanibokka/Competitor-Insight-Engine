@@ -1,0 +1,54 @@
+{
+ "id": "BRCC",
+ "homepage": "https://www.blackriflecoffee.com",
+ "scraped_chars": 3053,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Black Rifle Coffee Company\nINDUSTRY: Food & Beverage / Specialty Coffee\nPRODUCT OR SERVICE: Premium specialty coffee beans, ready-to-drink beverages, and energy drinks, along with military-inspired apparel and gear.\nTARGET CUSTOMERS: U.S. veterans, military personnel, and patriotic consumers who appreciate high-quality coffee and support veteran-led initiatives.\nPRICING MODEL: Subscription / Direct-to-Consumer\nKEY FEATURES:\n*   Exclusive Coffee Club subscription offering monthly exotic roasts with unique origin stories and collectible packaging.\n*   \"Build Your Own Box\" customization for regular coffee deliveries.\n*   Limited-run specialty releases (e.g., Gothic Serpent, Dictator Geisha) with specific flavor profiles and thematic artwork.\n*   Merchandise line including apparel, mugs, and tactical gear.\n*   Philanthropy integration, such as donating proceeds from specific products to veteran and health-related foundations.\nUNIQUE SELLING POINTS: \"America's Coffee®\" branding by veterans; strong patriotic and military community identity; exclusive limited-edition roasts with collectible packaging; direct support for veteran causes through product sales.\nTONE & POSITIONING: Patriotic / Veteran-focused / Premium / Community-driven",
+ "industry": "Food & Beverage / Specialty Coffee",
+ "query": "top direct competitors of Black Rifle Coffee in Food & Beverage / Specialty Coffee",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://compworth.com/company/black-rifle-coffee-company/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://craft.co/brcc/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.brandswitch.co/ca/brands-like/black-rifle-coffee-company",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://rocketreach.co/black-rifle-coffee-company-competitors_b5ac64d7f9c7823a",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.owler.com/company/blackriflecoffee",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.owler.com/company/blackriflecoffee/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.cbinsights.com/company/blackout-coffee/alternatives-competitors",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:30:17",
+ "scraped_sha256": "e09280330f92759ff9b4de412177ffd66bc21d71acbc2d6bec9efe6ba319c3c0",
+ "search_content_sha256": "cd88f335df2ce188e7ab123269711ac732447715781638818c1d0586b46f0446",
+ "search_content_chars": 2956,
+ "stripped": true
+}

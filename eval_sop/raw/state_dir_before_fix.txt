@@ -1,0 +1,5 @@
+=========================== short test summary info ===========================
+FAILED tests/test_transport.py::test_paid_state_lives_in_one_user_level_dir_outside_the_repo
+FAILED tests/test_transport.py::test_stale_lock_is_reported_as_stale_and_left_for_manual_recovery
+FAILED tests/test_transport.py::test_live_lock_is_reported_as_live - Assertio...
+3 failed, 30 passed in 17.33s

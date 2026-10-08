@@ -1,0 +1,69 @@
+{
+ "id": "UI",
+ "homepage": "https://www.ui.com",
+ "scraped_chars": 0,
+ "product_would_abort": true,
+ "scraped": null,
+ "profile": "",
+ "industry": "technology",
+ "query": "top direct competitors of Ubiquiti in technology",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://bullfincher.io/companies/ubiquiti/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.gartner.com/reviews/market/enterprise-wired-wireless-lan/vendor/ubiquiti/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://tracxn.com/d/companies/ubiquiti/__tNVivar1l3CqXkdNv6xhyuAf2vORaGIFTgJHNX0HWvQ",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.marketbeat.com/stocks/NYSE/UI/competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://craft.co/ubiquiti-networks/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.owler.com/company/ubiquitinetworks/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://pitchgrade.com/companies/ubiquiti-networks",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.peerspot.com/products/ubiquiti-wireless-alternatives-and-competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://sumble.com/tech/ubiquiti",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://growjo.com/company/Ubiquiti",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:26:56",
+ "scraped_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+ "search_content_sha256": "a4fee076389f5ee33f0a946110e664fe9ef13dca6ad32448d0e2f8fe6dac8b24",
+ "search_content_chars": 5115,
+ "stripped": true
+}

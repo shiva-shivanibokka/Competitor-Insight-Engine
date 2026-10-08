@@ -1,0 +1,68 @@
+{
+ "id": "WDAY",
+ "homepage": "https://www.workday.com",
+ "scraped_chars": 3044,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Workday\nINDUSTRY: Enterprise Software / Human Resources & Financial Management\nPRODUCT OR SERVICE: An integrated cloud platform for HR, finance, and IT operations that utilizes AI agents to automate processes and provide data-driven insights.\nTARGET CUSTOMERS: Large enterprises, midsize businesses, and global organizations requiring unified management of human capital, financials, and IT infrastructure.\nPRICING MODEL: Enterprise\nKEY FEATURES:\n- AI Agents for automated HR, finance, and IT processes\n- Integrated Human Capital Management (HCM) and Payroll\n- Financial Management, Spend Management, and Planning\n- Contract Lifecycle Management (CLM) and Legal Intelligence\n- Frontline Operations and Workforce Management tools\nUNIQUE SELLING POINTS:\n- Unified AI platform designed to serve the entire organization\n- Conversational AI capabilities that significantly reduce manual workload (e.g., 7-Eleven case study)\n- Recognized as a Leader in Gartner Magic Quadrants for Cloud ERP and Cloud HCM\n- \"Sana\" interface positioned as the last software teams need to learn\nTONE & POSITIONING: Enterprise / Premium / AI-Forward",
+ "industry": "Enterprise Software / Human Resources & Financial Management",
+ "query": "top direct competitors of Workday in Enterprise Software / Human Resources & Financial Management",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://fuelfinance.me/blog/workday-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.anywherer.com/workday-global-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://paismo.com/blog/best-workday-competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.sloneek.com/blog/workday-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://aiproductivity.ai/blog/workday-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.forbes.com/advisor/business/software/workday-competitors/",
+   "used": false
+  },
+  {
+   "url": "https://technologychecker.io/technology/workday",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://gusto.com/resources/workday-competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.stackinsight.net/best-workday-alternatives/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.usatoday.com/money/blueprint/business/hr-payroll/best-workday-competitors/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:21:54",
+ "scraped_sha256": "cf46696d482e72c975ef61e8dad7f912b38173175aff8b73e3f35def50a97beb",
+ "search_content_sha256": "67df8e323e863cacfd6267468bc3c7438e8227d9bb71ca9856ac244cca9e30db",
+ "search_content_chars": 6000,
+ "stripped": true
+}

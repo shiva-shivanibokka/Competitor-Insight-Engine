@@ -1,0 +1,69 @@
+{
+ "id": "CNDT",
+ "homepage": "https://www.conduent.com",
+ "scraped_chars": 3045,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Conduent\nINDUSTRY: Business Process Outsourcing (BPO) / Enterprise Technology & AI Solutions\nPRODUCT OR SERVICE: Technology-led solutions combining AI, automation, and managed services to improve operational efficiency, customer experience, and cost reduction across commercial, government, and transportation sectors.\nTARGET CUSTOMERS: Large enterprises, government agencies, healthcare providers, and transportation authorities.\nPRICING MODEL: Enterprise\nKEY FEATURES:\n- AI-driven transformation and agentic AI for process automation\n- Customer experience (CX) solutions and customer service support\n- Government program integrity, fraud detection, and payment disbursement\n- Transportation management including tolling and journey optimization\n- Spend analytics and accounts payable (AP) recovery services\nUNIQUE SELLING POINTS: Ability to handle massive scale (e.g., $80B in government payments, 2B customer interactions annually) while turning complexity into clarity through integrated people, processes, and technology.\nTONE & POSITIONING: Enterprise / Premium / Strategic Partner",
+ "industry": "Business Process Outsourcing (BPO) / Enterprise Technology & AI Solutions",
+ "query": "top direct competitors of Conduent in Business Process Outsourcing (BPO) / Enterprise Technology & AI Solutions",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://pestel-analysis.com/blogs/competitors/conduent",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://callforce.global/companies-like-conduent/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://portersfiveforce.com/blogs/competitors/conduent",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://invedus.com/blog/business-process-outsourcing-bpo-companies/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.businessoutreach.in/best-bpo-companies-india/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.gartner.com/reviews/market/customer-management-bpo-service-providers",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://pitchgrade.com/companies/conduent-inc",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://andiplea.icu/conduent-business-services-zauba/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://umbrex.com/resources/company-profiles/conduent/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://news.outsourceaccelerator.com/conduent-sells-tolling-quarterhill/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:29:08",
+ "scraped_sha256": "dbb2dc387fd9efe7a8cd841a99033d9f65f29155d9a0fecd08ea0cb4335b0a33",
+ "search_content_sha256": "48b0c0b793f04ae5dbe73fd2cc60a95504ec08e6db2a0608c7c5e5210b228797",
+ "search_content_chars": 5503,
+ "stripped": true
+}

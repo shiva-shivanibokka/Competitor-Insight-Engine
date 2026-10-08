@@ -1,0 +1,68 @@
+{
+ "id": "BHE",
+ "homepage": "https://www.bench.com",
+ "scraped_chars": 3042,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Benchmark\nINDUSTRY: Electronics Engineering & Manufacturing Services (EMS)\nPRODUCT OR SERVICE: Global product realization services providing design engineering, precision machining, full-system electronic assembly, and lifecycle management for complex electronic systems.\nTARGET CUSTOMERS: Enterprises in demanding, high-reliability markets including Defense, Commercial Aerospace, Medical Technologies, Industrial, Next-Gen Communications, Advanced Computing, and Semiconductor Capital Equipment.\nPRICING MODEL: Enterprise\nKEY FEATURES:\n- End-to-end product realization from R&D through volume production\n- Advanced manufacturing capabilities including precision machining, microelectronics, and mixed/hybrid assembly\n- Specialized engineering in RF/microwave, mmWave, and liquid-cooled computing\n- Lifecycle management services including supply chain management and sustaining engineering\n- Global presence with cross-functional, cross-site collaborative teams\nUNIQUE SELLING POINTS: Focus on high-reliability markets where failure is not an option; unique capabilities in niche areas like liquid-cooled computing and secure technology platforms; collaborative \"joint design partner\" approach rather than just turnkey manufacturing.\nTONE & POSITIONING: Enterprise / Premium / Technical",
+ "industry": "Electronics Engineering & Manufacturing Services (EMS)",
+ "query": "top direct competitors of Benchmark Electronics in Electronics Engineering & Manufacturing Services (EMS)",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://pitchgrade.com/companies/benchmark-electronics-inc",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://pitchbook.com/profiles/company/41136-49",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://multiples.vc/public-comps/benchmark-electronics-valuation-multiples",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.marketbeat.com/stocks/nyse/bhe/competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.bench.com/worldwide-locations",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.raypcb.com/largest-ems-companies/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.linkedin.com/pulse/electronics-manufacturing-services-ems-market-structural-2un3f",
+   "used": false
+  },
+  {
+   "url": "https://www.valueresearchonline.com/stocks/291387/benchmark-electronics-inc-bhe/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.syfe.com/stocks/us/bhe",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.ttelectronics.com/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:27:46",
+ "scraped_sha256": "ff9f56978ac6d183c37a239eee7afcd489769424658be9513b3df96b7ae06f4b",
+ "search_content_sha256": "7824dde742a1c60fa3f82f42086806aa1e1e289cbe23f0790773c30a0154b974",
+ "search_content_chars": 4984,
+ "stripped": true
+}

@@ -1,0 +1,68 @@
+{
+ "id": "EFOI",
+ "homepage": "https://energyfocus.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Energy Focus Inc.\nINDUSTRY: Renewable Energy & LED Lighting Technology\nPRODUCT OR SERVICE: Advanced LED lighting systems, solar technology, and comprehensive energy storage solutions (including home, commercial, and industrial storage, solar inverters, and power supplies).\nTARGET CUSTOMERS: Military & Government facilities, commercial and industrial sectors, educational institutions, healthcare facilities, and residential homeowners.\nPRICING MODEL: Enterprise / B2B\nKEY FEATURES:\n*   High-efficiency LED lighting and solar technology\n*   Turnkey energy storage systems (BESS, PCS, Inverters)\n*   IoT connectivity and smart energy-saving systems\n*   Advanced automation technologies for manufacturing\n*   Rigorous quality control and military-grade durability\nUNIQUE SELLING POINTS: Proven track record with the U.S. Navy (lighting ships and submarines), status as a publicly traded company with over two decades of history, and a global presence that ensures competitiveness and supply chain resilience.\nTONE & POSITIONING: Enterprise / Industrial / Sustainable",
+ "industry": "Renewable Energy & LED Lighting Technology",
+ "query": "top direct competitors of Energy Focus in Renewable Energy & LED Lighting Technology",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.sciencedirect.com/journal/renewable-energy-focus",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.un.org/en/climatechange/raising-ambition/renewable-energy",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://litenergy.ru/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.irena.org/publications/2020/Nov/Innovation-outlook-Thermal-energy-storage",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://ourworldindata.org/renewable-energy",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=o_5oYuDY2qM",
+   "used": false
+  },
+  {
+   "url": "https://www.siemens-energy.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://global.chinadaily.com.cn/a/202101/05/WS5ff3bfa7a31024ad0baa0746.html",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://energyoutlook.blogspot.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.ecoticias.com/en/myse18-x-20mw-wind-turbine-concerns/7872/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:31:53",
+ "scraped_sha256": "d40769b5c98f67d9c63f32a71e0ee17e87a2d704b3d1eb8f089960184be443e4",
+ "search_content_sha256": "5beb234043d23ba1f028bcfc8f027121bfb54bc4c9fed495331b89cc693e4b4e",
+ "search_content_chars": 3614,
+ "stripped": true
+}

@@ -1,0 +1,1874 @@
+{
+ "ABNB": {
+  "entities": [
+   "Booking Holdings",
+   "Expedia",
+   "Trip.com",
+   "Google",
+   "Marriott",
+   "Hilton",
+   "Accor",
+   "Wyndham"
+  ],
+  "loose": 0.625,
+  "loose_hits": [
+   true,
+   true,
+   true,
+   true,
+   false,
+   false,
+   true,
+   false
+  ],
+  "strict": 0.5,
+  "strict_hits": [
+   true,
+   true,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "large"
+ },
+ "ARLO": {
+  "entities": [
+   "Amazon",
+   "Google",
+   "Canary",
+   "D-Link",
+   "Foxconn",
+   "Night Owl",
+   "Samsung",
+   "SimpliSafe",
+   "Swann",
+   "TP-Link",
+   "Eufy",
+   "Wyze",
+   "Netatmo",
+   "Logitech",
+   "Bosch",
+   "Instar",
+   "Uniden"
+  ],
+  "loose": 0.23529411764705882,
+  "loose_hits": [
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.23529411764705882,
+  "strict_hits": [
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "mid"
+ },
+ "AVNW": {
+  "entities": [
+   "Ericsson",
+   "Huawei",
+   "ZTE",
+   "Nokia",
+   "GE Vernova",
+   "Ceragon Networks",
+   "Cambium Networks"
+  ],
+  "loose": 0.2857142857142857,
+  "loose_hits": [
+   false,
+   false,
+   false,
+   true,
+   false,
+   true,
+   false
+  ],
+  "strict": 0.2857142857142857,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   true,
+   false,
+   true,
+   false
+  ],
+  "tier": "small"
+ },
+ "BHE": {
+  "entities": [
+   "Celestica",
+   "Flex",
+   "Jabil",
+   "Kimball Electronics",
+   "Plexus",
+   "Sanmina"
+  ],
+  "loose": 0.3333333333333333,
+  "loose_hits": [
+   false,
+   true,
+   false,
+   false,
+   false,
+   true
+  ],
+  "strict": 0.16666666666666666,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   true
+  ],
+  "tier": "mid"
+ },
+ "BLZE": {
+  "entities": [
+   "Amazon",
+   "Alphabet",
+   "Microsoft",
+   "EMC",
+   "NetApp"
+  ],
+  "loose": 0.6,
+  "loose_hits": [
+   true,
+   true,
+   true,
+   false,
+   false
+  ],
+  "strict": 0.6,
+  "strict_hits": [
+   true,
+   true,
+   true,
+   false,
+   false
+  ],
+  "tier": "small"
+ },
+ "BOX": {
+  "entities": [
+   "Microsoft",
+   "Google",
+   "Dropbox",
+   "OpenText"
+  ],
+  "loose": 0.75,
+  "loose_hits": [
+   true,
+   true,
+   true,
+   false
+  ],
+  "strict": 0.75,
+  "strict_hits": [
+   true,
+   true,
+   true,
+   false
+  ],
+  "tier": "mid"
+ },
+ "BRCC": {
+  "entities": [
+   "Nestl\u00e9",
+   "Starbucks",
+   "Monster",
+   "Pepsi"
+  ],
+  "loose": 0.25,
+  "loose_hits": [
+   false,
+   false,
+   true,
+   false
+  ],
+  "strict": 0.25,
+  "strict_hits": [
+   false,
+   false,
+   true,
+   false
+  ],
+  "tier": "small"
+ },
+ "CNDT": {
+  "entities": [
+   "Accenture",
+   "Cognizant",
+   "TTEC",
+   "Teleperformance",
+   "Genpact",
+   "Wipro",
+   "EXL Services",
+   "Alight",
+   "Willis Towers Watson",
+   "Gainwell",
+   "Optum",
+   "Maximus",
+   "Leidos",
+   "TransCore",
+   "Thales",
+   "Cubic",
+   "INIT"
+  ],
+  "loose": 0.17647058823529413,
+  "loose_hits": [
+   true,
+   true,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.17647058823529413,
+  "strict_hits": [
+   true,
+   true,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "small"
+ },
+ "CVNA": {
+  "entities": [
+   "CarMax",
+   "Amazon",
+   "Autobytel",
+   "AutoTrader",
+   "Cars",
+   "Carfax",
+   "CarGurus",
+   "eBay Motors",
+   "Edmunds",
+   "Google",
+   "KBB",
+   "TrueCar",
+   "Costco Auto Program",
+   "Ford",
+   "General Motors",
+   "Toyota",
+   "Volkswagen",
+   "Tesla",
+   "Rivian",
+   "Lucid"
+  ],
+  "loose": 0.25,
+  "loose_hits": [
+   true,
+   false,
+   false,
+   false,
+   true,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.2,
+  "strict_hits": [
+   true,
+   false,
+   false,
+   false,
+   true,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "large"
+ },
+ "CWAN": {
+  "entities": [
+   "SS&C",
+   "State Street",
+   "SAP",
+   "BNY Mellon",
+   "Deutsche B\u00f6rse",
+   "BlackRock",
+   "FIS",
+   "Broadridge",
+   "Bloomberg",
+   "LayerOne",
+   "Coremont",
+   "Northern Trust"
+  ],
+  "loose": 0.25,
+  "loose_hits": [
+   true,
+   false,
+   false,
+   true,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.25,
+  "strict_hits": [
+   true,
+   false,
+   false,
+   true,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "mid"
+ },
+ "CXAI": {
+  "entities": [
+   "Envoy",
+   "Modo Labs",
+   "Condeco",
+   "Robin",
+   "Petur"
+  ],
+  "loose": 0.0,
+  "loose_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.0,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "small"
+ },
+ "DASH": {
+  "entities": [
+   "Amazon",
+   "Uber Eats",
+   "Prosus",
+   "Delivery Hero"
+  ],
+  "loose": 0.5,
+  "loose_hits": [
+   true,
+   true,
+   false,
+   false
+  ],
+  "strict": 0.5,
+  "strict_hits": [
+   true,
+   true,
+   false,
+   false
+  ],
+  "tier": "large"
+ },
+ "DBX": {
+  "entities": [
+   "Microsoft",
+   "Amazon",
+   "Apple",
+   "Google",
+   "Adobe",
+   "Atlassian",
+   "Slack",
+   "Box",
+   "DocuSign",
+   "Glean",
+   "Guru",
+   "Notion"
+  ],
+  "loose": 0.5833333333333334,
+  "loose_hits": [
+   true,
+   true,
+   true,
+   true,
+   true,
+   false,
+   false,
+   true,
+   true,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.5,
+  "strict_hits": [
+   false,
+   true,
+   true,
+   true,
+   true,
+   false,
+   false,
+   true,
+   true,
+   false,
+   false,
+   false
+  ],
+  "tier": "mid"
+ },
+ "DDOG": {
+  "entities": [
+   "IBM",
+   "Microsoft",
+   "SolarWinds",
+   "Cisco Systems",
+   "New Relic",
+   "Dynatrace",
+   "Elastic",
+   "Amazon Web Services",
+   "Microsoft Azure",
+   "Google Cloud Platform"
+  ],
+  "loose": 0.2,
+  "loose_hits": [
+   false,
+   false,
+   false,
+   false,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.2,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "large"
+ },
+ "DHX": {
+  "entities": [
+   "LinkedIn",
+   "Facebook",
+   "X",
+   "Google",
+   "GitHub",
+   "Stack Overflow",
+   "CareerBuilder",
+   "Monster",
+   "Seek"
+  ],
+  "loose": 0.0,
+  "loose_hits": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.0,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "small"
+ },
+ "EFOI": {
+  "entities": [
+   "Signify",
+   "Osram Sylvania",
+   "LED Smart",
+   "Energy Source Group",
+   "Orion Energy Systems",
+   "Keystone Technologies"
+  ],
+  "loose": 0.0,
+  "loose_hits": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.0,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "small"
+ },
+ "FTNT": {
+  "entities": [
+   "Check Point",
+   "Cisco",
+   "CrowdStrike",
+   "F5",
+   "Hewlett-Packard Enterprise",
+   "Huawei",
+   "Microsoft",
+   "Netskope",
+   "Palo Alto Networks",
+   "SonicWall",
+   "Sophos",
+   "Zscaler"
+  ],
+  "loose": 0.4166666666666667,
+  "loose_hits": [
+   true,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   true
+  ],
+  "strict": 0.4166666666666667,
+  "strict_hits": [
+   true,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   true
+  ],
+  "tier": "large"
+ },
+ "HLF": {
+  "entities": [
+   "Medifast",
+   "Nu Skin",
+   "USANA",
+   "Amway"
+  ],
+  "loose": 0.75,
+  "loose_hits": [
+   false,
+   true,
+   true,
+   true
+  ],
+  "strict": 0.75,
+  "strict_hits": [
+   false,
+   true,
+   true,
+   true
+  ],
+  "tier": "small"
+ },
+ "KORE": {
+  "entities": [
+   "T-Mobile",
+   "AT&T",
+   "Vodafone",
+   "Telef\u00f3nica",
+   "Verizon",
+   "Aeris",
+   "Wireless Logic",
+   "Hologram"
+  ],
+  "loose": 0.75,
+  "loose_hits": [
+   false,
+   true,
+   true,
+   true,
+   false,
+   true,
+   true,
+   true
+  ],
+  "strict": 0.625,
+  "strict_hits": [
+   false,
+   true,
+   true,
+   false,
+   false,
+   true,
+   true,
+   true
+  ],
+  "tier": "small"
+ },
+ "LAW": {
+  "entities": [
+   "Consilio",
+   "Epiq",
+   "KLDiscovery",
+   "Deloitte",
+   "Ernst and Young",
+   "KPMG",
+   "PricewaterhouseCoopers"
+  ],
+  "loose": 0.0,
+  "loose_hits": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.0,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "small"
+ },
+ "LYV": {
+  "entities": [
+   "Tickets.com",
+   "AXS",
+   "Paciolan",
+   "CTS Eventim",
+   "Eventbrite",
+   "eTix",
+   "SeatGeek",
+   "Ticketek",
+   "Fever",
+   "StubHub",
+   "Vivid Seats",
+   "Viagogo"
+  ],
+  "loose": 0.08333333333333333,
+  "loose_hits": [
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.08333333333333333,
+  "strict_hits": [
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "large"
+ },
+ "MDB": {
+  "entities": [
+   "IBM",
+   "Microsoft",
+   "Oracle",
+   "Amazon Web Services",
+   "Google Cloud Platform"
+  ],
+  "loose": 0.8,
+  "loose_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "strict": 0.4,
+  "strict_hits": [
+   false,
+   true,
+   true,
+   false,
+   false
+  ],
+  "tier": "large"
+ },
+ "NSP": {
+  "entities": [
+   "Automatic Data Processing",
+   "Paychex",
+   "TriNet",
+   "Vensure",
+   "Rippling"
+  ],
+  "loose": 1.0,
+  "loose_hits": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "strict": 0.8,
+  "strict_hits": [
+   false,
+   true,
+   true,
+   true,
+   true
+  ],
+  "tier": "mid"
+ },
+ "NTGR": {
+  "entities": [
+   "Allied Telesis",
+   "Arista",
+   "Barracuda",
+   "Buffalo",
+   "Cisco",
+   "Dell",
+   "D-Link",
+   "Extreme",
+   "Fortinet",
+   "Huawei",
+   "Hewlett-Packard Enterprise",
+   "Juniper Networks",
+   "Mellanox",
+   "Palo Alto Networks",
+   "QNAP",
+   "Ruckus",
+   "SonicWall",
+   "Snap One",
+   "Synology",
+   "TP-Link",
+   "TRENDnet",
+   "Ubiquiti",
+   "WatchGuard"
+  ],
+  "loose": 0.13043478260869565,
+  "loose_hits": [
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.08695652173913043,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "small"
+ },
+ "ORCL": {
+  "entities": [
+   "Adobe",
+   "Alphabet",
+   "Amazon",
+   "Cisco",
+   "Intel",
+   "International Business Machines",
+   "Microsoft",
+   "Salesforce",
+   "SAP",
+   "Hewlett-Packard Enterprise",
+   "Workday"
+  ],
+  "loose": 0.45454545454545453,
+  "loose_hits": [
+   false,
+   false,
+   true,
+   true,
+   false,
+   true,
+   true,
+   false,
+   true,
+   false,
+   false
+  ],
+  "strict": 0.2727272727272727,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   true,
+   false,
+   true,
+   false,
+   false
+  ],
+  "tier": "large"
+ },
+ "PHUN": {
+  "entities": [
+   "Airship",
+   "Apadmi",
+   "Mutual Mobile",
+   "Pointr",
+   "Purple"
+  ],
+  "loose": 0.0,
+  "loose_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.0,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "small"
+ },
+ "PINS": {
+  "entities": [
+   "Amazon",
+   "Meta",
+   "Google",
+   "OpenAI",
+   "Snap",
+   "Reddit",
+   "TikTok",
+   "X"
+  ],
+  "loose": 0.5,
+  "loose_hits": [
+   false,
+   true,
+   true,
+   false,
+   true,
+   true,
+   false,
+   false
+  ],
+  "strict": 0.5,
+  "strict_hits": [
+   false,
+   true,
+   false,
+   false,
+   true,
+   true,
+   false,
+   true
+  ],
+  "tier": "large"
+ },
+ "RBLX": {
+  "entities": [
+   "Amazon",
+   "Apple",
+   "Meta Platforms",
+   "Google",
+   "Microsoft",
+   "Tencent",
+   "Comcast",
+   "Disney",
+   "Paramount Global",
+   "Warner Bros Discovery",
+   "Electronic Arts",
+   "Take-Two",
+   "Epic Games",
+   "Krafton",
+   "NetEase",
+   "Valve",
+   "Netflix",
+   "Spotify",
+   "TikTok",
+   "Pinterest",
+   "X",
+   "Reddit",
+   "Discord",
+   "Snap"
+  ],
+  "loose": 0.16666666666666666,
+  "loose_hits": [
+   false,
+   false,
+   true,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.08333333333333333,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false
+  ],
+  "tier": "large"
+ },
+ "RNG": {
+  "entities": [
+   "Alcatel-Lucent Enterprise",
+   "Avaya",
+   "Cisco",
+   "Mitel",
+   "NEC",
+   "Siemens Enterprise Networks",
+   "Microsoft",
+   "Zoom"
+  ],
+  "loose": 0.25,
+  "loose_hits": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   true
+  ],
+  "strict": 0.125,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true
+  ],
+  "tier": "mid"
+ },
+ "ROKU": {
+  "entities": [
+   "Amazon",
+   "Apple",
+   "Google"
+  ],
+  "loose": 1.0,
+  "loose_hits": [
+   true,
+   true,
+   true
+  ],
+  "strict": 1.0,
+  "strict_hits": [
+   true,
+   true,
+   true
+  ],
+  "tier": "mid"
+ },
+ "S": {
+  "entities": [
+   "CrowdStrike",
+   "Carbon Black",
+   "Broadcom",
+   "Trellix",
+   "Microsoft",
+   "Palo Alto Networks"
+  ],
+  "loose": 0.5,
+  "loose_hits": [
+   true,
+   false,
+   false,
+   false,
+   true,
+   true
+  ],
+  "strict": 0.5,
+  "strict_hits": [
+   true,
+   false,
+   false,
+   false,
+   true,
+   true
+  ],
+  "tier": "mid"
+ },
+ "SAIL": {
+  "entities": [
+   "IBM",
+   "Microsoft",
+   "Oracle",
+   "Palo Alto Networks",
+   "CyberArk",
+   "Okta",
+   "One Identity"
+  ],
+  "loose": 0.2857142857142857,
+  "loose_hits": [
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.2857142857142857,
+  "strict_hits": [
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "mid"
+ },
+ "SMCI": {
+  "entities": [
+   "Cisco",
+   "Dell",
+   "Hewlett-Packard Enterprise",
+   "Lenovo",
+   "Foxconn",
+   "Quanta Computer",
+   "Wiwynn"
+  ],
+  "loose": 0.2857142857142857,
+  "loose_hits": [
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   true
+  ],
+  "strict": 0.2857142857142857,
+  "strict_hits": [
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   true
+  ],
+  "tier": "large"
+ },
+ "SNAP": {
+  "entities": [
+   "Alphabet",
+   "Apple",
+   "ByteDance",
+   "Kakao",
+   "LINE",
+   "Meta",
+   "Naver",
+   "Pinterest",
+   "Reddit",
+   "Tencent",
+   "X"
+  ],
+  "loose": 0.36363636363636365,
+  "loose_hits": [
+   true,
+   false,
+   true,
+   false,
+   false,
+   true,
+   false,
+   true,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.45454545454545453,
+  "strict_hits": [
+   true,
+   false,
+   true,
+   false,
+   false,
+   true,
+   false,
+   true,
+   false,
+   false,
+   true
+  ],
+  "tier": "large"
+ },
+ "SNOW": {
+  "entities": [
+   "Amazon Web Services",
+   "Microsoft Azure",
+   "Google Cloud Platform"
+  ],
+  "loose": 1.0,
+  "loose_hits": [
+   true,
+   true,
+   true
+  ],
+  "strict": 1.0,
+  "strict_hits": [
+   true,
+   true,
+   true
+  ],
+  "tier": "large"
+ },
+ "TDC": {
+  "entities": [
+   "AWS",
+   "Databricks",
+   "Google Cloud",
+   "Microsoft Azure",
+   "Snowflake"
+  ],
+  "loose": 0.6,
+  "loose_hits": [
+   true,
+   false,
+   true,
+   true,
+   false
+  ],
+  "strict": 0.4,
+  "strict_hits": [
+   false,
+   false,
+   true,
+   true,
+   false
+  ],
+  "tier": "mid"
+ },
+ "TLF": {
+  "entities": [
+   "Michaels",
+   "Hobby Lobby",
+   "Weaver Leather",
+   "Springfield Leather",
+   "Amazon",
+   "eBay"
+  ],
+  "loose": 0.16666666666666666,
+  "loose_hits": [
+   false,
+   false,
+   false,
+   false,
+   true,
+   false
+  ],
+  "strict": 0.16666666666666666,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false,
+   true,
+   false
+  ],
+  "tier": "small"
+ },
+ "TREX": {
+  "entities": [
+   "Azek",
+   "Deckorators",
+   "Fiberon"
+  ],
+  "loose": 0.3333333333333333,
+  "loose_hits": [
+   true,
+   false,
+   false
+  ],
+  "strict": 0.0,
+  "strict_hits": [
+   false,
+   false,
+   false
+  ],
+  "tier": "mid"
+ },
+ "U": {
+  "entities": [
+   "Cocos2d-x",
+   "Godot",
+   "Unreal Engine"
+  ],
+  "loose": 0.3333333333333333,
+  "loose_hits": [
+   false,
+   false,
+   true
+  ],
+  "strict": 0.3333333333333333,
+  "strict_hits": [
+   false,
+   false,
+   true
+  ],
+  "tier": "mid"
+ },
+ "UBER": {
+  "entities": [
+   "Bolt",
+   "Didi",
+   "Lyft",
+   "Ola",
+   "Alphabet",
+   "Amazon",
+   "Tesla",
+   "DoorDash",
+   "Instacart",
+   "Gopuff",
+   "Rappi",
+   "Delivery Hero",
+   "Just Eat Takeaway",
+   "C.H. Robinson",
+   "Total Quality Logistics",
+   "RXO",
+   "XPO",
+   "Echo Global Logistics",
+   "DHL"
+  ],
+  "loose": 0.42105263157894735,
+  "loose_hits": [
+   false,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.42105263157894735,
+  "strict_hits": [
+   false,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "large"
+ },
+ "UI": {
+  "entities": [
+   "Cambium Networks",
+   "Ceragon Networks",
+   "MikroTik",
+   "Trango",
+   "Tarana Wireless",
+   "TP-Link",
+   "Cisco",
+   "Fortinet",
+   "HPE Aruba Networks",
+   "Juniper Networks",
+   "Ruckus"
+  ],
+  "loose": 0.5454545454545454,
+  "loose_hits": [
+   true,
+   true,
+   true,
+   false,
+   false,
+   false,
+   true,
+   false,
+   true,
+   false,
+   true
+  ],
+  "strict": 0.5454545454545454,
+  "strict_hits": [
+   true,
+   true,
+   true,
+   false,
+   false,
+   false,
+   true,
+   false,
+   true,
+   false,
+   true
+  ],
+  "tier": "mid"
+ },
+ "W": {
+  "entities": [
+   "Ashley Furniture",
+   "Bob's Discount Furniture",
+   "Havertys",
+   "Nebraska Furniture Mart",
+   "Raymour & Flanigan",
+   "Rooms To Go",
+   "Home Depot",
+   "IKEA",
+   "Lowe's",
+   "Costco",
+   "Target",
+   "Walmart",
+   "JCPenney",
+   "Macy's",
+   "Neiman Marcus",
+   "Arhaus",
+   "At Home",
+   "Container Store",
+   "Crate and Barrel",
+   "Design Within Reach",
+   "Ethan Allen",
+   "Floor & Decor",
+   "LL Flooring",
+   "Restoration Hardware",
+   "Ferguson",
+   "Room & Board",
+   "Serena & Lily",
+   "TJX Companies",
+   "Williams Sonoma",
+   "Amazon",
+   "Houzz",
+   "eBay",
+   "Etsy",
+   "Bed Bath & Beyond",
+   "Argos",
+   "Canadian Tire",
+   "John Lewis",
+   "Leon's",
+   "Next"
+  ],
+  "loose": 0.15384615384615385,
+  "loose_hits": [
+   false,
+   true,
+   true,
+   false,
+   false,
+   false,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.1282051282051282,
+  "strict_hits": [
+   false,
+   true,
+   true,
+   false,
+   false,
+   false,
+   true,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "mid"
+ },
+ "WDAY": {
+  "entities": [
+   "Anaplan",
+   "ADP",
+   "Coupa",
+   "Dayforce",
+   "Microsoft",
+   "NetSuite",
+   "ServiceNow",
+   "UKG"
+  ],
+  "loose": 0.5,
+  "loose_hits": [
+   false,
+   true,
+   false,
+   true,
+   true,
+   false,
+   false,
+   true
+  ],
+  "strict": 0.5,
+  "strict_hits": [
+   false,
+   true,
+   false,
+   true,
+   true,
+   false,
+   false,
+   true
+  ],
+  "tier": "large"
+ },
+ "WFRD": {
+  "entities": [
+   "SLB",
+   "Halliburton",
+   "Baker Hughes",
+   "Expro"
+  ],
+  "loose": 0.75,
+  "loose_hits": [
+   true,
+   true,
+   true,
+   false
+  ],
+  "strict": 0.75,
+  "strict_hits": [
+   true,
+   true,
+   true,
+   false
+  ],
+  "tier": "mid"
+ },
+ "WYY": {
+  "entities": [
+   "Calero",
+   "Tangoe",
+   "Brightfin",
+   "DMI",
+   "A&T Systems",
+   "Turning Point Global Services",
+   "Entrust",
+   "IdenTrust",
+   "XTec",
+   "Amdocs",
+   "Globys",
+   "BMC Software",
+   "HPE",
+   "StratCore",
+   "Next Level Technologies"
+  ],
+  "loose": 0.06666666666666667,
+  "loose_hits": [
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.06666666666666667,
+  "strict_hits": [
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "small"
+ },
+ "XPON": {
+  "entities": [
+   "Relion",
+   "Dragonfly Energy",
+   "Renogy",
+   "Dakota Lithium"
+  ],
+  "loose": 0.0,
+  "loose_hits": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.0,
+  "strict_hits": [
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "small"
+ },
+ "ZM": {
+  "entities": [
+   "Cisco Webex",
+   "GoTo",
+   "Microsoft 365",
+   "Google Workspace",
+   "Avaya",
+   "RingCentral",
+   "8x8",
+   "Five9",
+   "Genesys",
+   "NICE inContact",
+   "Amazon",
+   "Apple",
+   "Facebook"
+  ],
+  "loose": 0.3076923076923077,
+  "loose_hits": [
+   true,
+   false,
+   true,
+   true,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "strict": 0.3076923076923077,
+  "strict_hits": [
+   true,
+   false,
+   true,
+   true,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "tier": "large"
+ },
+ "ZYXI": {
+  "entities": [
+   "RS Medical",
+   "EMSI",
+   "H-Wave"
+  ],
+  "loose": 0.0,
+  "loose_hits": [
+   false,
+   false,
+   false
+  ],
+  "strict": 0.0,
+  "strict_hits": [
+   false,
+   false,
+   false
+  ],
+  "tier": "small"
+ }
+}

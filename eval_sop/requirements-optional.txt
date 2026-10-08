@@ -1,0 +1,16 @@
+# Only needed to REGENERATE data, not to run the tests or to score the
+# committed run. Several gigabytes (torch), so it is deliberately separate.
+#
+#   pip install -r eval_sop/requirements-optional.txt
+
+# retrieve.py -- free metasearch standing in for Tavily. The committed
+# raw/retrieval/*.json were produced with 9.13.1; a different version will
+# return different search text.
+ddgs~=9.13
+
+# nli.py -- the step-2 claim-support judge (cross-encoder/nli-deberta-v3-large,
+# downloaded from Hugging Face on first use) and its RAGTruth validation pass
+torch~=2.6
+transformers~=4.57
+pandas~=2.3
+scikit-learn~=1.7

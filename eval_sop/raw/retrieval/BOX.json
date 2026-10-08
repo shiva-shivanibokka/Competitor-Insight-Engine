@@ -1,0 +1,68 @@
+{
+ "id": "BOX",
+ "homepage": "https://www.box.com",
+ "scraped_chars": 3040,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Box\nINDUSTRY: Enterprise Software / Content Management\nPRODUCT OR SERVICE: An AI-powered content management, workflow, and collaboration platform that enables secure file storage, intelligent data extraction, and automated business processes.\nTARGET CUSTOMERS: Large enterprises and organizations requiring enterprise-grade security, compliance (GDPR, HIPAA, FINRA), and scalable content management solutions.\nPRICING MODEL: Enterprise / Subscription\nKEY FEATURES:\n- AI-powered content management and secure collaboration tools\n- Intelligent data extraction from unstructured documents (contracts, financials)\n- Automated workflow design and deployment using AI agents\n- AI-driven security with real-time threat detection and compliance tools\n- Developer-focused APIs and Box AI Studio for custom integrations\nUNIQUE SELLING POINTS:\n- Integration with leading AI models (OpenAI, Anthropic, Google) for real-time insights\n- \"Agentic workflow\" capabilities allowing users to deploy AI agents for complex tasks\n- Enterprise-grade security and compliance built directly into the content management layer\n- Ability to extract structured data from diverse content types, including handwritten documents\nTONE & POSITIONING: Enterprise / Premium / AI-Forward",
+ "industry": "Enterprise Software / Content Management",
+ "query": "top direct competitors of Box in Enterprise Software / Content Management",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.vendr.com/marketplace/box",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.box.com/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://assettocorsa.club/content-manager.html",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://acstuff.club/app/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.g2.com/",
+   "used": false
+  },
+  {
+   "url": "https://air.inc/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://ahrefs.com/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://claude.ai/login",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.google.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://copilot.microsoft.com/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:25:07",
+ "scraped_sha256": "17d6abde6bd201a8a400ad70eb8b0b5ca0776c847bfd98aa77cce5e59dcbcd59",
+ "search_content_sha256": "c8b76ee05767de187e8a09c1519f3175871935e8303e6b795ae22cf434bf5eed",
+ "search_content_chars": 5530,
+ "stripped": true
+}

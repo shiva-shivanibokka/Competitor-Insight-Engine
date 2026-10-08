@@ -1,0 +1,69 @@
+{
+ "id": "KORE",
+ "homepage": "https://www.korewireless.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: KORE Wireless\nINDUSTRY: IoT Connectivity & Managed Services\nPRODUCT OR SERVICE: Global enterprise IoT connectivity solutions including SIM/eSIM management, connectivity management platforms, and end-to-end hardware and logistics services.\nTARGET CUSTOMERS: Enterprise organizations and innovators deploying IoT solutions in sectors such as asset monitoring, EV charging, connected health, fleet management, utilities, and smart agriculture.\nPRICING MODEL: Enterprise\nKEY FEATURES:\n- Global and local IoT connectivity across multiple networks and technologies\n- SIM and eSIM options for flexible deployment\n- Integrated connectivity management platform for provisioning, monitoring, and policy control\n- Hardware sourcing, in-house device testing, and certification services\n- Managed services and 24/7 global support\nUNIQUE SELLING POINTS:\n- End-to-end partner approach combining connectivity, hardware, and managed services\n- Resilience through multi-carrier options and automatic fallbacks\n- Global reach with local execution and expertise\n- Proven scale with 21M+ connected devices and 20+ years of carrier relationships\nTONE & POSITIONING: Enterprise",
+ "industry": "IoT Connectivity & Managed Services",
+ "query": "top direct competitors of KORE Wireless in IoT Connectivity & Managed Services",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.gartner.com/reviews/product/kore-wireless-managed-iot-connectivity-services/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.korewireless.com/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://grokipedia.com/page/KORE_Wireless",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://growjo.com/company/KORE_Wireless",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://worldmetrics.org/service/managed-iot-connectivity/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.cbinsights.com/company/kore-3/alternatives-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://craft.co/kore-wireless-group",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://incfact.com/company/korewireless-alpharetta-ga/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.accio.com/business/kore-wireless",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://telnyx.com/the-better-kore-wireless-alternative",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:31:23",
+ "scraped_sha256": "43d6cf2bf70863270522be64727cc9d3b92d80c01054f151bbc57d3951ad6c88",
+ "search_content_sha256": "cf88874b4d7386dbea47251fec1da74787d749c4e8783a2c9fcc1c92ea588510",
+ "search_content_chars": 5941,
+ "stripped": true
+}

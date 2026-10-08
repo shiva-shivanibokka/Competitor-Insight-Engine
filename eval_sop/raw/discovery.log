@@ -1,0 +1,515 @@
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 Uber                         -> ['Lyft', 'Didi', 'Grab', 'Ola', 'Bolt', 'Careem']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 9 competitor(s) passed validation.
+a_full         T=0.0 s=0 DoorDash                     -> ['Uber Eats', 'Grubhub', 'Instacart', 'Postmates', 'ChowNow', 'Rappi']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 6 competitor(s) passed validation.
+a_full         T=0.0 s=0 Zoom                         -> ['Microsoft Teams', 'Google Meet', 'Webex', 'RingCentral', 'Skype', 'Nextiva']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 9 competitor(s) passed validation.
+a_full         T=0.0 s=0 Snowflake                    -> ['Databricks', 'Google Cloud', 'Amazon Web Services', 'Microsoft Azure', 'Firebolt', 'ClickHouse']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 Datadog                      -> ['New Relic', 'Dynatrace', 'Grafana', 'Splunk', 'Sumo Logic', 'Elastic']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 5.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on output tokens 
+  [!] Removed: Instagram (https://www.instagram.com)
+  [!] Removed: TikTok (https://www.tiktok.com)
+  [step] 8 competitor(s) passed validation.
+a_full         T=0.0 s=0 Pinterest                    -> ['Tumblr', 'Behance', 'Dribbble', 'Houzz', 'Etsy', 'Shutterstock']
+  [step] Extracting and ranking real competitors from search results...
+  [!] Removed: TikTok (https://www.tiktok.com)
+  [!] Removed: YouTube (https://www.youtube.com)
+  [!] Removed: X (https://x.com)
+  [step] 4 competitor(s) passed validation.
+a_full         T=0.0 s=0 Snap                         -> ['Meta', 'Bluesky', 'Pinterest', 'Triller']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 9 competitor(s) passed validation.
+a_full         T=0.0 s=0 Workday                      -> ['SAP SuccessFactors', 'Oracle HCM Cloud', 'ADP', 'UKG', 'Ceridian Dayforce', 'Microsoft Dynamics 365']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 MongoDB                      -> ['Couchbase', 'Amazon Web Services', 'Google Cloud', 'Microsoft Azure', 'Redis', 'Cassandra']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 7 competitor(s) passed validation.
+a_full         T=0.0 s=0 Carvana                      -> ['CarMax', 'Vroom', 'ACV Auctions', 'Auto1 Group', 'Lithia Motors', 'Penske Automotive Group']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 7 competitor(s) passed validation.
+a_full         T=0.0 s=0 Oracle                       -> ['Microsoft', 'SAP', 'IBM', 'Amazon Web Services', 'Salesforce', 'Google Cloud']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 9 competitor(s) passed validation.
+a_full         T=0.0 s=0 Roblox                       -> ['Rec Room', 'The Sandbox', 'Fortnite', 'Minecraft', 'Core', 'Zepeto']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 7 competitor(s) passed validation.
+a_full         T=0.0 s=0 Fortinet                     -> ['Palo Alto Networks', 'Check Point Software', 'Cisco', 'Zscaler', 'CrowdStrike', 'Forcepoint']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 Airbnb                       -> ['Vrbo', 'Booking.com', 'Expedia', 'Agoda', 'Trip.com', 'Vacasa']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 2 competitor(s) passed validation.
+a_full         T=0.0 s=0 Live Nation                  -> ['AXS', 'AEG Presents']
+  [step] Extracting and ranking real competitors from search results...
+  [!] Removed: Supermicro (https://www.supermicro.com)
+  [step] 8 competitor(s) passed validation.
+a_full         T=0.0 s=0 Supermicro                   -> ['Dell Technologies', 'Hewlett Packard Enterprise', 'Lenovo', 'Wiwynn', 'Foxconn', 'Inspur']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 Dropbox                      -> ['Box', 'Google Drive', 'Microsoft OneDrive', 'Amazon Drive', 'Apple iCloud', 'Sync.com']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 6 competitor(s) passed validation.
+a_full         T=0.0 s=0 Roku                         -> ['Amazon Fire TV', 'Apple TV', 'Google Chromecast', 'Nvidia Shield TV', 'TiVo', 'Samsung Smart TV']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 Wayfair                      -> ['IKEA', 'Williams-Sonoma', 'The Home Depot', "Bob's Discount Furniture", 'Havertys', 'Bassett Furniture']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 5 competitor(s) passed validation.
+a_full         T=0.0 s=0 Unity                        -> ['Epic Games', 'Roblox', 'Autodesk', 'GameSalad', 'MathWorks']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 4 competitor(s) passed validation.
+a_full         T=0.0 s=0 Box                          -> ['Dropbox', 'Google Drive', 'Microsoft OneDrive', 'Air']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 SentinelOne                  -> ['CrowdStrike', 'Palo Alto Networks', 'Microsoft', 'Sophos', 'Bitdefender', 'Cynet']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 RingCentral                  -> ['Zoom', 'Microsoft Teams', '8x8', 'Dialpad', 'Nextiva', 'Vonage']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 6 competitor(s) passed validation.
+a_full         T=0.0 s=0 Teradata                     -> ['SAS Institute', 'NetApp', 'Veritas Technologies', 'Quantum', 'Informatica', 'Veeam']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 8 competitor(s) passed validation.
+a_full         T=0.0 s=0 SailPoint                    -> ['Okta', 'One Identity', 'Saviynt', 'Microsoft', 'IBM', 'CyberArk']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 Arlo                         -> ['Ring', 'Nest', 'Wyze', 'Eufy', 'Reolink', 'Blink']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 Ubiquiti                     -> ['Cisco Systems', 'Aruba Networks', 'Cambium Networks', 'MikroTik', 'Hewlett Packard Enterprise', 'Motorola Solutions']
+  [step] Extracting and ranking real competitors from search results...
+  [!] Removed: Trex (https://www.trex.com)
+  [step] 6 competitor(s) passed validation.
+a_full         T=0.0 s=0 Trex                         -> ['TimberTech', 'Azek', 'NewTechWood', 'Fiberon', 'Mosaic', 'Cape Cod Composites']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 Insperity                    -> ['ADP TotalSource', 'TriNet', 'Paychex', 'Justworks', 'Paycor', 'Sequoia']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 9 competitor(s) passed validation.
+a_full         T=0.0 s=0 Benchmark Electronics        -> ['Sanmina', 'Flex', 'TT Electronics', 'Jabil', 'Celestica', 'Plexus']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 Clearwater Analytics         -> ['BlackRock Aladdin', 'Advent Software', 'Eagle Investment Systems', 'SS&C Technologies', 'FactSet', 'Bloomberg']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 9 competitor(s) passed validation.
+a_full         T=0.0 s=0 Weatherford                  -> ['Halliburton', 'Baker Hughes', 'SLB', 'NOV', 'ChampionX', 'FTI Consulting']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 8 competitor(s) passed validation.
+a_full         T=0.0 s=0 NETGEAR                      -> ['TP-Link', 'ASUS', 'Linksys', 'eero', 'Ubiquiti', 'Western Digital']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 8 competitor(s) passed validation.
+a_full         T=0.0 s=0 Herbalife                    -> ['USANA Health Sciences', 'Amway', 'Nu Skin Enterprises', 'Shaklee', 'Isagenix', 'Young Living']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 7 competitor(s) passed validation.
+a_full         T=0.0 s=0 Conduent                     -> ['Accenture', 'Cognizant', 'Genpact', 'Tata Consultancy Services', 'IBM', 'Wipro']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 8 competitor(s) passed validation.
+a_full         T=0.0 s=0 Aviat Networks               -> ['Ceragon Networks', 'Nokia', 'Ciena', 'CommScope', 'BK Technologies', 'Airspan Networks']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 11 competitor(s) passed validation.
+a_full         T=0.0 s=0 Backblaze                    -> ['Wasabi', 'IDrive', 'Carbonite', 'Acronis', 'Rewind', 'Storj']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+a_full         T=0.0 s=0 DISCO                        -> ['Relativity', 'Everlaw', 'Reveal', 'Exterro', 'Lighthouse', 'Nuix']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+a_full         T=0.0 s=0 DHI Group                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 6 competitor(s) passed validation.
+a_full         T=0.0 s=0 Black Rifle Coffee           -> ['Death Wish Coffee Company', 'Blue Bottle Coffee', 'Grinders Coffee', 'Orinoco Coffee & Tea', 'Dilmah', 'The Republic of Tea']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 6 competitor(s) passed validation.
+a_full         T=0.0 s=0 WidePoint                    -> ['Calero', 'Valicom', 'Telesoft', 'iC Consult', 'IN Groupe', 'Intersections']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 6 competitor(s) passed validation.
+a_full         T=0.0 s=0 CXApp                        -> ['Inpixon', 'Officevibe', 'Workplace', 'Cubix', 'Spacewell', 'Workplace Intelligence']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 5 competitor(s) passed validation.
+a_full         T=0.0 s=0 Phunware                     -> ['Braze', 'Emarsys', 'MobileFuse', 'ThirdPresence', 'Terragon Group']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 14 competitor(s) passed validation.
+a_full         T=0.0 s=0 KORE Wireless                -> ['Sierra Wireless', 'Hologram', 'Telnyx', 'Aeris', 'Wireless Logic', 'Soracom']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 6 competitor(s) passed validation.
+a_full         T=0.0 s=0 Expion360                    -> ['Victron Energy', 'Battle Born Batteries', 'Renogy', 'LiTime', 'Wellspring Solar', 'DASGen']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+a_full         T=0.0 s=0 Energy Focus                 -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 3 competitor(s) passed validation.
+a_full         T=0.0 s=0 Tandy Leather                -> ['Leathercraft Tools', 'Springfield Leather', 'Weaver Leather Supply']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 7 competitor(s) passed validation.
+a_full         T=0.0 s=0 Zynex Medical                -> ['Omron', 'Nevro', 'Medicrea', 'Tactile Medical', 'GAIA', 'Tao Technologies']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Uber                         -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 DoorDash                     -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Zoom                         -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Snowflake                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Datadog                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Pinterest                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Snap                         -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Workday                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 MongoDB                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Carvana                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Oracle                       -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Roblox                       -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Fortinet                     -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Airbnb                       -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Live Nation                  -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Supermicro                   -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Dropbox                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Roku                         -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Wayfair                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Unity                        -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Box                          -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 SentinelOne                  -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 RingCentral                  -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Teradata                     -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 SailPoint                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Arlo                         -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Ubiquiti                     -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Trex                         -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Insperity                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Benchmark Electronics        -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Clearwater Analytics         -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Weatherford                  -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 NETGEAR                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Herbalife                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Conduent                     -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Aviat Networks               -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Backblaze                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 DISCO                        -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 DHI Group                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Black Rifle Coffee           -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 WidePoint                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 CXApp                        -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Phunware                     -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 KORE Wireless                -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Expion360                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Energy Focus                 -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Tandy Leather                -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+b_prior        T=0.0 s=0 Zynex Medical                -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 8 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Uber                         -> ['DoorDash', 'Grubhub', 'Instacart', 'Postmates', 'Deliveroo', 'Gopuff']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 DoorDash                     -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 7 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Zoom                         -> ['Telnyx', 'Hologram', 'Sierra Wireless', 'Aeris', 'Wireless Logic', 'Soracom']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Snowflake                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Datadog                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Pinterest                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Snap                         -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Workday                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 MongoDB                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Carvana                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Oracle                       -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Roblox                       -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Fortinet                     -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Airbnb                       -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Live Nation                  -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Supermicro                   -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Dropbox                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Roku                         -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Wayfair                      -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Unity                        -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Box                          -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 SentinelOne                  -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 RingCentral                  -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Teradata                     -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 SailPoint                    -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 7 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Arlo                         -> ['CarMax', 'Vroom', 'CarGurus', 'ACV Auctions', 'Auto1 Group', 'Lithia Motors']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 6 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Ubiquiti                     -> ['Ceragon Networks', 'Ciena', 'CommScope', 'Nokia', 'Casa Systems', 'BK Technologies']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 9 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Trex                         -> ['IKEA', 'Williams-Sonoma', 'The Home Depot', "Bob's Discount Furniture", 'Havertys', 'Bassett Furniture']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Insperity                    -> []
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 613.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+daily Groq limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199579, Reque
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Benchmark Electronics        -> []
+  [step] Extracting and ranking real competitors from search results...
+  [step] 0 competitor(s) passed validation.
+c_shuffled     T=0.0 s=0 Clearwater Analytics         -> []
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 225.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+daily Groq limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198567, Reque
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Uber                         -> ['Lyft', 'Didi Chuxing', 'Grab', 'Bolt', 'Careem', 'Gojek']
+  [step] Extracting and ranking real competitors from search results...
+  [step] 10 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 DoorDash                     -> ['Uber Eats', 'Grubhub', 'Postmates', 'Deliveroo', 'Instacart', 'Glovo']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 13.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 130.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [!] Duplicate skipped: Cisco Webex (https://www.webex.com)
+  [step] 9 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Zoom                         -> ['Microsoft Teams', 'Google Meet', 'Webex', 'RingCentral', 'Skype', 'GoToMeeting']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 138.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 211.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [!] Removed: Snowflake (https://www.snowflake.com)
+  [step] 9 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Snowflake                    -> ['Databricks', 'Amazon Web Services', 'Microsoft Azure', 'Google Cloud', 'Cloudera', 'Teradata']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 109.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 131.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [step] 9 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Datadog                      -> ['New Relic', 'Splunk', 'Dynatrace', 'Grafana Labs', 'Elastic', 'Honeycomb']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 63.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 144.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [!] Removed: Instagram (https://www.instagram.com)
+  [!] Removed: TikTok (https://www.tiktok.com)
+  [step] 8 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Pinterest                    -> ['Tumblr', 'Etsy', 'Shutterstock', 'Behance', 'Dribbble', 'Weebly']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 15.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 191.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [!] Removed: TikTok (https://www.tiktok.com)
+  [!] Removed: Instagram (https://www.instagram.com)
+  [!] Removed: YouTube (https://www.youtube.com)
+  [step] 2 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Snap                         -> ['Meta', 'BeReal']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 23.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [step] 10 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Workday                      -> ['SAP', 'Oracle', 'Microsoft', 'Infor', 'Sage', 'Unit4']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 324.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [step] 10 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 MongoDB                      -> ['Oracle', 'Microsoft', 'Amazon Web Services', 'Couchbase', 'Cockroach Labs', 'Elastic']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 211.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 165.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [!] Removed: Carvana (https://www.carvana.com)
+  [step] 4 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Carvana                      -> ['CarMax', 'AutoTrader', 'CarGurus', 'Vroom']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 53.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 18.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [step] 10 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Oracle                       -> ['SAP', 'Microsoft', 'IBM', 'Salesforce', 'ServiceNow', 'Workday']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 296.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 74.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [!] Removed: Roblox (https://www.roblox.com)
+  [!] Removed: Roblox (https://www.roblox.com)
+  [!] Removed: Roblox (https://www.roblox.com)
+  [!] Removed: Roblox (https://www.roblox.com)
+  [step] 6 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Roblox                       -> ['Fortnite', 'Minecraft', 'VRChat', 'Zepeto', 'Rec Room', 'Genshin Impact']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 246.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [step] 10 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Fortinet                     -> ['Palo Alto Networks', 'Cisco', 'Check Point', 'Juniper Networks', 'FortiGuard', 'SonicWall']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 5.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 24.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 7.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 38.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 170.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [step] 10 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Airbnb                       -> ['Booking.com', 'Vrbo', 'Expedia', 'HomeAway', 'Agoda', 'Trivago']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 23.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 20.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 201.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [!] Removed: Live Nation Entertainment (https://www.livenation.com)
+  [step] 5 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Live Nation                  -> ['AEG', 'Ticketmaster', 'C3 Presents', 'PROMOTIC', 'Live Nation Events']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 57.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 109.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [!] Removed: Supermicro (https://www.supermicro.com)
+  [!] Removed: Supermicro (https://www.supermicro.com)
+  [step] 7 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Supermicro                   -> ['Dell Technologies', 'Hewlett Packard Enterprise', 'Lenovo', 'Inspur', 'Foxconn', 'Gigabyte']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 59.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [step] 10 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Dropbox                      -> ['Google Drive', 'Microsoft OneDrive', 'Box', 'Mega', 'pCloud', 'Sync.com']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 230.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 18.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 21.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [step] 9 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Roku                         -> ['Amazon', 'Apple', 'Samsung', 'LG', 'Vizio', 'TCL']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 417.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [!] Removed: Wayfair (https://www.wayfair.com)
+  [step] 9 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Wayfair                      -> ['Amazon', 'IKEA', 'Overstock', 'West Elm', 'Pottery Barn', 'Williams-Sonoma']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 23.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 158.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+    [groq] 429; retry-after 66.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [step] 10 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Unity                        -> ['Unreal Engine', 'Godot', 'CryEngine', 'GameMaker', 'Roblox', 'PlayCanvas']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 128.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day
+  [step] 10 competitor(s) passed validation.
+b2_prior_knowledge T=0.0 s=0 Box                          -> ['Dropbox', 'Google Drive', 'Microsoft OneDrive', 'Mega', 'Nextcloud', 'pCloud']
+  [step] Extracting and ranking real competitors from search results...
+    [groq] 429; retry-after 369.0s; {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_[REDACTED]` service tier `on_demand` on tokens per day

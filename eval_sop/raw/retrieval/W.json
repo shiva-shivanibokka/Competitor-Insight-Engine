@@ -1,0 +1,69 @@
+{
+ "id": "W",
+ "homepage": "https://www.wayfair.com",
+ "scraped_chars": 0,
+ "product_would_abort": true,
+ "scraped": null,
+ "profile": "",
+ "industry": "technology",
+ "query": "top direct competitors of Wayfair in technology",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://sumble.com/tech/wayfair",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://pitchgrade.com/companies/wayfair",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.foresightiq.co/competitive-landscape/wayfair",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.cbinsights.com/company/wayfair/alternatives-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://wizcommerce.com/blog/wayfair-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.comparably.com/companies/wayfair/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://matrixbcg.com/blogs/competitors/wayfair",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.similarweb.com/website/wayfair.com/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://businessmodelanalyst.com/wayfair-business-model/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://craft.co/wayfair/competitors",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:24:40",
+ "scraped_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+ "search_content_sha256": "d98887612564086e45b397a61c6bd298e64b9ca70db5e2179666589a69505585",
+ "search_content_chars": 5784,
+ "stripped": true
+}

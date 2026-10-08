@@ -1,0 +1,67 @@
+{
+ "id": "TDC",
+ "homepage": "https://www.teradata.com",
+ "scraped_chars": 5688,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Teradata\nINDUSTRY: Data Analytics & Artificial Intelligence\nPRODUCT OR SERVICE: An Autonomous Knowledge Platform that integrates data, AI, and analytics to automate business decisions and actions in real-time. It offers a full-stack solution including cloud, on-premises, and hybrid deployment options for building, activating, and managing AI agents and workflows.\nTARGET CUSTOMERS: Large enterprises in highly regulated industries, specifically banking, airlines, telecommunications, logistics, healthcare, automotive, life sciences, and manufacturing.\nPRICING MODEL: Enterprise (Fixed + Flex hybrid model)\nKEY FEATURES:\n- Autonomous Knowledge Platform for real-time decision automation\n- Unified AI environment for building, activating, and managing AI agents\n- Multi-modal data integration to create high-quality knowledge context\n- Flexible deployment options (Cloud, On-premises, and Hybrid)\n- Fixed + Flex pricing with a unified \"Teradata Unit\" currency for cost transparency\nUNIQUE SELLING POINTS:\n- Combines predictable fixed costs with elastic flex capacity to avoid over-provisioning\n- Single unified currency (Teradata Unit) for compute, storage, software, and AI\n- Focus on \"autonomous\" execution where AI agents act on data without human intervention\n- Trusted by top-tier enterprises in highly regulated sectors (e.g., 10 of top 10 banks)\nTONE & POSITIONING: Enterprise / Premium",
+ "industry": "Data Analytics & Artificial Intelligence",
+ "query": "top direct competitors of Teradata in Data Analytics & Artificial Intelligence",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://alternativeto.net/software/teradata/",
+   "used": false
+  },
+  {
+   "url": "https://craft.co/teradata/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.peerspot.com/products/teradata-alternatives-and-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.gartner.com/reviews/market/cloud-database-management-systems/vendor/teradata/alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.teradata.com/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://discovery.patsnap.com/topic/master-data-management",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://6sense.com/tech/data-science-and-machine-learning/teradata-vantage-market-share",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.acciyo.com/teradata-com-review/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=tlgsNXyANeQ",
+   "used": false
+  },
+  {
+   "url": "https://www.marketbeat.com/stocks/NYSE/TDC/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:26:26",
+ "scraped_sha256": "5b98431c9fccff8a41e225a55090da3a4797b917ec61887424b4afe8d54c23e7",
+ "search_content_sha256": "60821d218ee82c662363cf473472af4d30259daee212f132b48e3f60092ffa71",
+ "search_content_chars": 4737,
+ "stripped": true
+}

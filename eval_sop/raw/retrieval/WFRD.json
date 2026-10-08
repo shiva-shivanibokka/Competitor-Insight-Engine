@@ -1,0 +1,68 @@
+{
+ "id": "WFRD",
+ "homepage": "https://www.weatherford.com",
+ "scraped_chars": 0,
+ "product_would_abort": true,
+ "scraped": null,
+ "profile": "",
+ "industry": "technology",
+ "query": "top direct competitors of Weatherford in technology",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.marketbeat.com/stocks/NASDAQ/WFRD/competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.g2.com/products/weatherford/competitors/alternatives",
+   "used": false
+  },
+  {
+   "url": "https://www.cbinsights.com/company/weatherford-international/alternatives-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.comparably.com/companies/weatherford-international/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://craft.co/weatherford/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.owler.com/company/weatherford/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://markets.apistemic.com/companies/weatherford-yp6d9",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://pestel-analysis.com/blogs/competitors/weatherford",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.saashub.com/weatherford-alternatives",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://media-index.kochava.com/buyers/weatherford",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:28:23",
+ "scraped_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+ "search_content_sha256": "c15b6ace21474f86405a5675fa2ad886643172df9e1e29160e316ca1b2285ae9",
+ "search_content_chars": 4541,
+ "stripped": true
+}

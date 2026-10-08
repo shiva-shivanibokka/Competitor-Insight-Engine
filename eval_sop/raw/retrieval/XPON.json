@@ -1,0 +1,69 @@
+{
+ "id": "XPON",
+ "homepage": "https://expion360.com",
+ "scraped_chars": 3042,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Expion360\nINDUSTRY: Energy Storage / Automotive & Marine Batteries\nPRODUCT OR SERVICE: Premium LiFePO4 lithium batteries, solar power systems, chargers, inverters, and accessories designed for off-grid, RV, marine, and industrial applications.\nTARGET CUSTOMERS: RV owners, overland adventurers, marine enthusiasts, golf cart users, and industrial off-grid power users.\nPRICING MODEL: Direct-to-consumer retail (with periodic sales/discounts)\nKEY FEATURES:\n- 12-year warranty on LiFePO4 batteries\n- UL1973 compliant safety standards\n- Bluetooth-enabled battery monitoring via SmartTalk App\n- Wide range of voltage options including 12V and 48V systems\n- Integrated solar charging and inverter solutions\nUNIQUE SELLING POINTS: U.S.-based engineering, industry-leading reliability, and unmatched longevity for heavy-duty applications.\nTONE & POSITIONING: Premium / Adventure-focused / Trustworthy",
+ "industry": "Energy Storage / Automotive & Marine Batteries",
+ "query": "top direct competitors of Expion360 in Energy Storage / Automotive & Marine Batteries",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.investing.com/equities/expion360",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://nomadicsupply.com/expion360-e360-group-27-12v-132ah-deep-cycle-self-heating-bluetooth-lifepo4-lithium-battery-ex-g27-12132-bch/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.marketbeat.com/stocks/NASDAQ/XPON/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.manilatimes.net/2025/01/02/tmt-newswire/globenewswire/expion360-to-begin-shipping-e360-home-energy-storage-solutions-to-integration-partner-wellspring-solar/2029396",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://lifestyle.cleanweb.co/story/501461/expion360-and-dealer-accessory-supply-announce-strategic-partnership-for-launch-of-dasgen-hybrid-energy-storage-system/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.tradingview.com/news/zacks:d468fec07094b:0-zacks-initiates-coverage-of-expion360-with-neutral-recommendation/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.fisheriessupply.com/expion360-vpr-4ever-classic-group-27-12v-lithium-battery/ex-100c-27",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://mercomcapital.com/funding-and-ma-roundup-voya-energy-raises-35-million/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.insidertrades.com/expion360-inc-stock/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://desertcoachrv.com/expion360-touts-revenue-growth-and-new-oems-in-q3-report/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:31:38",
+ "scraped_sha256": "a7f4ee03005957bf5efa3ae7da6d061b7d1c547df1ee5ea3fee10b0d5643ed32",
+ "search_content_sha256": "79979e62b1061b092ce70e17cf62a35533cec8b51979e64bb5967163190fd545",
+ "search_content_chars": 5341,
+ "stripped": true
+}

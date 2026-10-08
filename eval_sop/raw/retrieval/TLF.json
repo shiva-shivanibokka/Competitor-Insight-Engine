@@ -1,0 +1,69 @@
+{
+ "id": "TLF",
+ "homepage": "https://www.tandyleather.com",
+ "scraped_chars": 3049,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Tandy Leather, Inc.\nINDUSTRY: Leathercraft Supplies & Education\nPRODUCT OR SERVICE: Sells leather materials, tools, and hardware for leatherworking, and offers in-person and online leathercraft classes.\nTARGET CUSTOMERS: Hobbyists, professional leatherworkers, and DIY enthusiasts.\nPRICING MODEL: Pay-per-item / Retail\nKEY FEATURES:\n- Wide selection of leather materials and utility leather\n- Leathercraft classes and educational resources\n- Global shipping and multi-language support\n- Customer rewards program\n- Physical store locator for in-person services\nUNIQUE SELLING POINTS: Combines retail supply with hands-on education and community support for leather artisans.\nTONE & POSITIONING: Professional, educational, and accessible to both beginners and experts.",
+ "industry": "Leathercraft Supplies & Education",
+ "query": "top direct competitors of Tandy Leather in Leathercraft Supplies & Education",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.financialcontent.com/quote/NQ:TLF/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://csimarket.com/stocks/TLF-Competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://craft.co/tandy-leather-factory/competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.marketbeat.com/stocks/NASDAQ/TLF/competitors-and-alternatives/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.similarweb.com/website/tandyleather.com/competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.similarweb.com/website/leathercraft.com/competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.comparably.com/companies/tandy-leather-factory/competitors",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.amazon.com/tandy-leather-kits/s?k=tandy+leather+kits",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://askcyborg.com/company-research/tandy-leather-factory-inc",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.distrilist.eu/tandy-leather-empowers-leathercrafters-with-quality-supplies/",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:32:11",
+ "scraped_sha256": "d11b9c031a3e24aa1201cd0ecb57373ae588b56c3fa2b55d1103b578f2b065c0",
+ "search_content_sha256": "e39136bdd4200e2551c072a9aac441871a403e8f5b99cee0611e2b2d32e2c77b",
+ "search_content_chars": 5677,
+ "stripped": true
+}

@@ -1,0 +1,69 @@
+{
+ "id": "RBLX",
+ "homepage": "https://www.roblox.com",
+ "scraped_chars": 2108,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Roblox\nINDUSTRY: Online Gaming / User-Generated Content Platform\nPRODUCT OR SERVICE: A global online platform where users can play, create, and share user-generated games and experiences. It provides a suite of tools for developers to build interactive 3D worlds and a marketplace for players to discover and engage with content.\nTARGET CUSTOMERS: Gamers of all ages (with a strong focus on younger demographics and families) and game developers/creators ranging from hobbyists to professional studios.\nPRICING MODEL: Freemium (Free to play and create; revenue generated through virtual currency \"Robux\" for in-game purchases and creator monetization)\nKEY FEATURES:\n- Massive library of user-generated games and experiences\n- Roblox Studio: Tools for creating and publishing 3D games\n- Generative AI tools to assist creators in building faster\n- Age-appropriate content filtering and safety features\n- Global infrastructure supporting millions of concurrent users\nUNIQUE SELLING POINTS:\n- \"One-of-a-kind\" destination combining gaming and creation\n- Thriving community of creators and players\n- Pioneering use of AI generation for both creators and users\n- Commitment to safety and digital independence for users of all ages\nTONE & POSITIONING: Community-focused, innovative, family-friendly, and developer-empowering",
+ "industry": "Online Gaming / User-Generated Content Platform",
+ "query": "top direct competitors of Roblox in Online Gaming / User-Generated Content Platform",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.marketing91.com/roblox-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.cbinsights.com/company/roblox/alternatives-competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.distillintelligence.com/competitors/roblox",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.latterly.org/roblox-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://headsup.bot/competitors/roblox-com",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://gamerant.com/best-creative-games-better-than-roblox-community-created-content-fortnite-minecraft/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.similarweb.com/website/roblox.com/competitors/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://appvulture.com/competitor-analysis/roblox/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.roblox.com/?ref=home",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://komo.ai/directory/roblox",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:23:00",
+ "scraped_sha256": "b812d9474ea3268fd816b28ce2fce5b23a34f01490e95ef863ab6a7e910d8fe9",
+ "search_content_sha256": "9af9406d6d0a2da1bd22283ddf8bb3c366883f03fdc96455d3ab7b9ba25fba51",
+ "search_content_chars": 6000,
+ "stripped": true
+}

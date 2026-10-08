@@ -1,0 +1,67 @@
+{
+ "id": "TREX",
+ "homepage": "https://www.trex.com",
+ "scraped_chars": 6000,
+ "product_would_abort": false,
+ "scraped": null,
+ "profile": "COMPANY NAME: Trex Company, Inc.\nINDUSTRY: Building Materials / Outdoor Living / Composite Decking\nPRODUCT OR SERVICE: Manufactures and sells premium composite and PVC decking, railings, and integrated outdoor lighting systems designed for residential outdoor living spaces.\nTARGET CUSTOMERS: Homeowners planning deck or outdoor living renovations, as well as professional deck builders and contractors (TrexPro® network).\nPRICING MODEL: Enterprise / B2B (Sold via authorized dealers and contractors; quote-based)\nKEY FEATURES:\n- Performance-engineered composite and PVC decking materials\n- Integrated outdoor lighting solutions\n- SunComfortable™ Technology for heat reduction\n- Ignition-resistant PVC decking (Trex Refuge™)\n- Online tools including cost calculators, visualizers, and contractor locators\nUNIQUE SELLING POINTS: 30 years of industry-leading innovation, durability against sun and storms, sustainability (recycled materials), and a dedicated network of certified professional installers.\nTONE & POSITIONING: Premium / Consumer-Facing / Lifestyle-Oriented",
+ "industry": "Building Materials / Outdoor Living / Composite Decking",
+ "query": "top direct competitors of Trex in Building Materials / Outdoor Living / Composite Decking",
+ "search_backend": "ddgs 9.13.1 backend=auto — substitute for Tavily",
+ "sources": [
+  {
+   "url": "https://www.familyhandyman.com/article/top-composite-decking-brands-you-should-know/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://www.latterly.org/trex-competitors/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://csimarket.com/stocks/TREX-Competitors",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://umbrex.com/resources/company-profiles/trex-company/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=oz59uc9YZaI",
+   "used": false
+  },
+  {
+   "url": "https://www.fool.com/investing/small-cap/2004/12/27/trex-and-competitors-lumber-along.aspx",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://heilmandeckandfence.com/trex-vs-timbertech-washington/",
+   "used": true,
+   "page_chars": 600
+  },
+  {
+   "url": "https://sa.trex.com/deck-ideas/pioneering-future-outdoor-living/",
+   "used": true,
+   "page_chars": 0
+  },
+  {
+   "url": "https://www.tiktok.com/discover/trex-decking-reviews",
+   "used": false
+  },
+  {
+   "url": "https://www.ogdendecks.com/materials/designing-your-dream-deck-innovative-ideas-with-trex-and-composite-materials",
+   "used": true,
+   "page_chars": 0
+  }
+ ],
+ "search_content": null,
+ "retrieved_at": "2026-10-02 11:27:14",
+ "scraped_sha256": "3606195f8b0e1a84f79c0b9462ac5e3362cbc54a350db190b1bcfcf9bce91bcf",
+ "search_content_sha256": "001070c556f0bc6f74b7c731ce8f80a1a1a219ad9b8c6980da20e38d4100b4d3",
+ "search_content_chars": 5283,
+ "stripped": true
+}
